@@ -16,39 +16,37 @@
 
 package com.resline.cubanacan.ui.activities.api;
 
-import android.content.Intent;
+import android.app.Activity;
+import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.Handler;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.Nameable;
-import labsoft.promo.kehaypahoy.ui.activities.UserProfileActivity;
-import labsoft.promo.kehaypahoy.utils.constants.DrawerMenu;
-import labsoft.promo.kehaypahoy.utils.constants.Fonts;
-import labsoft.promo.kehaypahoy.utils.constants.Keys;
-import labsoft.promo.kehaypahoy.utils.*;
-import labsoft.promo.kehaypahoy.R;
+import com.resline.cubanacan.R;
+import com.resline.cubanacan.ui.utils.DrawerMenu;
 
-public abstract class DrawerActivity extends BaseActivity implements View.OnClickListener {
-    public static final int TAG_EVENTOS = 0;
-    public static final int TAG_ARTISTAS = 1;
-    public static final int TAG_LUGARES = 2;
-    public static final int TAG_INFORMACION = 3;
-    public static final int TAG_AYUDA = 4;
-    public static final int TAG_SUMATE = 5;
-    public static final int TAG_AMIGOS = 6;
+public abstract class DrawerActivity extends AppCompatActivity implements View.OnClickListener {
+    public static final int TAG_ENTRAR_O_REGISTRARSE = 0;
+    public static final int TAG_RESERVAR = 1;
+    public static final int TAG_DESTINOS = 2;
+    public static final int TAG_HOTELES = 3;
+    public static final int TAG_TEMAS = 4;
+    public static final int TAG_OFERTAS_ESPECIALES = 5;
+    public static final int TAG_RECIENTES = 6;
+    public static final int TAG_VALORAR_Y_COMPARTIR = 7;
+    public static final int TAG_TERMINOS_DE_USO = 8;
+    public static final int TAG_CONTACTENOS = 9;
+    public static final int TAG_CONFIGURACION = 10;
 
-    // this is temporal
-    public static final Integer TAG_CUSTOM = DrawerMenu.CUSTOM_EVENT;
     private static final String TAG = "DrawerActivity";
 
     // navigation drawer components
@@ -61,36 +59,35 @@ public abstract class DrawerActivity extends BaseActivity implements View.OnClic
     protected int selColorRes;
 
     // current area
-    protected int area = DrawerMenu.EVENTOS;
-
-    // exit var
-    boolean doubleBackToExitPressedOnce = false;
-
-    // to load view again when the user preferences change in user profile
-    protected boolean loadAgain = false;
+    protected int area = DrawerMenu.ENTRAR_O_REGISTRARSE;
 
     // new drawer
     public Drawer drawer = null;
 
-    // typeface for drawer elements
-    protected Typeface typeface;
-
-    private ImageView imageHeader;
-    private TextView nameHeader;
-
-    private String userName;
-    private String imgProfilePath;
-
     // on drawer item selected listener
     private OnDrawerItemSelected listener;
+
+    // toolbar
+    protected Toolbar mToolBar;
+    // action bar
+    protected ActionBar mActionBar;
+    // resources
+    protected Resources mResources;
+    // activity
+    protected Activity mActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mActivity = this;
+        mResources = getResources();
+        // set toolbar
+        setToolbar();
         // load view components (drawer, toolbar, etc.)
         loadViewComponents();
     }
+
+    protected abstract void setToolbar();
 
     protected void setDrawerItemSelectedListener(OnDrawerItemSelected listener) {
         this.listener = listener;
@@ -98,9 +95,6 @@ public abstract class DrawerActivity extends BaseActivity implements View.OnClic
 
     // Load visual components of drawer and toolbar
     private void loadViewComponents() {
-        // init user data
-        typeface = Typeface.createFromAsset(getApplicationContext().getAssets(), Fonts.CUSTOM_FONT_REGULAR);
-
         // Init drawer menu titles
         navSDITitles = getSDITitles();        // Get the array of titles of the menu
 
@@ -108,9 +102,6 @@ public abstract class DrawerActivity extends BaseActivity implements View.OnClic
 
         // Load drawer
         loadDrawer();
-
-        // load header drawer
-        loadHeaderDrawer();
 
         // Show the hamberguer icon
         if (mActionBar != null) {
@@ -127,16 +118,12 @@ public abstract class DrawerActivity extends BaseActivity implements View.OnClic
     // load drawer
     protected void loadDrawer() {
         // init profile item
-        // set typeface
-        typeface = getTypeface();
-        // get header with profile initializated
         selColorRes = getColorRes();
 
         drawer = new DrawerBuilder()
                 .withActivity(mActivity)
                 .withToolbar(mToolBar)
                 .withDrawerWidthRes(R.dimen.drawer_menu_width)
-                .withHeader(R.layout.drawer_header)
                 .withHeaderDivider(false)
                 .withHeaderClickable(true)
                 .addDrawerItems(getStaticDrawerItem())
@@ -180,48 +167,11 @@ public abstract class DrawerActivity extends BaseActivity implements View.OnClic
 
     protected abstract IDrawerItem[] getStaticDrawerItem();
 
-    // load header of the drawer
-    private void loadHeaderDrawer() {
-        View headerDrawer = drawer.getHeader();
-        // Set profile image
-        imageHeader = (ImageView) headerDrawer.findViewById(R.id.ivProfile);
-        imgProfilePath = prefEditor.getString(Keys.SP_PROFILE_IMAGE_PATH, "");
-        if (!imgProfilePath.equals(""))
-            ImageUtils.loadScaledImageInto(mActivity, imgProfilePath, imageHeader, 100, 100);
-        findViewById(R.id.tvSeeUserProfile).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(DrawerActivity.this, UserProfileActivity.class));
-            }
-        });
-        // Set name to textview
-        nameHeader = (TextView) headerDrawer.findViewById(R.id.tvUserName);
-        userName = prefEditor.getString(Keys.SP_PROFILE_NAME, mResources.getString(R.string.user_name));
-        nameHeader.setText(userName);
-    }
-
     @Override
     public void onBackPressed() {
         //handle the back press :D close the drawer first and if the drawer is closed close the activity
         if (drawer != null && drawer.isDrawerOpen()) {
             drawer.closeDrawer();
-        } else {
-            if (doubleBackToExitPressedOnce) {
-                super.onBackPressed();
-                return;
-            }
-
-            this.doubleBackToExitPressedOnce = true;
-
-            Toast.makeText(this, R.string.exit_msg, Toast.LENGTH_SHORT).show();
-
-            new Handler().postDelayed(new Runnable() {
-
-                @Override
-                public void run() {
-                    doubleBackToExitPressedOnce = false;
-                }
-            }, 2000);
         }
     }
 
@@ -239,18 +189,6 @@ public abstract class DrawerActivity extends BaseActivity implements View.OnClic
     @Override
     protected void onResume() {
         super.onResume();
-        if (prefEditor.getBoolean(Keys.PREF_USER_PHOTO_CHANGE, false)) {
-            imgProfilePath = prefEditor.getString(Keys.SP_PROFILE_IMAGE_PATH, "");
-            if (!imgProfilePath.equals(""))
-                ImageUtils.loadScaledImageInto(mActivity, imgProfilePath, imageHeader, 100, 100);
-            prefEditor.putBoolean(Keys.PREF_USER_PHOTO_CHANGE, false);
-        }
-
-        if (prefEditor.getBoolean(Keys.PREF_USER_NAME_CHANGE, false)) {
-            userName = prefEditor.getString(Keys.SP_PROFILE_NAME, mResources.getString(R.string.user_name));
-            nameHeader.setText(userName);
-            prefEditor.putBoolean(Keys.PREF_USER_NAME_CHANGE, false);
-        }
     }
 
     public String getItemTitle(int position) {

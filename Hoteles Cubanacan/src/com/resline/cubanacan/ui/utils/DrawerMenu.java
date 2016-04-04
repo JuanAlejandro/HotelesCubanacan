@@ -11,18 +11,16 @@ public class DrawerMenu {
     public static final String ARG_SECTION_NUMBER = "section_number";
 
     // static elements
-    public static final int EVENTOS = 0;
-    public static final int ARTISTAS = 1;
-    public static final int LUGARES = 2;
-
-    public static final int CUSTOM_EVENT = 7;
-
-    // support elements
-    public static final int COLABORACION = 0;
-    public static final int SUMATE = 1;
-//    public static final int AMIGOS = 2;
-    public static final int SOPORTE = 2;
-    public static final int INFO = 3;
-    public static final int AYUDA = 4;
+    public static final int ENTRAR_O_REGISTRARSE = 0;
+    public static final int RESERVAR = 1;
+    public static final int DESTINOS = 2;
+    public static final int HOTELES = 3;
+    public static final int TEMAS = 4;
+    public static final int OFERTAS_ESPECIALES = 5;
+    public static final int RECIENTES = 6;
+    public static final int VALORAR_Y_COMPARTIR = 7;
+    public static final int TERMINOS_DE_USO = 8;
+    public static final int CONTACTENOS = 9;
+    public static final int CONFIGURACION = 10;
 
 }
