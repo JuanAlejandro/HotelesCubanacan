@@ -81,11 +81,14 @@ public abstract class DrawerActivity extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);
         mActivity = this;
         mResources = getResources();
+        setContentView(getLayoutResourceId());
         // set toolbar
         setToolbar();
         // load view components (drawer, toolbar, etc.)
         loadViewComponents();
     }
+
+    protected abstract int getLayoutResourceId();
 
     protected abstract void setToolbar();
 
@@ -111,7 +114,9 @@ public abstract class DrawerActivity extends AppCompatActivity implements View.O
         drawer.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
     }
 
-    protected abstract String[] getSupportDITitles();
+    protected String[] getSupportDITitles() {
+        return new String[0];
+    }
 
     protected abstract String[] getSDITitles();
 
@@ -157,13 +162,21 @@ public abstract class DrawerActivity extends AppCompatActivity implements View.O
         }
     }
 
-    protected abstract Typeface getTypeface();
+    protected Typeface getTypeface() {
+        return null;
+    }
 
-    protected abstract int getColorRes();
+    protected int getColorRes() {
+        return 0;
+    }
 
-    protected abstract IDrawerItem[] getDynamicDrawerItems();
+    protected IDrawerItem[] getDynamicDrawerItems() {
+        return new IDrawerItem[0];
+    }
 
-    protected abstract IDrawerItem[] getSupportDrawerItem();
+    protected IDrawerItem[] getSupportDrawerItem() {
+        return new IDrawerItem[0];
+    }
 
     protected abstract IDrawerItem[] getStaticDrawerItem();
 

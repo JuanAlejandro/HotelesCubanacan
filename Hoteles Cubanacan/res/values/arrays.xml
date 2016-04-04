@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="static_nav_drawer_items">
+        <item>Entrar o Registrarse</item>
+        <item>Reservar</item>
+        <item>Destinos</item>
+        <item>Hoteles</item>
+        <item>Temas</item>
+        <item>Ofertas especiales</item>
+        <item>Recientes</item>
+        <item>Valorar y compartir</item>
+        <item>Términos de uso</item>
+        <item>Contáctenos</item>
+        <item>Configuración</item>
+    </array>
+</resources>

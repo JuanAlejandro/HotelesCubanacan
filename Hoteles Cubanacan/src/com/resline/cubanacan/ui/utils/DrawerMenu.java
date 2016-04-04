@@ -10,6 +10,8 @@ public class DrawerMenu {
      */
     public static final String ARG_SECTION_NUMBER = "section_number";
 
+    public static final int CANT_SECCIONES = 11;
+
     // static elements
     public static final int ENTRAR_O_REGISTRARSE = 0;
     public static final int RESERVAR = 1;

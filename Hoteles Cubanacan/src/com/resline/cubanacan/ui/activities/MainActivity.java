@@ -1,26 +1,32 @@
 package com.resline.cubanacan.ui.activities;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.activities.api.DrawerActivity;
+import com.resline.cubanacan.ui.utils.DrawerMenu;
 
 /**
  * Created by Juan Alejandro on 04/04/2016.
  * Actividad principal donde se llaman los fragments de la app según
  * la sección seleccionada en el drawer
  */
-public class MainActivity extends DrawerActivity {
+public class MainActivity extends DrawerActivity implements DrawerActivity.OnDrawerItemSelected {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // set drawer on item click listener
+        setDrawerItemSelectedListener(this);
+
+        // your code here
+    }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_main);
+    protected int getLayoutResourceId() {
+        return R.layout.activity_main;
     }
 
     @Override
@@ -36,42 +42,41 @@ public class MainActivity extends DrawerActivity {
     }
 
     @Override
-    protected String[] getSupportDITitles() {
-        return new String[0];
-    }
-
-    @Override
     protected String[] getSDITitles() {
-        return new String[0];
-    }
-
-    @Override
-    protected Typeface getTypeface() {
-        return null;
-    }
-
-    @Override
-    protected int getColorRes() {
-        return 0;
-    }
-
-    @Override
-    protected IDrawerItem[] getDynamicDrawerItems() {
-        return new IDrawerItem[0];
-    }
-
-    @Override
-    protected IDrawerItem[] getSupportDrawerItem() {
-        return new IDrawerItem[0];
+        return mResources.getStringArray(R.array.static_nav_drawer_items);
     }
 
     @Override
     protected IDrawerItem[] getStaticDrawerItem() {
-        return new IDrawerItem[0];
+        int selColor = R.color.cubanacan_light_blue;
+
+        IDrawerItem[] drawerItems = new IDrawerItem[navSDITitles.length];
+
+        for(int i = 0; i < DrawerMenu.CANT_SECCIONES; i++){
+            drawerItems[i] = new PrimaryDrawerItem()
+                    .withName(navSDITitles[i])
+                    .withSelectedTextColorRes(selColor)
+                    .withSelectedIconColorRes(selColor)
+                    .withTag(TAG_ENTRAR_O_REGISTRARSE);
+        }
+
+        return drawerItems;
     }
 
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    public void onDrawerItemSelected(Integer tag, String title) {
+        /**
+         * the sentence prefEditor.putInt(Keys.SP_STATE_SELECTED_POSITION, "position") idk what's for
+         * todo: remove checking what's for
+         * */
+        switch (tag) {
+        }
+
+        area = tag;
     }
 }
