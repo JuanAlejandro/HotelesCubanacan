@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Hoteles cubanacan theme -->
-    <color name="cubanacan_dark">#c58f0f</color>
-    <color name="cubanacan_light">#fcb712</color>
+    <!-- blue -->
+    <color name="cubanacan_dark_blue">#023a6e</color>
+    <color name="cubanacan_light_blue">#0153a0</color>
+    <!-- red -->
+    <color name="cubanacan_dark_red">#a9352f</color>
+    <color name="cubanacan_light_red">#ff534a</color>
 </resources>
 
 

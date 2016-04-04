@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Hoteles Cubanacan</string>
+    <string name="content_desc_splash">Imagen principal de la presentación de la aplicación</string>
 </resources>
