@@ -20,6 +20,8 @@ public class MainActivity extends DrawerActivity implements DrawerActivity.OnDra
         super.onCreate(savedInstanceState);
         // set drawer on item click listener
         setDrawerItemSelectedListener(this);
+        // to decide what section is the first to be selected
+        drawer.setSelection(-1);
 
         // your code here
     }
@@ -73,10 +75,34 @@ public class MainActivity extends DrawerActivity implements DrawerActivity.OnDra
         /**
          * the sentence prefEditor.putInt(Keys.SP_STATE_SELECTED_POSITION, "position") idk what's for
          * todo: remove checking what's for
-         * */
+         **/
         switch (tag) {
+            case TAG_ENTRAR_O_REGISTRARSE:
+                break;
+            case TAG_RESERVAR:
+                break;
+            case TAG_DESTINOS:
+                break;
+            case TAG_HOTELES:
+                break;
+            case TAG_TEMAS:
+                break;
+            case TAG_OFERTAS_ESPECIALES:
+                break;
+            case TAG_RECIENTES:
+                break;
+            case TAG_VALORAR_Y_COMPARTIR:
+                break;
+            case TAG_TERMINOS_DE_USO:
+                break;
+            case TAG_CONTACTENOS:
+                break;
+            case TAG_CONFIGURACION:
+                break;
         }
 
         area = tag;
+        
+        drawer.setSelection(-1);
     }
 }
