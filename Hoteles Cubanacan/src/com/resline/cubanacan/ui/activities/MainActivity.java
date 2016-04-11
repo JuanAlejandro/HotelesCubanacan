@@ -1,12 +1,16 @@
 package com.resline.cubanacan.ui.activities;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.activities.api.DrawerActivity;
+import com.resline.cubanacan.ui.fragments.ReservarFragment;
 import com.resline.cubanacan.ui.utils.DrawerMenu;
 
 /**
@@ -24,6 +28,23 @@ public class MainActivity extends DrawerActivity implements DrawerActivity.OnDra
         drawer.setSelection(-1);
 
         // your code here
+        fragmentTransaction(new ReservarFragment(), navSDITitles[DrawerMenu.RESERVAR]);
+    }
+
+    private void fragmentTransaction(Fragment fragment, String title) {
+        ActionBar actionBar = getSupportActionBar();
+        TextView tvToolbar = (TextView) findViewById(R.id.tvToolBar);
+
+        tvToolbar.setText(title);
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.empty);
+        }
+
+        if (fragment != null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.screen_default_container, fragment)
+                    .commit();
+        }
     }
 
     @Override
@@ -80,6 +101,7 @@ public class MainActivity extends DrawerActivity implements DrawerActivity.OnDra
             case TAG_ENTRAR_O_REGISTRARSE:
                 break;
             case TAG_RESERVAR:
+                fragmentTransaction(new ReservarFragment(), navSDITitles[DrawerMenu.RESERVAR]);
                 break;
             case TAG_DESTINOS:
                 break;

@@ -7,6 +7,8 @@
     <!-- red -->
     <color name="cubanacan_dark_red">#a9352f</color>
     <color name="cubanacan_light_red">#ff534a</color>
+
+    <color name="background_tab_pressed">#660153a0</color>
 </resources>
 
 
