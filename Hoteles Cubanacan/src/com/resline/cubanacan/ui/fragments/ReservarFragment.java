@@ -109,6 +109,7 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
     private class DatePickerListener implements DatePickerDialog.OnDateSetListener {
         @Override
         public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+            // todo: set text button as the selected date
             // your code here
         }
     }
