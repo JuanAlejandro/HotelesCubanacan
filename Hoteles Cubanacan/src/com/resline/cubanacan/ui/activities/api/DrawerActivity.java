@@ -182,6 +182,7 @@ public abstract class DrawerActivity extends AppCompatActivity implements View.O
 
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
         //handle the back press :D close the drawer first and if the drawer is closed close the activity
         if (drawer != null && drawer.isDrawerOpen()) {
             drawer.closeDrawer();

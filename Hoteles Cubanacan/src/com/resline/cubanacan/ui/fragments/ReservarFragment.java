@@ -1,5 +1,6 @@
 package com.resline.cubanacan.ui.fragments;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -10,6 +11,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.fragments.api.BaseFragment;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+
+import java.util.Calendar;
 
 /**
  * Created by Juan Alejandro on 11/04/2016.
@@ -29,6 +33,8 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
     private ImageView searchHoteles;
 
+    private DatePickerDialog dpd;
+
     public static ReservarFragment newInstance() {
         return new ReservarFragment();
     }
@@ -39,6 +45,8 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
         mViewInfoFragment = inflater.inflate(R.layout.fragment_reservar, container, false);
 
         loadViews();
+
+        initCalendarFilter();
 
         return mViewInfoFragment;
     }
@@ -67,6 +75,47 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btnSetEntrada:
+                showDatePicker();
+                break;
+            case R.id.btnSetSalida:
+                showDatePicker();
+                break;
+        }
+    }
 
+    private void initCalendarFilter() {
+        // Get the date of tomorrow
+        Calendar date = Calendar.getInstance();
+
+        // By default the selected day is tomorrow
+        dpd = DatePickerDialog.newInstance(
+                new DatePickerListener(),
+                date.get(Calendar.YEAR),
+                date.get(Calendar.MONTH),
+                date.get(Calendar.DAY_OF_MONTH)
+        );
+
+        dpd.setMinDate(date);
+
+        // Set maximun date as 30 days after today (a month)
+        Calendar lastDate = Calendar.getInstance();
+        lastDate.add(Calendar.DATE, 30);    // Add 30 days
+        dpd.setMaxDate(lastDate);
+    }
+
+    private class DatePickerListener implements DatePickerDialog.OnDateSetListener {
+        @Override
+        public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+            // your code here
+        }
+    }
+
+    private void showDatePicker() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            // Show date picker dialog
+            dpd.show(mActivity.getFragmentManager(), TAG);
+        }
     }
 }
