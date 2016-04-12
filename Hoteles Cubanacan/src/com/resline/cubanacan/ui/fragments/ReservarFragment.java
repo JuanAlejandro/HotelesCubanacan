@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.fragments.api.BaseFragment;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
@@ -34,6 +35,14 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
     private ImageView searchHoteles;
 
     private DatePickerDialog dpd;
+
+    private Button btnLessHab, btnPlusHab;
+
+    private Button btnLessAdults, btnPlusAdults;
+
+    private Button btnLessChild, btnPlusChild;
+
+    private TextView tvHabs, tvAdults, tvChild;
 
     public static ReservarFragment newInstance() {
         return new ReservarFragment();
@@ -71,17 +80,63 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
         searchDestinos.setOnClickListener(this);
 
         searchHoteles.setOnClickListener(this);
+
+        btnLessAdults = (Button) mViewInfoFragment.findViewById(R.id.btnLessAd);
+
+        btnLessChild = (Button) mViewInfoFragment.findViewById(R.id.btnLessNin);
+
+        btnLessHab = (Button) mViewInfoFragment.findViewById(R.id.btnLessHab);
+
+        btnPlusAdults = (Button) mViewInfoFragment.findViewById(R.id.btnPlusAd);
+
+        btnPlusChild = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNin);
+
+        btnPlusHab = (Button) mViewInfoFragment.findViewById(R.id.btnPlusHab);
+
+        btnLessAdults.setOnClickListener(this);
+
+        btnLessHab.setOnClickListener(this);
+
+        btnLessChild.setOnClickListener(this);
+
+        btnPlusAdults.setOnClickListener(this);
+
+        btnPlusHab.setOnClickListener(this);
+
+        btnPlusChild.setOnClickListener(this);
+
+        tvAdults = (TextView) mViewInfoFragment.findViewById(R.id.tvAdultos);
+
+        tvChild = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNin);
+
+        tvHabs = (TextView) mViewInfoFragment.findViewById(R.id.tvCantHab);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.ivSearch:
+                break;
+            case R.id.ivSearchHoteles:
+                break;
             case R.id.btnSetEntrada:
                 showDatePicker();
                 break;
             case R.id.btnSetSalida:
                 // todo: when show date picker out set min date as the start date
                 showDatePicker();
+                break;
+            case R.id.btnLessAd:
+                break;
+            case R.id.btnLessHab:
+                break;
+            case R.id.btnLessNin:
+                break;
+            case R.id.btnPlusAd:
+                break;
+            case R.id.btnPlusHab:
+                break;
+            case R.id.btnPlusNin:
                 break;
         }
     }
@@ -107,6 +162,13 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
     }
 
     private class DatePickerListener implements DatePickerDialog.OnDateSetListener {
+        /**
+         * @param view        The view associated with this listener.
+         * @param year        The year that was set.
+         * @param monthOfYear The month that was set (0-11) for compatibility
+         *                    with {@link java.util.Calendar}.
+         * @param dayOfMonth  The day of the month that was set.
+         */
         @Override
         public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
             // todo: set text button as the selected date

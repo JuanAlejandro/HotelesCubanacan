@@ -56,16 +56,16 @@
                         android:layout_below="@id/actvDestino"
                         android:textColor="@android:color/black"/>
                 <ImageView
-                    android:id="@+id/ivSearchHoteles"
-                    android:clickable="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@id/labelHoteles"
-                    android:src="@drawable/ic_action_search_material"
-                    android:background="@drawable/selector_search"
-                    android:layout_gravity="center"/>
+                        android:id="@+id/ivSearchHoteles"
+                        android:clickable="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@id/labelHoteles"
+                        android:src="@drawable/ic_action_search_material"
+                        android:background="@drawable/selector_search"
+                        android:layout_gravity="center"/>
                 <AutoCompleteTextView
                         android:id="@+id/actvHoteles"
                         android:layout_width="match_parent"
@@ -82,13 +82,13 @@
         <!-- in & out -->
         <android.support.v7.widget.CardView
                 xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/cvDBInfo"
+                android:id="@+id/cvInOut"
                 android:layout_below="@id/cvAboutUs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp">
             <RelativeLayout
-                    android:id="@+id/rlCardViewDBInfo"
+                    android:id="@+id/rlInOut"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -128,6 +128,186 @@
                         android:layout_below="@id/tvSalida"
                         android:padding="10dp"
                         android:gravity="center"/>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <!-- rooms -->
+        <android.support.v7.widget.CardView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/cvRooms"
+                android:layout_below="@id/cvInOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+            <RelativeLayout
+                    android:id="@+id/rlCardViewDBInfo"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+                <!-- rooms -->
+                <RelativeLayout
+                        android:id="@+id/llHabitaciones"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+                    <TextView
+                            android:id="@+id/tvHabitaciones"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:textSize="18sp"
+                            android:text="@string/rooms"
+                            android:textColor="@android:color/black"/>
+                    <LinearLayout
+                            android:id="@+id/llSelCantHab"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:weightSum="3">
+                        <android.support.v7.widget.AppCompatButton
+                                android:id="@+id/btnPlusHab"
+                                android:layout_width="45dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/less"
+                                android:textColor="@android:color/black"
+                                android:padding="10dp"
+                                android:gravity="center"
+                                android:layout_weight="1"/>
+                        <TextView
+                                android:id="@+id/tvCantHab"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/lorem_number"
+                                android:textSize="18sp"
+                                android:textColor="@android:color/black"
+                                android:padding="10dp"
+                                android:gravity="center"
+                                android:layout_weight="1"/>
+                        <android.support.v7.widget.AppCompatButton
+                                android:id="@+id/btnLessHab"
+                                android:layout_width="45dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/plus"
+                                android:textColor="@android:color/black"
+                                android:padding="10dp"
+                                android:gravity="center"
+                                android:layout_weight="1"/>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <!-- adults -->
+                <RelativeLayout
+                        android:id="@+id/llAdultos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_below="@id/llHabitaciones">
+                    <TextView
+                            android:id="@+id/tvAdultos"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_centerVertical="true"
+                            android:textSize="18sp"
+                            android:text="@string/adults"
+                            android:textColor="@android:color/black"/>
+                    <LinearLayout
+                            android:id="@+id/llSelCantAd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:weightSum="3">
+                        <android.support.v7.widget.AppCompatButton
+                                android:id="@+id/btnPlusAd"
+                                android:layout_width="45dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/less"
+                                android:textColor="@android:color/black"
+                                android:padding="10dp"
+                                android:gravity="center"
+                                android:layout_weight="1"/>
+                        <TextView
+                                android:id="@+id/tvCantAd"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/lorem_number"
+                                android:textSize="18sp"
+                                android:textColor="@android:color/black"
+                                android:padding="10dp"
+                                android:gravity="center"
+                                android:layout_weight="1"/>
+                        <android.support.v7.widget.AppCompatButton
+                                android:id="@+id/btnLessAd"
+                                android:layout_width="45dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/plus"
+                                android:textColor="@android:color/black"
+                                android:padding="10dp"
+                                android:gravity="center"
+                                android:layout_weight="1"/>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <!-- children -->
+                <RelativeLayout
+                        android:id="@+id/llNinnos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_below="@id/llAdultos">
+                    <TextView
+                            android:id="@+id/tvNinnos"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:textSize="18sp"
+                            android:text="@string/ninnos"
+                            android:textColor="@android:color/black"/>
+                    <LinearLayout
+                            android:id="@+id/llSelCantNinnos"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:weightSum="3">
+                        <android.support.v7.widget.AppCompatButton
+                                android:id="@+id/btnPlusNin"
+                                android:layout_width="45dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/less"
+                                android:textColor="@android:color/black"
+                                android:padding="10dp"
+                                android:gravity="center"
+                                android:layout_weight="1"/>
+                        <TextView
+                                android:id="@+id/tvCantNin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/lorem_number"
+                                android:textSize="18sp"
+                                android:textColor="@android:color/black"
+                                android:padding="10dp"
+                                android:gravity="center"
+                                android:layout_weight="1"/>
+                        <android.support.v7.widget.AppCompatButton
+                                android:id="@+id/btnLessNin"
+                                android:layout_width="45dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/plus"
+                                android:textColor="@android:color/black"
+                                android:padding="10dp"
+                                android:gravity="center"
+                                android:layout_weight="1"/>
+                    </LinearLayout>
+                </RelativeLayout>
+
             </RelativeLayout>
         </android.support.v7.widget.CardView>
     </RelativeLayout>

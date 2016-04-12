@@ -8,4 +8,10 @@
     <string name="lorem_date">01/01/1900</string>
     <string name="out">Salida</string>
     <string name="empty"/>
+    <string name="rooms">Habitaciones</string>
+    <string name="plus">+</string>
+    <string name="less">-</string>
+    <string name="lorem_number">1</string>
+    <string name="ninnos">Niños</string>
+    <string name="adults">Adultos</string>
 </resources>
