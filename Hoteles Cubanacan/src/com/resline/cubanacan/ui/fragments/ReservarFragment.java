@@ -80,6 +80,7 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
                 showDatePicker();
                 break;
             case R.id.btnSetSalida:
+                // todo: when show date picker out set min date as the start date
                 showDatePicker();
                 break;
         }
