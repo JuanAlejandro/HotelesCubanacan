@@ -16,4 +16,6 @@
     <string name="adults">Adultos</string>
     <string name="more_options">Más opciones</string>
     <string name="search">Buscar</string>
+
+    <string name="lorem_ipsum_short">Lorem ipsum</string>
 </resources>

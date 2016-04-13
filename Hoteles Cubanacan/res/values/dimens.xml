@@ -2,4 +2,21 @@
 <resources>
     <!-- Drawer Menu -->
     <dimen name="drawer_menu_width">240dp</dimen>
+
+    <!-- cards -->
+    <dimen name="custom_card_elevation">4dp</dimen>
+    <dimen name="card_margin">0dp</dimen>
+    <dimen name="card_title_text_padding">10dp</dimen>
+    <dimen name="card_title_text_padding_bottom">5dp</dimen>
+    <dimen name="card_item_img_width">100dp</dimen>
+    <dimen name="card_item_img_height">100dp</dimen>
+    <dimen name="card_item_recom_img_height">150dp</dimen>
+    <dimen name="card_three_dots_width">20dp</dimen>
+    <dimen name="card_three_dots_height">75dp</dimen>
+    <dimen name="description_size">14sp</dimen>
+    <dimen name="title_size">18sp</dimen>
+    <dimen name="big_padding">16dp</dimen>
+
+    <integer name="layout_weight_short_data">7</integer>
+    <integer name="layout_weight_subtitle">4</integer>
 </resources>

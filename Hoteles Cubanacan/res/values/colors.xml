@@ -9,6 +9,10 @@
     <color name="cubanacan_light_red">#ff534a</color>
 
     <color name="background_tab_pressed">#660153a0</color>
+
+    <!-- card colors -->
+    <color name="description_color">#878787</color>
+    <color name="black_button">#3C3C3C</color>
 </resources>
 
 
