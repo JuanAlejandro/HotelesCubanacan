@@ -44,6 +44,10 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
     private TextView tvHabs, tvAdults, tvChild;
 
+    private Button btnMasOpciones;
+
+    private Button btnBuscar;
+
     public static ReservarFragment newInstance() {
         return new ReservarFragment();
     }
@@ -81,6 +85,8 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
         searchHoteles.setOnClickListener(this);
 
+        // buttons to select quantity
+
         btnLessAdults = (Button) mViewInfoFragment.findViewById(R.id.btnLessAd);
 
         btnLessChild = (Button) mViewInfoFragment.findViewById(R.id.btnLessNin);
@@ -105,11 +111,23 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
         btnPlusChild.setOnClickListener(this);
 
+        // text views of quantity of adults, rooms, and children
+
         tvAdults = (TextView) mViewInfoFragment.findViewById(R.id.tvAdultos);
 
         tvChild = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNin);
 
         tvHabs = (TextView) mViewInfoFragment.findViewById(R.id.tvCantHab);
+
+        // final buttons
+
+        btnBuscar = (Button) mViewInfoFragment.findViewById(R.id.btnBuscar);
+
+        btnMasOpciones = (Button) mViewInfoFragment.findViewById(R.id.btnOtrasOpciones);
+
+        btnBuscar.setOnClickListener(this);
+
+        btnMasOpciones.setOnClickListener(this);
     }
 
     @Override
@@ -137,6 +155,10 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
             case R.id.btnPlusHab:
                 break;
             case R.id.btnPlusNin:
+                break;
+            case R.id.btnBuscar:
+                break;
+            case R.id.btnOtrasOpciones:
                 break;
         }
     }

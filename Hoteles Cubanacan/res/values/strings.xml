@@ -14,4 +14,6 @@
     <string name="lorem_number">1</string>
     <string name="ninnos">Niños</string>
     <string name="adults">Adultos</string>
+    <string name="more_options">Más opciones</string>
+    <string name="search">Buscar</string>
 </resources>
