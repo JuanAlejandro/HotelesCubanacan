@@ -18,4 +18,6 @@
     <string name="search">Buscar</string>
 
     <string name="lorem_ipsum_short">Lorem ipsum</string>
+    <string name="no_data">No hay datos disponibles</string>
+    <string name="hoteles_title">Hoteles</string>
 </resources>
