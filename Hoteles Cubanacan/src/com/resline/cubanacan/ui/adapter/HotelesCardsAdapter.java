@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.resline.cubanacan.R;
+import com.resline.cubanacan.ui.activities.HotelDetailsActivity;
 import com.resline.cubanacan.ui.adapter.api.RecyclerViewCardsAdapter;
 import com.resline.cubanacan.ui.model.CardViewBean;
 
@@ -47,7 +48,7 @@ public class HotelesCardsAdapter extends RecyclerViewCardsAdapter {
     @Override
     protected Class<?> getActivityClass() {
         // todo: activity here
-        return null;
+        return HotelDetailsActivity.class;
     }
 
     private class HotelesViewHolder extends ViewHolder {
