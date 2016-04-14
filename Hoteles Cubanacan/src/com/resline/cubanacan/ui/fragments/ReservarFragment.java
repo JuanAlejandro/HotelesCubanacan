@@ -1,5 +1,6 @@
 package com.resline.cubanacan.ui.fragments;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.resline.cubanacan.R;
+import com.resline.cubanacan.ui.activities.HotelesListActivity;
 import com.resline.cubanacan.ui.fragments.api.BaseFragment;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
@@ -157,6 +159,7 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
             case R.id.btnPlusNin:
                 break;
             case R.id.btnBuscar:
+                startActivity(new Intent(mActivity, HotelesListActivity.class));
                 break;
             case R.id.btnOtrasOpciones:
                 break;

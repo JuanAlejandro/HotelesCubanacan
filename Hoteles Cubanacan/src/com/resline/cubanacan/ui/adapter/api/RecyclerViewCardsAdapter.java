@@ -41,13 +41,9 @@ public abstract class RecyclerViewCardsAdapter extends RecyclerView.Adapter<Recy
 
         holder.position = position;
 
-        holder.id = itemCardView.getId();
-
         holder.tvTitle.setText(itemCardView.getTitle());
 
         holder.tvSubTitle.setText(itemCardView.getSubtitle());
-
-        holder.tipo = itemCardView.getTipo();
 
         setThumbNailImage(itemCardView.getImgUri(), holder.ivThumbNail);
     }
