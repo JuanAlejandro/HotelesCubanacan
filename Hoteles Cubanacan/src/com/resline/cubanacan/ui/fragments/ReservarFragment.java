@@ -16,7 +16,10 @@ import com.resline.cubanacan.ui.activities.HotelesListActivity;
 import com.resline.cubanacan.ui.fragments.api.BaseFragment;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Juan Alejandro on 11/04/2016.
@@ -36,7 +39,7 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
     private ImageView searchHoteles;
 
-    private DatePickerDialog dpd;
+    private DatePickerDialog dpdCheckIn, dpdCheckOut;
 
     private Button btnLessHab, btnPlusHab;
 
@@ -72,8 +75,16 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
         actvHoteles = (AutoCompleteTextView) mViewInfoFragment.findViewById(R.id.actvHoteles);
 
         setEntrada = (Button) mViewInfoFragment.findViewById(R.id.btnSetEntrada);
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DAY_OF_YEAR, 1);
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        setEntrada.setText(dateFormat.format(calendar.getTime()));
 
         setSalida = (Button) mViewInfoFragment.findViewById(R.id.btnSetSalida);
+        calendar.add(Calendar.DAY_OF_YEAR, 1);
+        setSalida.setText(dateFormat.format(calendar.getTime()));
 
         searchDestinos = (ImageView) mViewInfoFragment.findViewById(R.id.ivSearch);
 
@@ -140,11 +151,11 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
             case R.id.ivSearchHoteles:
                 break;
             case R.id.btnSetEntrada:
-                showDatePicker();
+                showDatePicker(dpdCheckIn);
                 break;
             case R.id.btnSetSalida:
                 // todo: when show date picker out set min date as the start date
-                showDatePicker();
+                showDatePicker(dpdCheckOut);
                 break;
             case R.id.btnLessAd:
                 break;
@@ -168,25 +179,30 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
     private void initCalendarFilter() {
         // Get the date of tomorrow
-        Calendar date = Calendar.getInstance();
+        Calendar dateCheckIn = Calendar.getInstance();
+        dateCheckIn.add(Calendar.DAY_OF_YEAR, 1);
 
         // By default the selected day is tomorrow
-        dpd = DatePickerDialog.newInstance(
-                new DatePickerListener(),
-                date.get(Calendar.YEAR),
-                date.get(Calendar.MONTH),
-                date.get(Calendar.DAY_OF_MONTH)
+        dpdCheckIn = DatePickerDialog.newInstance(
+                new CheckInDatePickerListener(),
+                dateCheckIn.get(Calendar.YEAR),
+                dateCheckIn.get(Calendar.MONTH),
+                dateCheckIn.get(Calendar.DAY_OF_MONTH)
         );
+        dpdCheckIn.setMinDate(dateCheckIn);
 
-        dpd.setMinDate(date);
-
-        // Set maximun date as 30 days after today (a month)
-        Calendar lastDate = Calendar.getInstance();
-        lastDate.add(Calendar.DATE, 30);    // Add 30 days
-        dpd.setMaxDate(lastDate);
+        Calendar dateCheckOut = Calendar.getInstance();
+        dateCheckOut.add(Calendar.DAY_OF_YEAR, 1);
+        dpdCheckOut = DatePickerDialog.newInstance(
+                new CheckOutDatePickerListener(),
+                dateCheckOut.get(Calendar.YEAR),
+                dateCheckOut.get(Calendar.MONTH),
+                dateCheckOut.get(Calendar.DAY_OF_MONTH)
+        );
+        dpdCheckOut.setMinDate(dateCheckOut);
     }
 
-    private class DatePickerListener implements DatePickerDialog.OnDateSetListener {
+    private class CheckInDatePickerListener implements DatePickerDialog.OnDateSetListener {
         /**
          * @param view        The view associated with this listener.
          * @param year        The year that was set.
@@ -196,15 +212,39 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
          */
         @Override
         public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-            // todo: set text button as the selected date
-            // your code here
+            setEntrada.setText(String.format("%d/%d/%d", dayOfMonth, monthOfYear, year));
+            Calendar checkOutCalendar = Calendar.getInstance();
+            checkOutCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            checkOutCalendar.set(Calendar.MONTH, monthOfYear);
+            checkOutCalendar.set(Calendar.YEAR, year);
+            checkOutCalendar.add(Calendar.DAY_OF_YEAR, 1);
+            setSalida.setText(String.format("%d/%d/%d", checkOutCalendar.get(Calendar.DAY_OF_MONTH),
+                                                        checkOutCalendar.get(Calendar.MONTH),
+                                                        checkOutCalendar.get(Calendar.YEAR)));
+            dpdCheckOut.getSelectedDay().setDay(checkOutCalendar.get(Calendar.YEAR), checkOutCalendar.get(Calendar.MONTH),
+                                                checkOutCalendar.get(Calendar.DAY_OF_MONTH));
+            dpdCheckOut.setMinDate(checkOutCalendar);
         }
     }
 
-    private void showDatePicker() {
+    private class CheckOutDatePickerListener implements DatePickerDialog.OnDateSetListener {
+        /**
+         * @param view        The view associated with this listener.
+         * @param year        The year that was set.
+         * @param monthOfYear The month that was set (0-11) for compatibility
+         *                    with {@link java.util.Calendar}.
+         * @param dayOfMonth  The day of the month that was set.
+         */
+        @Override
+        public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+            setSalida.setText(String.format("%d/%d/%d", dayOfMonth, monthOfYear, year));
+        }
+    }
+
+    private void showDatePicker(DatePickerDialog datePickerDialog) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             // Show date picker dialog
-            dpd.show(mActivity.getFragmentManager(), TAG);
+            datePickerDialog.show(mActivity.getFragmentManager(), TAG);
         }
     }
 }
