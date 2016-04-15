@@ -7,10 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.*;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.activities.HotelesListActivity;
 import com.resline.cubanacan.ui.fragments.api.BaseFragment;
@@ -24,17 +21,13 @@ import java.util.Calendar;
 public class ReservarFragment extends BaseFragment implements View.OnClickListener{
     private View mViewInfoFragment;
 
-    private AutoCompleteTextView actvDestino;
+    private Spinner spinnerDestino;
 
     private AutoCompleteTextView actvHoteles;
 
     private Button setEntrada;
 
     private Button setSalida;
-
-    private ImageView searchDestinos;
-
-    private ImageView searchHoteles;
 
     private DatePickerDialog dpd;
 
@@ -67,7 +60,7 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
     }
 
     private void loadViews() {
-        actvDestino = (AutoCompleteTextView) mViewInfoFragment.findViewById(R.id.actvDestino);
+        spinnerDestino = (Spinner) mViewInfoFragment.findViewById(R.id.actvDestino);
 
         actvHoteles = (AutoCompleteTextView) mViewInfoFragment.findViewById(R.id.actvHoteles);
 
@@ -75,17 +68,9 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
         setSalida = (Button) mViewInfoFragment.findViewById(R.id.btnSetSalida);
 
-        searchDestinos = (ImageView) mViewInfoFragment.findViewById(R.id.ivSearch);
-
-        searchHoteles = (ImageView) mViewInfoFragment.findViewById(R.id.ivSearchHoteles);
-
         setEntrada.setOnClickListener(this);
 
         setSalida.setOnClickListener(this);
-
-        searchDestinos.setOnClickListener(this);
-
-        searchHoteles.setOnClickListener(this);
 
         // buttons to select quantity
 
@@ -135,10 +120,6 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.ivSearch:
-                break;
-            case R.id.ivSearchHoteles:
-                break;
             case R.id.btnSetEntrada:
                 showDatePicker();
                 break;

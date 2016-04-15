@@ -4,7 +4,7 @@
     <string name="content_desc_splash">Imagen principal de la presentación de la aplicación</string>
     <string name="destino">Destino:</string>
     <string name="hoteles">Hoteles:</string>
-    <string name="in">Entrada:</string>
+    <string name="in">Entrada</string>
     <string name="lorem_date">01/01/1900</string>
     <string name="out">Salida</string>
     <string name="empty"/>
