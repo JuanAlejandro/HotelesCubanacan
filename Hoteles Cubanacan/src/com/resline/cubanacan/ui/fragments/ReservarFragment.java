@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import com.google.gson.Gson;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.src.controllers.AppController;
 import com.resline.cubanacan.src.ws.WSClass.Hotel.*;
@@ -44,10 +43,6 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
     private Button setEntrada;
 
     private Button setSalida;
-
-    private ImageView searchDestinos;
-
-    private ImageView searchHoteles;
 
     private DatePickerDialog dpdCheckIn, dpdCheckOut;
 
@@ -88,6 +83,7 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
     private void loadViews() {
         spDestinos = (Spinner) mViewInfoFragment.findViewById(R.id.spDestino);
+        spinnerDestino = (Spinner) mViewInfoFragment.findViewById(R.id.actvDestino);
         spDestinos.setOnItemSelectedListener(new OnLocationsSelectedListener());
 
         actvHoteles = (AutoCompleteTextView) mViewInfoFragment.findViewById(R.id.actvHoteles);
@@ -104,17 +100,9 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
         calendar.add(Calendar.DAY_OF_YEAR, 1);
         setSalida.setText(dateFormat.format(calendar.getTime()));
 
-        searchDestinos = (ImageView) mViewInfoFragment.findViewById(R.id.ivSearch);
-
-        searchHoteles = (ImageView) mViewInfoFragment.findViewById(R.id.ivSearchHoteles);
-
         setEntrada.setOnClickListener(this);
 
         setSalida.setOnClickListener(this);
-
-        searchDestinos.setOnClickListener(this);
-
-        searchHoteles.setOnClickListener(this);
 
         // buttons to select quantity
 
@@ -204,10 +192,6 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.ivSearch:
-                break;
-            case R.id.ivSearchHoteles:
-                break;
             case R.id.btnSetEntrada:
                 showDatePicker(dpdCheckIn);
                 break;

@@ -47,10 +47,6 @@ public class HotelesListActivity extends BaseActivity {
     }
 
     private void setToolBar() {
-        TextView tvToolbar = (TextView) findViewById(R.id.tvToolBar);
-
-        tvToolbar.setText(R.string.hoteles_title);
-
         mActionBar.setDisplayHomeAsUpEnabled(true);
 
         mToolBar.setNavigationOnClickListener(new View.OnClickListener() {

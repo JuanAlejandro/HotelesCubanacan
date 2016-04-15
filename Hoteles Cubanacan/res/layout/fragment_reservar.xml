@@ -26,25 +26,13 @@
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
                         android:textColor="@android:color/black"/>
-                <ImageView
-                        android:id="@+id/ivSearch"
-                        android:clickable="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_below="@id/labelDestino"
-                        android:src="@drawable/ic_action_search_material"
-                        android:background="@drawable/selector_search"
-                        android:layout_gravity="center"/>
+                <Spinner
                 <Spinner
                         android:id="@+id/spDestino"
                         android:layout_below="@id/labelDestino"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/black"
-                        android:layout_toLeftOf="@+id/ivSearch"
-                        android:layout_toStartOf="@id/ivSearch"
                         android:layout_centerHorizontal="true"
                         android:ems="10" android:spinnerMode="dialog"/>
                 <TextView
@@ -55,17 +43,6 @@
                         android:textSize="18sp"
                         android:layout_below="@id/spDestino"
                         android:textColor="@android:color/black"/>
-                <ImageView
-                        android:id="@+id/ivSearchHoteles"
-                        android:clickable="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_below="@id/labelHoteles"
-                        android:src="@drawable/ic_action_search_material"
-                        android:background="@drawable/selector_search"
-                        android:layout_gravity="center"/>
                 <AutoCompleteTextView
                         android:id="@+id/actvHoteles"
                         android:layout_width="match_parent"
@@ -73,8 +50,6 @@
                         android:textColor="@android:color/black"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@id/labelHoteles"
-                        android:layout_toLeftOf="@+id/ivSearch"
-                        android:layout_toStartOf="@id/ivSearch"
                         android:ems="10"/>
             </RelativeLayout>
         </android.support.v7.widget.CardView>
@@ -87,48 +62,62 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp">
-            <RelativeLayout
+            <LinearLayout
                     android:id="@+id/rlInOut"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
-                <TextView
-                        android:id="@+id/tvEntrada"
-                        android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:weightSum="2">
+                <LinearLayout
+                        android:id="@+id/llIn"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:text="@string/in"
-                        android:textColor="@android:color/black"/>
-                <android.support.v7.widget.AppCompatButton
-                        android:id="@+id/btnSetEntrada"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/lorem_date"
-                        android:textColor="@android:color/black"
-                        android:layout_marginTop="10dp"
-                        android:layout_below="@id/tvEntrada"
-                        android:padding="10dp"
-                        android:gravity="center"/>
-                <TextView
-                        android:id="@+id/tvSalida"
-                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                    <TextView
+                            android:id="@+id/tvEntrada"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:gravity="center"
+                            android:text="@string/in"
+                            android:textColor="@android:color/black"/>
+                    <android.support.v7.widget.AppCompatButton
+                            android:id="@+id/btnSetEntrada"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/lorem_date"
+                            android:textColor="@android:color/black"
+                            android:layout_marginTop="10dp"
+                            android:padding="10dp"
+                            android:gravity="center"/>
+                </LinearLayout>
+                <LinearLayout
+                        android:id="@+id/llOut"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:text="@string/out"
-                        android:layout_below="@id/btnSetEntrada"
-                        android:textColor="@android:color/black"/>
-                <android.support.v7.widget.AppCompatButton
-                        android:id="@+id/btnSetSalida"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/lorem_date"
-                        android:textColor="@android:color/black"
-                        android:layout_marginTop="10dp"
-                        android:layout_below="@id/tvSalida"
-                        android:padding="10dp"
-                        android:gravity="center"/>
-            </RelativeLayout>
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                    <TextView
+                            android:id="@+id/tvSalida"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textSize="18sp"
+                            android:text="@string/out"
+                            android:textColor="@android:color/black"/>
+                    <android.support.v7.widget.AppCompatButton
+                            android:id="@+id/btnSetSalida"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/lorem_date"
+                            android:textColor="@android:color/black"
+                            android:layout_marginTop="10dp"
+                            android:padding="10dp"
+                            android:gravity="center"/>
+                </LinearLayout>
+            </LinearLayout>
         </android.support.v7.widget.CardView>
 
         <!-- rooms -->
@@ -198,14 +187,26 @@
                                 android:layout_weight="1"/>
                     </LinearLayout>
                 </RelativeLayout>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
 
+
+        <android.support.v7.widget.CardView
+                android:id="@+id/cvPeople"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_below="@id/cvRooms">
+            <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
                 <!-- adults -->
                 <RelativeLayout
                         android:id="@+id/llAdultos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_below="@id/llHabitaciones">
+                        android:orientation="horizontal">
                     <TextView
                             android:id="@+id/tvAdultos"
                             android:layout_width="wrap_content"
@@ -253,7 +254,6 @@
                                 android:layout_weight="1"/>
                     </LinearLayout>
                 </RelativeLayout>
-
                 <!-- children -->
                 <RelativeLayout
                         android:id="@+id/llNinnos"
@@ -307,8 +307,8 @@
                                 android:layout_weight="1"/>
                     </LinearLayout>
                 </RelativeLayout>
-
             </RelativeLayout>
+
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.AppCompatButton
@@ -319,8 +319,9 @@
                 android:textColor="@android:color/black"
                 android:padding="10dp"
                 android:layout_margin="10dp"
-                android:layout_below="@id/cvRooms"
-                android:gravity="center"/>
+                android:layout_below="@id/cvPeople"
+                android:gravity="center"
+                android:visibility="gone"/>
 
         <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btnBuscar"
