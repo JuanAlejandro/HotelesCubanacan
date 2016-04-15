@@ -1,28 +1,28 @@
 package com.resline.cubanacan.ui.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.activities.api.BaseActivity;
 
 /**
- * Created by Juan Alejandro on 13/04/2016.
+ * Created by Juan Alejandro on 14/04/2016.
  */
-public class HotelDetailsActivity extends BaseActivity implements View.OnClickListener{
+public class ElegirHabitacionActivity extends BaseActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // to set back arrow in toolbar
+
         setToolbar();
 
-        // set button pick room
-        Button pickRoom = (Button) findViewById(R.id.btnElegirHab);
-        pickRoom.setOnClickListener(this);
+        loadViewComponents();
+    }
+
+    private void loadViewComponents() {
+        // todo: associate visual elements with objects
     }
 
     private void setToolbar() {
@@ -37,25 +37,16 @@ public class HotelDetailsActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     protected int getLayoutResourceIdentifier() {
-        return R.layout.activity_details;
+        return R.layout.elegir_hab_activity;
     }
 
     @Override
     protected String getTitleToolBar() {
-        return "";
+        return getString(R.string.pick_room_title);
     }
 
     @Override
     protected Toolbar getLayoutResourceToolBar() {
-        return (Toolbar) findViewById(R.id.toolbar);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btnElegirHab:
-                startActivity(new Intent(HotelDetailsActivity.this, ElegirHabitacionActivity.class));
-                break;
-        }
+        return (Toolbar) findViewById(R.id.screen_default_toolbar);
     }
 }

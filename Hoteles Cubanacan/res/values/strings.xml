@@ -21,4 +21,9 @@
     <string name="no_data">No hay datos disponibles</string>
     <string name="hoteles_title">Hoteles</string>
     <string name="details_title">Detalles</string>
+    <string name="pick_room">Elegir habitación</string>
+    <string name="to_pay">Total a pagar:</string>
+    <string name="room_lorem">Habitación 1</string>
+    <string name="lorem_opcion">Opcion</string>
+    <string name="pick_room_title">Elegir habitación</string>
 </resources>
