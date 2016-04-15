@@ -3,6 +3,10 @@
   <component name="FacetManager">
     <facet type="android" name="Android">
       <configuration>
+        <option name="LIBRARY_PROJECT" value="true" />
+        <proGuardCfgFiles>
+          <file>file://$MODULE_DIR$/../../../tools/android/sdk-24/tools/proguard/proguard-android.txt</file>
+        </proGuardCfgFiles>
         <option name="UPDATE_PROPERTY_FILES" value="true" />
       </configuration>
     </facet>
@@ -15,11 +19,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="android-support-v7-appcompat" />
-    <orderEntry type="module" module-name="cardview" />
-    <orderEntry type="module" module-name="MaterialDrawer" />
-    <orderEntry type="module" module-name="MaterialDateTimePicker" />
-    <orderEntry type="module" module-name="Android-ObservableScrollView" />
-    <orderEntry type="library" name="recyclerview" level="project" />
+    <orderEntry type="library" name="android-support-v4" level="project" />
+    <orderEntry type="library" name="annotations-10.0.2" level="project" />
+    <orderEntry type="library" exported="" name="recyclerview" level="project" />
   </component>
 </module>
