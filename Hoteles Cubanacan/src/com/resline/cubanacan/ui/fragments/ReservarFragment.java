@@ -7,19 +7,29 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.*;
+import com.google.gson.Gson;
 import com.resline.cubanacan.R;
+import com.resline.cubanacan.src.controllers.AppController;
+import com.resline.cubanacan.src.ws.WSClass.Hotel.*;
+import com.resline.cubanacan.src.ws.WSClass.Location.FullLocation;
+import com.resline.cubanacan.src.ws.WSClass.Reservation.ArrayOfBookedRoom;
+import com.resline.cubanacan.src.ws.WSClass.Reservation.BookedRoom;
+import com.resline.cubanacan.src.ws.WSClass.Reservation.PaymentMethodEnum;
+import com.resline.cubanacan.src.ws.WSClass.Reservation.RoomReservationRequest;
+import com.resline.cubanacan.src.ws.WSClass.system.ArrayOfInt;
+import com.resline.cubanacan.src.ws.WebServicesClient;
 import com.resline.cubanacan.ui.activities.HotelesListActivity;
+import com.resline.cubanacan.ui.activities.MainActivity;
 import com.resline.cubanacan.ui.fragments.api.BaseFragment;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 
 /**
  * Created by Juan Alejandro on 11/04/2016.
@@ -27,7 +37,7 @@ import java.util.Date;
 public class ReservarFragment extends BaseFragment implements View.OnClickListener{
     private View mViewInfoFragment;
 
-    private AutoCompleteTextView actvDestino;
+    private Spinner spDestinos;
 
     private AutoCompleteTextView actvHoteles;
 
@@ -53,6 +63,11 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
     private Button btnBuscar;
 
+    private ArrayList<String> /*locationsList,*/ hotelsList;
+    private ArrayList<FullLocation> locationsList;
+
+    int countRooms = 1;
+
     public static ReservarFragment newInstance() {
         return new ReservarFragment();
     }
@@ -66,11 +81,14 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
         initCalendarFilter();
 
+        loadSpinners();
+
         return mViewInfoFragment;
     }
 
     private void loadViews() {
-        actvDestino = (AutoCompleteTextView) mViewInfoFragment.findViewById(R.id.actvDestino);
+        spDestinos = (Spinner) mViewInfoFragment.findViewById(R.id.spDestino);
+        spDestinos.setOnItemSelectedListener(new OnLocationsSelectedListener());
 
         actvHoteles = (AutoCompleteTextView) mViewInfoFragment.findViewById(R.id.actvHoteles);
 
@@ -143,6 +161,46 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
         btnMasOpciones.setOnClickListener(this);
     }
 
+    private void loadSpinners(){
+
+        Map<Long, FullLocation> locations = AppController.getLocations();
+
+        if(locations != null){
+            Collection<Map.Entry<Long, FullLocation>> locationsData = locations.entrySet();
+            locationsList = new ArrayList<FullLocation>();
+            for (Map.Entry<Long, FullLocation> item : locationsData){
+                locationsList.add(item.getValue());
+            }
+
+            ArrayAdapter locationsAdapter = new ArrayAdapter<FullLocation>(this.getContext(),
+                    android.R.layout.simple_spinner_dropdown_item, locationsList);
+            locationsAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+            spDestinos.setAdapter(locationsAdapter);
+        }
+        else{
+            spDestinos.setEnabled(false);
+        }
+
+        Map<Long, HotelFullDetails> hotels = AppController.getHotels();
+
+        if(hotels != null){
+            Collection<Map.Entry<Long, HotelFullDetails>> hotelsData = hotels.entrySet();
+            hotelsList = new ArrayList<String>();
+            for (Map.Entry<Long, HotelFullDetails> item : hotelsData){
+                hotelsList.add(item.getValue().getName());
+            }
+
+            ArrayAdapter hotelsAdapter = new ArrayAdapter<String>(this.getContext(),
+                    android.R.layout.simple_spinner_dropdown_item, hotelsList);
+            hotelsAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+            actvHoteles.setAdapter(hotelsAdapter);
+            actvHoteles.setThreshold(1);
+        }
+        else{
+            spDestinos.setEnabled(false);
+        }
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -154,7 +212,6 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
                 showDatePicker(dpdCheckIn);
                 break;
             case R.id.btnSetSalida:
-                // todo: when show date picker out set min date as the start date
                 showDatePicker(dpdCheckOut);
                 break;
             case R.id.btnLessAd:
@@ -170,7 +227,7 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
             case R.id.btnPlusNin:
                 break;
             case R.id.btnBuscar:
-                startActivity(new Intent(mActivity, HotelesListActivity.class));
+                search();
                 break;
             case R.id.btnOtrasOpciones:
                 break;
@@ -245,6 +302,118 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             // Show date picker dialog
             datePickerDialog.show(mActivity.getFragmentManager(), TAG);
+        }
+    }
+
+    private void search(){
+        try{
+
+            int maxResults = 10;
+            SearchHotelCriteria hotelCriteria = new SearchHotelCriteria();
+
+            //Llenando el SearchHotelCriteria
+            //1- Cantidad de noches
+
+            DateFormat dateFormat = DateFormat.getDateInstance();
+            Date checkIn = dateFormat.parse(setEntrada.getText().toString());
+            Date checkOut = dateFormat.parse(setSalida.getText().toString());
+
+            Long msCheckOut = checkOut.getTime();
+            Long msCheckIn = checkIn.getTime();
+            Long msDifference = msCheckOut - msCheckIn;
+            long nights = msDifference / (1000 * 60 * 60 * 24);
+            hotelCriteria.setNights((int) nights);
+            GregorianCalendar checkOutCalendar= new GregorianCalendar();
+            checkOutCalendar.setTime(checkOut);
+
+            //2- Nombre del Hotel
+            String hotelName = actvHoteles.getText().toString();
+            if(hotelName.length() != 0)
+                hotelCriteria.setResortName(actvHoteles.getText().toString());
+
+            //3- Id del Destino
+            //TODO Aqui hay que buscar como obtener el id del destino a partir del spinner
+
+            //4- CheckIn
+            dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            hotelCriteria.setCheckInDate(dateFormat.format(checkIn));
+
+            //5- Habitaciones
+            //TODO Esto hay que esperar a que termine JA para obtener bien los valores
+            RoomAllocation roomAllocation = new RoomAllocation();
+            roomAllocation.setQuantity(1);
+            roomAllocation.setAdults(1);
+            ArrayOfInt childrenAges = new ArrayOfInt();
+            childrenAges.getInt().add(0);
+            roomAllocation.setChildrenAges(childrenAges);
+
+            hotelCriteria.getAllocation().getRoomAllocation().add(roomAllocation);
+
+            SearchHotelRequest searchHotelRequest = new SearchHotelRequest();
+            searchHotelRequest.setMaxResults(maxResults);
+            searchHotelRequest.setCriteria(hotelCriteria);
+
+            //Guardando los datos de la reservacion
+            RoomReservationRequest roomReservationRequest = new RoomReservationRequest();
+            roomReservationRequest.setCheckIn(dateFormat.format(checkIn));
+            roomReservationRequest.setCheckOut(dateFormat.format(checkOut));
+            roomReservationRequest.setPaymentMethod(PaymentMethodEnum.CREDIT_CAR);
+            ArrayOfBookedRoom arrayBookedRoom = new ArrayOfBookedRoom();
+            //Para cada una de las habitaciones:
+            for(int i=0; i<countRooms; i++){
+                BookedRoom bookedRoom = new BookedRoom();
+                //TODO ver mecanismo para recoger los adultos de una habitacion
+                bookedRoom.setAdults(1);
+                //TODO Ver mecanismo para recoger el arreglo de edades de los ninnos
+                bookedRoom.setChildrenAges(null);
+                arrayBookedRoom.getBookedRoom().add(bookedRoom);
+            }
+            roomReservationRequest.setRooms(arrayBookedRoom);
+            AppController.setCurrentReservation(roomReservationRequest);
+
+            Gson gson = new Gson();
+            String searchHotelRequestJson = gson.toJson(searchHotelRequest);
+            //String searchHotelRequestJson = "{\"criteria\":{\"allocation\":{\"roomAllocation\":[{\"childrenAges\":{\"int\":[0]},\"adults\":2,\"quantity\":1}]},\"checkInDate\":\"2016-04-20\",\"locationId\":5,\"nights\":1},\"maxResults\":10}";
+            //String searchHotelRequestJson = "{\"maxResults\":200,\"criteria\":{\"nights\":1,\"checkInDate\":\"2016-04-10\",\"allocation\":{\"roomAllocation\":[{\"childrenAges\":{\"int\":[]},\"quantity\":1,\"adults\":1},{\"childrenAges\":{\"int\":[]},\"quantity\":1,\"adults\":1}]}}}";
+
+            WebServicesClient.get().searchHotels("SearchHotels", searchHotelRequestJson,
+                    new Callback<HotelAvaibilityResponse>() {
+                        @Override
+                        public void success(HotelAvaibilityResponse hotelAvaibilityResponse, Response response) {
+                            if(hotelAvaibilityResponse == null) {
+                                Toast.makeText(getContext(), "Por favor, comprueba tu conexión", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                            else if(hotelAvaibilityResponse.getOperationMessage().equals("OK")){
+                                AppController.setCurrentSearchResult(hotelAvaibilityResponse);
+                                startActivity(new Intent(getContext(), HotelesListActivity.class));
+                            }else{
+                                //TODO Mostrar el error que me da el ws a traves de un alert
+                            }
+                        }
+
+                        @Override
+                        public void failure(RetrofitError retrofitError) {
+                            Toast.makeText(getContext(), "Por favor, comprueba tu conexión", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
+        catch (Exception e){
+            String excep = e.getMessage();
+        }
+    }
+
+    private class OnLocationsSelectedListener implements AdapterView.OnItemSelectedListener{
+
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            /*Toast.makeText(parentView.getContext(), "Has seleccionado " +
+                    parentView.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show();*/
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
         }
     }
 }

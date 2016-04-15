@@ -37,8 +37,8 @@
                         android:src="@drawable/ic_action_search_material"
                         android:background="@drawable/selector_search"
                         android:layout_gravity="center"/>
-                <AutoCompleteTextView
-                        android:id="@+id/actvDestino"
+                <Spinner
+                        android:id="@+id/spDestino"
                         android:layout_below="@id/labelDestino"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -46,14 +46,14 @@
                         android:layout_toLeftOf="@+id/ivSearch"
                         android:layout_toStartOf="@id/ivSearch"
                         android:layout_centerHorizontal="true"
-                        android:ems="10"/>
+                        android:ems="10" android:spinnerMode="dialog"/>
                 <TextView
                         android:id="@+id/labelHoteles"
                         android:text="@string/hoteles"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
-                        android:layout_below="@id/actvDestino"
+                        android:layout_below="@id/spDestino"
                         android:textColor="@android:color/black"/>
                 <ImageView
                         android:id="@+id/ivSearchHoteles"

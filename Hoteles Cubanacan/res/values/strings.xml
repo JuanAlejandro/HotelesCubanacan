@@ -16,6 +16,9 @@
     <string name="adults">Adultos</string>
     <string name="more_options">Más opciones</string>
     <string name="search">Buscar</string>
+    <string name="precio">Precio</string>
+    <string name="nombre">Nombre</string>
+    <string name="categoria">Categoria</string>
 
     <string name="lorem_ipsum_short">Lorem ipsum</string>
     <string name="no_data">No hay datos disponibles</string>
