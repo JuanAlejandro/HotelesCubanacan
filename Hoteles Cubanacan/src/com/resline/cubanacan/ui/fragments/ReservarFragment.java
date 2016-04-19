@@ -30,6 +30,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import com.google.gson.Gson;
+
 /**
  * Created by Juan Alejandro on 11/04/2016.
  */
@@ -58,10 +60,11 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
     private Button btnBuscar;
 
-    private ArrayList<String> /*locationsList,*/ hotelsList;
-    private ArrayList<FullLocation> locationsList;
+    private ArrayList<String> locationsList, hotelsList;
+    private ArrayList<Long> locationsIdList;
 
     int countRooms = 1;
+    Long idLocation = null;
 
     public static ReservarFragment newInstance() {
         return new ReservarFragment();
@@ -83,7 +86,6 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
     private void loadViews() {
         spDestinos = (Spinner) mViewInfoFragment.findViewById(R.id.spDestino);
-        spinnerDestino = (Spinner) mViewInfoFragment.findViewById(R.id.actvDestino);
         spDestinos.setOnItemSelectedListener(new OnLocationsSelectedListener());
 
         actvHoteles = (AutoCompleteTextView) mViewInfoFragment.findViewById(R.id.actvHoteles);
@@ -155,12 +157,14 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
         if(locations != null){
             Collection<Map.Entry<Long, FullLocation>> locationsData = locations.entrySet();
-            locationsList = new ArrayList<FullLocation>();
+            locationsList = new ArrayList<String>();
+            locationsIdList = new ArrayList<Long>();
             for (Map.Entry<Long, FullLocation> item : locationsData){
-                locationsList.add(item.getValue());
+                locationsList.add(item.getValue().getName());
+                locationsIdList.add(item.getValue().getId());
             }
 
-            ArrayAdapter locationsAdapter = new ArrayAdapter<FullLocation>(this.getContext(),
+            ArrayAdapter locationsAdapter = new ArrayAdapter<String>(this.getContext(),
                     android.R.layout.simple_spinner_dropdown_item, locationsList);
             locationsAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
             spDestinos.setAdapter(locationsAdapter);
@@ -253,10 +257,10 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
          */
         @Override
         public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-            setEntrada.setText(String.format("%d/%d/%d", dayOfMonth, monthOfYear, year));
+            setEntrada.setText(String.format("%d/%d/%d", dayOfMonth, (monthOfYear+1), year));
             Calendar checkOutCalendar = Calendar.getInstance();
             checkOutCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            checkOutCalendar.set(Calendar.MONTH, monthOfYear);
+            checkOutCalendar.set(Calendar.MONTH, monthOfYear+1);
             checkOutCalendar.set(Calendar.YEAR, year);
             checkOutCalendar.add(Calendar.DAY_OF_YEAR, 1);
             setSalida.setText(String.format("%d/%d/%d", checkOutCalendar.get(Calendar.DAY_OF_MONTH),
@@ -278,7 +282,7 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
          */
         @Override
         public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-            setSalida.setText(String.format("%d/%d/%d", dayOfMonth, monthOfYear, year));
+            setSalida.setText(String.format("%d/%d/%d", dayOfMonth, (monthOfYear+1), year));
         }
     }
 
@@ -316,7 +320,8 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
                 hotelCriteria.setResortName(actvHoteles.getText().toString());
 
             //3- Id del Destino
-            //TODO Aqui hay que buscar como obtener el id del destino a partir del spinner
+            if(idLocation != null)
+                hotelCriteria.setLocationId(idLocation);
 
             //4- CheckIn
             dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -353,7 +358,8 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
                 arrayBookedRoom.getBookedRoom().add(bookedRoom);
             }
             roomReservationRequest.setRooms(arrayBookedRoom);
-            AppController.setCurrentReservation(roomReservationRequest);
+            AppController.setRoomReservationRequest(roomReservationRequest);
+            AppController.setSearchHotelCriteria(hotelCriteria);
 
             Gson gson = new Gson();
             String searchHotelRequestJson = gson.toJson(searchHotelRequest);
@@ -391,6 +397,7 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            idLocation = locationsIdList.get(position);
             /*Toast.makeText(parentView.getContext(), "Has seleccionado " +
                     parentView.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show();*/
         }

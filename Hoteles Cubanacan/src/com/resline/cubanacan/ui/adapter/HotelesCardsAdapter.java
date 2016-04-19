@@ -40,8 +40,9 @@ public class HotelesCardsAdapter extends RecyclerViewCardsAdapter {
     }
 
     @Override
-    protected Bundle getBundle(int id) {
+    protected Bundle getBundle(Long id) {
         Bundle bundle = new Bundle();
+        bundle.putLong("idHotel", id);
         return bundle;
     }
 
@@ -52,12 +53,13 @@ public class HotelesCardsAdapter extends RecyclerViewCardsAdapter {
     }
 
     private class HotelesViewHolder extends ViewHolder {
-        public HotelesViewHolder(Activity activity, View itemView) {
+        public HotelesViewHolder(Activity activity, final View itemView) {
             super(activity, itemView);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mActivity.startActivity(new Intent(mActivity, getActivityClass()).putExtras(getBundle(id)));
+                    Bundle bundle = new Bundle();
+                    mActivity.startActivity(new Intent(mActivity, getActivityClass()).putExtras(getBundle(28L)));
                 }
             });
         }

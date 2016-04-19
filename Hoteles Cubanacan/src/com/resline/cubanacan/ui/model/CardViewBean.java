@@ -7,17 +7,27 @@ import java.io.File;
 import java.util.List;
 
 public class CardViewBean {
+    private Long id;
     private Uri imgUri;
     private String title;
     private String subtitle;
     private String shortData;
 
     // "", i,i,i,i
-    public CardViewBean(Uri imgUri, String title, String subtitle, String shortData) {
+    public CardViewBean(Long id, Uri imgUri, String title, String subtitle, String shortData) {
+        this.id = id;
         this.imgUri = imgUri;
         this.title = title;
         this.subtitle = subtitle;
         this.shortData = shortData;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {

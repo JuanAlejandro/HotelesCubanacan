@@ -3,19 +3,18 @@ package com.resline.cubanacan.src.controllers;
 import android.os.Environment;
 import android.util.Base64;
 import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 import com.resline.cubanacan.src.models.User;
 import com.resline.cubanacan.src.ws.WSClass.General.CountryResponse;
 import com.resline.cubanacan.src.ws.WSClass.Hotel.HotelAvaibilityResponse;
 import com.resline.cubanacan.src.ws.WSClass.Hotel.HotelFullDetails;
 import com.resline.cubanacan.src.ws.WSClass.Hotel.HotelsFullDetailsResponse;
+import com.resline.cubanacan.src.ws.WSClass.Hotel.SearchHotelCriteria;
 import com.resline.cubanacan.src.ws.WSClass.Location.FullLocation;
 import com.resline.cubanacan.src.ws.WSClass.Location.FullLocationResponse;
 import com.resline.cubanacan.src.ws.WSClass.Reservation.RoomReservationRequest;
+import com.resline.cubanacan.src.ws.WSClass.Reservation.RoomReservationResponse;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -26,18 +25,20 @@ import retrofit.client.Response;
  * @Date 11/03/2016
  * @Description Clase controladora de la app
  */
+//TODO Hacer esta clase un singlenton
 public class AppController {
 
     /*public static final String FILTER_PREFERENCE_FILENAME = "filterPreferences";
     public static final String FILTER_PREFERENCE_DISTANCE = "distance";
     public static final String FILTER_PREFERENCE_ORDERBY = "orderBy";*/
 
+    private static RoomReservationRequest roomReservationRequest = null;
+    private static SearchHotelCriteria searchHotelCriteria = null;
     private static HotelAvaibilityResponse currentSearchResult = null;
     private static Map<Long, FullLocation> currentLocations = null;
     //private static FullLocationResponse currentLocations = null;
     private static Map<Long, HotelFullDetails> currentHotels = null;
     //private static HotelsFullDetailsResponse currentHotels = null;
-    private static RoomReservationRequest currentReservation = null;
     private static CountryResponse countries = null;
 
     private static User currentUser;
@@ -47,6 +48,22 @@ public class AppController {
 
     public static User getCurrentUser() {
         return currentUser;
+    }
+
+    public static RoomReservationRequest getRoomReservationRequest(){
+        return roomReservationRequest;
+    }
+
+    public static void setRoomReservationRequest(RoomReservationRequest newRoomReservationRequest){
+        roomReservationRequest = newRoomReservationRequest;
+    }
+
+    public static SearchHotelCriteria getSearchHotelCriteria(){
+        return searchHotelCriteria;
+    }
+
+    public static void setSearchHotelCriteria(SearchHotelCriteria newSearchHotelCriteria){
+        searchHotelCriteria = newSearchHotelCriteria;
     }
 
     public static HotelAvaibilityResponse getCurrentSearchResult(){
@@ -81,14 +98,6 @@ public class AppController {
 
             currentHotels.put(hotel.getHotelId(), hotel);
         }
-    }
-
-    public static RoomReservationRequest getCurrentReservation(){
-        return currentReservation;
-    }
-
-    public  static void setCurrentReservation(RoomReservationRequest roomReservationRequest){
-        currentReservation = roomReservationRequest;
     }
 
     public static CountryResponse getCountries(){

@@ -27,14 +27,14 @@
                         android:textSize="18sp"
                         android:textColor="@android:color/black"/>
                 <Spinner
-                <Spinner
                         android:id="@+id/spDestino"
                         android:layout_below="@id/labelDestino"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/black"
                         android:layout_centerHorizontal="true"
-                        android:ems="10" android:spinnerMode="dialog"/>
+                        android:ems="10"
+                        android:spinnerMode="dialog"/>
                 <TextView
                         android:id="@+id/labelHoteles"
                         android:text="@string/hoteles"

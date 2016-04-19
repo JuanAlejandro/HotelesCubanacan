@@ -54,7 +54,17 @@ public class HotelDetailsActivity extends BaseActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnElegirHab:
-                startActivity(new Intent(HotelDetailsActivity.this, ElegirHabitacionActivity.class));
+                Bundle bundle = getIntent().getExtras();
+                if(bundle == null) {
+                    String error = "Esto es un mensaje de error";
+                }
+                else{
+                    Long hotelId = bundle.getLong("hotelId");
+                    Intent intent = new Intent(HotelDetailsActivity.this, ElegirHabitacionActivity.class);
+                    intent.putExtra("hotelId", hotelId);
+                    startActivity(intent);
+                }
+
                 break;
         }
     }

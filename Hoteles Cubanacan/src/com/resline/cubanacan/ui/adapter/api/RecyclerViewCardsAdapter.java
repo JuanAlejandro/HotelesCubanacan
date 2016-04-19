@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.model.CardViewBean;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -45,10 +46,19 @@ public abstract class RecyclerViewCardsAdapter extends RecyclerView.Adapter<Recy
 
         holder.tvSubTitle.setText(itemCardView.getSubtitle());
 
+        holder.tvShortData.setText(itemCardView.getShortData());
+
         setThumbNailImage(itemCardView.getImgUri(), holder.ivThumbNail);
+
+        holder.id = itemCardView.getId();
     }
 
     private void setThumbNailImage(Uri imgUri, ImageView img) {
+        Picasso.with(mActivity)
+                .load(imgUri.toString())
+                .placeholder(R.drawable.loading)
+                .error(R.drawable.logo_fondo_blanco)
+                .into(img);
     }
 
 
@@ -102,9 +112,10 @@ public abstract class RecyclerViewCardsAdapter extends RecyclerView.Adapter<Recy
         public ImageView ivThumbNail;
         public TextView tvTitle;
         public TextView tvSubTitle;
+        public TextView tvShortData;
         public RelativeLayout rlCard;
         public int position;
-        public int id;
+        public Long id;
         private Activity mActivity;
         private int tipo;
 
@@ -114,6 +125,7 @@ public abstract class RecyclerViewCardsAdapter extends RecyclerView.Adapter<Recy
             ivThumbNail = (ImageView) itemView.findViewById(R.id.material_com_card_view_image);
             tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
             tvSubTitle = (TextView) itemView.findViewById(R.id.tvSubTitle);
+            tvShortData = (TextView)itemView.findViewById(R.id.tvShortData);
             rlCard = (RelativeLayout) itemView.findViewById(R.id.rlCardView);
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
@@ -126,7 +138,7 @@ public abstract class RecyclerViewCardsAdapter extends RecyclerView.Adapter<Recy
     }
 
     // parameter id is accesible only for this class - todo: change this
-    protected abstract Bundle getBundle(int id);
+    protected abstract Bundle getBundle(Long id);
 
     protected abstract Class<?> getActivityClass();
 

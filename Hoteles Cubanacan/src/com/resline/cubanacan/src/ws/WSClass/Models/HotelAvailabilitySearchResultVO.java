@@ -6,7 +6,6 @@ package com.resline.cubanacan.src.ws.WSClass.Models;
  * </p>
  */
 public class HotelAvailabilitySearchResultVO
-    implements java.io.Serializable
 {
     /**
      * The serial version UID of this class. Needed for serialization.

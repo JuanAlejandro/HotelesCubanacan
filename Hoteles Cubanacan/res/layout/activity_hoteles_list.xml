@@ -24,7 +24,7 @@
             android:layout_below="@id/screen_default_toolbar"
             android:orientation="horizontal">
         <android.support.v7.widget.AppCompatButton
-                android:id="@+id/btnPrecio"
+                android:id="@+id/btnPrice"
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
                 android:text="@string/precio"
@@ -33,7 +33,7 @@
                 android:gravity="center"
                 android:layout_weight="1"/>
         <android.support.v7.widget.AppCompatButton
-                android:id="@+id/btnPlusNin"
+                android:id="@+id/btnName"
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
                 android:text="@string/nombre"
@@ -42,7 +42,7 @@
                 android:gravity="center"
                 android:layout_weight="1"/>
         <android.support.v7.widget.AppCompatButton
-                android:id="@+id/btnEstrellas"
+                android:id="@+id/btnCategory"
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
                 android:text="@string/categoria"
