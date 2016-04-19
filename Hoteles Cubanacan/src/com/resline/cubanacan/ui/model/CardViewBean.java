@@ -1,19 +1,17 @@
 package com.resline.cubanacan.ui.model;
 
 import android.net.Uri;
-import com.resline.cubanacan.R;
-
-import java.io.File;
-import java.util.List;
 
 public class CardViewBean {
+    private int id;
     private Uri imgUri;
     private String title;
     private String subtitle;
     private String shortData;
 
     // "", i,i,i,i
-    public CardViewBean(Uri imgUri, String title, String subtitle, String shortData) {
+    public CardViewBean(int id, Uri imgUri, String title, String subtitle, String shortData) {
+        this.id = id;
         this.imgUri = imgUri;
         this.title = title;
         this.subtitle = subtitle;
@@ -46,5 +44,13 @@ public class CardViewBean {
 
     public void setShortData(String shortData) {
         this.shortData = shortData;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
