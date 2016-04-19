@@ -45,7 +45,7 @@
                     android:textColor="@color/description_color"
                     android:textSize="@dimen/description_size"
                     android:text="@string/lorem_ipsum_short"
-                    android:id="@+id/rbCategory"
+                    android:id="@+id/tvShortData"
                     android:paddingLeft="@dimen/card_title_text_padding"
                     android:paddingBottom="@dimen/big_padding"
                     android:paddingRight="@dimen/big_padding"
@@ -61,7 +61,7 @@
                     android:paddingLeft="@dimen/card_title_text_padding"
                     android:paddingBottom="@dimen/big_padding"
                     android:paddingRight="@dimen/big_padding"
-                    android:layout_below="@id/rbCategory"
+                    android:layout_below="@id/tvShortData"
                     android:singleLine="true"/>
         </RelativeLayout>
     </RelativeLayout>

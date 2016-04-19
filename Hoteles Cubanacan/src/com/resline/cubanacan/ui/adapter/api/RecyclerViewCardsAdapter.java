@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.resline.cubanacan.R;
@@ -42,7 +43,7 @@ public abstract class RecyclerViewCardsAdapter extends RecyclerView.Adapter<Recy
 
         holder.position = position;
 
-        holder.tvTitle.setText(itemCardView.getTitle());
+        holder.stvTitle.setText(itemCardView.getTitle());
 
         holder.tvSubTitle.setText(itemCardView.getSubtitle());
 
@@ -110,7 +111,7 @@ public abstract class RecyclerViewCardsAdapter extends RecyclerView.Adapter<Recy
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView ivThumbNail;
-        public TextView tvTitle;
+        public TextView stvTitle;
         public TextView tvSubTitle;
         public TextView tvShortData;
         public RelativeLayout rlCard;
@@ -123,9 +124,9 @@ public abstract class RecyclerViewCardsAdapter extends RecyclerView.Adapter<Recy
             super(itemView);
             mActivity = activity;
             ivThumbNail = (ImageView) itemView.findViewById(R.id.material_com_card_view_image);
-            tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
-            tvSubTitle = (TextView) itemView.findViewById(R.id.rbCategory);
-            tvShortData = (TextView)itemView.findViewById(R.id.tvShortData);
+            stvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+            tvShortData = (TextView) itemView.findViewById(R.id.tvShortData);
+            tvSubTitle = (TextView)itemView.findViewById(R.id.tvSubtitle);
             rlCard = (RelativeLayout) itemView.findViewById(R.id.rlCardView);
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {

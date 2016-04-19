@@ -1,5 +1,6 @@
 package com.resline.cubanacan.ui.activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -27,10 +28,10 @@ import static android.R.attr.id;
 /**
  * Created by Juan Alejandro on 14/04/2016.
  */
-public class ElegirHabitacionActivity extends BaseActivity {
+public class ElegirHabitacionActivity extends BaseActivity implements View.OnClickListener {
 
-    LinearLayout rlContent;
     Long hotelId;
+    CardView cvRoom;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,7 +47,9 @@ public class ElegirHabitacionActivity extends BaseActivity {
 
     private void loadViewComponents() {
 
-        rlContent = (LinearLayout)findViewById(R.id.rlContent);
+        cvRoom = (CardView)findViewById(R.id.cvRoom);
+        Button btnReservar = (Button) findViewById(R.id.btnReservar);
+        btnReservar.setOnClickListener(this);
 
         loadRoomsType();
     }
@@ -63,7 +66,7 @@ public class ElegirHabitacionActivity extends BaseActivity {
 
     @Override
     protected int getLayoutResourceIdentifier() {
-        return R.layout.elegir_hab_activity;
+        return R.layout.activity_elegir_hab;
     }
 
     @Override
@@ -86,13 +89,11 @@ public class ElegirHabitacionActivity extends BaseActivity {
         }
 
         int countRooms = AppController.getRoomReservationRequest().getRooms().getBookedRoom().size();
-        CardView[] cardViewRooms = new CardView[countRooms];
         RelativeLayout[] rlCardView = new RelativeLayout[countRooms];
         TextView[] tvRoomNumber = new TextView[countRooms];
         @IdRes int roomNumberId = 0;
         @IdRes int roomNumberTypeId = 1 + countRooms;
         for(int i=0; i<countRooms; i++){
-            cardViewRooms[i] = new CardView(this);
             rlCardView[i] = new RelativeLayout(this);
             rlCardView[i].setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
@@ -175,8 +176,16 @@ public class ElegirHabitacionActivity extends BaseActivity {
             }
             rlCardView[i].addView(tvRoomNumber[i]);
             rlCardView[i].addView(llRoomContent);
-            cardViewRooms[i].addView(rlCardView[i]);
-            rlContent.addView(cardViewRooms[i]);
+            cvRoom.addView(rlCardView[i]);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btnReservar:
+                startActivity(new Intent(ElegirHabitacionActivity.this, ConfirmarReservaActivity.class));
+                break;
         }
     }
 }
