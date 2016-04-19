@@ -45,4 +45,6 @@
     <string name="lorem_one">1</string>
     <string name="lorem_two">2</string>
     <string name="confirm_reserva_title">Confirmar reserva</string>
+    <string name="lorem_hotel_nombre">Hotel Sevilla</string>
+    <string name="direccion_lorem">19 e/ 42 y 44 #4210</string>
 </resources>
