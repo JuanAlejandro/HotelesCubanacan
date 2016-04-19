@@ -1,33 +1,26 @@
 package com.resline.cubanacan.ui.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.activities.api.BaseActivity;
+import com.resline.cubanacan.ui.fragments.ConfirmarReservaFragment;
 
 /**
- * Created by Juan Alejandro on 14/04/2016.
+ * Created by Juan Alejandro on 18/04/2016.
  */
-public class ElegirHabitacionActivity extends BaseActivity implements View.OnClickListener {
+public class ConfirmarReservaActivity extends BaseActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setToolbar();
-
-        loadViewComponents();
+        fragmentTransaction(new ConfirmarReservaFragment());
     }
 
-    private void loadViewComponents() {
-        // todo: associate visual elements with objects
-        Button btnReservar = (Button) findViewById(R.id.btnReservar);
-        btnReservar.setOnClickListener(this);
-    }
 
     private void setToolbar() {
         mActionBar.setDisplayHomeAsUpEnabled(true);
@@ -41,12 +34,12 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
 
     @Override
     protected int getLayoutResourceIdentifier() {
-        return R.layout.activity_elegir_hab;
+        return R.layout.activity_confirm_reserva;
     }
 
     @Override
     protected String getTitleToolBar() {
-        return getString(R.string.pick_room_title);
+        return "";
     }
 
     @Override
@@ -54,12 +47,11 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
         return (Toolbar) findViewById(R.id.screen_default_toolbar);
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btnReservar:
-                startActivity(new Intent(ElegirHabitacionActivity.this, ConfirmarReservaActivity.class));
-                break;
+    private void fragmentTransaction(Fragment fragment) {
+        if (fragment != null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.screen_default_container, fragment)
+                    .commit();
         }
     }
 }

@@ -113,7 +113,7 @@ public abstract class RecyclerViewCardsAdapter extends RecyclerView.Adapter<Recy
             mActivity = activity;
             ivThumbNail = (ImageView) itemView.findViewById(R.id.material_com_card_view_image);
             tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
-            tvSubTitle = (TextView) itemView.findViewById(R.id.tvSubTitle);
+            tvSubTitle = (TextView) itemView.findViewById(R.id.rbCategory);
             rlCard = (RelativeLayout) itemView.findViewById(R.id.rlCardView);
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {

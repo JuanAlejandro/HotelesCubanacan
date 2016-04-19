@@ -53,7 +53,6 @@
         </RelativeLayout>
     </android.support.v7.widget.CardView>
     <android.support.v7.widget.CardView
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/cvRoom"
             android:layout_below="@id/cvAPagar"
             android:layout_width="match_parent"
@@ -104,6 +103,7 @@
                                 android:id="@+id/cbRoom1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:background="@color/secondary_color_blue"
                                 android:layout_margin="5dp"
                                 android:layout_centerVertical="true"
                                 android:layout_alignParentRight="true"
@@ -169,6 +169,17 @@
                 </android.support.v7.widget.CardView>
             </LinearLayout>
         </RelativeLayout>
-
     </android.support.v7.widget.CardView>
+    <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btnReservar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/reservar_action"
+            android:textColor="@android:color/black"
+            android:padding="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@id/cvRoom"
+            android:gravity="center"/>
 </RelativeLayout>
