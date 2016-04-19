@@ -58,7 +58,7 @@
                         android:textColor="@color/description_color"
                         android:textSize="@dimen/description_size"
                         android:text="@string/lorem_ipsum_short"
-                        android:id="@+id/tvShortData"
+                        android:id="@+id/tvSubtitle"
                         android:paddingLeft="@dimen/card_title_text_padding"
                         android:paddingBottom="@dimen/big_padding"
                         android:paddingRight="@dimen/big_padding"
@@ -253,7 +253,7 @@
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.AppCompatButton
-                android:id="@+id/btnBuscar"
+                android:id="@+id/btnSiguiente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/next"
