@@ -29,4 +29,20 @@
     <string name="room_lorem">Habitación 1</string>
     <string name="lorem_opcion">Opcion</string>
     <string name="pick_room_title">Elegir habitación</string>
+    <string name="title_in">Entrada:</string>
+    <string name="title_out">Salida:</string>
+    <string name="title_importe">Importe:</string>
+    <string name="lorem_money">$$$$</string>
+    <string name="title_lorem_habitacion">Habitación 1</string>
+    <string name="hab_a_nombre_de">Habitación a nombre de:</string>
+    <string name="nombre_hint">Nombre</string>
+    <string name="apellidos_hint">Apellidos</string>
+    <string name="pais">País:</string>
+    <string name="fumador_title">Fumador</string>
+    <string name="next">Siguiente</string>
+    <string name="reservar_action">Reservar</string>
+    <string name="pagar">Pagar</string>
+    <string name="acepto_terms">Acepto los términos y condiciones</string>
+    <string name="titular_title">Titular de la reserva</string>
+    <string name="correo_hint">Correo</string>
 </resources>
