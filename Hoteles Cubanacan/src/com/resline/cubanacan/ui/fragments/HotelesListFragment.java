@@ -2,6 +2,8 @@ package com.resline.cubanacan.ui.fragments;
 
 import android.app.Activity;
 import android.net.Uri;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import com.resline.cubanacan.ui.adapter.HotelesCardsAdapter;
 import com.resline.cubanacan.ui.fragments.api.RecyclerViewFragment;
@@ -15,6 +17,14 @@ import java.util.List;
  * Created by Juan Alejandro on 13/04/2016.
  */
 public class HotelesListFragment extends RecyclerViewFragment {
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // aqui obtienes el bundle que pasaste en la activity
+        Bundle bundle = getArguments();
+    }
+
     @Override
     protected RecyclerView.Adapter getRecyclerViewCardAdapter(Activity mActivity, List<CardViewBean> mListCard) {
         return new HotelesCardsAdapter(mActivity, mListCard);

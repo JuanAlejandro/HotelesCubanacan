@@ -13,7 +13,7 @@ import com.resline.cubanacan.ui.fragments.HotelesListFragment;
 /**
  * Created by Juan Alejandro on 13/04/2016.
  */
-public class HotelesListActivity extends BaseActivity {
+public class HotelesListActivity extends BaseActivity implements View.OnClickListener{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,5 +55,29 @@ public class HotelesListActivity extends BaseActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        Fragment fragment = new Fragment();
+        Bundle bundle = new Bundle();
+        // your arguments here
+        bundle.putBoolean("my_boolean", true);
+        bundle.putInt("my_int", 0);
+        fragment.setArguments(bundle);
+        switch (v.getId()){
+            case R.id.btnPrecio:
+                // cambias el bundle aqui en dependencia del caso
+                break;
+            case R.id.btnPlusNin:
+                // cambias el bundle aqui en dependencia del caso
+                break;
+            case R.id.btnEstrellas:
+                // cambias el bundle aqui en dependencia del caso
+                break;
+        }
+
+
+        fragmentTransaction(fragment);
     }
 }
