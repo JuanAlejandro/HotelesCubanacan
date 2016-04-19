@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import com.resline.cubanacan.R;
@@ -14,6 +15,8 @@ import com.resline.cubanacan.ui.activities.api.BaseActivity;
  */
 public class HotelDetailsActivity extends BaseActivity implements View.OnClickListener{
 
+    private static final String TAG = "HotelDetailsActivity";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +26,7 @@ public class HotelDetailsActivity extends BaseActivity implements View.OnClickLi
         // set button pick room
         Button pickRoom = (Button) findViewById(R.id.btnElegirHab);
         pickRoom.setOnClickListener(this);
+        Log.d(TAG, String.valueOf(mBundle.getInt("my_int")));
     }
 
     private void setToolbar() {

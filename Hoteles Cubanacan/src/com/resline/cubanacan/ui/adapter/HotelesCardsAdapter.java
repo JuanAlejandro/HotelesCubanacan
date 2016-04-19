@@ -42,6 +42,7 @@ public class HotelesCardsAdapter extends RecyclerViewCardsAdapter {
     @Override
     protected Bundle getBundle(int id) {
         Bundle bundle = new Bundle();
+        bundle.putInt("my_int", id);
         return bundle;
     }
 

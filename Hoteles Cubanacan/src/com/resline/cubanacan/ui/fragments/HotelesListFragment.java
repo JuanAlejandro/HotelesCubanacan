@@ -38,9 +38,10 @@ public class HotelesListFragment extends RecyclerViewFragment {
 
     private List<CardViewBean> populateList() {
         List<CardViewBean> listCard = new ArrayList<>();
-        int id = 0;
+        int id;
 
         for (int i = 0; i < 100; i++) {
+            id = i;
             listCard.add(new CardViewBean(id, null, Integer.toString(i), Integer.toString(i), Integer.toString(i)));
         }
 

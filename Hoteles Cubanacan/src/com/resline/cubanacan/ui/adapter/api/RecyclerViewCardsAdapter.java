@@ -39,6 +39,8 @@ public abstract class RecyclerViewCardsAdapter extends RecyclerView.Adapter<Recy
 
         holder.itemView.setTag(itemCardView);
 
+        holder.id = itemCardView.getId();
+
         holder.position = position;
 
         holder.tvTitle.setText(itemCardView.getTitle());
