@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.activities.api.BaseActivity;
@@ -14,13 +15,26 @@ import com.resline.cubanacan.ui.fragments.HotelesListFragment;
  * Created by Juan Alejandro on 13/04/2016.
  */
 public class HotelesListActivity extends BaseActivity implements View.OnClickListener{
+    private Button btnPrecio, btnDistancia, btnEstrellas;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setToolBar();
 
+        loadViewComponents();
+
         fragmentTransaction(new HotelesListFragment());
+    }
+
+    private void loadViewComponents() {
+        btnPrecio = (Button) findViewById(R.id.btnPrecio);
+        btnDistancia = (Button) findViewById(R.id.btnPlusNin);
+        btnEstrellas = (Button) findViewById(R.id.btnEstrellas);
+
+        btnPrecio.setOnClickListener(this);
+        btnDistancia.setOnClickListener(this);
+        btnEstrellas.setOnClickListener(this);
     }
 
     @Override
@@ -68,12 +82,21 @@ public class HotelesListActivity extends BaseActivity implements View.OnClickLis
         switch (v.getId()){
             case R.id.btnPrecio:
                 // cambias el bundle aqui en dependencia del caso
+                btnPrecio.setSelected(true);
+                btnDistancia.setSelected(false);
+                btnEstrellas.setSelected(false);
                 break;
             case R.id.btnPlusNin:
                 // cambias el bundle aqui en dependencia del caso
+                btnDistancia.setSelected(true);
+                btnPrecio.setSelected(false);
+                btnEstrellas.setSelected(false);
                 break;
             case R.id.btnEstrellas:
                 // cambias el bundle aqui en dependencia del caso
+                btnEstrellas.setSelected(true);
+                btnDistancia.setSelected(false);
+                btnPrecio.setSelected(false);
                 break;
         }
 
