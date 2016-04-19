@@ -12,7 +12,7 @@ import com.resline.cubanacan.ui.fragments.ConfirmarReservaFragment;
 /**
  * Created by Juan Alejandro on 18/04/2016.
  */
-public class ConfirmarReservaActivity extends BaseActivity {
+public class TitularActivity extends BaseActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class ConfirmarReservaActivity extends BaseActivity {
 
     @Override
     protected String getTitleToolBar() {
-        return "";
+        return "Titular";
     }
 
     @Override

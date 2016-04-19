@@ -1,5 +1,6 @@
 package com.resline.cubanacan.ui.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.resline.cubanacan.R;
+import com.resline.cubanacan.ui.activities.TitularActivity;
 import com.resline.cubanacan.ui.fragments.api.BaseFragment;
 import org.w3c.dom.Text;
 
@@ -91,6 +93,7 @@ public class ConfirmarReservaFragment extends BaseFragment implements View.OnCli
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnSiguiente:
+                startActivity(new Intent(mActivity, TitularActivity.class));
                 break;
         }
     }
