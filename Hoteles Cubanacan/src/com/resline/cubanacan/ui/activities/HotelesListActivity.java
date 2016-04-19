@@ -14,8 +14,9 @@ import com.resline.cubanacan.ui.fragments.HotelesListFragment;
 /**
  * Created by Juan Alejandro on 13/04/2016.
  */
-public class HotelesListActivity extends BaseActivity implements View.OnClickListener{
+public class HotelesListActivity extends BaseActivity implements View.OnClickListener {
     private Button btnPrecio, btnDistancia, btnEstrellas;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,8 @@ public class HotelesListActivity extends BaseActivity implements View.OnClickLis
         btnPrecio.setOnClickListener(this);
         btnDistancia.setOnClickListener(this);
         btnEstrellas.setOnClickListener(this);
+
+        btnPrecio.setSelected(false);
     }
 
     @Override
@@ -79,22 +82,34 @@ public class HotelesListActivity extends BaseActivity implements View.OnClickLis
         bundle.putBoolean("my_boolean", true);
         bundle.putInt("my_int", 0);
         fragment.setArguments(bundle);
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btnPrecio:
                 // cambias el bundle aqui en dependencia del caso
-                btnPrecio.setSelected(true);
+                if (btnPrecio.isSelected())
+                    btnPrecio.setSelected(false);
+                else
+                    btnPrecio.setSelected(true);
+
                 btnDistancia.setSelected(false);
                 btnEstrellas.setSelected(false);
                 break;
             case R.id.btnPlusNin:
                 // cambias el bundle aqui en dependencia del caso
-                btnDistancia.setSelected(true);
+                if (btnDistancia.isSelected())
+                    btnDistancia.setSelected(false);
+                else
+                    btnDistancia.setSelected(true);
+
                 btnPrecio.setSelected(false);
                 btnEstrellas.setSelected(false);
                 break;
             case R.id.btnEstrellas:
                 // cambias el bundle aqui en dependencia del caso
-                btnEstrellas.setSelected(true);
+                if (btnEstrellas.isSelected())
+                    btnEstrellas.setSelected(false);
+                else
+                    btnEstrellas.setSelected(true);
+
                 btnDistancia.setSelected(false);
                 btnPrecio.setSelected(false);
                 break;
