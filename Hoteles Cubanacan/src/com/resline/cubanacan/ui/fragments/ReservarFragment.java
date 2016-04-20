@@ -70,10 +70,38 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
     private Button btnLessChildFive, btnPlusChildFive;
     private TextView tvHabsFive, tvAdultsFive, tvChildFive;
 
+    // linear layouts with kids age
+    // default
+    private RelativeLayout llKidAgeFirstDefault;
+    private RelativeLayout llKidAgeSecondDefault;
+    private RelativeLayout llKidAgeThirdDefault;
+    // two
+    private RelativeLayout llKidAgeFirstTwo;
+    private RelativeLayout llKidAgeSecondTwo;
+    private RelativeLayout llKidAgeThirdTwo;
+    // three
+    private RelativeLayout llKidAgeFirstThree;
+    private RelativeLayout llKidAgeSecondThree;
+    private RelativeLayout llKidAgeThirdThree;
+    // four
+    private RelativeLayout llKidAgeFirstFour;
+    private RelativeLayout llKidAgeSecondFour;
+    private RelativeLayout llKidAgeThirdFour;
+    // five
+    private RelativeLayout llKidAgeFirstFive;
+    private RelativeLayout llKidAgeSecondFive;
+    private RelativeLayout llKidAgeThirdFive;
+
     private Button btnMasOpciones;
     private Button btnBuscar;
 
     private int conteoHab = 1;
+
+    private int conteoKidDefault = 0;
+    private int conteoKidTwo = 0;
+    private int conteoKidThree = 0;
+    private int conteoKidFour = 0;
+    private int conteoKidFive = 0;
 
     public static ReservarFragment newInstance() {
         return new ReservarFragment();
@@ -119,12 +147,37 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
         initializeFifthPeopleForm();
 
+        initializeLinearLayoutKidsAge();
+
         // final buttons
         btnBuscar = (Button) mViewInfoFragment.findViewById(R.id.btnBuscar);
         btnMasOpciones = (Button) mViewInfoFragment.findViewById(R.id.btnOtrasOpciones);
 
         btnBuscar.setOnClickListener(this);
         btnMasOpciones.setOnClickListener(this);
+    }
+
+    private void initializeLinearLayoutKidsAge() {
+        // default
+        llKidAgeFirstDefault = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeOne);
+        llKidAgeSecondDefault = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeTwo);
+        llKidAgeThirdDefault = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeThree);
+        // two
+        llKidAgeFirstTwo = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeOneTwo);
+        llKidAgeSecondTwo = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeTwoTwo);
+        llKidAgeThirdTwo = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeThreeTwo);
+        // three
+        llKidAgeFirstThree = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeOneThree);
+        llKidAgeSecondThree = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeTwoThree);
+        llKidAgeThirdThree = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeThreeThree);
+        // four
+        llKidAgeFirstFour = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeOneFour);
+        llKidAgeSecondFour = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeTwoFour);
+        llKidAgeThirdFour = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeThreeFour);
+        // five
+        llKidAgeFirstFive = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeOneFive);
+        llKidAgeSecondFive = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeTwoFive);
+        llKidAgeThirdFive = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeThreeFive);
     }
 
     private void initializeCardViews() {
@@ -256,8 +309,20 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
                 break;
             // kids
             case R.id.btnPlusNin:
+                if (conteoKidDefault < 3) {
+                    conteoKidDefault++;
+                    showKidDefault(conteoKidDefault);
+                } else {
+                    // do something
+                }
                 break;
             case R.id.btnLessNin:
+                if (conteoKidDefault > 0) {
+                    conteoKidDefault--;
+                    hideKidDefault(conteoKidDefault);
+                } else {
+                    // do something
+                }
                 break;
             // second room
             case R.id.btnLessAdTwo:
@@ -266,8 +331,20 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
                 break;
             // kids
             case R.id.btnPlusNinTwo:
+                if (conteoKidTwo < 3) {
+                    conteoKidTwo++;
+                    showKidTwo(conteoKidTwo);
+                } else {
+                    // do something
+                }
                 break;
             case R.id.btnLessNinTwo:
+                if (conteoKidTwo > 0) {
+                    conteoKidTwo--;
+                    hideKidTwo(conteoKidTwo);
+                } else {
+                    // do something
+                }
                 break;
             // third room
             case R.id.btnLessAdThree:
@@ -276,8 +353,20 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
                 break;
             // kids
             case R.id.btnPlusNinThree:
+                if (conteoKidThree < 3) {
+                    conteoKidThree++;
+                    showKidThree(conteoKidThree);
+                } else {
+                    // do something
+                }
                 break;
             case R.id.btnLessNinThree:
+                if (conteoKidThree > 0) {
+                    conteoKidThree--;
+                    hideKidThree(conteoKidThree);
+                } else {
+                    // do something
+                }
                 break;
             // fourth room
             case R.id.btnLessAdFour:
@@ -286,8 +375,20 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
                 break;
             // kids
             case R.id.btnPlusNinFour:
+                if (conteoKidFour < 3) {
+                    conteoKidFour++;
+                    showKidFour(conteoKidFour);
+                } else {
+                    // do something
+                }
                 break;
             case R.id.btnLessNinFour:
+                if (conteoKidFour > 0) {
+                    conteoKidFour--;
+                    hideKidFour(conteoKidFour);
+                } else {
+                    // do something
+                }
                 break;
             // fifth room
             case R.id.btnLessAdFive:
@@ -295,13 +396,165 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
             case R.id.btnPlusAdFive:
                 break;
             case R.id.btnPlusNinFive:
+                if (conteoKidFive < 3) {
+                    conteoKidFive++;
+                    showKidFive(conteoKidFive);
+                } else {
+                    // do something
+                }
                 break;
             case R.id.btnLessNinFive:
+                if (conteoKidFive > 0) {
+                    conteoKidFive--;
+                    hideKidFive(conteoKidFive);
+                } else {
+                    // do something
+                }
                 break;
             case R.id.btnBuscar:
                 startActivity(new Intent(mActivity, HotelesListActivity.class));
                 break;
             case R.id.btnOtrasOpciones:
+                break;
+        }
+    }
+
+    private void hideKidDefault(int conteoKid) {
+        switch (conteoKid){
+            case 0:
+                llKidAgeFirstDefault.setVisibility(View.GONE);
+                break;
+            case 1:
+                llKidAgeSecondDefault.setVisibility(View.GONE);
+                break;
+            case 2:
+                llKidAgeThirdDefault.setVisibility(View.GONE);
+                break;
+        }
+    }
+
+    private void hideKidTwo(int conteoKid) {
+        switch (conteoKid){
+            case 0:
+                llKidAgeFirstTwo.setVisibility(View.GONE);
+                break;
+            case 1:
+                llKidAgeSecondTwo.setVisibility(View.GONE);
+                break;
+            case 2:
+                llKidAgeThirdTwo.setVisibility(View.GONE);
+                break;
+        }
+    }
+
+    private void hideKidThree(int conteoKid) {
+        switch (conteoKid){
+            case 0:
+                llKidAgeFirstThree.setVisibility(View.GONE);
+                break;
+            case 1:
+                llKidAgeSecondThree.setVisibility(View.GONE);
+                break;
+            case 2:
+                llKidAgeThirdThree.setVisibility(View.GONE);
+                break;
+        }
+    }
+
+    private void hideKidFour(int conteoKid) {
+        switch (conteoKid){
+            case 0:
+                llKidAgeFirstFour.setVisibility(View.GONE);
+                break;
+            case 1:
+                llKidAgeSecondFour.setVisibility(View.GONE);
+                break;
+            case 2:
+                llKidAgeThirdFour.setVisibility(View.GONE);
+                break;
+        }
+    }
+
+    private void hideKidFive(int conteoKid) {
+        switch (conteoKid){
+            case 0:
+                llKidAgeFirstFive.setVisibility(View.GONE);
+                break;
+            case 1:
+                llKidAgeSecondFive.setVisibility(View.GONE);
+                break;
+            case 2:
+                llKidAgeThirdFive.setVisibility(View.GONE);
+                break;
+        }
+    }
+
+    private void showKidDefault(int conteoKid) {
+        switch (conteoKid){
+            case 1:
+                llKidAgeFirstDefault.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                llKidAgeSecondDefault.setVisibility(View.VISIBLE);
+                break;
+            case 3:
+                llKidAgeThirdDefault.setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+
+    private void showKidTwo(int conteoKid) {
+        switch (conteoKid){
+            case 1:
+                llKidAgeFirstTwo.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                llKidAgeSecondTwo.setVisibility(View.VISIBLE);
+                break;
+            case 3:
+                llKidAgeThirdTwo.setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+
+    private void showKidThree(int conteoKid) {
+        switch (conteoKid){
+            case 1:
+                llKidAgeFirstThree.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                llKidAgeSecondThree.setVisibility(View.VISIBLE);
+                break;
+            case 3:
+                llKidAgeThirdThree.setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+
+    private void showKidFour(int conteoKid) {
+        switch (conteoKid){
+            case 1:
+                llKidAgeFirstFour.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                llKidAgeSecondFour.setVisibility(View.VISIBLE);
+                break;
+            case 3:
+                llKidAgeThirdFour.setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+
+    private void showKidFive(int conteoKid) {
+        switch (conteoKid){
+            case 1:
+                llKidAgeFirstFive.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                llKidAgeSecondFive.setVisibility(View.VISIBLE);
+                break;
+            case 3:
+                llKidAgeThirdFive.setVisibility(View.VISIBLE);
                 break;
         }
     }

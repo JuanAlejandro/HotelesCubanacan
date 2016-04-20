@@ -277,7 +277,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusNin"
+                                android:id="@+id/btnLessNin"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -296,7 +296,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessNin"
+                                android:id="@+id/btnPlusNin"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -331,7 +331,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusNinAgeOne"
+                                android:id="@+id/btnLessNinAgeOne"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -350,7 +350,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessNinAgeOne"
+                                android:id="@+id/btnPlusNinAgeOne"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -385,7 +385,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusNinAgeTwo"
+                                android:id="@+id/btnLessNinAgeTwo"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -404,7 +404,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessNinAgeTwo"
+                                android:id="@+id/btnPlusNinAgeTwo"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -439,7 +439,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusNinAgeThree"
+                                android:id="@+id/btnLessNinAgeThree"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -458,7 +458,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessNinAgeThree"
+                                android:id="@+id/btnPlusNinAgeThree"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -561,7 +561,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusNinTwo"
+                                android:id="@+id/btnLessNinTwo"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -580,7 +580,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessNinTwo"
+                                android:id="@+id/btnPlusNinTwo"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -615,7 +615,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusNinAgeOneTwo"
+                                android:id="@+id/btnLessNinAgeOneTwo"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -634,7 +634,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessNinAgeOneTwo"
+                                android:id="@+id/btnPlusNinAgeOneTwo"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -669,7 +669,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusNinAgeTwoTwo"
+                                android:id="@+id/btnLessNinAgeTwoTwo"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -688,7 +688,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessNinAgeTwoTwo"
+                                android:id="@+id/btnPlusNinAgeTwoTwo"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -723,7 +723,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusNinAgeThreeTwo"
+                                android:id="@+id/btnLessNinAgeThreeTwo"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -742,7 +742,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessNinAgeThreeTwo"
+                                android:id="@+id/btnPlusNinAgeThreeTwo"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -845,7 +845,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusNinThree"
+                                android:id="@+id/btnLessNinThree"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -864,7 +864,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessNinThree"
+                                android:id="@+id/btnPlusNinThree"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -899,7 +899,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusNinAgeOneThree"
+                                android:id="@+id/btnLessNinAgeOneThree"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -918,7 +918,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessNinAgeOneThree"
+                                android:id="@+id/btnPlusNinAgeOneThree"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -953,7 +953,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusNinAgeTwoThree"
+                                android:id="@+id/btnLessNinAgeTwoThree"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -972,7 +972,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessNinAgeTwoThree"
+                                android:id="@+id/btnPlusNinAgeTwoThree"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -1007,7 +1007,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusNinAgeThreeThree"
+                                android:id="@+id/btnLessNinAgeThreeThree"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -1026,7 +1026,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessNinAgeThreeThree"
+                                android:id="@+id/btnPlusNinAgeThreeThree"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -1129,7 +1129,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusNinFour"
+                                android:id="@+id/btnLessNinFour"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -1148,7 +1148,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessNinFour"
+                                android:id="@+id/btnPlusNinFour"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -1183,7 +1183,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusNinAgeOneFour"
+                                android:id="@+id/btnLessNinAgeOneFour"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -1202,7 +1202,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessNinAgeOneFour"
+                                android:id="@+id/btnPlusNinAgeOneFour"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -1237,7 +1237,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusNinAgeTwoFour"
+                                android:id="@+id/btnLessNinAgeTwoFour"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -1256,7 +1256,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessNinAgeTwoFour"
+                                android:id="@+id/btnPlusNinAgeTwoFour"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -1291,7 +1291,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusNinAgeThreeFour"
+                                android:id="@+id/btnLessNinAgeThreeFour"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -1310,7 +1310,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessNinAgeThreeFour"
+                                android:id="@+id/btnPlusNinAgeThreeFour"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -1413,7 +1413,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusNinFive"
+                                android:id="@+id/btnLessNinFive"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -1432,7 +1432,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessNinFive"
+                                android:id="@+id/btnPlusNinFive"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -1467,7 +1467,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusNinAgeOneFive"
+                                android:id="@+id/btnLessNinAgeOneFive"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -1486,7 +1486,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessNinAgeOneFive"
+                                android:id="@+id/btnPlusNinAgeOneFive"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -1521,7 +1521,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusNinAgeTwoFive"
+                                android:id="@+id/btnLessNinAgeTwoFive"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -1540,7 +1540,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessNinAgeTwoFive"
+                                android:id="@+id/btnPlusNinAgeTwoFive"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -1575,7 +1575,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusNinAgeThreeFive"
+                                android:id="@+id/btnLessNinAgeThreeFive"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -1594,7 +1594,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessNinAgeThreeFive"
+                                android:id="@+id/btnPlusNinAgeThreeFive"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
