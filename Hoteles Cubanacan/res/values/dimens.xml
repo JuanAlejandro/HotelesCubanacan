@@ -21,5 +21,6 @@
     <integer name="layout_weight_subtitle">4</integer>
 
     <!-- details -->
-    <dimen name="image_detail_height">180dp</dimen>
+    <dimen name="image_detail_height">230dp</dimen>
+    <dimen name="img_gallery_shortcut">45dp</dimen>
 </resources>

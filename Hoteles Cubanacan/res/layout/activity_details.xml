@@ -13,11 +13,59 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/white">
             <ImageView
-                    android:id="@+id/ivEventoDetail"
+                    android:id="@+id/ivHotel"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/image_detail_height"
                     android:scaleType="centerCrop"
                     android:src="@drawable/example"/>
+            <View
+                    android:id="@+id/vOpacity"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/image_detail_height"
+                    android:background="@color/mdtp_transparent_black"/>
+            <ImageView
+                    android:id="@+id/ivGallery"
+                    android:layout_height="@dimen/img_gallery_shortcut"
+                    android:layout_width="@dimen/img_gallery_shortcut"
+                    android:src="@drawable/gallery"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignBottom="@+id/ivHotel"/>
+            <TextView
+                    android:id="@+id/tvNombreHotel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lorem_hotel_nombre"
+                    android:textSize="42sp"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:layout_alignBottom="@+id/ivHotel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
+            <RelativeLayout
+                    android:id="@+id/rlDireccion"
+                    android:layout_below="@id/ivHotel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <ImageView
+                        android:id="@+id/ivOne"
+                        android:padding="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_place_black"/>
+                <TextView
+                        android:id="@+id/tvDireccion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/direccion_lorem"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:padding="10dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/ivOne"
+                        android:layout_toEndOf="@+id/ivOne"/>
+            </RelativeLayout>
+
             <android.support.v7.widget.AppCompatButton
                     android:id="@+id/btnElegirHab"
                     android:layout_width="match_parent"
@@ -28,9 +76,8 @@
                     android:padding="10dp"
                     android:layout_marginLeft="5dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_below="@id/ivEventoDetail"
+                    android:layout_below="@id/rlDireccion"
                     android:gravity="center"/>
-
         </RelativeLayout>
     </com.github.ksoichiro.android.observablescrollview.ObservableScrollView>
     <View xmlns:android="http://schemas.android.com/apk/res/android"

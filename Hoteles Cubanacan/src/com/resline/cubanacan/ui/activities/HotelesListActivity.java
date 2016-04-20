@@ -14,7 +14,7 @@ import com.resline.cubanacan.ui.fragments.HotelesListFragment;
 /**
  * Created by Juan Alejandro on 13/04/2016.
  */
-public class HotelesListActivity extends BaseActivity {
+public class HotelesListActivity extends BaseActivity implements View.OnClickListener {
 
     enum Filter{PRICE_FILTER, NAME_FILTER, CATEGORY_FILTER};
     Filter filter = Filter.PRICE_FILTER;
@@ -26,13 +26,16 @@ public class HotelesListActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         btnCategory = (Button)findViewById(R.id.btnCategory);
-        btnCategory.setOnClickListener(new OnCategoryFilterClick());
+        btnCategory.setOnClickListener(this);
 
         btnName = (Button)findViewById(R.id.btnName);
-        btnName.setOnClickListener(new OnNameFilterClick());
+        btnName.setOnClickListener(this);
 
         btnPrice = (Button)findViewById(R.id.btnPrice);
-        btnPrice.setOnClickListener(new OnPriceFilterClick());
+        btnPrice.setOnClickListener(this);
+
+        btnPrice.setSelected(true);
+
 
         setToolBar();
 
@@ -75,6 +78,44 @@ public class HotelesListActivity extends BaseActivity {
 
     private void setFilterList(Filter newFilter){
         filter = newFilter;
+    }
+
+    @Override
+    public void onClick(View v) {
+        Fragment fragment = new Fragment();
+        Bundle bundle = new Bundle();
+        // your arguments here
+        bundle.putBoolean("my_boolean", true);
+        bundle.putInt("my_int", 0);
+        fragment.setArguments(bundle);
+        switch (v.getId()) {
+            case R.id.btnPrice:
+                if (!btnPrice.isSelected())
+                    btnPrice.setSelected(true);
+
+                btnName.setSelected(false);
+                btnCategory.setSelected(false);
+                break;
+            case R.id.btnName:
+                // cambias el bundle aqui en dependencia del caso
+                if (!btnName.isSelected())
+                    btnName.setSelected(true);
+
+                btnPrice.setSelected(false);
+                btnCategory.setSelected(false);
+                break;
+            case R.id.btnCategory:
+                // cambias el bundle aqui en dependencia del caso
+                if (!btnCategory.isSelected())
+                    btnCategory.setSelected(true);
+
+                btnName.setSelected(false);
+                btnPrice.setSelected(false);
+                break;
+        }
+
+
+        fragmentTransaction(fragment);
     }
 
     private void sendFragmentTransaction(){

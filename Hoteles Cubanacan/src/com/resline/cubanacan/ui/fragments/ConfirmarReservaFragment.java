@@ -8,8 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.resline.cubanacan.R;
+import com.resline.cubanacan.src.controllers.AppController;
+import com.resline.cubanacan.src.ws.WSClass.Hotel.HotelFullDetails;
+import com.resline.cubanacan.src.ws.WSClass.Image.Image;
 import com.resline.cubanacan.ui.activities.TitularActivity;
 import com.resline.cubanacan.ui.fragments.api.BaseFragment;
+import com.squareup.picasso.Picasso;
 import org.w3c.dom.Text;
 
 /**
@@ -18,9 +22,11 @@ import org.w3c.dom.Text;
 public class ConfirmarReservaFragment extends BaseFragment implements View.OnClickListener {
     private View mViewInfoFragment;
 
-    private TextView tvNombreHotel;
+    private ImageView[] ivStarts;
 
-    private RatingBar rbCategoria;
+    private ImageView hotelImage;
+
+    private TextView tvNombreHotel;
 
     private TextView tvSubtitulo;
 
@@ -38,6 +44,8 @@ public class ConfirmarReservaFragment extends BaseFragment implements View.OnCli
 
     private Button btnSiguiente;
 
+    private Long hotelId;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -49,15 +57,19 @@ public class ConfirmarReservaFragment extends BaseFragment implements View.OnCli
     }
 
     private void loadViewComponents() {
+
+        //Categoria
+        ivStarts = new ImageView[5];
+        ivStarts[0] = (ImageView)mViewInfoFragment.findViewById(R.id.start1);
+        ivStarts[1] = (ImageView)mViewInfoFragment.findViewById(R.id.start2);
+        ivStarts[2] = (ImageView)mViewInfoFragment.findViewById(R.id.start3);
+        ivStarts[3] = (ImageView)mViewInfoFragment.findViewById(R.id.start4);
+        ivStarts[4] = (ImageView)mViewInfoFragment.findViewById(R.id.start5);
+
+        hotelImage = (ImageView)mViewInfoFragment.findViewById(R.id.ivHotelImageRoomConfirm);
+
         // nombre del hotel
         tvNombreHotel = (TextView) mViewInfoFragment.findViewById(R.id.tvTitle);
-
-        // rating bar de la categoria
-        rbCategoria = (RatingBar) mViewInfoFragment.findViewById(R.id.rbCategory);
-
-        rbCategoria.setNumStars(5);
-
-        rbCategoria.setRating(3);
 
         // subtitulo
         tvSubtitulo = (TextView) mViewInfoFragment.findViewById(R.id.tvSubtitle);
@@ -87,6 +99,8 @@ public class ConfirmarReservaFragment extends BaseFragment implements View.OnCli
         btnSiguiente = (Button) mViewInfoFragment.findViewById(R.id.btnSiguiente);
 
         btnSiguiente.setOnClickListener(this);
+
+        loadHotelInfo();
     }
 
     @Override
@@ -95,6 +109,35 @@ public class ConfirmarReservaFragment extends BaseFragment implements View.OnCli
             case R.id.btnSiguiente:
                 startActivity(new Intent(mActivity, TitularActivity.class));
                 break;
+        }
+    }
+
+    private void loadHotelInfo(){
+        /*Bundle bundle = getActivity().getIntent().getExtras();
+        hotelId = bundle.getLong("hotelId");*/
+        hotelId = 5L;
+
+        HotelFullDetails hotel = AppController.getHotels().get(hotelId);
+
+        Image image = hotel.getImages().getImage().get(0);
+
+        Picasso.with(mActivity)
+                .load(image.getImageUrl())
+                .placeholder(R.drawable.loading)
+                .error(R.drawable.logo_fondo_blanco)
+                .into(hotelImage);
+
+        paintStars(hotel.getCategoryEnum().ordinal()+2);
+
+        tvNombreHotel.setText(hotel.getName());
+        tvSubtitulo.setText(String.format("Reservación para %d noche(s)", AppController.getSearchHotelCriteria().getNights()));
+
+    }
+
+    private void paintStars(int countStars){
+
+        for(int i=0; i<countStars; i++){
+            ivStarts[0].setVisibility(View.VISIBLE);
         }
     }
 }

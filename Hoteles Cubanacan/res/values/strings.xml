@@ -16,13 +16,13 @@
     <string name="adults">Adultos</string>
     <string name="more_options">Más opciones</string>
     <string name="search">Buscar</string>
-    <string name="precio">Precio</string>
-    <string name="nombre">Nombre</string>
-    <string name="categoria">Categoria</string>
 
     <string name="lorem_ipsum_short">Lorem ipsum</string>
     <string name="no_data">No hay datos disponibles</string>
     <string name="hoteles_title">Hoteles</string>
+    <string name="precio">Precio</string>
+    <string name="nombre">Nombre</string>
+    <string name="categoria">Categoría</string>
     <string name="details_title">Detalles</string>
     <string name="pick_room">Elegir habitación</string>
     <string name="to_pay">Total a pagar:</string>
@@ -45,4 +45,9 @@
     <string name="acepto_terms">Acepto los términos y condiciones</string>
     <string name="titular_title">Titular de la reserva</string>
     <string name="correo_hint">Correo</string>
+    <string name="lorem_one">1</string>
+    <string name="lorem_two">2</string>
+    <string name="confirm_reserva_title">Confirmar reserva</string>
+    <string name="lorem_hotel_nombre">Hotel Sevilla</string>
+    <string name="direccion_lorem">19 e/ 42 y 44 #4210</string>
 </resources>

@@ -18,12 +18,12 @@
                     android:contentDescription="@null"
                     android:scaleType="centerCrop"
                     android:layout_centerVertical="true"
-                    android:id="@+id/material_com_card_view_image"
+                    android:id="@+id/ivHotelImageRoomConfirm"
                     android:background="@android:color/white"/>
             <RelativeLayout
                     android:id="@+id/llCardViewTexts"
-                    android:layout_toRightOf="@id/material_com_card_view_image"
-                    android:layout_toEndOf="@id/material_com_card_view_image"
+                    android:layout_toRightOf="@id/ivHotelImageRoomConfirm"
+                    android:layout_toEndOf="@id/ivHotelImageRoomConfirm"
                     android:layout_centerInParent="true"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
@@ -39,19 +39,46 @@
                         android:paddingBottom="@dimen/card_title_text_padding_bottom"
                         android:textSize="@dimen/title_size"
                         android:textColor="@color/black_button"/>
-                <RatingBar
-                        android:id="@+id/rbCategory"
+                <android.support.v7.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_below="@id/tvTitle"
-                        android:paddingLeft="@dimen/card_title_text_padding"
-                        android:paddingStart="@dimen/card_title_text_padding"
-                        android:paddingRight="@dimen/card_title_text_padding"
-                        android:paddingEnd="@dimen/card_title_text_padding"
-                        android:numStars="5"
-                        android:stepSize="1"
-                        android:rating="5"
-                        android:isIndicator="true"/>
+                        android:layout_height="match_parent"
+                        android:id="@+id/llCategory">
+
+                    <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:id="@+id/start1"
+                            android:src="@drawable/star_red"
+                            android:visibility="invisible"/>
+                    <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:id="@+id/start2"
+                            android:src="@drawable/star_red"
+                            android:visibility="invisible"/>
+
+                    <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:id="@+id/start3"
+                            android:src="@drawable/star_red"
+                            android:visibility="invisible"/>
+
+                    <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:id="@+id/start4"
+                            android:src="@drawable/star_red"
+                            android:visibility="invisible"/>
+
+                    <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:id="@+id/start5"
+                            android:src="@drawable/star_red"
+                            android:visibility="invisible"/>
+
+                </android.support.v7.widget.LinearLayoutCompat>
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -62,7 +89,7 @@
                         android:paddingLeft="@dimen/card_title_text_padding"
                         android:paddingBottom="@dimen/big_padding"
                         android:paddingRight="@dimen/big_padding"
-                        android:layout_below="@id/rbCategory"
+                        android:layout_below="@id/llCategory"
                         android:singleLine="true"/>
             </RelativeLayout>
         </RelativeLayout>
