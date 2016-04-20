@@ -252,47 +252,51 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
             // default room
             case R.id.btnLessAd:
                 break;
-            case R.id.btnLessNin:
-                break;
             case R.id.btnPlusAd:
                 break;
+            // kids
             case R.id.btnPlusNin:
+                break;
+            case R.id.btnLessNin:
                 break;
             // second room
             case R.id.btnLessAdTwo:
                 break;
-            case R.id.btnLessNinTwo:
-                break;
             case R.id.btnPlusAdTwo:
                 break;
+            // kids
             case R.id.btnPlusNinTwo:
+                break;
+            case R.id.btnLessNinTwo:
                 break;
             // third room
             case R.id.btnLessAdThree:
                 break;
-            case R.id.btnLessNinThree:
-                break;
             case R.id.btnPlusAdThree:
                 break;
+            // kids
             case R.id.btnPlusNinThree:
+                break;
+            case R.id.btnLessNinThree:
                 break;
             // fourth room
             case R.id.btnLessAdFour:
                 break;
-            case R.id.btnLessNinFour:
-                break;
             case R.id.btnPlusAdFour:
                 break;
+            // kids
             case R.id.btnPlusNinFour:
+                break;
+            case R.id.btnLessNinFour:
                 break;
             // fifth room
             case R.id.btnLessAdFive:
                 break;
-            case R.id.btnLessNinFive:
-                break;
             case R.id.btnPlusAdFive:
                 break;
             case R.id.btnPlusNinFive:
+                break;
+            case R.id.btnLessNinFive:
                 break;
             case R.id.btnBuscar:
                 startActivity(new Intent(mActivity, HotelesListActivity.class));
