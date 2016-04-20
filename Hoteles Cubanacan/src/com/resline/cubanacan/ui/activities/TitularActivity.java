@@ -8,6 +8,7 @@ import android.view.View;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.activities.api.BaseActivity;
 import com.resline.cubanacan.ui.fragments.ConfirmarReservaFragment;
+import com.resline.cubanacan.ui.fragments.TitularFragment;
 
 /**
  * Created by Juan Alejandro on 18/04/2016.
@@ -18,7 +19,7 @@ public class TitularActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setToolbar();
-        fragmentTransaction(new ConfirmarReservaFragment());
+        fragmentTransaction(new TitularFragment());
     }
 
 
