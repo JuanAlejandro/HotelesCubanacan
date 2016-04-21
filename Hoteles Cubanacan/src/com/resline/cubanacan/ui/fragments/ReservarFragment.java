@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,17 +49,93 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
     private DatePickerDialog dpdCheckIn, dpdCheckOut;
 
+    // card views
+    private CardView defaultRoom;
+    private CardView secondRoom;
+    private CardView thirdRoom;
+    private CardView fourthRoom;
+    private CardView fifthRoom;
+
+    // todo: optimizar esto (hacerlo de forma dinámica)
+    // default
     private Button btnLessHab, btnPlusHab;
-
     private Button btnLessAdults, btnPlusAdults;
-
     private Button btnLessChild, btnPlusChild;
-
+    private Button btnLessNinAgeOne, btnLessNinAgeTwo, btnLessNinAgeThree;
+    private Button btnPlusNinAgeOne, btnPlusNinAgeTwo, btnPlusNinAgeThree;
     private TextView tvHabs, tvAdults, tvChild;
+    private TextView tvCantNinAgeOne, tvCantNinAgeTwo, tvCantNinAgeThree;
+
+    // 2
+    private Button btnLessHabTwo, btnPlusHabTwo;
+    private Button btnLessAdultsTwo, btnPlusAdultsTwo;
+    private Button btnLessChildTwo, btnPlusChildTwo;
+    private Button btnLessNinAgeOneTwo, btnLessNinAgeTwoTwo, btnLessNinAgeThreeTwo;
+    private Button btnPlusNinAgeOneTwo, btnPlusNinAgeTwoTwo, btnPlusNinAgeThreeTwo;
+    private TextView tvHabsTwo, tvAdultsTwo, tvChildTwo, tvAgeChildTwo;
+    private TextView tvCantNinAgeOneTwo, tvCantNinAgeTwoTwo, tvCantNinAgeThreeTwo;
+
+    // 3
+    private Button btnLessHabThree, btnPlusHabThree;
+    private Button btnLessAdultsThree, btnPlusAdultsThree;
+    private Button btnLessChildThree, btnPlusChildThree;
+    private Button btnLessNinAgeOneThree, btnLessNinAgeTwoThree, btnLessNinAgeThreeThree;
+    private Button btnPlusNinAgeOneThree, btnPlusNinAgeTwoThree, btnPlusNinAgeThreeThree;
+    private TextView tvHabsThree, tvAdultsThree, tvChildThree, tvAgeChildThree;
+    private TextView tvCantNinAgeOneThree, tvCantNinAgeTwoThree, tvCantNinAgeThreeThree;
+
+    // 4
+    private Button btnLessHabFour, btnPlusHabFour;
+    private Button btnLessAdultsFour, btnPlusAdultsFour;
+    private Button btnLessChildFour, btnPlusChildFour;
+    private Button btnLessNinAgeOneFour, btnLessNinAgeTwoFour, btnLessNinAgeThreeFour;
+    private Button btnPlusNinAgeOneFour, btnPlusNinAgeTwoFour, btnPlusNinAgeThreeFour;
+    private TextView tvHabsFour, tvAdultsFour, tvChildFour, tvAgeChildFour;
+    private TextView tvCantNinAgeOneFour, tvCantNinAgeTwoFour, tvCantNinAgeThreeFour;
+
+    // 5
+    private Button btnLessHabFive, btnPlusHabFive;
+    private Button btnLessAdultsFive, btnPlusAdultsFive;
+    private Button btnLessChildFive, btnPlusChildFive;
+    private Button btnLessNinAgeOneFive, btnLessNinAgeTwoFive, btnLessNinAgeThreeFive;
+    private Button btnPlusNinAgeOneFive, btnPlusNinAgeTwoFive, btnPlusNinAgeThreeFive;
+    private TextView tvHabsFive, tvAdultsFive, tvChildFive, tvAgeChildFive;
+    private TextView tvCantNinAgeOneFive, tvCantNinAgeTwoFive, tvCantNinAgeThreeFive;
+
+    // linear layouts with kids age
+    // default
+    private RelativeLayout llKidAgeFirstDefault;
+    private RelativeLayout llKidAgeSecondDefault;
+    private RelativeLayout llKidAgeThirdDefault;
+    // two
+    private RelativeLayout llKidAgeFirstTwo;
+    private RelativeLayout llKidAgeSecondTwo;
+    private RelativeLayout llKidAgeThirdTwo;
+    // three
+    private RelativeLayout llKidAgeFirstThree;
+    private RelativeLayout llKidAgeSecondThree;
+    private RelativeLayout llKidAgeThirdThree;
+    // four
+    private RelativeLayout llKidAgeFirstFour;
+    private RelativeLayout llKidAgeSecondFour;
+    private RelativeLayout llKidAgeThirdFour;
+    // five
+    private RelativeLayout llKidAgeFirstFive;
+    private RelativeLayout llKidAgeSecondFive;
+    private RelativeLayout llKidAgeThirdFive;
 
     private Button btnMasOpciones;
-
     private Button btnBuscar;
+
+    private int conteoHab = 1;
+
+    private int maxRoomsCount = 5;
+    private int maxChildrenCount = 3;
+
+    //Arreglos de Contadores para que me sea mas comodo a la hora de leer sus valores
+    int[] countAdults = new int[maxRoomsCount];
+    int[] countChildren = new int[maxRoomsCount];
+    int[][] childrenAges = new int[maxRoomsCount][maxChildrenCount];
 
     private ArrayList<String> locationsList, hotelsList;
     private ArrayList<Long> locationsIdList;
@@ -106,39 +183,22 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
         setSalida.setOnClickListener(this);
 
+        // card views
+        initializeCardViews();
+
         // buttons to select quantity
+        // default people card or form
+        initializeDefaultPeopleForm();
 
-        btnLessAdults = (Button) mViewInfoFragment.findViewById(R.id.btnLessAd);
+        initializeSecondPeopleForm();
 
-        btnLessChild = (Button) mViewInfoFragment.findViewById(R.id.btnLessNin);
+        initializeThirdPeopleForm();
 
-        btnLessHab = (Button) mViewInfoFragment.findViewById(R.id.btnLessHab);
+        initializeFourthPeopleForm();
 
-        btnPlusAdults = (Button) mViewInfoFragment.findViewById(R.id.btnPlusAd);
+        initializeFifthPeopleForm();
 
-        btnPlusChild = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNin);
-
-        btnPlusHab = (Button) mViewInfoFragment.findViewById(R.id.btnPlusHab);
-
-        btnLessAdults.setOnClickListener(this);
-
-        btnLessHab.setOnClickListener(this);
-
-        btnLessChild.setOnClickListener(this);
-
-        btnPlusAdults.setOnClickListener(this);
-
-        btnPlusHab.setOnClickListener(this);
-
-        btnPlusChild.setOnClickListener(this);
-
-        // text views of quantity of adults, rooms, and children
-
-        tvAdults = (TextView) mViewInfoFragment.findViewById(R.id.tvAdultos);
-
-        tvChild = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNin);
-
-        tvHabs = (TextView) mViewInfoFragment.findViewById(R.id.tvCantHab);
+        initializeLinearLayoutKidsAge();
 
         // final buttons
 
@@ -149,6 +209,219 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
         btnBuscar.setOnClickListener(this);
 
         btnMasOpciones.setOnClickListener(this);
+
+        for(int i=0; i<maxRoomsCount; i++){
+            countAdults[i] = 1;
+            countChildren[i] = 0;
+            for (int j=0; j<maxChildrenCount; j++){
+                childrenAges[i][j] = 0;
+            }
+        }
+    }
+
+    private void initializeLinearLayoutKidsAge() {
+        // default
+        llKidAgeFirstDefault = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeOne);
+        llKidAgeSecondDefault = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeTwo);
+        llKidAgeThirdDefault = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeThree);
+        // two
+        llKidAgeFirstTwo = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeOneTwo);
+        llKidAgeSecondTwo = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeTwoTwo);
+        llKidAgeThirdTwo = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeThreeTwo);
+        // three
+        llKidAgeFirstThree = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeOneThree);
+        llKidAgeSecondThree = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeTwoThree);
+        llKidAgeThirdThree = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeThreeThree);
+        // four
+        llKidAgeFirstFour = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeOneFour);
+        llKidAgeSecondFour = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeTwoFour);
+        llKidAgeThirdFour = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeThreeFour);
+        // five
+        llKidAgeFirstFive = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeOneFive);
+        llKidAgeSecondFive = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeTwoFive);
+        llKidAgeThirdFive = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeThreeFive);
+    }
+
+    private void initializeCardViews() {
+        defaultRoom = (CardView) mViewInfoFragment.findViewById(R.id.cvPeople);
+        secondRoom = (CardView) mViewInfoFragment.findViewById(R.id.cvPeopleTwo);
+        thirdRoom = (CardView) mViewInfoFragment.findViewById(R.id.cvPeopleThree);
+        fourthRoom = (CardView) mViewInfoFragment.findViewById(R.id.cvPeopleFour);
+        fifthRoom = (CardView) mViewInfoFragment.findViewById(R.id.cvPeopleFive);
+    }
+
+    private void initializeDefaultPeopleForm() {
+        // room
+        btnLessHab = (Button) mViewInfoFragment.findViewById(R.id.btnLessHab);
+        btnPlusHab = (Button) mViewInfoFragment.findViewById(R.id.btnPlusHab);
+        // plus and less room
+        btnLessHab.setOnClickListener(this);
+        btnPlusHab.setOnClickListener(this);
+        // to show how many habs are selected
+        tvHabs = (TextView) mViewInfoFragment.findViewById(R.id.tvCantHab);
+        // to select quantity for each person
+        btnLessAdults = (Button) mViewInfoFragment.findViewById(R.id.btnLessAd);
+        btnLessChild = (Button) mViewInfoFragment.findViewById(R.id.btnLessNin);
+        btnLessNinAgeOne = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinAgeOne);
+        btnLessNinAgeTwo = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinAgeTwo);
+        btnLessNinAgeThree = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinAgeThree);
+        btnPlusAdults = (Button) mViewInfoFragment.findViewById(R.id.btnPlusAd);
+        btnPlusChild = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNin);
+        btnPlusNinAgeOne = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinAgeOne);
+        btnPlusNinAgeTwo = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinAgeTwo);
+        btnPlusNinAgeThree = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinAgeThree);
+
+        // onClickListener
+        btnLessAdults.setOnClickListener(this);
+        btnLessChild.setOnClickListener(this);
+        btnLessNinAgeOne.setOnClickListener(this);
+        btnLessNinAgeTwo.setOnClickListener(this);
+        btnLessNinAgeThree.setOnClickListener(this);
+        btnPlusAdults.setOnClickListener(this);
+        btnPlusChild.setOnClickListener(this);
+        btnPlusNinAgeOne.setOnClickListener(this);
+        btnPlusNinAgeTwo.setOnClickListener(this);
+        btnPlusNinAgeThree.setOnClickListener(this);
+        // text views of quantity of adults, rooms, and children
+        tvAdults = (TextView) mViewInfoFragment.findViewById(R.id.tvCantAd);
+        tvChild = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNin);
+        tvCantNinAgeOne = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinAgeOne);
+        tvCantNinAgeTwo = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinAgeTwo);
+        tvCantNinAgeThree = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinAgeThree);
+    }
+
+    private void initializeSecondPeopleForm() {
+        btnLessAdultsTwo = (Button) mViewInfoFragment.findViewById(R.id.btnLessAdTwo);
+        btnLessChildTwo = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinTwo);
+        btnPlusAdultsTwo = (Button) mViewInfoFragment.findViewById(R.id.btnPlusAdTwo);
+        btnPlusChildTwo = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinTwo);
+        // onClickListener
+        btnLessAdultsTwo.setOnClickListener(this);
+        btnLessChildTwo.setOnClickListener(this);
+        btnLessNinAgeOneTwo = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinAgeOneTwo);
+        btnLessNinAgeTwoTwo = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinAgeTwoTwo);
+        btnLessNinAgeThreeTwo = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinAgeThreeTwo);
+        btnPlusNinAgeOneTwo = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinAgeOneTwo);
+        btnPlusNinAgeTwoTwo = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinAgeTwoTwo);
+        btnPlusNinAgeThreeTwo = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinAgeThreeTwo);
+        btnPlusAdultsTwo.setOnClickListener(this);
+        btnPlusChildTwo.setOnClickListener(this);
+        // text views of quantity of adults, rooms, and children
+        tvAdultsTwo = (TextView) mViewInfoFragment.findViewById(R.id.tvCantAdTwo);
+        tvChildTwo = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinTwo);
+
+        btnLessNinAgeOneTwo.setOnClickListener(this);
+        btnLessNinAgeTwoTwo.setOnClickListener(this);
+        btnLessNinAgeThreeTwo.setOnClickListener(this);
+        btnPlusNinAgeOneTwo.setOnClickListener(this);
+        btnPlusNinAgeTwoTwo.setOnClickListener(this);
+        btnPlusNinAgeThreeTwo.setOnClickListener(this);
+
+        tvCantNinAgeOneTwo = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinAgeOneTwo);
+        tvCantNinAgeTwoTwo = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinAgeTwoTwo);
+        tvCantNinAgeThreeTwo = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinAgeThreeTwo);
+    }
+
+    private void initializeThirdPeopleForm() {
+        // to select quantity for each person
+        btnLessAdultsThree = (Button) mViewInfoFragment.findViewById(R.id.btnLessAdThree);
+        btnLessChildThree = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinThree);
+        btnPlusAdultsThree = (Button) mViewInfoFragment.findViewById(R.id.btnPlusAdThree);
+        btnPlusChildThree = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinThree);
+        // onClickListener
+        btnLessAdultsThree.setOnClickListener(this);
+        btnLessChildThree.setOnClickListener(this);
+        btnPlusAdultsThree.setOnClickListener(this);
+        btnPlusChildThree.setOnClickListener(this);
+        // text views of quantity of adults, rooms, and children
+        tvAdultsThree = (TextView) mViewInfoFragment.findViewById(R.id.tvCantAdThree);
+        tvChildThree = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinThree);
+
+        btnLessNinAgeOneThree = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinAgeOneThree);
+        btnLessNinAgeTwoThree = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinAgeTwoThree);
+        btnLessNinAgeThreeThree = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinAgeThreeThree);
+        btnPlusNinAgeOneThree = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinAgeOneThree);
+        btnPlusNinAgeTwoThree = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinAgeTwoThree);
+        btnPlusNinAgeThreeThree = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinAgeThreeThree);
+
+        btnLessNinAgeOneThree .setOnClickListener(this);
+        btnLessNinAgeTwoThree .setOnClickListener(this);
+        btnLessNinAgeThreeThree .setOnClickListener(this);
+        btnPlusNinAgeOneThree .setOnClickListener(this);
+        btnPlusNinAgeTwoThree .setOnClickListener(this);
+        btnPlusNinAgeThreeThree .setOnClickListener(this);
+
+        tvCantNinAgeOneThree = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinAgeOneThree);
+        tvCantNinAgeTwoThree = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinAgeTwoThree);
+        tvCantNinAgeThreeThree = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinAgeThreeThree);
+    }
+
+    private void initializeFourthPeopleForm() {
+        // to select quantity for each person
+        btnLessAdultsFour = (Button) mViewInfoFragment.findViewById(R.id.btnLessAdFour);
+        btnLessChildFour = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinFour);
+        btnPlusAdultsFour = (Button) mViewInfoFragment.findViewById(R.id.btnPlusAdFour);
+        btnPlusChildFour = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinFour);
+        // onClickListener
+        btnLessAdultsFour.setOnClickListener(this);
+        btnLessChildFour.setOnClickListener(this);
+        btnPlusAdultsFour.setOnClickListener(this);
+        btnPlusChildFour.setOnClickListener(this);
+        // text views of quantity of adults, rooms, and children
+        tvAdultsFour = (TextView) mViewInfoFragment.findViewById(R.id.tvCantAdFour);
+        tvChildFour = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinFour);
+
+        btnLessNinAgeOneFour = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinAgeOneFour);
+        btnLessNinAgeTwoFour = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinAgeTwoFour);
+        btnLessNinAgeThreeFour = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinAgeThreeFour);
+        btnPlusNinAgeOneFour = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinAgeOneFour);
+        btnPlusNinAgeTwoFour = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinAgeTwoFour);
+        btnPlusNinAgeThreeFour = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinAgeThreeFour);
+
+        btnLessNinAgeOneFour .setOnClickListener(this);
+        btnLessNinAgeTwoFour .setOnClickListener(this);
+        btnLessNinAgeThreeFour .setOnClickListener(this);
+        btnPlusNinAgeOneFour .setOnClickListener(this);
+        btnPlusNinAgeTwoFour .setOnClickListener(this);
+        btnPlusNinAgeThreeFour .setOnClickListener(this);
+
+        tvCantNinAgeOneFour = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinAgeOneFour);
+        tvCantNinAgeTwoFour = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinAgeTwoFour);
+        tvCantNinAgeThreeFour = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinAgeThreeFour);
+    }
+
+    private void initializeFifthPeopleForm() {
+        // to select quantity for each person
+        btnLessAdultsFive = (Button) mViewInfoFragment.findViewById(R.id.btnLessAdFive);
+        btnLessChildFive = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinFive);
+        btnPlusAdultsFive = (Button) mViewInfoFragment.findViewById(R.id.btnPlusAdFive);
+        btnPlusChildFive = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinFive);
+        // onClickListener
+        btnLessAdultsFive.setOnClickListener(this);
+        btnLessChildFive.setOnClickListener(this);
+        btnPlusAdultsFive.setOnClickListener(this);
+        btnPlusChildFive.setOnClickListener(this);
+        // text views of quantity of adults, rooms, and children
+        tvAdultsFive = (TextView) mViewInfoFragment.findViewById(R.id.tvCantAdFive);
+        tvChildFive = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinFive);
+
+        btnLessNinAgeOneFive = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinAgeOneFive);
+        btnLessNinAgeTwoFive = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinAgeTwoFive);
+        btnLessNinAgeThreeFive = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinAgeThreeFive);
+        btnPlusNinAgeOneFive = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinAgeOneFive);
+        btnPlusNinAgeTwoFive = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinAgeTwoFive);
+        btnPlusNinAgeThreeFive = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinAgeThreeFive);
+
+        btnLessNinAgeOneFive .setOnClickListener(this);
+        btnLessNinAgeTwoFive .setOnClickListener(this);
+        btnLessNinAgeThreeFive .setOnClickListener(this);
+        btnPlusNinAgeOneFive .setOnClickListener(this);
+        btnPlusNinAgeTwoFive .setOnClickListener(this);
+        btnPlusNinAgeThreeFive .setOnClickListener(this);
+
+        tvCantNinAgeOneFive = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinAgeOneFive);
+        tvCantNinAgeTwoFive = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinAgeTwoFive);
+        tvCantNinAgeThreeFive = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinAgeThreeFive);
     }
 
     private void loadSpinners(){
@@ -195,31 +468,725 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btnSetEntrada:
                 showDatePicker(dpdCheckIn);
                 break;
             case R.id.btnSetSalida:
+                // todo: when show date picker out set min date as the start date
                 showDatePicker(dpdCheckOut);
                 break;
-            case R.id.btnLessAd:
-                break;
+            // rooms
             case R.id.btnLessHab:
-                break;
-            case R.id.btnLessNin:
-                break;
-            case R.id.btnPlusAd:
+                if (conteoHab > 1) {
+                    conteoHab--;
+                    hideRooms(conteoHab);
+                } else {
+                    Toast.makeText(mActivity, R.string.must_reservar_msg, Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.btnPlusHab:
+                if (conteoHab < 5) {
+                    conteoHab++;
+                    showRoom(conteoHab);
+                } else {
+                    Toast.makeText(mActivity, R.string.only_reservar_msg, Toast.LENGTH_SHORT).show();
+                }
                 break;
+            // default room
+            case R.id.btnLessAd:
+                if (countAdults[0] > 1) {
+                    countAdults[0]--;
+                    updateAdDefault();
+                }
+                break;
+            case R.id.btnPlusAd:
+                if (countAdults[0] < 3) {
+                    countAdults[0]++;
+                    updateAdDefault();
+                }
+                break;
+            // kids
             case R.id.btnPlusNin:
+                if (countChildren[0] < 3) {
+                    countChildren[0]++;
+                    showKidDefault(countChildren[0]);
+                } else {
+                    // do something
+                }
                 break;
+            case R.id.btnLessNin:
+                if (countChildren[0] > 0) {
+                    countChildren[0]--;
+                    hideKidDefault(countChildren[0]);
+                } else {
+                    // do something
+                }
+                break;
+            //kids age
+            case R.id.btnLessNinAgeOne:
+                if (childrenAges[0][0] > 0) {
+                    childrenAges[0][0]--;
+                    showChildAgeOne();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnPlusNinAgeOne:
+                if (childrenAges[0][0] < 12) {
+                    childrenAges[0][0]++;
+                    showChildAgeOne();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnLessNinAgeTwo:
+                if (childrenAges[0][1] > 0) {
+                    childrenAges[0][1]--;
+                    showChildAgeTwo();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnPlusNinAgeTwo:
+                if (childrenAges[0][1] < 12) {
+                    childrenAges[0][1]++;
+                    showChildAgeTwo();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnLessNinAgeThree:
+                if (childrenAges[0][2] > 0) {
+                    childrenAges[0][2]--;
+                    showChildAgeThree();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnPlusNinAgeThree:
+                if (childrenAges[0][2] < 12) {
+                    childrenAges[0][2]++;
+                    showChildAgeThree();
+                } else {
+                    // do something
+                }
+                break;
+            // second room
+            case R.id.btnLessAdTwo:
+                if (countAdults[1] > 1) {
+                    countAdults[1]--;
+                    updateAdTwo();
+                }
+                break;
+            case R.id.btnPlusAdTwo:
+                if (countAdults[1] < 3) {
+                    countAdults[1]++;
+                    updateAdTwo();
+                }
+                break;
+            // kids
+            case R.id.btnPlusNinTwo:
+                if (countChildren[1] < 3) {
+                    countChildren[1]++;
+                    showKidTwo(countChildren[1]);
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnLessNinTwo:
+                if (countChildren[1] > 0) {
+                    countChildren[1]--;
+                    hideKidTwo(countChildren[1]);
+                } else {
+                    // do something
+                }
+                break;
+            //kids age
+            case R.id.btnLessNinAgeOneTwo:
+                if (childrenAges[1][0] > 0) {
+                    childrenAges[1][0]--;
+                    showChildAgeOneTwo();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnPlusNinAgeOneTwo:
+                if (childrenAges[1][0] < 12) {
+                    childrenAges[1][0]++;
+                    showChildAgeOneTwo();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnLessNinAgeTwoTwo:
+                if (childrenAges[1][1] > 0) {
+                    childrenAges[1][1]--;
+                    showChildAgeTwoTwo();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnPlusNinAgeTwoTwo:
+                if (childrenAges[1][1] < 12) {
+                    childrenAges[1][1]++;
+                    showChildAgeTwoTwo();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnLessNinAgeThreeTwo:
+                if (childrenAges[1][2] > 0) {
+                    childrenAges[1][2]--;
+                    showChildAgeThreeTwo();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnPlusNinAgeThreeTwo:
+                if (childrenAges[1][2] < 12) {
+                    childrenAges[1][2]++;
+                    showChildAgeThreeTwo();
+                } else {
+                    // do something
+                }
+                break;
+            // third room
+            case R.id.btnLessAdThree:
+                if (countAdults[2] > 1) {
+                    countAdults[2]--;
+                    updateAdThree();
+                }
+                break;
+            case R.id.btnPlusAdThree:
+                if (countAdults[2] < 3) {
+                    countAdults[2]++;
+                    updateAdThree();
+                }
+                break;
+            // kids
+            case R.id.btnPlusNinThree:
+                if (countChildren[2] < 3) {
+                    countChildren[2]++;
+                    showKidThree(countChildren[2]);
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnLessNinThree:
+                if (countChildren[2] > 0) {
+                    countChildren[2]--;
+                    hideKidThree(countChildren[2]);
+                } else {
+                    // do something
+                }
+                break;
+            //kids age
+            case R.id.btnLessNinAgeOneThree:
+                if (childrenAges[2][0] > 0) {
+                    childrenAges[2][0]--;
+                    showChildAgeOneThree();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnPlusNinAgeOneThree:
+                if (childrenAges[2][0] < 12) {
+                    childrenAges[2][0]++;
+                    showChildAgeOneThree();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnLessNinAgeTwoThree:
+                if (childrenAges[2][1] > 0) {
+                    childrenAges[2][1]--;
+                    showChildAgeTwoThree();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnPlusNinAgeTwoThree:
+                if (childrenAges[2][1] < 3) {
+                    childrenAges[2][1]++;
+                    showChildAgeTwoThree();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnLessNinAgeThreeThree:
+                if (childrenAges[2][2] > 0) {
+                    childrenAges[2][2]--;
+                    showChildAgeThreeThree();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnPlusNinAgeThreeThree:
+                if (childrenAges[2][2] < 12) {
+                    childrenAges[2][2]++;
+                    showChildAgeThreeThree();
+                } else {
+                    // do something
+                }
+                break;
+            // fourth room
+            case R.id.btnLessAdFour:
+                if (countAdults[3] > 1) {
+                    countAdults[3]--;
+                    updateAdFour();
+                }
+                break;
+            case R.id.btnPlusAdFour:
+                if (countAdults[3] < 3) {
+                    countAdults[3]++;
+                    updateAdFour();
+                }
+                break;
+            // kids
+            case R.id.btnPlusNinFour:
+                if (countChildren[3] < 3) {
+                    countChildren[3]++;
+                    showKidFour(countChildren[3]);
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnLessNinFour:
+                if (countChildren[3] > 0) {
+                    countChildren[3]--;
+                    hideKidFour(countChildren[3]);
+                } else {
+                    // do something
+                }
+                break;
+            //kids age
+            case R.id.btnLessNinAgeOneFour:
+                if (childrenAges[3][0] > 0) {
+                    childrenAges[3][0]--;
+                    showChildAgeOneFour();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnPlusNinAgeOneFour:
+                if (childrenAges[3][0] < 12) {
+                    childrenAges[3][0]++;
+                    showChildAgeOneFour();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnLessNinAgeTwoFour:
+                if (childrenAges[3][1] > 0) {
+                    childrenAges[3][1]--;
+                    showChildAgeTwoFour();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnPlusNinAgeTwoFour:
+                if (childrenAges[3][1] < 12) {
+                    childrenAges[3][1]++;
+                    showChildAgeTwoFour();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnLessNinAgeThreeFour:
+                if (childrenAges[3][2] > 0) {
+                    childrenAges[3][2]--;
+                    showChildAgeThreeFour();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnPlusNinAgeThreeFour:
+                if (childrenAges[3][2] < 12) {
+                    childrenAges[3][2]++;
+                    showChildAgeThreeFour();
+                } else {
+                    // do something
+                }
+                break;
+            // fifth room
+            case R.id.btnLessAdFive:
+                if (countAdults[4] > 1) {
+                    countAdults[4]--;
+                    updateAdFive();
+                }
+                break;
+            case R.id.btnPlusAdFive:
+                if (countAdults[4] < 3) {
+                    countAdults[4]++;
+                    updateAdFive();
+                }
+                break;
+            case R.id.btnPlusNinFive:
+                if (countChildren[4] < 3) {
+                    countChildren[4]++;
+                    showKidFive(countChildren[4]);
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnLessNinFive:
+                if (countChildren[4] > 0) {
+                    countChildren[4]--;
+                    hideKidFive(countChildren[4]);
+                } else {
+                    // do something
+                }
+                break;
+            //kids age
+            case R.id.btnLessNinAgeOneFive:
+                if (childrenAges[4][0] > 0) {
+                    childrenAges[4][0]--;
+                    showChildAgeOneFive();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnPlusNinAgeOneFive:
+                if (childrenAges[4][0] < 12) {
+                    childrenAges[4][0]++;
+                    showChildAgeOneFive();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnLessNinAgeTwoFive:
+                if (childrenAges[4][1] > 0) {
+                    childrenAges[4][1]--;
+                    showChildAgeTwoFive();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnPlusNinAgeTwoFive:
+                if (childrenAges[4][1] < 12) {
+                    childrenAges[4][1]++;
+                    showChildAgeTwoFive();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnLessNinAgeThreeFive:
+                if (childrenAges[4][2] > 0) {
+                    childrenAges[4][2]--;
+                    showChildAgeThreeFive();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnPlusNinAgeThreeFive:
+                if (childrenAges[4][2] < 12) {
+                    childrenAges[4][2]++;
+                    showChildAgeThreeFive();
+                } else {
+                    // do something
+                }
+                break;
+
             case R.id.btnBuscar:
                 search();
                 break;
             case R.id.btnOtrasOpciones:
                 break;
         }
+    }
+
+    private void hideKidDefault(int conteoKid) {
+        switch (conteoKid){
+            case 0:
+                llKidAgeFirstDefault.setVisibility(View.GONE);
+                tvChild.setText("0");
+                break;
+            case 1:
+                llKidAgeSecondDefault.setVisibility(View.GONE);
+                tvChild.setText("1");
+                break;
+            case 2:
+                llKidAgeThirdDefault.setVisibility(View.GONE);
+                tvChild.setText("2");
+                break;
+        }
+    }
+
+    private void hideKidTwo(int conteoKid) {
+        switch (conteoKid){
+            case 0:
+                llKidAgeFirstTwo.setVisibility(View.GONE);
+                tvChildTwo.setText("0");
+                break;
+            case 1:
+                llKidAgeSecondTwo.setVisibility(View.GONE);
+                tvChildTwo.setText("1");
+                break;
+            case 2:
+                llKidAgeThirdTwo.setVisibility(View.GONE);
+                tvChildTwo.setText("2");
+                break;
+        }
+    }
+
+    private void hideKidThree(int conteoKid) {
+        switch (conteoKid){
+            case 0:
+                llKidAgeFirstThree.setVisibility(View.GONE);
+                tvChildThree.setText("0");
+                break;
+            case 1:
+                llKidAgeSecondThree.setVisibility(View.GONE);
+                tvChildThree.setText("1");
+                break;
+            case 2:
+                llKidAgeThirdThree.setVisibility(View.GONE);
+                tvChildThree.setText("2");
+                break;
+        }
+    }
+
+    private void hideKidFour(int conteoKid) {
+        switch (conteoKid){
+            case 0:
+                llKidAgeFirstFour.setVisibility(View.GONE);
+                tvChildFour.setText("0");
+                break;
+            case 1:
+                llKidAgeSecondFour.setVisibility(View.GONE);
+                tvChildFour.setText("1");
+                break;
+            case 2:
+                llKidAgeThirdFour.setVisibility(View.GONE);
+                tvChildThree.setText("2");
+                break;
+        }
+    }
+
+    private void hideKidFive(int conteoKid) {
+        switch (conteoKid){
+            case 0:
+                llKidAgeFirstFive.setVisibility(View.GONE);
+                tvChildFive.setText("0");
+                break;
+            case 1:
+                llKidAgeSecondFive.setVisibility(View.GONE);
+                tvChildFive.setText("1");
+                break;
+            case 2:
+                llKidAgeThirdFive.setVisibility(View.GONE);
+                tvChildFive.setText("2");
+                break;
+        }
+    }
+
+    private void showKidDefault(int conteoKid) {
+        switch (conteoKid){
+            case 1:
+                llKidAgeFirstDefault.setVisibility(View.VISIBLE);
+                tvChild.setText("1");
+                break;
+            case 2:
+                llKidAgeSecondDefault.setVisibility(View.VISIBLE);
+                tvChild.setText("2");
+                break;
+            case 3:
+                llKidAgeThirdDefault.setVisibility(View.VISIBLE);
+                tvChild.setText("3");
+                break;
+        }
+    }
+
+    private void showKidTwo(int conteoKid) {
+        switch (conteoKid){
+            case 1:
+                llKidAgeFirstTwo.setVisibility(View.VISIBLE);
+                tvChildTwo.setText("1");
+                break;
+            case 2:
+                llKidAgeSecondTwo.setVisibility(View.VISIBLE);
+                tvChildTwo.setText("2");
+                break;
+            case 3:
+                llKidAgeThirdTwo.setVisibility(View.VISIBLE);
+                tvChildTwo.setText("3");
+                break;
+        }
+    }
+
+    private void showKidThree(int conteoKid) {
+        switch (conteoKid){
+            case 1:
+                llKidAgeFirstThree.setVisibility(View.VISIBLE);
+                tvChildThree.setText("1");
+                break;
+            case 2:
+                llKidAgeSecondThree.setVisibility(View.VISIBLE);
+                tvChildThree.setText("2");
+                break;
+            case 3:
+                llKidAgeThirdThree.setVisibility(View.VISIBLE);
+                tvChildThree.setText("3");
+                break;
+        }
+    }
+
+    private void showKidFour(int conteoKid) {
+        switch (conteoKid){
+            case 1:
+                llKidAgeFirstFour.setVisibility(View.VISIBLE);
+                tvChildFour.setText("1");
+                break;
+            case 2:
+                llKidAgeSecondFour.setVisibility(View.VISIBLE);
+                tvChildFour.setText("2");
+                break;
+            case 3:
+                llKidAgeThirdFour.setVisibility(View.VISIBLE);
+                tvChildFour.setText("3");
+                break;
+        }
+    }
+
+    private void showKidFive(int conteoKid) {
+        switch (conteoKid){
+            case 1:
+                llKidAgeFirstFive.setVisibility(View.VISIBLE);
+                tvChildFive.setText("1");
+                break;
+            case 2:
+                llKidAgeSecondFive.setVisibility(View.VISIBLE);
+                tvChildFive.setText("2");
+                break;
+            case 3:
+                llKidAgeThirdFive.setVisibility(View.VISIBLE);
+                tvChildFive.setText("3");
+                break;
+        }
+    }
+
+    private void showRoom(int conteoHab) {
+        switch (conteoHab) {
+            case 2:
+                secondRoom.setVisibility(View.VISIBLE);
+                tvHabs.setText("2");
+                break;
+            case 3:
+                thirdRoom.setVisibility(View.VISIBLE);
+                tvHabs.setText("3");
+                break;
+            case 4:
+                fourthRoom.setVisibility(View.VISIBLE);
+                tvHabs.setText("4");
+                break;
+            case 5:
+            default:
+                fifthRoom.setVisibility(View.VISIBLE);
+                tvHabs.setText("5");
+                break;
+        }
+    }
+
+    private void hideRooms(int conteoHab) {
+        switch (conteoHab) {
+            case 1:
+                secondRoom.setVisibility(View.GONE);
+                tvHabs.setText("1");
+                break;
+            case 2:
+                thirdRoom.setVisibility(View.GONE);
+                tvHabs.setText("2");
+                break;
+            case 3:
+                fourthRoom.setVisibility(View.GONE);
+                tvHabs.setText("3");
+                break;
+            case 4:
+            default:
+                fifthRoom.setVisibility(View.GONE);
+                tvHabs.setText("4");
+                break;
+        }
+    }
+    private  void updateAdDefault(){
+        tvAdults.setText(countAdults[0]+"");
+    }
+
+    private  void updateAdTwo(){
+        tvAdultsTwo.setText(countAdults[1]+"");
+    }
+
+    private  void updateAdThree(){
+        tvAdultsThree.setText(countAdults[2]+"");
+    }
+
+    private  void updateAdFour(){
+        tvAdultsFour.setText(countAdults[3]+"");
+    }
+
+    private void updateAdFive(){
+        tvAdultsFive.setText(countAdults[4]+"");
+    }
+
+    private void showChildAgeOne(){
+        tvCantNinAgeOne.setText(childrenAges[0][0]+"");
+    }
+
+    private void showChildAgeTwo(){
+        tvCantNinAgeTwo.setText(childrenAges[0][1]+"");
+    }
+
+    private void showChildAgeThree(){
+        tvCantNinAgeThree.setText(childrenAges[0][2]+"");
+    }
+
+    private void showChildAgeOneTwo(){
+        tvCantNinAgeOneTwo.setText(childrenAges[1][0]+"");
+    }
+
+    private void showChildAgeTwoTwo(){
+        tvCantNinAgeTwoTwo.setText(childrenAges[1][1]+"");
+    }
+
+    private void showChildAgeThreeTwo(){
+        tvCantNinAgeThreeTwo.setText(childrenAges[1][2]+"");
+    }
+
+    private void showChildAgeOneThree(){
+        tvCantNinAgeOneThree.setText(childrenAges[2][0]+"");
+    }
+
+    private void showChildAgeTwoThree(){
+        tvCantNinAgeTwoThree.setText(childrenAges[2][1]+"");
+    }
+
+    private void showChildAgeThreeThree(){
+        tvCantNinAgeThreeThree.setText(childrenAges[2][2]+"");
+    }
+
+    private void showChildAgeOneFour(){
+        tvCantNinAgeOneFour.setText(childrenAges[3][0]+"");
+    }
+
+    private void showChildAgeTwoFour(){
+        tvCantNinAgeTwoFour.setText(childrenAges[3][1]+"");
+    }
+
+    private void showChildAgeThreeFour(){
+        tvCantNinAgeThreeFour.setText(childrenAges[3][2]+"");
+    }
+
+    private void showChildAgeOneFive(){
+        tvCantNinAgeOneFive.setText(childrenAges[4][0] +"");
+    }
+
+    private void showChildAgeTwoFive(){
+        tvCantNinAgeTwoFive.setText(childrenAges[4][1]+"");
+    }
+
+    private void showChildAgeThreeFive(){
+        tvCantNinAgeThreeFive.setText(childrenAges[4][2]+"");
     }
 
     private void initCalendarFilter() {
@@ -296,7 +1263,7 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
     private void search(){
         try{
 
-            int maxResults = 10;
+            int maxResults = 100;
             SearchHotelCriteria hotelCriteria = new SearchHotelCriteria();
 
             //Llenando el SearchHotelCriteria
@@ -328,15 +1295,30 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
             hotelCriteria.setCheckInDate(dateFormat.format(checkIn));
 
             //5- Habitaciones
-            //TODO Esto hay que esperar a que termine JA para obtener bien los valores
-            RoomAllocation roomAllocation = new RoomAllocation();
-            roomAllocation.setQuantity(1);
-            roomAllocation.setAdults(1);
-            ArrayOfInt childrenAges = new ArrayOfInt();
-            childrenAges.getInt().add(0);
-            roomAllocation.setChildrenAges(childrenAges);
+            //Por cada habitacion se crea un RoomAllocation
+            int countRooms = Integer.parseInt(tvHabs.getText().toString());
+            RoomAllocation[] roomAllocation = new RoomAllocation[countRooms];
+            BookedRoom[] bookedRoom = new BookedRoom[countRooms];
+            ArrayOfInt[] childrenAgesArrayInt = new ArrayOfInt[countRooms];
+            ArrayOfBookedRoom arrayBookedRoom = new ArrayOfBookedRoom();
+            for(int i=0; i<countRooms; i++){
+                roomAllocation[i] = new RoomAllocation();
+                roomAllocation[i].setQuantity(0);
+                roomAllocation[i].setAdults(countAdults[i]);
+                int countOfChildren = countChildren[i];
+                childrenAgesArrayInt[i] = new ArrayOfInt();
+                for(int j=0; j<countOfChildren; j++){
+                    childrenAgesArrayInt[i].getInt().add(childrenAges[i][j]);
+                }
+                roomAllocation[i].setChildrenAges(childrenAgesArrayInt[i]);
 
-            hotelCriteria.getAllocation().getRoomAllocation().add(roomAllocation);
+                hotelCriteria.getAllocation().getRoomAllocation().add(roomAllocation[i]);
+
+                bookedRoom[i] = new BookedRoom();
+                bookedRoom[i].setAdults(countAdults[i]);
+                bookedRoom[i].setChildrenAges(childrenAgesArrayInt[i]);
+                arrayBookedRoom.getBookedRoom().add(bookedRoom[i]);
+            }
 
             SearchHotelRequest searchHotelRequest = new SearchHotelRequest();
             searchHotelRequest.setMaxResults(maxResults);
@@ -347,17 +1329,8 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
             roomReservationRequest.setCheckIn(dateFormat.format(checkIn));
             roomReservationRequest.setCheckOut(dateFormat.format(checkOut));
             roomReservationRequest.setPaymentMethod(PaymentMethodEnum.CREDIT_CAR);
-            ArrayOfBookedRoom arrayBookedRoom = new ArrayOfBookedRoom();
-            //Para cada una de las habitaciones:
-            for(int i=0; i<countRooms; i++){
-                BookedRoom bookedRoom = new BookedRoom();
-                //TODO ver mecanismo para recoger los adultos de una habitacion
-                bookedRoom.setAdults(1);
-                //TODO Ver mecanismo para recoger el arreglo de edades de los ninnos
-                bookedRoom.setChildrenAges(null);
-                arrayBookedRoom.getBookedRoom().add(bookedRoom);
-            }
             roomReservationRequest.setRooms(arrayBookedRoom);
+
             AppController.setRoomReservationRequest(roomReservationRequest);
             AppController.setSearchHotelCriteria(hotelCriteria);
 

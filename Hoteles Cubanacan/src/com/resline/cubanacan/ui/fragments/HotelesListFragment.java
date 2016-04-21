@@ -50,7 +50,6 @@ public class HotelesListFragment extends RecyclerViewFragment {
     }
 
     private List<CardViewBean> populateList(int filter) {
-        //TODO Buscar como ordenar listas en java
         List<HotelAvailabilitySearchResultVO> hotels = AppController.getCurrentSearchResult().getHotelsAvaibility();
 
         switch (filter){
