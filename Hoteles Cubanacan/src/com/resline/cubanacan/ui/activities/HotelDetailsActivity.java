@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.activities.api.BaseActivity;
 
@@ -17,16 +19,39 @@ public class HotelDetailsActivity extends BaseActivity implements View.OnClickLi
 
     private static final String TAG = "HotelDetailsActivity";
 
+    private ImageView panoramicImage;
+
+    private TextView tvHotelName;
+
+    private ImageView goToGallery;
+
+    private TextView tvAddress;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // to set back arrow in toolbar
         setToolbar();
 
+        loadViewComponents();
+
         // set button pick room
         Button pickRoom = (Button) findViewById(R.id.btnElegirHab);
         pickRoom.setOnClickListener(this);
         Log.d(TAG, String.valueOf(mBundle.getInt("my_int")));
+    }
+
+    private void loadViewComponents() {
+        panoramicImage = (ImageView) findViewById(R.id.ivHotel);
+
+        tvHotelName = (TextView) findViewById(R.id.tvNombreHotel);
+
+        goToGallery = (ImageView) findViewById(R.id.ivGallery);
+
+        tvAddress = (TextView) findViewById(R.id.tvDireccion);
+
+        goToGallery.setOnClickListener(this);
     }
 
     private void setToolbar() {
@@ -57,6 +82,8 @@ public class HotelDetailsActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.ivGallery:
+                break;
             case R.id.btnElegirHab:
                 startActivity(new Intent(HotelDetailsActivity.this, ElegirHabitacionActivity.class));
                 break;
