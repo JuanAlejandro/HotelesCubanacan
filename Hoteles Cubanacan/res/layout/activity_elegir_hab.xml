@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
+                xmlns:app="http://schemas.android.com/apk/res/com.resline.cubanacan"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/white">
+                android:background="@color/secondary_color_blue">
     <android.support.v7.widget.Toolbar
             android:id="@+id/screen_default_toolbar"
             android:layout_width="match_parent"
@@ -85,6 +86,8 @@
                         android:layout_margin="@dimen/card_margin"
                         android:padding="10dp"
                         android:clickable="true"
+                        android:background="@color/secondary_color_blue"
+                        app:cardBackgroundColor="@color/secondary_color_blue"
                         android:foreground="@drawable/card_item_selector">
                     <RelativeLayout
                             android:id="@+id/rlLoremOne"
@@ -94,6 +97,8 @@
                         <ImageView
                                 android:layout_width="@dimen/card_item_img_width"
                                 android:layout_height="@dimen/card_item_img_height"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginStart="8dp"
                                 android:contentDescription="@null"
                                 android:scaleType="centerCrop"
                                 android:id="@+id/ivLoremOne"
@@ -103,7 +108,6 @@
                                 android:id="@+id/cbRoom1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@color/secondary_color_blue"
                                 android:layout_margin="5dp"
                                 android:layout_centerVertical="true"
                                 android:layout_alignParentRight="true"
@@ -150,8 +154,7 @@
                                     android:layout_marginTop="10dp"
                                     android:padding="10dp"
                                     android:layout_marginLeft="5dp"
-                                    android:layout_below="@id/tvSubTitleOne"
-                                    android:gravity="center"/>
+                                    android:layout_below="@id/tvSubTitleOne"/>
                             <android.support.v7.widget.AppCompatButton
                                     android:id="@+id/btnSetOpcion2"
                                     android:layout_width="wrap_content"
@@ -162,8 +165,7 @@
                                     android:padding="10dp"
                                     android:layout_toRightOf="@id/btnSetOpcion1"
                                     android:layout_toEndOf="@id/btnSetOpcion1"
-                                    android:layout_below="@id/tvSubTitleOne"
-                                    android:gravity="center"/>
+                                    android:layout_below="@id/tvSubTitleOne"/>
                         </RelativeLayout>
                     </RelativeLayout>
                 </android.support.v7.widget.CardView>
