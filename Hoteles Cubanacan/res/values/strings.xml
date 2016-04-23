@@ -52,4 +52,6 @@
     <string name="age_one">Edad (1)</string>
     <string name="age_two">Edad (2)</string>
     <string name="age_three">Edad (3)</string>
+    <string name="dist_airport_label">Distancia al aeropuerto:</string>
+    <string name="dist_airport">18 Km</string>
 </resources>

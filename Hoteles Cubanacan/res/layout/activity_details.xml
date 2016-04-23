@@ -75,6 +75,95 @@
                     android:textColor="@android:color/black"
                     android:layout_margin="10dp"
                     android:padding="10dp"/>
+            <RelativeLayout
+                    android:id="@+id/rlDistAeropuerto"
+                    android:layout_below="@id/tvDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <ImageView
+                        android:id="@+id/ivAirplane"
+                        android:padding="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/airplane"/>
+                <TextView
+                        android:id="@+id/tvDistanciaLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dist_airport_label"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:padding="10dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/ivAirplane"
+                        android:layout_toEndOf="@+id/ivAirplane"/>
+                <TextView
+                        android:id="@+id/tvDistancia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dist_airport"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:padding="10dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/tvDistanciaLabel"
+                        android:layout_toEndOf="@+id/tvDistanciaLabel"/>
+            </RelativeLayout>
+            <RelativeLayout
+                    android:id="@+id/rlDate"
+                    android:layout_below="@id/rlDistAeropuerto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <ImageView
+                        android:id="@+id/ivDate"
+                        android:padding="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_event_black"/>
+                <TextView
+                        android:id="@+id/tvEntradaLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/title_in"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:padding="10dp"
+                        android:layout_toRightOf="@+id/ivDate"
+                        android:layout_toEndOf="@+id/ivDate"/>
+                <TextView
+                        android:id="@+id/tvEntrada"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lorem_date"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:padding="10dp"
+                        android:layout_toRightOf="@+id/tvEntradaLabel"
+                        android:layout_toEndOf="@+id/tvEntradaLabel"/>
+                <TextView
+                        android:id="@+id/tvSalidaLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/title_out"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:padding="10dp"
+                        android:layout_below="@+id/tvEntrada"
+                        android:layout_toRightOf="@+id/ivDate"
+                        android:layout_toEndOf="@+id/ivDate"/>
+                <TextView
+                        android:id="@+id/tvSalida"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lorem_date"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:padding="10dp"
+                        android:layout_below="@+id/tvEntrada"
+                        android:layout_toRightOf="@+id/tvEntradaLabel"
+                        android:layout_toEndOf="@+id/tvEntradaLabel"/>
+            </RelativeLayout>
             <android.support.v7.widget.AppCompatButton
                     android:id="@+id/btnElegirHab"
                     android:layout_width="match_parent"
@@ -85,7 +174,7 @@
                     android:padding="10dp"
                     android:layout_marginLeft="5dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_below="@id/tvDesc"
+                    android:layout_below="@id/rlDate"
                     android:gravity="center"/>
         </RelativeLayout>
     </com.github.ksoichiro.android.observablescrollview.ObservableScrollView>
