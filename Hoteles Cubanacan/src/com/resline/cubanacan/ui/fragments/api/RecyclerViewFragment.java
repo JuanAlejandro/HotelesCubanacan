@@ -83,7 +83,7 @@ public abstract class RecyclerViewFragment extends BaseFragment {
 
     protected abstract List<CardViewBean> getContentInCards();
 
-    public void loadViewComponents() {
+    protected void loadViewComponents() {
         noDataLayout = getNoDataLayoutRes();
 
         mRecyclerView = getRecyclerViewRes();
