@@ -10,6 +10,7 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.activities.api.DrawerActivity;
+import com.resline.cubanacan.ui.fragments.DestinosFragment;
 import com.resline.cubanacan.ui.fragments.ReservarFragment;
 import com.resline.cubanacan.ui.utils.DrawerMenu;
 
@@ -25,7 +26,7 @@ public class MainActivity extends DrawerActivity implements DrawerActivity.OnDra
         // set drawer on item click listener
         setDrawerItemSelectedListener(this);
         // to decide what section is the first to be selected
-        drawer.setSelection(-1);
+//        drawer.setSelection(-1);
 
         // your code here
         fragmentTransaction(new ReservarFragment(), navSDITitles[DrawerMenu.RESERVAR]);
@@ -80,7 +81,7 @@ public class MainActivity extends DrawerActivity implements DrawerActivity.OnDra
                     .withName(navSDITitles[i])
                     .withSelectedTextColorRes(selColor)
                     .withSelectedIconColorRes(selColor)
-                    .withTag(TAG_ENTRAR_O_REGISTRARSE);
+                    .withTag(TAGS_ARRAY[i]);
         }
 
         return drawerItems;
@@ -104,6 +105,7 @@ public class MainActivity extends DrawerActivity implements DrawerActivity.OnDra
                 fragmentTransaction(new ReservarFragment(), navSDITitles[DrawerMenu.RESERVAR]);
                 break;
             case TAG_DESTINOS:
+                fragmentTransaction(new DestinosFragment(), navSDITitles[DrawerMenu.DESTINOS]);
                 break;
             case TAG_HOTELES:
                 break;
@@ -125,6 +127,6 @@ public class MainActivity extends DrawerActivity implements DrawerActivity.OnDra
 
         area = tag;
         
-        drawer.setSelection(-1);
+//        drawer.setSelection(-1);
     }
 }
