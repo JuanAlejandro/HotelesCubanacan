@@ -54,4 +54,8 @@
     <string name="age_three">Edad (3)</string>
     <string name="dist_airport_label">Distancia al aeropuerto:</string>
     <string name="dist_airport">18 Km</string>
+    <string name="user_name">Nombre de usuario:</string>
+    <string name="password">Contraseña:</string>
+    <string name="entrar">Entrar</string>
+    <string name="registrarse">Registrarse</string>
 </resources>
