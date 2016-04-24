@@ -12,6 +12,7 @@ import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.activities.api.DrawerActivity;
 import com.resline.cubanacan.ui.fragments.DestinosFragment;
 import com.resline.cubanacan.ui.fragments.ReservarFragment;
+import com.resline.cubanacan.ui.fragments.TemasFragment;
 import com.resline.cubanacan.ui.utils.DrawerMenu;
 
 /**
@@ -110,6 +111,7 @@ public class MainActivity extends DrawerActivity implements DrawerActivity.OnDra
             case TAG_HOTELES:
                 break;
             case TAG_TEMAS:
+                fragmentTransaction(new TemasFragment(), navSDITitles[DrawerMenu.TEMAS]);
                 break;
             case TAG_OFERTAS_ESPECIALES:
                 break;
@@ -126,7 +128,5 @@ public class MainActivity extends DrawerActivity implements DrawerActivity.OnDra
         }
 
         area = tag;
-        
-//        drawer.setSelection(-1);
     }
 }
