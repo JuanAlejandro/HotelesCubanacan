@@ -10,10 +10,7 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.activities.api.DrawerActivity;
-import com.resline.cubanacan.ui.fragments.DestinosFragment;
-import com.resline.cubanacan.ui.fragments.LoginFragment;
-import com.resline.cubanacan.ui.fragments.ReservarFragment;
-import com.resline.cubanacan.ui.fragments.TemasFragment;
+import com.resline.cubanacan.ui.fragments.*;
 import com.resline.cubanacan.ui.utils.DrawerMenu;
 
 /**
@@ -22,6 +19,8 @@ import com.resline.cubanacan.ui.utils.DrawerMenu;
  * la sección seleccionada en el drawer
  */
 public class MainActivity extends DrawerActivity implements DrawerActivity.OnDrawerItemSelected {
+    private boolean isAuthenticated = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +77,7 @@ public class MainActivity extends DrawerActivity implements DrawerActivity.OnDra
 
         IDrawerItem[] drawerItems = new IDrawerItem[navSDITitles.length];
 
-        for(int i = 0; i < DrawerMenu.CANT_SECCIONES; i++){
+        for (int i = 0; i < DrawerMenu.CANT_SECCIONES; i++) {
             drawerItems[i] = new PrimaryDrawerItem()
                     .withName(navSDITitles[i])
                     .withSelectedTextColorRes(selColor)
@@ -102,7 +101,11 @@ public class MainActivity extends DrawerActivity implements DrawerActivity.OnDra
          **/
         switch (tag) {
             case TAG_ENTRAR_O_REGISTRARSE:
-                fragmentTransaction(new LoginFragment(), navSDITitles[DrawerMenu.ENTRAR_O_REGISTRARSE]);
+                if (!isAuthenticated) {
+                    fragmentTransaction(new LoginFragment(), navSDITitles[DrawerMenu.ENTRAR_O_REGISTRARSE]);
+                } else {
+                    // do something when user is authenticated
+                }
                 break;
             case TAG_RESERVAR:
                 fragmentTransaction(new ReservarFragment(), navSDITitles[DrawerMenu.RESERVAR]);
@@ -111,6 +114,7 @@ public class MainActivity extends DrawerActivity implements DrawerActivity.OnDra
                 fragmentTransaction(new DestinosFragment(), navSDITitles[DrawerMenu.DESTINOS]);
                 break;
             case TAG_HOTELES:
+                fragmentTransaction(new HotelListGeneralFragment(), navSDITitles[DrawerMenu.HOTELES]);
                 break;
             case TAG_TEMAS:
                 fragmentTransaction(new TemasFragment(), navSDITitles[DrawerMenu.TEMAS]);
