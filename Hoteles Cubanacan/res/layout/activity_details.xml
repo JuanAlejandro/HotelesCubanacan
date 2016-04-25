@@ -65,7 +65,16 @@
                         android:layout_toRightOf="@+id/ivOne"
                         android:layout_toEndOf="@+id/ivOne"/>
             </RelativeLayout>
-
+            <TextView
+                    android:id="@+id/tvDesc"
+                    android:layout_below="@id/rlDireccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lorem_ipsum_short"
+                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:textColor="@android:color/black"
+                    android:layout_margin="10dp"
+                    android:padding="10dp"/>
             <android.support.v7.widget.AppCompatButton
                     android:id="@+id/btnElegirHab"
                     android:layout_width="match_parent"
@@ -76,7 +85,7 @@
                     android:padding="10dp"
                     android:layout_marginLeft="5dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_below="@id/rlDireccion"
+                    android:layout_below="@id/tvDesc"
                     android:gravity="center"/>
         </RelativeLayout>
     </com.github.ksoichiro.android.observablescrollview.ObservableScrollView>

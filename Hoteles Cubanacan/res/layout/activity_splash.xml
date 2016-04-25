@@ -4,7 +4,7 @@
                 android:layout_height="match_parent">
     <ImageView
             android:id="@+id/ivSplash"
-            android:src="@drawable/splash_cubanacan_blue"
+            android:src="@drawable/splash_cubanacan_red"
             android:scaleType="centerCrop"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -1,5 +1,7 @@
 package com.resline.cubanacan.ui.fragments;
 
+import android.app.DialogFragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ import com.resline.cubanacan.src.ws.WebServicesClient;
 import com.resline.cubanacan.ui.activities.HotelesListActivity;
 import com.resline.cubanacan.ui.activities.MainActivity;
 import com.resline.cubanacan.ui.fragments.api.BaseFragment;
+import com.resline.cubanacan.ui.utils.ErrorDialogFragment;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -1227,11 +1230,11 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
             setEntrada.setText(String.format("%d/%d/%d", dayOfMonth, (monthOfYear+1), year));
             Calendar checkOutCalendar = Calendar.getInstance();
             checkOutCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            checkOutCalendar.set(Calendar.MONTH, monthOfYear+1);
+            checkOutCalendar.set(Calendar.MONTH, monthOfYear);
             checkOutCalendar.set(Calendar.YEAR, year);
             checkOutCalendar.add(Calendar.DAY_OF_YEAR, 1);
             setSalida.setText(String.format("%d/%d/%d", checkOutCalendar.get(Calendar.DAY_OF_MONTH),
-                                                        checkOutCalendar.get(Calendar.MONTH),
+                                                        checkOutCalendar.get(Calendar.MONTH)+1,
                                                         checkOutCalendar.get(Calendar.YEAR)));
             dpdCheckOut.getSelectedDay().setDay(checkOutCalendar.get(Calendar.YEAR), checkOutCalendar.get(Calendar.MONTH),
                                                 checkOutCalendar.get(Calendar.DAY_OF_MONTH));
@@ -1303,7 +1306,7 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
             ArrayOfBookedRoom arrayBookedRoom = new ArrayOfBookedRoom();
             for(int i=0; i<countRooms; i++){
                 roomAllocation[i] = new RoomAllocation();
-                roomAllocation[i].setQuantity(0);
+                roomAllocation[i].setQuantity(1);
                 roomAllocation[i].setAdults(countAdults[i]);
                 int countOfChildren = countChildren[i];
                 childrenAgesArrayInt[i] = new ArrayOfInt();
@@ -1351,7 +1354,10 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
                                 AppController.setCurrentSearchResult(hotelAvaibilityResponse);
                                 startActivity(new Intent(getContext(), HotelesListActivity.class));
                             }else{
-                                //TODO Mostrar el error que me da el ws a traves de un alert
+                                FragmentManager fm = mActivity.getFragmentManager();
+                                String errorMessage = hotelAvaibilityResponse.getError();
+                                ErrorDialogFragment errorDialog = ErrorDialogFragment.newInstance(errorMessage);
+                                errorDialog.show(fm, "fragment_alert");
                             }
                         }
 

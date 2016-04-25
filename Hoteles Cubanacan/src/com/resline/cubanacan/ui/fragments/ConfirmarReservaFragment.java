@@ -124,7 +124,7 @@ public class ConfirmarReservaFragment extends BaseFragment implements View.OnCli
         Picasso.with(mActivity)
                 .load(image.getImageUrl())
                 .placeholder(R.drawable.loading)
-                .error(R.drawable.logo_fondo_blanco)
+                .error(R.drawable.ic_launcher)
                 .into(hotelImage);
 
         paintStars(hotel.getCategoryEnum().ordinal()+2);

@@ -6,59 +6,55 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 import com.resline.cubanacan.R;
+import com.resline.cubanacan.ui.activities.ElegirHabitacionActivity;
 import com.resline.cubanacan.ui.activities.HotelDetailsActivity;
 import com.resline.cubanacan.ui.adapter.api.RecyclerViewCardsAdapter;
+import com.resline.cubanacan.ui.adapter.api.RoomCardsAdapter;
 import com.resline.cubanacan.ui.model.CardViewBean;
+import com.resline.cubanacan.ui.model.RoomViewBean;
 
-import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Created by Juan Alejandro on 31/01/2016.
+ * Created by David on 23/04/2016.
  */
-public class HotelesCardsAdapter extends RecyclerViewCardsAdapter {
-    public HotelesCardsAdapter(Activity activity, List<CardViewBean> listItemsCard) {
+public class RoomsCardsAdapter extends RoomCardsAdapter {
+    public RoomsCardsAdapter(Activity activity, List<RoomViewBean> listItemsCard) {
         // fixme: onPause error
         super(activity, listItemsCard);
     }
 
     @Override
-    public HotelesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new HotelesViewHolder(mActivity, LayoutInflater.from(parent.getContext())
+    public RoomsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new RoomsViewHolder(mActivity, LayoutInflater.from(parent.getContext())
                 .inflate(getCardLayoutRes(), parent, false));
     }
 
     @Override
     protected int getCardLayoutRes() {
-        return R.layout.card_hotel;
-    }
-
-    @Override
-    protected int getDefaultImage() {
-        return R.drawable.icon;
+        return R.layout.card_room;
     }
 
     @Override
     protected Bundle getBundle(Long id) {
         Bundle bundle = new Bundle();
-        bundle.putLong("idHotel", id);
+        //bundle.putLong("idHotel", id);
         return bundle;
     }
 
     @Override
     protected Class<?> getActivityClass() {
-        return HotelDetailsActivity.class;
+        return ElegirHabitacionActivity.class;
     }
 
-    private class HotelesViewHolder extends ViewHolder {
-        public HotelesViewHolder(Activity activity, final View itemView) {
+    private class RoomsViewHolder extends ViewHolder {
+        public RoomsViewHolder(Activity activity, final View itemView) {
             super(activity, itemView);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mActivity.startActivity(new Intent(mActivity, getActivityClass()).putExtras(getBundle(id)));
+                    //mActivity.startActivity(new Intent(mActivity, getActivityClass()).putExtras(getBundle(id)));
                 }
             });
         }

@@ -3,6 +3,7 @@ package com.resline.cubanacan.ui.fragments;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
+import android.renderscript.Double2;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
@@ -18,6 +19,8 @@ import com.resline.cubanacan.ui.model.CardViewBean;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.*;
 
 /**
@@ -104,17 +107,19 @@ public class HotelesListFragment extends RecyclerViewFragment {
         for (HotelAvailabilitySearchResultVO hotel : hotels) {
             Image image = hotelImages.get(hotel.getId()).getImage().get(0);
             Double minimumPrice = AppController.getHotels().get(hotel.getId()).getFromPrice();
+            DecimalFormat formatter = new DecimalFormat("#.00");
             String minimumPriceStr = "0";
             if(minimumPrice != null)
-                minimumPriceStr = minimumPrice.toString();
+                minimumPriceStr = formatter.format(minimumPrice).toString();
             int countNights = AppController.getSearchHotelCriteria().getNights();
             String nightsStr = "noche";
             if(countNights != 1)
                 nightsStr = "noches";
             String currency = AppController.getCurrentSearchResult().getCurrencyName();
-            String price = String.format("%d %s desde %s %s", countNights, nightsStr, minimumPriceStr, currency);
+            String nightsStrComplete = String.format("%d %s desde ", countNights, nightsStr);
+            String price = String.format("%s %s", minimumPriceStr, currency);
             Uri uri =  Uri.parse(image.getImageUrl());
-            listCard.add(new CardViewBean(hotel.getId(), uri, hotel.getName(), hotel.getLocationName(), price));
+            listCard.add(new CardViewBean(hotel.getId(), uri, hotel.getName(), nightsStrComplete, price, hotel.getLocationName(), hotel.getCategory().ordinal()));
         }
         return listCard;
     }

@@ -3,10 +3,12 @@
     <style name="AppTheme" parent="AppTheme.Base"/>
     <style name="AppTheme.Base" parent="Theme.AppCompat">
         <!-- android theme colors -->
-        <item name="colorPrimary">@color/cubanacan_light_blue</item>
-        <item name="colorPrimaryDark">@color/cubanacan_dark_blue</item>
-        <item name="colorAccent">@color/cubanacan_dark_blue</item>
+        <item name="colorPrimary">@color/cubanacan_light_red</item>
+        <item name="colorPrimaryDark">@color/cubanacan_dark_red</item>
+        <item name="colorAccent">@color/cubanacan_dark_red</item>
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
    </style>
 </resources>

@@ -46,7 +46,7 @@
         <string name="acepto_terms">Acepto los términos y condiciones</string>
         <string name="titular_title">Titular de la reserva</string>
         <string name="correo_hint">Correo</string>
-        <string name="lorem_one">1</string>
+        <string name="lorem_one"></string>
         <string name="lorem_two">2</string>
         <string name="confirm_reserva_title">Confirmar reserva</string>
         <string name="lorem_hotel_nombre">Hotel Sevilla</string>
@@ -56,4 +56,5 @@
         <string name="age_one">Edad niño 1</string>
         <string name="age_two">Edad niño 2</string>
         <string name="age_three">Edad niño 3</string>
+        <string name="optionals">Opcionales</string>
     </resources>

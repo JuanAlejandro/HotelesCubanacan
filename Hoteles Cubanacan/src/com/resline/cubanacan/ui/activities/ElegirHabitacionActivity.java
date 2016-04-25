@@ -1,13 +1,14 @@
 package com.resline.cubanacan.ui.activities;
 
-import android.content.Intent;
+import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
@@ -15,53 +16,165 @@ import android.view.ViewGroup;
 import android.widget.*;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.src.controllers.AppController;
-import com.resline.cubanacan.src.ws.WSClass.Image.Image;
 import com.resline.cubanacan.src.ws.WSClass.Models.AvailableRoomTypeVO;
 import com.resline.cubanacan.src.ws.WSClass.Models.HotelAvailabilitySearchResultVO;
-import com.resline.cubanacan.src.ws.WSClass.Models.RoomAvailabilitySearchResultVO;
-import com.resline.cubanacan.src.ws.WSClass.Models.RoomTypeAmenityVO;
+import com.resline.cubanacan.src.ws.WSClass.Reservation.BookedRoom;
+import com.resline.cubanacan.src.ws.WSClass.Reservation.Rooming;
 import com.resline.cubanacan.ui.activities.api.BaseActivity;
 import com.squareup.picasso.Picasso;
 
-import static android.R.attr.id;
+import java.util.List;
 
 /**
- * Created by Juan Alejandro on 14/04/2016.
+ * Created by David on 23/04/2016.
  */
 public class ElegirHabitacionActivity extends BaseActivity implements View.OnClickListener {
 
-    Long hotelId;
-    CardView cvRoom;
+    LinearLayout llRooms;
+    CardView[] listCard;
+    RelativeLayout[] relativeLayout;
+    TextView[] textView;
+    LinearLayout[] linearLayouts;
+
+    CardView[][] cardRoomTypeList;
+    LinearLayout[][] rlRoomType;
+    ImageView[][] imageViews;
+
+    HotelAvailabilitySearchResultVO hotelSelected = null;
+    Long hotelId = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setToolbar();
+        setToolBar();
+        loadViews();
+    }
+
+    private void loadViews(){
 
         Bundle bundle = getIntent().getExtras();
-        hotelId = bundle.getLong("hotelId");
-        hotelId = 5L;
-        loadViewComponents();
-    }
 
-    private void loadViewComponents() {
 
-        cvRoom = (CardView)findViewById(R.id.cvRoom);
-        Button btnReservar = (Button) findViewById(R.id.btnReservar);
-        btnReservar.setOnClickListener(this);
+        //Creando las habitaciones
+        llRooms = (LinearLayout)findViewById(R.id.llRooms);
 
-        loadRoomsType();
-    }
+        if(bundle != null)
+            hotelId = bundle.getLong("idHotel");
 
-    private void setToolbar() {
-        mActionBar.setDisplayHomeAsUpEnabled(true);
-        mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
+        boolean hotelFind = false;
+        if(hotelId != null) {
+            for (HotelAvailabilitySearchResultVO hotel : AppController.getCurrentSearchResult().getHotelsAvaibility()) {
+                if (hotel.getId() == hotelId) {
+                    hotelSelected = hotel;
+                    hotelFind = true;
+                    break;
+                }
             }
-        });
+
+            if (hotelFind) {
+                int countRooms = AppController.getRoomReservationRequest().getRooms().getBookedRoom().size();
+
+                listCard = new CardView[countRooms];
+                relativeLayout = new RelativeLayout[countRooms];
+                textView = new TextView[countRooms];
+                linearLayouts = new LinearLayout[countRooms];
+                cardRoomTypeList = new CardView[countRooms][];
+                //rlRoomType = new RelativeLayout[countRooms][];
+
+                for (int i = 0; i < countRooms; i++) {
+                    listCard[i] = new CardView(this);
+                    listCard[i].setId(i);
+                    CardView.LayoutParams layoutParams = new CardView.LayoutParams(CardView.LayoutParams.MATCH_PARENT, CardView.LayoutParams.WRAP_CONTENT);
+                    layoutParams.setMargins(10, 10, 10, 10);
+                    listCard[i].setLayoutParams(layoutParams);
+
+                    relativeLayout[i] = new RelativeLayout(this);
+                    relativeLayout[i].setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT));
+
+                    textView[i] = new TextView(this);
+                    CardView.LayoutParams layoutParamsTextView = new CardView.LayoutParams(CardView.LayoutParams.MATCH_PARENT, CardView.LayoutParams.WRAP_CONTENT);
+                    textView[i].setLayoutParams(layoutParamsTextView);
+                    textView[i].setTextSize(18);
+                    textView[i].setText("Habitación " + (i + 1));
+                    textView[i].setPadding(10, 10, 10, 10);
+                    textView[i].setGravity(Gravity.CENTER);
+                    textView[i].setTextColor(Color.BLACK);
+
+                    linearLayouts[i] = new LinearLayout(this);
+                    linearLayouts[i].setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                    linearLayouts[i].setOrientation(LinearLayout.VERTICAL);
+
+                    relativeLayout[i].addView(textView[i]);
+                    relativeLayout[i].addView(linearLayouts[i]);
+                    listCard[i].addView(relativeLayout[i]);
+
+                    inflateRoomTypes(linearLayouts[i], i);
+
+                    llRooms.addView(listCard[i]);
+                }
+            }
+        }
+    }
+
+    private void inflateRoomTypes(LinearLayout content, int position){
+        List<AvailableRoomTypeVO> rooms = hotelSelected.getRoomAvailabilitySearchResults().get(position).getAvailableRoomTypes();
+
+        int cont = 0;
+        int roomingCount = rooms.size();
+        cardRoomTypeList[position] = new CardView[roomingCount];
+        for(AvailableRoomTypeVO room : rooms) {
+
+            //Agregando los elementos por cada tipo de habitacion para la habitacion position
+            //1- Agregando el CardView que contendra todos los elementos del room type
+            cardRoomTypeList[position][cont] = new CardView(this);
+            cardRoomTypeList[position][cont].setId(cont);
+            CardView.LayoutParams layoutParams = new CardView.LayoutParams(CardView.LayoutParams.MATCH_PARENT, CardView.LayoutParams.WRAP_CONTENT);
+            layoutParams.setMargins(4, 4, 4, 4);
+            cardRoomTypeList[position][cont].setLayoutParams(layoutParams);
+            cardRoomTypeList[position][cont].setElevation(4);
+            cardRoomTypeList[position][cont].setPadding(10, 10, 10, 10);
+            cardRoomTypeList[position][cont].setForeground(Drawable.createFromPath("@drawable/card_item_selector"));
+
+            //2- Creando el linear layout horizontal que contendra la imagen, un layout central y el checkbox
+            LinearLayout linearLayout = new LinearLayout(this);
+            CardView.LayoutParams llLayoutParams = new CardView.LayoutParams(CardView.LayoutParams.MATCH_PARENT, CardView.LayoutParams.WRAP_CONTENT);
+            linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+
+            //2.1- Agregando la Imagen View
+            ImageView imageView = new ImageView(this);
+            ViewGroup.LayoutParams imageLayoutParams = new ViewGroup.LayoutParams(0, R.dimen.card_item_img_height);
+            imageView.setLayoutParams(imageLayoutParams);
+            //TODO como cambiar el weight de una imagen
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            Picasso.with(mActivity)
+                    .load(AppController.getHotels().get(hotelId).getImages().getImage().get(0).getImageUrl())
+                    .placeholder(R.drawable.loading)
+                    .error(R.drawable.ic_launcher)
+                    .into(imageView);
+
+            //2.2- Añadiendo contenido del centro
+            //2.2.1- Añadiendo linear layout que contendra los elementos verticalmente
+            LinearLayout linearLayoutCentralContent = new LinearLayout(this);
+            CardView.LayoutParams llcentralLayoutParams = new CardView.LayoutParams(0, CardView.LayoutParams.WRAP_CONTENT);
+            linearLayoutCentralContent.setOrientation(LinearLayout.VERTICAL);
+            //TODO linearLayoutCentralContent.setWeightSum(5);
+
+            //2.2.2- Añadiendo el Textview que mostrara el codigo del tipo de habitacion
+            TextView tvRoomCode = new TextView(this);
+            CardView.LayoutParams codeLayoutParams = new CardView.LayoutParams(CardView.LayoutParams.MATCH_PARENT, CardView.LayoutParams.WRAP_CONTENT);
+            tvRoomCode.setLayoutParams(codeLayoutParams);
+            tvRoomCode.setPadding(0, 10, 0, 10);
+            tvRoomCode.setTextSize(R.dimen.title_size);
+            tvRoomCode.setTextColor(getResources().getColor(R.color.black_button));
+            tvRoomCode.setText(room.getCode());
+
+            //2.3- Añadiendo el checkbox
+            CheckBox checkBox = new CheckBox(this);
+
+            //Insertando elementos
+
+        }
     }
 
     @Override
@@ -71,7 +184,7 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
 
     @Override
     protected String getTitleToolBar() {
-        return getString(R.string.pick_room_title);
+        return mResources.getString(R.string.pick_room);
     }
 
     @Override
@@ -79,113 +192,61 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
         return (Toolbar) findViewById(R.id.screen_default_toolbar);
     }
 
-    private void loadRoomsType(){
-        //TODO Esto es para sacar la info del hotel seleccionado pero hay que mejorar la forma de acceso
-        HotelAvailabilitySearchResultVO hotelSelected = null;
-        for (HotelAvailabilitySearchResultVO hotel:AppController.getCurrentSearchResult().getHotelsAvaibility()) {
-            if(hotel.getId() == hotelId){
-                hotelSelected = hotel;
-            }
+    private void fragmentTransaction(Fragment fragment) {
+        if (fragment != null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.llRooms, fragment)
+                    .commit();
         }
+    }
 
-        int countRooms = AppController.getRoomReservationRequest().getRooms().getBookedRoom().size();
-        RelativeLayout[] rlCardView = new RelativeLayout[countRooms];
-        TextView[] tvRoomNumber = new TextView[countRooms];
-        @IdRes int roomNumberId = 0;
-        @IdRes int roomNumberTypeId = 1 + countRooms;
-        for(int i=0; i<countRooms; i++){
-            rlCardView[i] = new RelativeLayout(this);
-            rlCardView[i].setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+    private void setToolBar() {
+        mActionBar.setDisplayHomeAsUpEnabled(true);
 
-            //Letrero de la habitacion
-            tvRoomNumber[i] = new TextView(this);
-            tvRoomNumber[i].setId(roomNumberId++);
-            tvRoomNumber[i].setText("Habitación "+(i+1));
-            tvRoomNumber[i].setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            tvRoomNumber[i].setTextSize(18);
-            tvRoomNumber[i].setPadding(10, 10, 10, 10);
-            tvRoomNumber[i].setGravity(Gravity.CENTER);
-            tvRoomNumber[i].setTextColor(Color.BLACK);
-
-            LinearLayout llRoomContent = new LinearLayout(this);
-            llRoomContent.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-
-            int countRoomTypes = hotelSelected.getRoomAvailabilitySearchResults().get(i).getAvailableRoomTypes().size();
-            CardView[] cardViewRoomsType = new CardView[countRoomTypes];
-
-            for(int j=0; j<countRoomTypes; j++){
-
-                @IdRes int imenageId = 1 + countRooms + countRoomTypes;
-                AvailableRoomTypeVO roomType = hotelSelected.getRoomAvailabilitySearchResults().get(i).getAvailableRoomTypes().get(j);
-
-                cardViewRoomsType[j] = new CardView(this);
-                cardViewRoomsType[j].setLayoutParams(new CardView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                cardViewRoomsType[j].setCardElevation(4);
-                cardViewRoomsType[j].setPadding(10, 10, 10, 10);
-                cardViewRoomsType[j].setClickable(true);
-                //cardViewRoomsType[j].setCard(DraR.drawable.card_item_selector);
-
-                RelativeLayout rlRoomType = new RelativeLayout(this);
-                rlRoomType.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-
-                ImageView imageView = new ImageView(this);
-                imageView.setLayoutParams(new LinearLayout.LayoutParams(100, 100));
-                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                imageView.setId(imenageId++);
-                imageView.setBackgroundColor(Color.WHITE);
-                Image image = AppController.getHotels().get(hotelId).getImages().getImage().get(0);
-                Picasso.with(mActivity)
-                        .load(image.getImageUrl())
-                        .placeholder(R.drawable.loading)
-                        .error(R.drawable.logo_fondo_blanco)
-                        .into(imageView);
-
-                @IdRes int checkBoxId = 1 + countRooms + 2 * countRoomTypes;
-                CheckBox checkBox = new CheckBox(this);
-                checkBox.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-
-                RelativeLayout rlRoomTypedescription = new RelativeLayout(this);
-                rlRoomTypedescription.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-
-                //Letrero del tipo de habitacion
-                TextView tvRoomType = new TextView(this);
-                tvRoomType.setId(roomNumberTypeId++);
-                tvRoomType.setText(roomType.getCode());
-                tvRoomType.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                tvRoomType.setTextSize(18);
-                tvRoomType.setPadding(10, 10, 10, 10);
-                tvRoomType.setGravity(Gravity.CENTER);
-                tvRoomType.setTextColor(Color.BLACK);
-
-                //Letrero del precio de la habitacion
-                TextView tvRoomPrice = new TextView(this);
-                tvRoomPrice.setId(roomNumberTypeId++);
-                tvRoomPrice.setText(roomType.getPrice().toString() + AppController.getCurrentSearchResult().getCurrencyName());
-                tvRoomPrice.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                tvRoomPrice.setTextSize(14);
-                tvRoomPrice.setPadding(10, 10, 16, 16);
-                tvRoomPrice.setTextColor(Color.BLACK);
-
-                rlRoomTypedescription.addView(checkBox);
-                rlRoomTypedescription.addView(tvRoomType);
-                rlRoomType.addView(rlRoomTypedescription);
-                rlRoomType.addView(imageView);
-                rlRoomType.addView(tvRoomPrice);
-                cardViewRoomsType[j].addView(rlRoomType);
-                llRoomContent.addView(cardViewRoomsType[j]);
+        mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
-            rlCardView[i].addView(tvRoomNumber[i]);
-            rlCardView[i].addView(llRoomContent);
-            cvRoom.addView(rlCardView[i]);
-        }
+        });
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btnReservar:
-                startActivity(new Intent(ElegirHabitacionActivity.this, ConfirmarReservaActivity.class));
+        /*switch (v.getId()) {
+            case R.id.btnPrice:
+                if (!btnPrice.isSelected())
+                    btnPrice.setSelected(true);
+
+                setFilterList(Filter.PRICE_FILTER);
+
+                btnName.setSelected(false);
+                btnCategory.setSelected(false);
+                break;
+            case R.id.btnName:
+                if (!btnName.isSelected())
+                    btnName.setSelected(true);
+
+                setFilterList(Filter.NAME_FILTER);
+
+                btnPrice.setSelected(false);
+                btnCategory.setSelected(false);
+                break;
+            case R.id.btnCategory:
+                // cambias el bundle aqui en dependencia del caso
+                if (!btnCategory.isSelected())
+                    btnCategory.setSelected(true);
+
+                setFilterList(Filter.CATEGORY_FILTER);
+
+                btnName.setSelected(false);
+                btnPrice.setSelected(false);
                 break;
         }
+        Fragment fragment = new HotelesListFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("filter", filter.ordinal());
+        fragment.setArguments(bundle);
+        fragmentTransaction(fragment);*/
     }
 }

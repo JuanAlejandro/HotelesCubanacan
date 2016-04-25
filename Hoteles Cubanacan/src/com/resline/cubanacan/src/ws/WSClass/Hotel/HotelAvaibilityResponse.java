@@ -1,5 +1,6 @@
 package com.resline.cubanacan.src.ws.WSClass.Hotel;
 
+import com.resline.cubanacan.src.ws.WSClass.EntityResponse;
 import com.resline.cubanacan.src.ws.WSClass.Image.ArrayOfImage;
 import com.resline.cubanacan.src.ws.WSClass.Models.HotelAvailabilitySearchResultVO;
 import com.resline.cubanacan.src.ws.WSClass.Models.IdValueVO;
@@ -8,9 +9,7 @@ import com.resline.cubanacan.src.ws.WSClass.Models.RoomTypeAmenityVO;
 import java.util.List;
 import java.util.Map;
 
-public class HotelAvaibilityResponse {
-	
-	private String operationMessage;
+public class HotelAvaibilityResponse extends EntityResponse {
 
 	/**
 	 * Nombre de la moneda correspondiente al contrato activo en el periodo
@@ -25,8 +24,7 @@ public class HotelAvaibilityResponse {
 	private Map<Long, List<RoomTypeAmenityVO>> roomTypesAmenities;
 	
 	private Map<Long,ArrayOfImage> hotelImage;
-	
-	
+
 	public Map<Long, ArrayOfImage> getHotelImage() {
 		return hotelImage;
 	}
@@ -50,12 +48,6 @@ public class HotelAvaibilityResponse {
 		this.hotelAmenitiesPerHotel = hotelAmenitiesPerHotel;
 	}
 
-	public String getOperationMessage() {
-		return operationMessage;
-	}
-	public void setOperationMessage(String operationMessage) {
-		this.operationMessage = operationMessage;
-	}
 	public List<HotelAvailabilitySearchResultVO> getHotelsAvaibility() {
 		return hotelsAvaibility;
 	}

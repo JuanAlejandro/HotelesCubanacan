@@ -36,10 +36,13 @@ public class HotelesListActivity extends BaseActivity implements View.OnClickLis
 
         btnPrice.setSelected(true);
 
-
         setToolBar();
 
-        sendFragmentTransaction();
+        Fragment fragment = new HotelesListFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("filter", filter.ordinal());
+        fragment.setArguments(bundle);
+        fragmentTransaction(fragment);
     }
 
     @Override
@@ -82,24 +85,21 @@ public class HotelesListActivity extends BaseActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        Fragment fragment = new Fragment();
-        Bundle bundle = new Bundle();
-        // your arguments here
-        bundle.putBoolean("my_boolean", true);
-        bundle.putInt("my_int", 0);
-        fragment.setArguments(bundle);
         switch (v.getId()) {
             case R.id.btnPrice:
                 if (!btnPrice.isSelected())
                     btnPrice.setSelected(true);
 
+                setFilterList(Filter.PRICE_FILTER);
+
                 btnName.setSelected(false);
                 btnCategory.setSelected(false);
                 break;
             case R.id.btnName:
-                // cambias el bundle aqui en dependencia del caso
                 if (!btnName.isSelected())
                     btnName.setSelected(true);
+
+                setFilterList(Filter.NAME_FILTER);
 
                 btnPrice.setSelected(false);
                 btnCategory.setSelected(false);
@@ -109,47 +109,16 @@ public class HotelesListActivity extends BaseActivity implements View.OnClickLis
                 if (!btnCategory.isSelected())
                     btnCategory.setSelected(true);
 
+                setFilterList(Filter.CATEGORY_FILTER);
+
                 btnName.setSelected(false);
                 btnPrice.setSelected(false);
                 break;
         }
-
-
-        fragmentTransaction(fragment);
-    }
-
-    private void sendFragmentTransaction(){
         Fragment fragment = new HotelesListFragment();
         Bundle bundle = new Bundle();
         bundle.putInt("filter", filter.ordinal());
         fragment.setArguments(bundle);
         fragmentTransaction(fragment);
-    }
-
-    private class OnNameFilterClick implements View.OnClickListener{
-
-        @Override
-        public void onClick(View v) {
-            setFilterList(Filter.NAME_FILTER);
-            sendFragmentTransaction();
-        }
-    }
-
-    private class OnPriceFilterClick implements View.OnClickListener{
-
-        @Override
-        public void onClick(View v) {
-            setFilterList(Filter.PRICE_FILTER);
-            sendFragmentTransaction();
-        }
-    }
-
-    private class OnCategoryFilterClick implements View.OnClickListener{
-
-        @Override
-        public void onClick(View v) {
-            setFilterList(Filter.CATEGORY_FILTER);
-            sendFragmentTransaction();
-        }
     }
 }

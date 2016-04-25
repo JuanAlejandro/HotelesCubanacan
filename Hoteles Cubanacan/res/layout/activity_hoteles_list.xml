@@ -8,7 +8,7 @@
             android:id="@+id/screen_default_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/cubanacan_light_blue"
+            android:background="@color/cubanacan_light_red"
             android:minHeight="?attr/actionBarSize"
             tools:context=".ToolBar">
         <TextView
@@ -22,23 +22,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/screen_default_toolbar"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@drawable/borde" >
         <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btnPrice"
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
                 android:text="@string/precio"
-                android:textColor="@android:color/black"
+                android:textColor="#565656"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="0dp"
                 android:padding="10dp"
                 android:gravity="center"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="#EEE"/>
         <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btnName"
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
                 android:text="@string/nombre"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/darker_gray"
+                android:background="@android:color/white"
                 android:padding="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
                 android:gravity="center"
                 android:layout_weight="1"/>
         <android.support.v7.widget.AppCompatButton
@@ -46,9 +53,12 @@
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
                 android:text="@string/categoria"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/darker_gray"
+                android:background="@android:color/white"
                 android:padding="10dp"
                 android:gravity="center"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
                 android:layout_weight="1"/>
     </LinearLayout>
     <FrameLayout
