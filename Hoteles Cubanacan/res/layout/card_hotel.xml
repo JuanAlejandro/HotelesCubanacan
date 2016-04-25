@@ -17,6 +17,8 @@
                 android:layout_height="@dimen/card_item_img_height"
                 android:contentDescription="@null"
                 android:scaleType="centerCrop"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_centerVertical="true"
                 android:id="@+id/material_com_card_view_image"
                 android:background="@android:color/white"/>
@@ -39,6 +41,12 @@
                     android:paddingBottom="@dimen/card_title_text_padding_bottom"
                     android:textSize="@dimen/title_size"
                     android:textColor="@color/black_button"/>
+            <!-- todo: aqui irian las estrellas -->
+            <View
+                    android:id="@+id/vStars"
+                    android:layout_below="@id/tvTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"/>
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -49,7 +57,7 @@
                     android:paddingLeft="@dimen/card_title_text_padding"
                     android:paddingBottom="@dimen/big_padding"
                     android:paddingRight="@dimen/big_padding"
-                    android:layout_below="@id/tvTitle"
+                    android:layout_below="@id/vStars"
                     android:singleLine="true"/>
             <TextView
                     android:layout_width="match_parent"

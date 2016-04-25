@@ -19,6 +19,8 @@
                 android:layout_height="@dimen/card_item_img_height"
                 android:contentDescription="@null"
                 android:scaleType="centerCrop"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:id="@+id/ivLoremOne"
                 android:layout_centerVertical="true"
                 android:background="@android:color/white"/>

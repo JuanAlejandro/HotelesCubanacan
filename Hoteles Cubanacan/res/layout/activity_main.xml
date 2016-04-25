@@ -20,7 +20,7 @@
             android:id="@+id/screen_default_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/white"
+            android:background="@color/secondary_color_blue"
             android:layout_below="@+id/screen_default_toolbar"
             tools:context=".FrameLayout"/>
 </RelativeLayout>
