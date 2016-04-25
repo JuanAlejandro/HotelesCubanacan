@@ -6,7 +6,8 @@
     <RelativeLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
         <!-- destino & hoteles -->
         <android.support.v7.widget.CardView
                 xmlns:android="http://schemas.android.com/apk/res/android"
@@ -27,7 +28,7 @@
                         android:textSize="18sp"
                         android:textColor="@android:color/black"/>
                 <Spinner
-                        android:id="@+id/spDestino"
+                        android:id="@+id/actvDestino"
                         android:layout_below="@id/labelDestino"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -40,7 +41,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
-                        android:layout_below="@id/spDestino"
+                        android:layout_below="@id/actvDestino"
                         android:textColor="@android:color/black"/>
                 <AutoCompleteTextView
                         android:id="@+id/actvHoteles"
@@ -86,11 +87,11 @@
                             android:id="@+id/btnSetEntrada"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_margin="5dp"
                             android:text="@string/lorem_date"
-                            android:background="@color/cubanacan_dark_red"
                             android:textColor="@android:color/white"
+                            android:background="@drawable/background_button"
                             android:layout_marginTop="10dp"
-                            android:layout_marginRight="5dp"
                             android:padding="10dp"
                             android:gravity="center"/>
                 </LinearLayout>
@@ -112,12 +113,12 @@
                             android:id="@+id/btnSetSalida"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_margin="5dp"
                             android:text="@string/lorem_date"
-                            android:background="@color/cubanacan_light_blue"
                             android:textColor="@android:color/white"
+                            android:background="@drawable/background_button"
                             android:layout_marginTop="10dp"
                             android:padding="10dp"
-                            android:layout_marginLeft="5dp"
                             android:gravity="center"/>
                 </LinearLayout>
             </LinearLayout>
@@ -166,7 +167,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
                                 android:textColor="@android:color/white"
-                                android:background="@color/cubanacan_light_red"
                                 android:padding="10dp"
                                 android:gravity="center"
                                 android:layout_weight="1"/>
@@ -185,8 +185,7 @@
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
-                                android:textColor="@android:color/black"
-                                android:background="@color/cubanacan_light_red"
+                                android:textColor="@android:color/white"
                                 android:padding="10dp"
                                 android:gravity="center"
                                 android:layout_weight="1"/>
@@ -230,12 +229,11 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessAd"
+                                android:id="@+id/btnPlusAd"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
-                                android:textColor="@android:color/black"
-                                android:background="@color/cubanacan_light_red"
+                                android:textColor="@android:color/white"
                                 android:padding="10dp"
                                 android:gravity="center"
                                 android:layout_weight="1"/>
@@ -250,12 +248,11 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusAd"
+                                android:id="@+id/btnLessAd"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
-                                android:textColor="@android:color/black"
-                                android:background="@color/cubanacan_light_red"
+                                android:textColor="@android:color/white"
                                 android:padding="10dp"
                                 android:gravity="center"
                                 android:layout_weight="1"/>
@@ -289,8 +286,7 @@
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
-                                android:textColor="@android:color/black"
-                                android:background="@color/cubanacan_light_red"
+                                android:textColor="@android:color/white"
                                 android:padding="10dp"
                                 android:gravity="center"
                                 android:layout_weight="1"/>
@@ -298,7 +294,7 @@
                                 android:id="@+id/tvCantNin"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cero"
+                                android:text="@string/lorem_number"
                                 android:textSize="18sp"
                                 android:textColor="@android:color/black"
                                 android:padding="10dp"
@@ -309,8 +305,7 @@
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
-                                android:textColor="@android:color/black"
-                                android:background="@color/cubanacan_light_red"
+                                android:textColor="@android:color/white"
                                 android:padding="10dp"
                                 android:gravity="center"
                                 android:layout_weight="1"/>
@@ -346,7 +341,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
                                 android:textColor="@android:color/black"
-                                android:background="@color/cubanacan_light_red"
                                 android:padding="10dp"
                                 android:gravity="center"
                                 android:layout_weight="1"/>
@@ -354,7 +348,7 @@
                                 android:id="@+id/tvCantNinAgeOne"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cero"
+                                android:text="@string/lorem_number"
                                 android:textSize="18sp"
                                 android:textColor="@android:color/black"
                                 android:padding="10dp"
@@ -366,7 +360,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
                                 android:textColor="@android:color/black"
-                                android:background="@color/cubanacan_light_red"
                                 android:padding="10dp"
                                 android:gravity="center"
                                 android:layout_weight="1"/>
@@ -402,7 +395,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
                                 android:textColor="@android:color/black"
-                                android:background="@color/cubanacan_light_red"
                                 android:padding="10dp"
                                 android:gravity="center"
                                 android:layout_weight="1"/>
@@ -410,7 +402,7 @@
                                 android:id="@+id/tvCantNinAgeTwo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cero"
+                                android:text="@string/lorem_number"
                                 android:textSize="18sp"
                                 android:textColor="@android:color/black"
                                 android:padding="10dp"
@@ -422,7 +414,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
                                 android:textColor="@android:color/black"
-                                android:background="@color/cubanacan_light_red"
                                 android:padding="10dp"
                                 android:gravity="center"
                                 android:layout_weight="1"/>
@@ -458,7 +449,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
                                 android:textColor="@android:color/black"
-                                android:background="@color/cubanacan_light_red"
                                 android:padding="10dp"
                                 android:gravity="center"
                                 android:layout_weight="1"/>
@@ -466,7 +456,7 @@
                                 android:id="@+id/tvCantNinAgeThree"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cero"
+                                android:text="@string/lorem_number"
                                 android:textSize="18sp"
                                 android:textColor="@android:color/black"
                                 android:padding="10dp"
@@ -478,7 +468,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
                                 android:textColor="@android:color/black"
-                                android:background="@color/cubanacan_light_red"
                                 android:padding="10dp"
                                 android:gravity="center"
                                 android:layout_weight="1"/>
@@ -524,7 +513,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessAdTwo"
+                                android:id="@+id/btnPlusAdTwo"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -543,7 +532,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusAdTwo"
+                                android:id="@+id/btnLessAdTwo"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -589,7 +578,7 @@
                                 android:id="@+id/tvCantNinTwo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cero"
+                                android:text="@string/lorem_number"
                                 android:textSize="18sp"
                                 android:textColor="@android:color/black"
                                 android:padding="10dp"
@@ -643,7 +632,7 @@
                                 android:id="@+id/tvCantNinAgeOneTwo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cero"
+                                android:text="@string/lorem_number"
                                 android:textSize="18sp"
                                 android:textColor="@android:color/black"
                                 android:padding="10dp"
@@ -697,7 +686,7 @@
                                 android:id="@+id/tvCantNinAgeTwoTwo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cero"
+                                android:text="@string/lorem_number"
                                 android:textSize="18sp"
                                 android:textColor="@android:color/black"
                                 android:padding="10dp"
@@ -751,7 +740,7 @@
                                 android:id="@+id/tvCantNinAgeThreeTwo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cero"
+                                android:text="@string/lorem_number"
                                 android:textSize="18sp"
                                 android:textColor="@android:color/black"
                                 android:padding="10dp"
@@ -808,7 +797,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessAdThree"
+                                android:id="@+id/btnPlusAdThree"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -827,7 +816,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusAdThree"
+                                android:id="@+id/btnLessAdThree"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -873,7 +862,7 @@
                                 android:id="@+id/tvCantNinThree"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cero"
+                                android:text="@string/lorem_number"
                                 android:textSize="18sp"
                                 android:textColor="@android:color/black"
                                 android:padding="10dp"
@@ -927,7 +916,7 @@
                                 android:id="@+id/tvCantNinAgeOneThree"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cero"
+                                android:text="@string/lorem_number"
                                 android:textSize="18sp"
                                 android:textColor="@android:color/black"
                                 android:padding="10dp"
@@ -981,7 +970,7 @@
                                 android:id="@+id/tvCantNinAgeTwoThree"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cero"
+                                android:text="@string/lorem_number"
                                 android:textSize="18sp"
                                 android:textColor="@android:color/black"
                                 android:padding="10dp"
@@ -1035,7 +1024,7 @@
                                 android:id="@+id/tvCantNinAgeThreeThree"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cero"
+                                android:text="@string/lorem_number"
                                 android:textSize="18sp"
                                 android:textColor="@android:color/black"
                                 android:padding="10dp"
@@ -1092,7 +1081,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessAdFour"
+                                android:id="@+id/btnPlusAdFour"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -1111,7 +1100,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusAdFour"
+                                android:id="@+id/btnLessAdFour"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -1157,7 +1146,7 @@
                                 android:id="@+id/tvCantNinFour"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cero"
+                                android:text="@string/lorem_number"
                                 android:textSize="18sp"
                                 android:textColor="@android:color/black"
                                 android:padding="10dp"
@@ -1211,7 +1200,7 @@
                                 android:id="@+id/tvCantNinAgeOneFour"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cero"
+                                android:text="@string/lorem_number"
                                 android:textSize="18sp"
                                 android:textColor="@android:color/black"
                                 android:padding="10dp"
@@ -1265,7 +1254,7 @@
                                 android:id="@+id/tvCantNinAgeTwoFour"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cero"
+                                android:text="@string/lorem_number"
                                 android:textSize="18sp"
                                 android:textColor="@android:color/black"
                                 android:padding="10dp"
@@ -1319,7 +1308,7 @@
                                 android:id="@+id/tvCantNinAgeThreeFour"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cero"
+                                android:text="@string/lorem_number"
                                 android:textSize="18sp"
                                 android:textColor="@android:color/black"
                                 android:padding="10dp"
@@ -1376,7 +1365,7 @@
                             android:layout_alignParentRight="true"
                             android:weightSum="3">
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnLessAdFive"
+                                android:id="@+id/btnPlusAdFive"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
@@ -1395,7 +1384,7 @@
                                 android:gravity="center"
                                 android:layout_weight="1"/>
                         <android.support.v7.widget.AppCompatButton
-                                android:id="@+id/btnPlusAdFive"
+                                android:id="@+id/btnLessAdFive"
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
@@ -1441,7 +1430,7 @@
                                 android:id="@+id/tvCantNinFive"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cero"
+                                android:text="@string/lorem_number"
                                 android:textSize="18sp"
                                 android:textColor="@android:color/black"
                                 android:padding="10dp"
@@ -1495,7 +1484,7 @@
                                 android:id="@+id/tvCantNinAgeOneFive"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cero"
+                                android:text="@string/lorem_number"
                                 android:textSize="18sp"
                                 android:textColor="@android:color/black"
                                 android:padding="10dp"
@@ -1549,7 +1538,7 @@
                                 android:id="@+id/tvCantNinAgeTwoFive"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cero"
+                                android:text="@string/lorem_number"
                                 android:textSize="18sp"
                                 android:textColor="@android:color/black"
                                 android:padding="10dp"
@@ -1603,7 +1592,7 @@
                                 android:id="@+id/tvCantNinAgeThreeFive"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/cero"
+                                android:text="@string/lorem_number"
                                 android:textSize="18sp"
                                 android:textColor="@android:color/black"
                                 android:padding="10dp"
@@ -1643,11 +1632,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/search"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
+                android:background="@drawable/background_button"
                 android:padding="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_margin="10dp"
                 android:layout_below="@id/btnOtrasOpciones"
                 android:gravity="center"/>
     </RelativeLayout>

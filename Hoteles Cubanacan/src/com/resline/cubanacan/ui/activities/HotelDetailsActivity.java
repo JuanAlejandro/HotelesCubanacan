@@ -39,7 +39,7 @@ public class HotelDetailsActivity extends BaseActivity implements View.OnClickLi
         // set button pick room
         Button pickRoom = (Button) findViewById(R.id.btnElegirHab);
         pickRoom.setOnClickListener(this);
-        Log.d(TAG, String.valueOf(mBundle.getLong("idHotel")));
+        Log.d(TAG, String.valueOf(mBundle.getInt("my_int")));
     }
 
     private void loadViewComponents() {
@@ -71,18 +71,12 @@ public class HotelDetailsActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     protected String getTitleToolBar() {
-        return "";
+        return getString(R.string.detalles_title);
     }
 
     @Override
     protected Toolbar getLayoutResourceToolBar() {
         return (Toolbar) findViewById(R.id.toolbar);
-    }
-
-    protected Bundle getBundle() {
-        Bundle bundle = new Bundle();
-        bundle.putLong("idHotel", mBundle.getLong("idHotel"));
-        return bundle;
     }
 
     @Override
@@ -91,7 +85,7 @@ public class HotelDetailsActivity extends BaseActivity implements View.OnClickLi
             case R.id.ivGallery:
                 break;
             case R.id.btnElegirHab:
-                mActivity.startActivity(new Intent(HotelDetailsActivity.this, ElegirHabitacionActivity.class).putExtras(getBundle()));
+                startActivity(new Intent(HotelDetailsActivity.this, ElegirHabitacionActivity.class));
                 break;
         }
     }

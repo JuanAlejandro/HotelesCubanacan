@@ -10,7 +10,7 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.activities.api.DrawerActivity;
-import com.resline.cubanacan.ui.fragments.ReservarFragment;
+import com.resline.cubanacan.ui.fragments.*;
 import com.resline.cubanacan.ui.utils.DrawerMenu;
 
 /**
@@ -19,13 +19,15 @@ import com.resline.cubanacan.ui.utils.DrawerMenu;
  * la sección seleccionada en el drawer
  */
 public class MainActivity extends DrawerActivity implements DrawerActivity.OnDrawerItemSelected {
+    private boolean isAuthenticated = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // set drawer on item click listener
         setDrawerItemSelectedListener(this);
         // to decide what section is the first to be selected
-        drawer.setSelection(-1);
+        drawer.setSelection(TAG_RESERVAR);
 
         // your code here
         fragmentTransaction(new ReservarFragment(), navSDITitles[DrawerMenu.RESERVAR]);
@@ -75,12 +77,12 @@ public class MainActivity extends DrawerActivity implements DrawerActivity.OnDra
 
         IDrawerItem[] drawerItems = new IDrawerItem[navSDITitles.length];
 
-        for(int i = 0; i < DrawerMenu.CANT_SECCIONES; i++){
+        for (int i = 0; i < DrawerMenu.CANT_SECCIONES; i++) {
             drawerItems[i] = new PrimaryDrawerItem()
                     .withName(navSDITitles[i])
                     .withSelectedTextColorRes(selColor)
                     .withSelectedIconColorRes(selColor)
-                    .withTag(TAG_ENTRAR_O_REGISTRARSE);
+                    .withTag(TAGS_ARRAY[i]);
         }
 
         return drawerItems;
@@ -99,15 +101,23 @@ public class MainActivity extends DrawerActivity implements DrawerActivity.OnDra
          **/
         switch (tag) {
             case TAG_ENTRAR_O_REGISTRARSE:
+                if (!isAuthenticated) {
+                    fragmentTransaction(new LoginFragment(), navSDITitles[DrawerMenu.ENTRAR_O_REGISTRARSE]);
+                } else {
+                    // do something when user is authenticated
+                }
                 break;
             case TAG_RESERVAR:
                 fragmentTransaction(new ReservarFragment(), navSDITitles[DrawerMenu.RESERVAR]);
                 break;
             case TAG_DESTINOS:
+                fragmentTransaction(new DestinosFragment(), navSDITitles[DrawerMenu.DESTINOS]);
                 break;
             case TAG_HOTELES:
+                fragmentTransaction(new HotelListGeneralFragment(), navSDITitles[DrawerMenu.HOTELES]);
                 break;
             case TAG_TEMAS:
+                fragmentTransaction(new TemasFragment(), navSDITitles[DrawerMenu.TEMAS]);
                 break;
             case TAG_OFERTAS_ESPECIALES:
                 break;
@@ -124,7 +134,5 @@ public class MainActivity extends DrawerActivity implements DrawerActivity.OnDra
         }
 
         area = tag;
-        
-        drawer.setSelection(1);
     }
 }

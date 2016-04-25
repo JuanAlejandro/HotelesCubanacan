@@ -82,7 +82,7 @@ public class TitularFragment extends BaseFragment implements View.OnClickListene
         cbAcepto = (CheckBox) mViewFragment.findViewById(R.id.cbAcepto);
 
         // boton siguiente
-        btnPagar = (Button) mViewFragment.findViewById(R.id.btnSiguiente);
+        btnPagar = (Button) mViewFragment.findViewById(R.id.btnPagar);
 
         btnPagar.setOnClickListener(this);
     }

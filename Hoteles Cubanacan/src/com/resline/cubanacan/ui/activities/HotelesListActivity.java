@@ -15,34 +15,29 @@ import com.resline.cubanacan.ui.fragments.HotelesListFragment;
  * Created by Juan Alejandro on 13/04/2016.
  */
 public class HotelesListActivity extends BaseActivity implements View.OnClickListener {
-
-    enum Filter{PRICE_FILTER, NAME_FILTER, CATEGORY_FILTER};
-    Filter filter = Filter.PRICE_FILTER;
-
-    Button btnCategory, btnName, btnPrice;
+    private Button btnPrecio, btnDistancia, btnEstrellas;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        btnCategory = (Button)findViewById(R.id.btnCategory);
-        btnCategory.setOnClickListener(this);
-
-        btnName = (Button)findViewById(R.id.btnName);
-        btnName.setOnClickListener(this);
-
-        btnPrice = (Button)findViewById(R.id.btnPrice);
-        btnPrice.setOnClickListener(this);
-
-        btnPrice.setSelected(true);
-
         setToolBar();
 
-        Fragment fragment = new HotelesListFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt("filter", filter.ordinal());
-        fragment.setArguments(bundle);
-        fragmentTransaction(fragment);
+        loadViewComponents();
+
+        fragmentTransaction(new HotelesListFragment());
+    }
+
+    private void loadViewComponents() {
+        btnPrecio = (Button) findViewById(R.id.btnPrecio);
+        btnDistancia = (Button) findViewById(R.id.btnPlusNin);
+        btnEstrellas = (Button) findViewById(R.id.btnEstrellas);
+
+        btnPrecio.setOnClickListener(this);
+        btnDistancia.setOnClickListener(this);
+        btnEstrellas.setOnClickListener(this);
+
+        btnPrecio.setSelected(false);
     }
 
     @Override
@@ -79,46 +74,48 @@ public class HotelesListActivity extends BaseActivity implements View.OnClickLis
         });
     }
 
-    private void setFilterList(Filter newFilter){
-        filter = newFilter;
-    }
-
     @Override
     public void onClick(View v) {
+        Fragment fragment = new Fragment();
+        Bundle bundle = new Bundle();
+        // your arguments here
+        bundle.putBoolean("my_boolean", true);
+        bundle.putInt("my_int", 0);
+        fragment.setArguments(bundle);
         switch (v.getId()) {
-            case R.id.btnPrice:
-                if (!btnPrice.isSelected())
-                    btnPrice.setSelected(true);
-
-                setFilterList(Filter.PRICE_FILTER);
-
-                btnName.setSelected(false);
-                btnCategory.setSelected(false);
-                break;
-            case R.id.btnName:
-                if (!btnName.isSelected())
-                    btnName.setSelected(true);
-
-                setFilterList(Filter.NAME_FILTER);
-
-                btnPrice.setSelected(false);
-                btnCategory.setSelected(false);
-                break;
-            case R.id.btnCategory:
+            case R.id.btnPrecio:
                 // cambias el bundle aqui en dependencia del caso
-                if (!btnCategory.isSelected())
-                    btnCategory.setSelected(true);
+                if (btnPrecio.isSelected())
+                    btnPrecio.setSelected(false);
+                else
+                    btnPrecio.setSelected(true);
 
-                setFilterList(Filter.CATEGORY_FILTER);
+                btnDistancia.setSelected(false);
+                btnEstrellas.setSelected(false);
+                break;
+            case R.id.btnPlusNin:
+                // cambias el bundle aqui en dependencia del caso
+                if (btnDistancia.isSelected())
+                    btnDistancia.setSelected(false);
+                else
+                    btnDistancia.setSelected(true);
 
-                btnName.setSelected(false);
-                btnPrice.setSelected(false);
+                btnPrecio.setSelected(false);
+                btnEstrellas.setSelected(false);
+                break;
+            case R.id.btnEstrellas:
+                // cambias el bundle aqui en dependencia del caso
+                if (btnEstrellas.isSelected())
+                    btnEstrellas.setSelected(false);
+                else
+                    btnEstrellas.setSelected(true);
+
+                btnDistancia.setSelected(false);
+                btnPrecio.setSelected(false);
                 break;
         }
-        Fragment fragment = new HotelesListFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt("filter", filter.ordinal());
-        fragment.setArguments(bundle);
+
+
         fragmentTransaction(fragment);
     }
 }

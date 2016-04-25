@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.activities.HotelDetailsActivity;
 import com.resline.cubanacan.ui.adapter.api.RecyclerViewCardsAdapter;
@@ -41,19 +40,20 @@ public class HotelesCardsAdapter extends RecyclerViewCardsAdapter {
     }
 
     @Override
-    protected Bundle getBundle(Long id) {
+    protected Bundle getBundle(int id) {
         Bundle bundle = new Bundle();
-        bundle.putLong("idHotel", id);
+        bundle.putInt("my_int", id);
         return bundle;
     }
 
     @Override
     protected Class<?> getActivityClass() {
+        // todo: activity here
         return HotelDetailsActivity.class;
     }
 
     private class HotelesViewHolder extends ViewHolder {
-        public HotelesViewHolder(Activity activity, final View itemView) {
+        public HotelesViewHolder(Activity activity, View itemView) {
             super(activity, itemView);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

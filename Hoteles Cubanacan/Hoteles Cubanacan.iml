@@ -20,6 +20,8 @@
     <orderEntry type="module" module-name="MaterialDrawer" />
     <orderEntry type="module" module-name="MaterialDateTimePicker" />
     <orderEntry type="module" module-name="Android-ObservableScrollView" />
+    <orderEntry type="module" module-name="android-floating-action-button" />
+    <orderEntry type="module" module-name="PagerSlidingTabStrip" />
     <orderEntry type="library" name="recyclerview" level="project" />
   </component>
 </module>

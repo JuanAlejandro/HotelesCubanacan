@@ -47,6 +47,20 @@ public abstract class DrawerActivity extends AppCompatActivity implements View.O
     public static final int TAG_CONTACTENOS = 9;
     public static final int TAG_CONFIGURACION = 10;
 
+    public static final int[] TAGS_ARRAY = {
+            TAG_ENTRAR_O_REGISTRARSE,
+            TAG_RESERVAR,
+            TAG_DESTINOS,
+            TAG_HOTELES,
+            TAG_TEMAS,
+            TAG_OFERTAS_ESPECIALES,
+            TAG_RECIENTES,
+            TAG_VALORAR_Y_COMPARTIR,
+            TAG_TERMINOS_DE_USO,
+            TAG_CONTACTENOS,
+            TAG_CONFIGURACION
+    };
+
     private static final String TAG = "DrawerActivity";
 
     // navigation drawer components

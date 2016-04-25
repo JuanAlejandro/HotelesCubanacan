@@ -3,12 +3,13 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/secondary_color_blue">
     <android.support.v7.widget.Toolbar
             android:id="@+id/screen_default_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/cubanacan_light_red"
+            android:background="@color/cubanacan_light_blue"
             android:minHeight="?attr/actionBarSize"
             tools:context=".ToolBar">
         <TextView
@@ -22,43 +23,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/screen_default_toolbar"
-            android:orientation="horizontal"
-            android:background="@drawable/borde" >
+            android:orientation="horizontal">
         <android.support.v7.widget.AppCompatButton
-                android:id="@+id/btnPrice"
+                android:id="@+id/btnPrecio"
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
-                android:text="@string/precio"
-                android:textColor="#565656"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="0dp"
-                android:padding="10dp"
+                android:text="@string/less"
+                android:textColor="@android:color/black"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:layout_weight="1"
-                android:background="#EEE"/>
-        <android.support.v7.widget.AppCompatButton
-                android:id="@+id/btnName"
-                android:layout_width="45dp"
-                android:layout_height="wrap_content"
-                android:text="@string/nombre"
-                android:textColor="@android:color/darker_gray"
-                android:background="@android:color/white"
-                android:padding="10dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="3dp"
-                android:gravity="center"
+                android:background="@drawable/selector_filter"
                 android:layout_weight="1"/>
         <android.support.v7.widget.AppCompatButton
-                android:id="@+id/btnCategory"
+                android:id="@+id/btnPlusNin"
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
-                android:text="@string/categoria"
-                android:textColor="@android:color/darker_gray"
-                android:background="@android:color/white"
-                android:padding="10dp"
+                android:text="@string/less"
+                android:textColor="@android:color/black"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="3dp"
+                android:background="@drawable/selector_filter"
+                android:layout_weight="1"/>
+        <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnEstrellas"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:text="@string/less"
+                android:textColor="@android:color/black"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:background="@drawable/selector_filter"
                 android:layout_weight="1"/>
     </LinearLayout>
     <FrameLayout

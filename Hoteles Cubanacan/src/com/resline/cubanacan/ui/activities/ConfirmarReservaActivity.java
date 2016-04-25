@@ -39,7 +39,7 @@ public class ConfirmarReservaActivity extends BaseActivity {
 
     @Override
     protected String getTitleToolBar() {
-        return "";
+        return getString(R.string.confirm_reserva_title);
     }
 
     @Override
