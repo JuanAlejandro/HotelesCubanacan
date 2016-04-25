@@ -63,4 +63,6 @@
     <string name="motives">Motivos</string>
     <string name="destinos_title">Destinos</string>
     <string name="detalles_title">Detalles</string>
+    <string name="accept">Aceptar</string>
+    <string name="registrarse_title">Registrarse</string>
 </resources>

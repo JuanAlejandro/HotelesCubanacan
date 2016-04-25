@@ -1,5 +1,6 @@
 package com.resline.cubanacan.ui.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import com.resline.cubanacan.R;
+import com.resline.cubanacan.ui.activities.RegistrarseActivity;
 import com.resline.cubanacan.ui.fragments.api.BaseFragment;
 
 /**
@@ -36,6 +38,9 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
         signUp = (Button) mViewFragment.findViewById(R.id.sign_up);
         etUser = (EditText) mViewFragment.findViewById(R.id.etUser);
         etPassword = (EditText) mViewFragment.findViewById(R.id.etPassword);
+
+        ok.setOnClickListener(this);
+        signUp.setOnClickListener(this);
     }
 
     @Override
@@ -44,6 +49,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
             case R.id.ok_button:
                 break;
             case R.id.sign_up:
+                startActivity(new Intent(mActivity, RegistrarseActivity.class));
                 break;
         }
     }

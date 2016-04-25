@@ -6,7 +6,7 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white">
+            android:background="@color/secondary_color_blue">
         <ImageView
                 android:id="@+id/ivHotel"
                 android:layout_width="match_parent"
