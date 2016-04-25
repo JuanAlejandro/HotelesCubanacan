@@ -2,6 +2,7 @@ package com.resline.cubanacan.ui.activities.api;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,8 @@ public abstract class GeneralListActivity extends BaseActivity implements View.O
         super.onCreate(savedInstanceState);
 
         loadViewComponents();
+
+        setToolBar();
     }
 
     @Override
@@ -35,6 +38,17 @@ public abstract class GeneralListActivity extends BaseActivity implements View.O
         btnEstrellas.setOnClickListener(this);
 
         btnPrecio.setSelected(false);
+    }
+
+    private void setToolBar() {
+        mActionBar.setDisplayHomeAsUpEnabled(true);
+
+        mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     @Override
@@ -75,6 +89,14 @@ public abstract class GeneralListActivity extends BaseActivity implements View.O
                 btnDistancia.setSelected(false);
                 btnPrecio.setSelected(false);
                 break;
+        }
+    }
+
+    protected void fragmentTransaction(Fragment fragment) {
+        if (fragment != null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frameList, fragment)
+                    .commit();
         }
     }
 }
