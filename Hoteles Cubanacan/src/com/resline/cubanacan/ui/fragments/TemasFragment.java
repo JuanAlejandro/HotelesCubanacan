@@ -6,6 +6,7 @@ import com.resline.cubanacan.ui.adapter.TemasCardAdapter;
 import com.resline.cubanacan.ui.fragments.api.RecyclerViewWithFAB;
 import com.resline.cubanacan.ui.model.CardViewBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,8 +19,22 @@ public class TemasFragment extends RecyclerViewWithFAB {
         return new TemasCardAdapter(mActivity, mListCard);
     }
 
-    @Override
     protected List<CardViewBean> getContentInCards() {
-        return null;
+        List<CardViewBean> temp = new ArrayList<>();
+        // todo: get the content
+        temp = populateList();
+        return temp;
+    }
+
+    private List<CardViewBean> populateList() {
+        List<CardViewBean> listCard = new ArrayList<>();
+        int id;
+
+        for (int i = 0; i < 100; i++) {
+            id = i;
+            listCard.add(new CardViewBean(id, null, Integer.toString(i), Integer.toString(i), Integer.toString(i)));
+        }
+
+        return listCard;
     }
 }

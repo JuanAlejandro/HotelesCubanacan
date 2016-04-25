@@ -27,7 +27,7 @@ public class MainActivity extends DrawerActivity implements DrawerActivity.OnDra
         // set drawer on item click listener
         setDrawerItemSelectedListener(this);
         // to decide what section is the first to be selected
-//        drawer.setSelection(-1);
+        drawer.setSelection(TAG_RESERVAR);
 
         // your code here
         fragmentTransaction(new ReservarFragment(), navSDITitles[DrawerMenu.RESERVAR]);
