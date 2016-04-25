@@ -11,6 +11,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.activities.api.DrawerActivity;
 import com.resline.cubanacan.ui.fragments.DestinosFragment;
+import com.resline.cubanacan.ui.fragments.LoginFragment;
 import com.resline.cubanacan.ui.fragments.ReservarFragment;
 import com.resline.cubanacan.ui.fragments.TemasFragment;
 import com.resline.cubanacan.ui.utils.DrawerMenu;
@@ -101,6 +102,7 @@ public class MainActivity extends DrawerActivity implements DrawerActivity.OnDra
          **/
         switch (tag) {
             case TAG_ENTRAR_O_REGISTRARSE:
+                fragmentTransaction(new LoginFragment(), navSDITitles[DrawerMenu.ENTRAR_O_REGISTRARSE]);
                 break;
             case TAG_RESERVAR:
                 fragmentTransaction(new ReservarFragment(), navSDITitles[DrawerMenu.RESERVAR]);
