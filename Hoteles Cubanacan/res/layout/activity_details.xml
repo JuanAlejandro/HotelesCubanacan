@@ -1,5 +1,6 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
        xmlns:app="http://schemas.android.com/apk/res-auto"
+       xmlns:fab="http://schemas.android.com/apk/res/com.resline.cubanacan"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
        android:orientation="vertical">
@@ -7,6 +8,7 @@
             android:id="@+id/scroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@android:color/white"
             android:fillViewport="true">
         <RelativeLayout
                 android:layout_width="match_parent"
@@ -47,15 +49,16 @@
                     android:layout_below="@id/ivHotel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                <ImageView
+                <com.getbase.floatingactionbutton.FloatingActionButton
                         android:id="@+id/ivOne"
-                        android:padding="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        fab:fab_colorNormal="@color/cubanacan_dark_red"
+                        fab:fab_colorPressed="@color/cubanacan_light_red"
                         android:src="@drawable/ic_place_black"/>
                 <TextView
                         android:id="@+id/tvDireccion"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/direccion_lorem"
                         android:textSize="18sp"
@@ -82,7 +85,7 @@
                     android:layout_height="wrap_content">
                 <ImageView
                         android:id="@+id/ivAirplane"
-                        android:padding="10dp"
+                        android:padding="6dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/airplane"/>
@@ -165,6 +168,32 @@
                         android:layout_toEndOf="@+id/tvEntradaLabel"/>
             </RelativeLayout>
             <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/btnServiciosActividades"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/services_activities"
+                    android:textColor="@android:color/white"
+                    android:layout_margin="10dp"
+                    android:padding="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/rlDate"
+                    android:gravity="center"/>
+            <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/btnMotivos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/motives"
+                    android:textColor="@android:color/white"
+                    android:layout_margin="10dp"
+                    android:padding="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/btnServiciosActividades"
+                    android:gravity="center"/>
+            <android.support.v7.widget.AppCompatButton
                     android:id="@+id/btnElegirHab"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -174,8 +203,9 @@
                     android:layout_margin="10dp"
                     android:padding="10dp"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_below="@id/rlDate"
+                    android:layout_below="@id/btnMotivos"
                     android:gravity="center"/>
         </RelativeLayout>
     </com.github.ksoichiro.android.observablescrollview.ObservableScrollView>
