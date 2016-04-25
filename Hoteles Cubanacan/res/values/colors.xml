@@ -17,6 +17,8 @@
     <color name="secondary_color_blue">#E9ECF5</color>
 
     <color name="text_hint_color">#878787</color>
+
+    <color name="half_black_transparency">#ee808080</color>
 </resources>
 
 

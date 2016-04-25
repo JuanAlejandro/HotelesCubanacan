@@ -65,4 +65,5 @@
     <string name="detalles_title">Detalles</string>
     <string name="accept">Aceptar</string>
     <string name="registrarse_title">Registrarse</string>
+    <string name="user_profile_title">Perfil de usuario</string>
 </resources>
