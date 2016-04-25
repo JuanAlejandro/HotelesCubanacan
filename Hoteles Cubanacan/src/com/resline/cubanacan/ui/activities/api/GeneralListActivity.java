@@ -39,7 +39,7 @@ public abstract class GeneralListActivity extends BaseActivity implements View.O
 
     @Override
     protected Toolbar getLayoutResourceToolBar() {
-        return (Toolbar) findViewById(R.id.screen_default_toolbar);
+        return (Toolbar) findViewById(R.id.toolbar);
     }
 
     @Override

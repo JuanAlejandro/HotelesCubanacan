@@ -71,7 +71,7 @@ public class HotelDetailsActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     protected String getTitleToolBar() {
-        return "";
+        return getString(R.string.detalles_title);
     }
 
     @Override

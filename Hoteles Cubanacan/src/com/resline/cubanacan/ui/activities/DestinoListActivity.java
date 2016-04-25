@@ -15,12 +15,7 @@ public class DestinoListActivity extends GeneralListActivity {
 
     @Override
     protected String getTitleToolBar() {
-        return "Destinos";
-    }
-
-    @Override
-    protected Toolbar getLayoutResourceToolBar() {
-        return (Toolbar) findViewById(R.id.screen_default_toolbar);
+        return getString(R.string.destinos_title);
     }
 
     @Override

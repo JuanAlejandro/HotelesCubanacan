@@ -61,4 +61,6 @@
     <string name="go_to_map">Ir al mapa</string>
     <string name="services_activities">Servicios y actividades</string>
     <string name="motives">Motivos</string>
+    <string name="destinos_title">Destinos</string>
+    <string name="detalles_title">Detalles</string>
 </resources>

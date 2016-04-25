@@ -33,7 +33,7 @@ public class DestinosCardAdapter extends RecyclerViewCardsAdapter {
 
     @Override
     protected Bundle getBundle(int id) {
-        return null;
+        return new Bundle();
     }
 
     @Override
