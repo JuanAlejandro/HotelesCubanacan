@@ -75,4 +75,9 @@
     <string name="repita_correo_title">Repita el correo</string>
     <string name="contrasena_title">Contraseña</string>
     <string name="confirmar_contrasena_title">Confirmar contraseña</string>
+    <string name="pay">Pagar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="habitaciones_title">Habitaciones:</string>
+    <string name="precio_title">Precio:</string>
+    <string name="noches_title">Noches:</string>
 </resources>
