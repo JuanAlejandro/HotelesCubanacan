@@ -66,8 +66,8 @@
     <string name="accept">Aceptar</string>
     <string name="registrarse_title">Registrarse</string>
     <string name="user_profile_title">Perfil de usuario</string>
-    <string name="nombre_title">Nombre</string>
-    <string name="apellido_title">Apellido</string>
+    <string name="nombre_title">Nombres</string>
+    <string name="apellido_title">Apellidos</string>
     <string name="idioma_title">Idioma</string>
     <string name="pais_title">País</string>
     <string name="direccion_title">Dirección</string>
