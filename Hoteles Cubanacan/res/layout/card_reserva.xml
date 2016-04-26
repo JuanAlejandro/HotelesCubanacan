@@ -7,7 +7,6 @@
         android:elevation="@dimen/custom_card_elevation"
         android:layout_margin="@dimen/card_margin"
         android:padding="10dp"
-        android:clickable="true"
         android:foreground="@drawable/card_item_selector">
     <RelativeLayout
             android:id="@+id/rlLoremOne"
@@ -26,7 +25,7 @@
                 android:layout_toLeftOf="@id/cbRoom1"
                 android:layout_toStartOf="@id/cbRoom1">
             <TextView
-                    android:id="@+id/tvTitleOne"
+                    android:id="@+id/tvTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="@dimen/card_title_text_padding"
@@ -47,17 +46,17 @@
                     android:paddingTop="@dimen/card_title_text_padding"
                     android:paddingBottom="@dimen/card_title_text_padding"
                     android:paddingLeft="@dimen/card_title_text_padding"
-                    android:layout_below="@id/tvTitleOne"
+                    android:layout_below="@id/tvTitle"
                     android:singleLine="true"/>
             <TextView
-                    android:id="@+id/tvHabCant"
+                    android:id="@+id/rbCategory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/description_size"
                     android:text="@string/lorem_one"
                     android:padding="@dimen/card_title_text_padding"
-                    android:layout_below="@id/tvTitleOne"
+                    android:layout_below="@id/tvTitle"
                     android:layout_toRightOf="@id/tvHabTitle"
                     android:layout_toEndOf="@id/tvHabTitle"
                     android:singleLine="true"/>
@@ -72,7 +71,7 @@
                     android:text="@string/lorem_money"
                     android:padding="@dimen/card_title_text_padding"
                     android:layout_alignParentRight="true"
-                    android:layout_below="@id/tvTitleOne"
+                    android:layout_below="@id/tvTitle"
                     android:singleLine="true"/>
             <TextView
                     android:id="@+id/tvPrecioTitle"
@@ -86,7 +85,7 @@
                     android:paddingLeft="@dimen/card_title_text_padding"
                     android:layout_toLeftOf="@id/tvPrecioCant"
                     android:layout_toStartOf="@id/tvPrecioCant"
-                    android:layout_below="@id/tvTitleOne"
+                    android:layout_below="@id/tvTitle"
                     android:singleLine="true"/>
 
             <!-- noches -->
@@ -171,7 +170,7 @@
                     android:layout_height="wrap_content"
                     android:weightSum="2">
                 <android.support.v7.widget.AppCompatButton
-                        android:id="@+id/btnSetOpcion1"
+                        android:id="@+id/btnPagar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/pay"
@@ -182,7 +181,7 @@
                         android:gravity="center"
                         android:layout_weight="1"/>
                 <android.support.v7.widget.AppCompatButton
-                        android:id="@+id/btnSetOpcion2"
+                        android:id="@+id/btnCancelar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/cancelar"

@@ -2,22 +2,22 @@ package com.resline.cubanacan.ui.fragments;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
-import com.resline.cubanacan.ui.adapter.TemasCardAdapter;
-import com.resline.cubanacan.ui.fragments.api.RecyclerViewWithFAB;
+import com.resline.cubanacan.ui.adapter.ReservaCardAdapter;
+import com.resline.cubanacan.ui.fragments.api.RecyclerViewFragment;
 import com.resline.cubanacan.ui.model.CardViewBean;
 import com.resline.cubanacan.ui.model.CardViewGeneral;
+import com.resline.cubanacan.ui.model.CardViewReserva;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Juan Alejandro on 23/04/2016.
+ * Created by Juan Alejandro on 25/04/2016.
  */
-public class TemasFragment extends RecyclerViewWithFAB {
-
+public class ReservasListFragment extends RecyclerViewFragment {
     @Override
     protected RecyclerView.Adapter getRecyclerViewCardAdapter(Activity mActivity, List<CardViewBean> mListCard) {
-        return new TemasCardAdapter(mActivity, mListCard);
+        return new ReservaCardAdapter(mActivity, mListCard);
     }
 
     protected List<CardViewBean> getContentInCards() {
@@ -33,7 +33,8 @@ public class TemasFragment extends RecyclerViewWithFAB {
 
         for (int i = 0; i < 100; i++) {
             id = i;
-            listCard.add(new CardViewGeneral(id, null, Integer.toString(i), Integer.toString(i)));
+            listCard.add(new CardViewReserva(id, "Hotel Sevilla", Integer.toString(i), Integer.toString(i), i,
+                    "1/1/1990", "1/1/1990"));
         }
 
         return listCard;
