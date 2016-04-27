@@ -80,4 +80,6 @@
     <string name="habitaciones_title">Habitaciones:</string>
     <string name="precio_title">Precio:</string>
     <string name="noches_title">Noches:</string>
+    <string name="edit">Editar</string>
+    <string name="lorem_email">jalejandro.hperez@gmail.com</string>
 </resources>
