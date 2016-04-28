@@ -63,12 +63,12 @@ class DialogInit {
         final MaterialDialog.Builder builder = dialog.mBuilder;
 
         // Check if default library fonts should be used
-        if (!builder.useCustomFonts) {
-            if (builder.mediumFont == null)
-                builder.mediumFont = TypefaceHelper.get(dialog.getContext(), "Roboto-Medium");
-            if (builder.regularFont == null)
-                builder.regularFont = TypefaceHelper.get(dialog.getContext(), "Roboto-Regular");
-        }
+//        if (!builder.useCustomFonts) {
+//            if (builder.mediumFont == null)
+//                builder.mediumFont = TypefaceHelper.get(dialog.getContext(), "Roboto-Medium");
+//            if (builder.regularFont == null)
+//                builder.regularFont = TypefaceHelper.get(dialog.getContext(), "Roboto-Regular");
+//        }
 
         // Set cancelable flag and dialog background color
         dialog.setCancelable(builder.cancelable);
@@ -168,7 +168,7 @@ class DialogInit {
             dialog.titleFrame.setVisibility(View.GONE);
         } else {
             dialog.title.setText(builder.title);
-            dialog.setTypeface(dialog.title, builder.mediumFont);
+//            dialog.setTypeface(dialog.title, builder.mediumFont);
             dialog.title.setTextColor(builder.titleColor);
             dialog.title.setGravity(builder.titleGravity.getGravityInt());
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
@@ -213,7 +213,7 @@ class DialogInit {
 
         if (dialog.positiveButton != null && builder.positiveText != null) {
             MDButton positiveTextView = dialog.positiveButton;
-            dialog.setTypeface(positiveTextView, builder.mediumFont);
+//            dialog.setTypeface(positiveTextView, builder.mediumFont);
             positiveTextView.setAllCapsCompat(textAllCaps);
             positiveTextView.setText(builder.positiveText);
             positiveTextView.setTextColor(getActionTextStateList(builder.context, builder.positiveColor));
@@ -226,7 +226,7 @@ class DialogInit {
 
         if (dialog.negativeButton != null && builder.negativeText != null) {
             MDButton negativeTextView = dialog.negativeButton;
-            dialog.setTypeface(negativeTextView, builder.mediumFont);
+//            dialog.setTypeface(negativeTextView, builder.mediumFont);
             negativeTextView.setAllCapsCompat(textAllCaps);
             negativeTextView.setText(builder.negativeText);
             negativeTextView.setTextColor(getActionTextStateList(builder.context, builder.negativeColor));
@@ -239,7 +239,7 @@ class DialogInit {
 
         if (dialog.neutralButton != null && builder.neutralText != null) {
             MDButton neutralTextView = dialog.neutralButton;
-            dialog.setTypeface(neutralTextView, builder.mediumFont);
+//            dialog.setTypeface(neutralTextView, builder.mediumFont);
             neutralTextView.setAllCapsCompat(textAllCaps);
             neutralTextView.setText(builder.neutralText);
             neutralTextView.setTextColor(getActionTextStateList(builder.context, builder.neutralColor));

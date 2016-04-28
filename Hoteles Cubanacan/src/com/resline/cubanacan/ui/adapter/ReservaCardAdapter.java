@@ -10,10 +10,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.adapter.api.RecyclerViewCardsAdapter;
 import com.resline.cubanacan.ui.model.CardViewBean;
 import com.resline.cubanacan.ui.model.CardViewReserva;
+import com.resline.cubanacan.ui.view.GenericDialogs;
 
 import java.util.List;
 
@@ -94,12 +96,33 @@ public class ReservaCardAdapter extends RecyclerView.Adapter<ReservaCardAdapter.
                 @Override
                 public void onClick(View v) {
                     // code to execute when pagar button is touched
+                    GenericDialogs.showErrorDialog(mActivity, R.string.error, R.string.content_error, R.string.ok,
+                            R.string.report, new MaterialDialog.ButtonCallback() {
+                        @Override
+                        public void onPositive(MaterialDialog dialog) {
+                            super.onPositive(dialog);
+                        }
+
+                        @Override
+                        public void onNegative(MaterialDialog dialog) {
+                            super.onNegative(dialog);
+                        }
+
+                        @Override
+                        public void onNeutral(MaterialDialog dialog) {
+                            super.onNeutral(dialog);
+                        }
+                    }).show();
                 }
             });
+
             btnCancelar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     // code to execute when cancelar button is touched
+                    MaterialDialog.Builder progressDialog =
+                            GenericDialogs.showProgressDialog(mActivity, R.string.wait_title, R.string.wait_content);
+                    progressDialog.show();
                 }
             });
         }
