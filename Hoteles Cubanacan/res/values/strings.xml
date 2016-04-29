@@ -44,6 +44,9 @@
     <string name="correo_hint">Correo</string>
     <string name="lorem_one">1</string>
     <string name="lorem_two">2</string>
+    <string name="precio">Precio</string>
+    <string name="nombre">Nombre</string>
+    <string name="categoria">Categoría</string>
     <string name="confirm_reserva_title">Confirmar reserva</string>
     <string name="lorem_hotel_nombre">Hotel Sevilla</string>
     <string name="direccion_lorem">19 e/ 42 y 44 #4210</string>
@@ -57,6 +60,7 @@
     <string name="user_name">Nombre de usuario:</string>
     <string name="password">Contraseña:</string>
     <string name="entrar">Entrar</string>
+    <string name="opcionales">Opcionales</string>
     <string name="registrarse">Registrarse</string>
     <string name="go_to_map">Ir al mapa</string>
     <string name="services_activities">Servicios y actividades</string>

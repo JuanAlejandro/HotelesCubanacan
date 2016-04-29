@@ -6,7 +6,7 @@
         android:layout_marginBottom="10dp">
     <!-- rooms -->
     <RelativeLayout
-            android:id="@+id/llHabitaciones"
+            android:id="@+id/rlHabitaciones"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

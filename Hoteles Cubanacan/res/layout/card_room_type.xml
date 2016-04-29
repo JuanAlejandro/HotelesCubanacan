@@ -5,9 +5,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="@dimen/custom_card_elevation"
-        android:layout_margin="@dimen/card_margin"
-        android:padding="10dp"
-        android:clickable="true"
         android:foreground="@drawable/card_item_selector">
     <RelativeLayout
             android:id="@+id/rlLoremOne"
@@ -19,11 +16,11 @@
                 android:layout_height="@dimen/card_item_img_height"
                 android:contentDescription="@null"
                 android:scaleType="centerCrop"
-                android:id="@+id/ivLoremOne"
-                android:layout_centerVertical="true"
-                android:background="@android:color/white"/>
+                android:id="@+id/ivRoomImage"
+                android:background="@android:color/white" android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true" android:layout_alignParentStart="true"/>
         <CheckBox
-                android:id="@+id/cbRoom1"
+                android:id="@+id/cbRoom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/secondary_color_blue"
@@ -33,15 +30,15 @@
                 android:layout_alignParentEnd="true"/>
         <RelativeLayout
                 android:id="@+id/rlTexts"
-                android:layout_toRightOf="@id/ivLoremOne"
-                android:layout_toEndOf="@id/ivLoremOne"
+                android:layout_toRightOf="@id/ivRoomImage"
+                android:layout_toEndOf="@id/ivRoomImage"
                 android:layout_centerInParent="true"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:layout_toLeftOf="@id/cbRoom1"
-                android:layout_toStartOf="@id/cbRoom1">
+                android:layout_toLeftOf="@id/cbRoom"
+                android:layout_toStartOf="@id/cbRoom">
             <TextView
                     android:id="@+id/tvTitleOne"
                     android:layout_width="match_parent"
@@ -56,16 +53,17 @@
                     android:id="@+id/tvSubTitleOne"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/description_color"
+                    android:textColor="@color/cubanacan_light_red"
                     android:textSize="@dimen/description_size"
                     android:text="@string/lorem_ipsum_short"
                     android:paddingLeft="@dimen/card_title_text_padding"
                     android:paddingBottom="@dimen/big_padding"
                     android:paddingRight="@dimen/big_padding"
                     android:layout_below="@id/tvTitleOne"
-                    android:singleLine="true"/>
+                    android:singleLine="true"
+                    android:gravity="right"/>
             <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/btnSetOpcion1"
+                    android:id="@+id/btnMealPlan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/lorem_one"
@@ -76,17 +74,17 @@
                     android:layout_below="@id/tvSubTitleOne"
                     android:gravity="center"/>
             <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/btnSetOpcion2"
+                    android:id="@+id/btnOptionalServices"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/lorem_two"
+                    android:text="@string/opcionales"
                     android:textColor="@android:color/black"
                     android:layout_marginTop="10dp"
                     android:padding="10dp"
-                    android:layout_toRightOf="@id/btnSetOpcion1"
-                    android:layout_toEndOf="@id/btnSetOpcion1"
+                    android:layout_toRightOf="@id/btnMealPlan"
+                    android:layout_toEndOf="@id/btnMealPlan"
                     android:layout_below="@id/tvSubTitleOne"
-                    android:gravity="center"/>
+                    android:gravity="center" android:visibility="invisible"/>
         </RelativeLayout>
     </RelativeLayout>
 </android.support.v7.widget.CardView>

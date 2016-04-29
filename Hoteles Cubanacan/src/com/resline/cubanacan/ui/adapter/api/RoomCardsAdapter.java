@@ -99,7 +99,7 @@ public abstract class RoomCardsAdapter extends RecyclerView.Adapter<RoomCardsAda
             super(itemView);
             mActivity = activity;
             tvHabitacion = (TextView) itemView.findViewById(R.id.tvHabitacion);
-            llRoomType = (LinearLayout) itemView.findViewById(R.id.llRoomType);
+            //llRoomType = (LinearLayout) itemView.findViewById(R.id.llRoomType);
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override

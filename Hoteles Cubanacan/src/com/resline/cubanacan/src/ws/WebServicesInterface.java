@@ -1,6 +1,7 @@
 package com.resline.cubanacan.src.ws;
 
 import com.resline.cubanacan.src.ws.WSClass.General.CountryResponse;
+import com.resline.cubanacan.src.ws.WSClass.General.TitlesResponse;
 import com.resline.cubanacan.src.ws.WSClass.Hotel.HotelAvaibilityResponse;
 import com.resline.cubanacan.src.ws.WSClass.Hotel.HotelsFullDetailsResponse;
 import com.resline.cubanacan.src.ws.WSClass.Location.FullLocationResponse;
@@ -58,5 +59,19 @@ public interface WebServicesInterface {
     void getCountries(
             @Field("functionName") String functionName,
             @Field("paramsJson") String params, Callback<CountryResponse> callBack
+    );
+
+    @FormUrlEncoded
+    @POST("/webservice")
+    void getTitles(
+            @Field("functionName") String functionName,
+            @Field("paramsJson") String params, Callback<TitlesResponse> callBack
+    );
+
+    @FormUrlEncoded
+    @POST("/webservice")
+    void payAndGoToTpv(
+            @Field("functionName") String functionName,
+            @Field("paramsJson") String params, Callback<TPVResponse> callBack
     );
 }

@@ -7,6 +7,7 @@ import java.util.*;
 
 import com.resline.cubanacan.src.models.User;
 import com.resline.cubanacan.src.ws.WSClass.General.CountryResponse;
+import com.resline.cubanacan.src.ws.WSClass.General.TitlesResponse;
 import com.resline.cubanacan.src.ws.WSClass.Hotel.HotelAvaibilityResponse;
 import com.resline.cubanacan.src.ws.WSClass.Hotel.HotelFullDetails;
 import com.resline.cubanacan.src.ws.WSClass.Hotel.HotelsFullDetailsResponse;
@@ -36,9 +37,8 @@ public class AppController {
     private static SearchHotelCriteria searchHotelCriteria = null;
     private static HotelAvaibilityResponse currentSearchResult = null;
     private static Map<Long, FullLocation> currentLocations = null;
-    //private static FullLocationResponse currentLocations = null;
     private static Map<Long, HotelFullDetails> currentHotels = null;
-    //private static HotelsFullDetailsResponse currentHotels = null;
+    private static TitlesResponse titles = null;
     private static CountryResponse countries = null;
 
     private static User currentUser;
@@ -106,6 +106,14 @@ public class AppController {
 
     public  static void setCountries(CountryResponse newCountries){
         countries = newCountries;
+    }
+
+    public static TitlesResponse getTitles() {
+        return titles;
+    }
+
+    public static void setTitles(TitlesResponse titles) {
+        AppController.titles = titles;
     }
 
     public static void setCurrentUser(User user) {

@@ -32,7 +32,7 @@ public class TemasCardAdapter extends RecyclerViewCardsAdapter {
     }
 
     @Override
-    protected Bundle getBundle(int id) {
+    protected Bundle getBundle(Long id) {
         return null;
     }
 

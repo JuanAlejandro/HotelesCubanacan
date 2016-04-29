@@ -185,99 +185,16 @@
                 android:layout_height="2dp"/>
 
         <!-- rooms -->
-        <android.support.v7.widget.CardView
-                android:id="@+id/cvRoom"
-                android:layout_below="@id/vDividerImporte"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp">
-            <!-- rooms -->
-            <RelativeLayout
+            <LinearLayout
                     android:id="@+id/llHabitaciones"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="10dp">
-                <TextView
-                        android:id="@+id/tvTitular"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:textSize="18sp"
-                        android:text="@string/title_lorem_habitacion"
-                        android:textColor="@android:color/black"/>
-                <!-- habitación a nombre de -->
-                <TextView
-                        android:id="@+id/tvHabANombreTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:text="@string/hab_a_nombre_de"
-                        android:textSize="18sp"
-                        android:textColor="@android:color/black"
-                        android:layout_below="@id/tvTitular"/>
-                <Spinner
-                        android:id="@+id/spinTitular"
-                        android:layout_below="@id/tvHabANombreTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@android:color/black"
-                        android:layout_centerHorizontal="true"
-                        android:ems="10"/>
-                <!-- nombre & apellidos -->
-                <EditText
-                        android:id="@+id/etNombre"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/spinTitular"
-                        android:hint="@string/nombre_hint"
-                        android:textColorHint="@color/hint_text"
-                        android:textColor="@android:color/black"/>
-                <EditText
-                        android:id="@+id/etApellidos"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/etNombre"
-                        android:hint="@string/apellidos_hint"
-                        android:textColorHint="@color/hint_text"
-                        android:textColor="@android:color/black"/>
-                <!-- pais -->
-                <TextView
-                        android:id="@+id/tvPaisTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:text="@string/pais"
-                        android:textSize="18sp"
-                        android:textColor="@android:color/black"
-                        android:layout_below="@id/etApellidos"/>
-                <Spinner
-                        android:id="@+id/spinPais"
-                        android:layout_below="@id/tvPaisTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@android:color/black"
-                        android:layout_centerHorizontal="true"
-                        android:ems="10"/>
-                <TextView
-                        android:id="@+id/tvFumadorTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:text="@string/fumador_title"
-                        android:textSize="18sp"
-                        android:textColor="@android:color/black"
-                        android:layout_below="@id/spinPais"/>
-                <CheckBox
-                        android:id="@+id/cbFumador"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/tvFumadorTitle"
-                        android:layout_alignBottom="@+id/tvFumadorTitle"
-                        android:layout_toRightOf="@+id/tvFumadorTitle"
-                        android:layout_toEndOf="@+id/tvFumadorTitle"/>
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
+                    android:orientation="vertical"
+                    android:layout_below="@+id/vDividerImporte"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
+
+            </LinearLayout>
 
         <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btnSiguiente"
@@ -290,7 +207,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
-                android:layout_below="@id/cvRoom"
+                android:layout_below="@id/llHabitaciones"
                 android:gravity="center"/>
     </RelativeLayout>
 </ScrollView>

@@ -24,46 +24,39 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/screen_default_toolbar"
             android:orientation="horizontal"
-            android:background="@drawable/borde">
-
+            android:background="@drawable/borde" >
         <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btnPrice"
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
                 android:text="@string/precio"
                 android:textColor="#565656"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:background="@drawable/selector_filter"
-                android:layout_weight="1"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="0dp"
-                android:padding="10dp"/>
-
+                android:padding="10dp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:background="#EEE"/>
         <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btnName"
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
                 android:text="@string/nombre"
                 android:textColor="@android:color/darker_gray"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:background="@drawable/selector_filter"
-                android:layout_weight="1"
+                android:background="@android:color/white"
                 android:padding="10dp"
                 android:layout_marginTop="3dp"
-                android:layout_marginBottom="3dp"/>
-
+                android:layout_marginBottom="3dp"
+                android:layout_weight="1"/>
         <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btnCategory"
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
                 android:text="@string/categoria"
                 android:textColor="@android:color/darker_gray"
+                android:background="@android:color/white"
                 android:padding="10dp"
-                android:layout_margin="10dp"
                 android:gravity="center"
-                android:background="@drawable/selector_filter"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
                 android:layout_weight="1"/>

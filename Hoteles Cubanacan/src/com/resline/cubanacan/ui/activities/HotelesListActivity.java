@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.activities.api.BaseActivity;
 import com.resline.cubanacan.ui.fragments.HotelesListFragment;
@@ -15,7 +14,11 @@ import com.resline.cubanacan.ui.fragments.HotelesListFragment;
  * Created by Juan Alejandro on 13/04/2016.
  */
 public class HotelesListActivity extends BaseActivity implements View.OnClickListener {
-    private Button btnPrecio, btnDistancia, btnEstrellas;
+
+    enum Filter{PRICE_FILTER, NAME_FILTER, CATEGORY_FILTER};
+    Filter filter = Filter.PRICE_FILTER;
+
+    Button btnCategory, btnName, btnPrice;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,24 +28,29 @@ public class HotelesListActivity extends BaseActivity implements View.OnClickLis
 
         loadViewComponents();
 
-        fragmentTransaction(new HotelesListFragment());
+        Fragment fragment = new HotelesListFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("filter", filter.ordinal());
+        fragment.setArguments(bundle);
+        fragmentTransaction(fragment);
     }
 
     private void loadViewComponents() {
-        btnPrecio = (Button) findViewById(R.id.btnPrecio);
-        btnDistancia = (Button) findViewById(R.id.btnPlusNin);
-        btnEstrellas = (Button) findViewById(R.id.btnEstrellas);
+        btnCategory = (Button)findViewById(R.id.btnCategory);
+        btnCategory.setOnClickListener(this);
 
-        btnPrecio.setOnClickListener(this);
-        btnDistancia.setOnClickListener(this);
-        btnEstrellas.setOnClickListener(this);
+        btnName = (Button)findViewById(R.id.btnName);
+        btnName.setOnClickListener(this);
 
-        btnPrecio.setSelected(false);
+        btnPrice = (Button)findViewById(R.id.btnPrice);
+        btnPrice.setOnClickListener(this);
+
+        btnPrice.setSelected(true);
     }
 
     @Override
     protected int getLayoutResourceIdentifier() {
-        return R.layout.activity_hoteles_list;
+        return R.layout.activity_hoteles_list1;
     }
 
     @Override
@@ -74,48 +82,46 @@ public class HotelesListActivity extends BaseActivity implements View.OnClickLis
         });
     }
 
+    private void setFilterList(Filter newFilter){
+        filter = newFilter;
+    }
+
     @Override
     public void onClick(View v) {
-        Fragment fragment = new Fragment();
-        Bundle bundle = new Bundle();
-        // your arguments here
-        bundle.putBoolean("my_boolean", true);
-        bundle.putInt("my_int", 0);
-        fragment.setArguments(bundle);
         switch (v.getId()) {
-            case R.id.btnPrecio:
-                // cambias el bundle aqui en dependencia del caso
-                if (btnPrecio.isSelected())
-                    btnPrecio.setSelected(false);
-                else
-                    btnPrecio.setSelected(true);
+            case R.id.btnPrice:
+                if (!btnPrice.isSelected())
+                    btnPrice.setSelected(true);
 
-                btnDistancia.setSelected(false);
-                btnEstrellas.setSelected(false);
+                setFilterList(Filter.PRICE_FILTER);
+
+                btnName.setSelected(false);
+                btnCategory.setSelected(false);
                 break;
-            case R.id.btnPlusNin:
-                // cambias el bundle aqui en dependencia del caso
-                if (btnDistancia.isSelected())
-                    btnDistancia.setSelected(false);
-                else
-                    btnDistancia.setSelected(true);
+            case R.id.btnName:
+                if (!btnName.isSelected())
+                    btnName.setSelected(true);
 
-                btnPrecio.setSelected(false);
-                btnEstrellas.setSelected(false);
+                setFilterList(Filter.NAME_FILTER);
+
+                btnPrice.setSelected(false);
+                btnCategory.setSelected(false);
                 break;
-            case R.id.btnEstrellas:
+            case R.id.btnCategory:
                 // cambias el bundle aqui en dependencia del caso
-                if (btnEstrellas.isSelected())
-                    btnEstrellas.setSelected(false);
-                else
-                    btnEstrellas.setSelected(true);
+                if (!btnCategory.isSelected())
+                    btnCategory.setSelected(true);
 
-                btnDistancia.setSelected(false);
-                btnPrecio.setSelected(false);
+                setFilterList(Filter.CATEGORY_FILTER);
+
+                btnName.setSelected(false);
+                btnPrice.setSelected(false);
                 break;
         }
-
-
+        Fragment fragment = new HotelesListFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("filter", filter.ordinal());
+        fragment.setArguments(bundle);
         fragmentTransaction(fragment);
     }
 }

@@ -183,10 +183,10 @@ public class ElegirHabitacionActivity1 extends BaseActivity implements View.OnCl
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        /*switch (v.getId()){
             case R.id.btnReservar:
                 startActivity(new Intent(ElegirHabitacionActivity1.this, ConfirmarReservaActivity.class));
                 break;
-        }
+        }*/
     }
 }
