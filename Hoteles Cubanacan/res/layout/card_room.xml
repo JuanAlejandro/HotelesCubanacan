@@ -45,7 +45,7 @@
                 android:layout_toLeftOf="@id/cbRoom1"
                 android:layout_toStartOf="@id/cbRoom1">
             <TextView
-                    android:id="@+id/tvTitleOne"
+                    android:id="@+id/tvTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="@dimen/card_title_text_padding"
@@ -64,7 +64,7 @@
                     android:paddingLeft="@dimen/card_title_text_padding"
                     android:paddingBottom="@dimen/big_padding"
                     android:paddingRight="@dimen/big_padding"
-                    android:layout_below="@id/tvTitleOne"
+                    android:layout_below="@id/tvTitle"
                     android:singleLine="true"/>
             <android.support.v7.widget.AppCompatButton
                     android:id="@+id/btnSetOpcion1"

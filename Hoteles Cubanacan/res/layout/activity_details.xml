@@ -113,6 +113,8 @@
                         android:layout_toRightOf="@+id/tvDistanciaLabel"
                         android:layout_toEndOf="@+id/tvDistanciaLabel"/>
             </RelativeLayout>
+
+            <!-- calendario -->
             <RelativeLayout
                     android:id="@+id/rlDate"
                     android:layout_below="@id/rlDistAeropuerto"

@@ -70,4 +70,26 @@
     <string name="accept">Aceptar</string>
     <string name="registrarse_title">Registrarse</string>
     <string name="user_profile_title">Perfil de usuario</string>
+    <string name="nombre_title">Nombres</string>
+    <string name="apellido_title">Apellidos</string>
+    <string name="idioma_title">Idioma</string>
+    <string name="pais_title">País</string>
+    <string name="direccion_title">Dirección</string>
+    <string name="correo_title">Correo</string>
+    <string name="repita_correo_title">Repita el correo</string>
+    <string name="contrasena_title">Contraseña</string>
+    <string name="confirmar_contrasena_title">Confirmar contraseña</string>
+    <string name="pay">Pagar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="habitaciones_title">Habitaciones:</string>
+    <string name="precio_title">Precio:</string>
+    <string name="noches_title">Noches:</string>
+    <string name="edit">Editar</string>
+    <string name="lorem_email">jalejandro.hperez@gmail.com</string>
+    <string name="ok">OK</string>
+    <string name="error">Error</string>
+    <string name="content_error">Ha ocurrido un error</string>
+    <string name="report">Reportar</string>
+    <string name="wait_title">Espere</string>
+    <string name="wait_content">Debe esperar unos minutos</string>
 </resources>

@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import com.resline.cubanacan.ui.adapter.api.ViewPagerAdapter;
 import com.resline.cubanacan.ui.fragments.HotelesListFragment;
+import com.resline.cubanacan.ui.fragments.ReservasListFragment;
+import com.resline.cubanacan.ui.fragments.UserDataFragment;
 
 import java.util.List;
 
@@ -24,12 +26,10 @@ public class UserProfilePagerAdapter extends ViewPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case RESERVAS:
-                break;
+                return new ReservasListFragment();
             case MIS_DATOS:
             default:
-                break;
+                return new UserDataFragment();
         }
-
-        return new HotelesListFragment();
     }
 }

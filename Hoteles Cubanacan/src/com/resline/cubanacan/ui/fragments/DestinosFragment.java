@@ -2,15 +2,10 @@ package com.resline.cubanacan.ui.fragments;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.adapter.DestinosCardAdapter;
-import com.resline.cubanacan.ui.fragments.api.RecyclerViewFragment;
 import com.resline.cubanacan.ui.fragments.api.RecyclerViewWithFAB;
 import com.resline.cubanacan.ui.model.CardViewBean;
-import com.resline.cubanacan.ui.model.CardViewDestinos;
+import com.resline.cubanacan.ui.model.CardViewGeneral;
 
 import java.util.ArrayList;
 import java.util.List;
