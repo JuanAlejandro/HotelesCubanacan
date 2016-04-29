@@ -20,6 +20,8 @@
     <color name="text_hint_color">#878787</color>
 
     <color name="half_black_transparency">#ee808080</color>
+
+    <color name="toolbar_color">@color/cubanacan_light_red</color>
 </resources>
 
 
