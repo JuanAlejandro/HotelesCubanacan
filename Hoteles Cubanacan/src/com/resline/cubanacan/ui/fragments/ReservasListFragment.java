@@ -33,7 +33,7 @@ public class ReservasListFragment extends RecyclerViewFragment {
 
         for (int i = 0; i < 100; i++) {
             id = i;
-            listCard.add(new CardViewReserva(id, "Hotel Sevilla", Integer.toString(i), Integer.toString(i), i,
+            listCard.add(new CardViewReserva(Long.parseLong(String.valueOf(id)) , "Hotel Sevilla", Integer.toString(i), Integer.toString(i), i,
                     "1/1/1990", "1/1/1990"));
         }
 

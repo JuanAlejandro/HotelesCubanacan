@@ -34,7 +34,7 @@ public class DestinosFragment extends RecyclerViewWithFAB {
         for (int i = 0; i < 100; i++) {
             id = i;
             Long iLong= new Long(id);
-            listCard.add(new CardViewDestinos(iLong, null, Integer.toString(i), Integer.toString(i)));
+            listCard.add(new CardViewGeneral(iLong, null, Integer.toString(i), Integer.toString(i)));
         }
 
         return listCard;

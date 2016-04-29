@@ -5,13 +5,13 @@ import android.net.Uri;
 /**
  * Created by Juan Alejandro on 22/04/2016.
  */
-public class CardViewDestinos extends CardViewBean{
+public class CardViewGeneral extends CardViewBean{
     private Long id;
     private Uri imgUri;
     private String title;
     private String subtitle;
 
-    public CardViewDestinos(Long id, Uri imgUri, String title, String subtitle) {
+    public CardViewGeneral(Long id, Uri imgUri, String title, String subtitle) {
         super(id, imgUri,title, subtitle, "", "", 0);
         this.id = id;
         this.imgUri = imgUri;
