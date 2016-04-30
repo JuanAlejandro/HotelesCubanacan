@@ -171,7 +171,7 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
         initCalendarFilter();
 
         // todo: OJO con esto
-        // loadSpinners();
+         loadSpinners();
 
         return mViewInfoFragment;
     }
@@ -265,8 +265,8 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
             }
 
             ArrayAdapter locationsAdapter = new ArrayAdapter<String>(this.getContext(),
-                    android.R.layout.simple_spinner_dropdown_item, locationsList);
-            locationsAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+                    R.layout.autocomplete_list_item, locationsList);
+            locationsAdapter.setDropDownViewResource(R.layout.autocomplete_list_item);
 //            etDestino.setAdapter(locationsAdapter);
         } else {
 //            etDestino.setEnabled(false);
@@ -282,8 +282,9 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
             }
 
             ArrayAdapter hotelsAdapter = new ArrayAdapter<String>(this.getContext(),
-                    android.R.layout.simple_spinner_dropdown_item, hotelsList);
-            hotelsAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+                    R.layout.autocomplete_list_item, hotelsList);
+            hotelsAdapter.setDropDownViewResource(R.layout.autocomplete_list_item);
+            actvHoteles.setDropDownBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.autocomplete_dropdown));
             actvHoteles.setAdapter(hotelsAdapter);
             actvHoteles.setThreshold(1);
         } else {
