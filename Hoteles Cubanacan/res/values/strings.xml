@@ -92,9 +92,9 @@
     <string name="report">Reportar</string>
     <string name="wait_title">Espere</string>
     <string name="wait_content">Debe esperar un momento</string>
-    <string name="lorem_dia">jueves</string>
+    <string name="lorem_dia">jue</string>
     <string name="lorem_dia_mes">28</string>
     <string name="lorem_anno">2016</string>
-    <string name="lorem_mes">abril</string>
+    <string name="lorem_mes">abr</string>
     <string name="mas_opciones">Más opciones</string>
 </resources>
