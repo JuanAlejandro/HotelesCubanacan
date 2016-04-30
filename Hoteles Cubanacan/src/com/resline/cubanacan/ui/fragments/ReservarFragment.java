@@ -179,12 +179,12 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
         Date date = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-        calendar.add(Calendar.DAY_OF_YEAR, 1);
+        calendar.add(Calendar.DAY_OF_YEAR, 2);
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         setEntrada.setText(dateFormat.format(calendar.getTime()));
 
         setSalida = (Button) mViewInfoFragment.findViewById(R.id.btnSetSalida);
-        calendar.add(Calendar.DAY_OF_YEAR, 1);
+        calendar.add(Calendar.DAY_OF_YEAR, 3);
         setSalida.setText(dateFormat.format(calendar.getTime()));
 
         setEntrada.setOnClickListener(this);
@@ -1114,7 +1114,7 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
     private void initCalendarFilter() {
         // Get the date of tomorrow
         Calendar dateCheckIn = Calendar.getInstance();
-        dateCheckIn.add(Calendar.DAY_OF_YEAR, 1);
+        dateCheckIn.add(Calendar.DAY_OF_YEAR, 2);
 
         // By default the selected day is tomorrow
         dpdCheckIn = DatePickerDialog.newInstance(
@@ -1126,7 +1126,7 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
         dpdCheckIn.setMinDate(dateCheckIn);
 
         Calendar dateCheckOut = Calendar.getInstance();
-        dateCheckOut.add(Calendar.DAY_OF_YEAR, 1);
+        dateCheckOut.add(Calendar.DAY_OF_YEAR, 3);
         dpdCheckOut = DatePickerDialog.newInstance(
                 new CheckOutDatePickerListener(),
                 dateCheckOut.get(Calendar.YEAR),
