@@ -65,8 +65,8 @@ public class TpvOkActivity extends BaseActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.ivGallery:
-                break;
+//            case R.id.ivGallery:
+//                break;
             case R.id.btnElegirHab:
                 break;
         }

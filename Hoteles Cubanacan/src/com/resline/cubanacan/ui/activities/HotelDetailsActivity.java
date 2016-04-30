@@ -47,11 +47,11 @@ public class HotelDetailsActivity extends BaseActivity implements View.OnClickLi
 
         tvHotelName = (TextView) findViewById(R.id.tvNombreHotel);
 
-        goToGallery = (ImageView) findViewById(R.id.ivGallery);
+//        goToGallery = (ImageView) findViewById(R.id.ivGallery);
 
         tvAddress = (TextView) findViewById(R.id.tvDireccion);
 
-        goToGallery.setOnClickListener(this);
+//        goToGallery.setOnClickListener(this);
     }
 
     private void setToolbar() {
@@ -88,8 +88,8 @@ public class HotelDetailsActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.ivGallery:
-                break;
+//            case R.id.ivGallery:
+//                break;
             case R.id.btnElegirHab:
                 startActivity(new Intent(HotelDetailsActivity.this, ElegirHabitacionActivity.class).putExtras(getBundle()));
                 break;

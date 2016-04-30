@@ -32,4 +32,5 @@
     <dimen name="btn_width_size">45dp</dimen>
     <dimen name="big_padding">10dp</dimen>
     <dimen name="regular_padding">8dp</dimen>
+    <dimen name="image_detail_weight">60dp</dimen>
 </resources>
