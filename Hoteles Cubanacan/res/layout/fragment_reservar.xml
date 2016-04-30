@@ -9,6 +9,25 @@
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/big_padding"
             android:background="@color/secondary_color_blue">
+        <TextView
+                android:id="@+id/tvTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/buscar_title"
+                android:textSize="@dimen/big_text_size"
+                android:textStyle="bold"
+                android:textColor="@color/cubanacan_dark_red"
+                android:gravity="center"
+                android:paddingTop="@dimen/big_padding"/>
+        <TextView
+                android:id="@+id/tvSubTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/destinos_hoteles_title"
+                android:textSize="@dimen/regular_text_size"
+                android:textColor="@color/cubanacan_dark_red"
+                android:gravity="center"
+                android:layout_below="@+id/tvTitulo"/>
         <!-- destino & hoteles -->
         <android.support.v7.widget.CardView
                 android:id="@+id/cvDestino"
@@ -17,12 +36,13 @@
                 android:layout_marginLeft="@dimen/big_margin"
                 android:layout_marginRight="@dimen/big_margin"
                 android:layout_marginTop="@dimen/small_margin"
-                android:layout_marginBottom="@dimen/small_margin">
+                android:layout_marginBottom="@dimen/small_margin"
+                android:layout_below="@+id/tvSubTitulo">
             <RelativeLayout
                     android:id="@+id/rlcvDestino"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
+                    android:layout_margin="@dimen/regular_margin">
                 <EditText
                         android:id="@+id/etDestino"
                         android:layout_width="match_parent"
@@ -48,7 +68,7 @@
                     android:id="@+id/rlcvHotel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
+                    android:layout_margin="@dimen/regular_margin">
                 <AutoCompleteTextView
                         android:id="@+id/actvHoteles"
                         android:layout_width="match_parent"
@@ -784,12 +804,23 @@
                 android:text="@string/search"
                 android:textColor="@android:color/white"
                 android:background="@drawable/background_button"
-                android:padding="@dimen/big_padding"
+                android:padding="@dimen/regular_padding"
                 android:layout_marginLeft="@dimen/big_margin"
                 android:layout_marginRight="@dimen/big_margin"
                 android:layout_marginTop="@dimen/small_margin"
                 android:layout_marginBottom="@dimen/small_margin"
                 android:layout_below="@id/btnOtrasOpciones"
                 android:gravity="center"/>
+
+        <!-- todo: Establecer texto correctamente -->
+        <TextView
+                android:id="@+id/tvBottomText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/bottom_text_buscar"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:padding="@dimen/regular_padding"
+                android:layout_below="@id/btnBuscar"/>
     </RelativeLayout>
 </ScrollView>

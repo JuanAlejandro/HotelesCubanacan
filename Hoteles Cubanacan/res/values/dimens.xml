@@ -15,7 +15,6 @@
     <dimen name="card_three_dots_height">75dp</dimen>
     <dimen name="description_size">14sp</dimen>
     <dimen name="title_size">18sp</dimen>
-    <dimen name="big_padding">16dp</dimen>
 
     <integer name="layout_weight_short_data">7</integer>
     <integer name="layout_weight_subtitle">4</integer>
@@ -24,8 +23,12 @@
     <dimen name="image_detail_height">230dp</dimen>
     <dimen name="img_gallery_shortcut">45dp</dimen>
     <dimen name="regular_text_size">14sp</dimen>
+    <dimen name="big_text_size">18sp</dimen>
     <dimen name="regular_margin">6dp</dimen>
     <dimen name="big_margin">10dp</dimen>
     <dimen name="small_margin">3dp</dimen>
     <dimen name="btn_width_size">45dp</dimen>
+
+    <dimen name="big_padding">10dp</dimen>
+    <dimen name="regular_padding">8dp</dimen>
 </resources>
