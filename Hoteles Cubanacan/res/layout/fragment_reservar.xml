@@ -7,131 +7,228 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp">
+            android:paddingBottom="10dp"
+            android:background="@color/secondary_color_blue">
         <!-- destino & hoteles -->
         <android.support.v7.widget.CardView
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/cvAboutUs"
+                android:id="@+id/cvDestino"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
             <RelativeLayout
-                    android:id="@+id/rlCardViewAboutUs"
+                    android:id="@+id/rlcvDestino"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp">
-                <TextView
-                        android:id="@+id/labelDestino"
-                        android:text="@string/destino"
+                <EditText
+                        android:id="@+id/etDestino"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:textColor="@android:color/black"/>
-                <Spinner
-                        android:id="@+id/spDestino"
-                        android:layout_below="@id/labelDestino"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:hint="@string/destinos_title"
+                        android:textColorHint="@color/hint_text"
                         android:textColor="@android:color/black"
                         android:layout_centerHorizontal="true"
                         android:ems="10"/>
-                <TextView
-                        android:id="@+id/labelHoteles"
-                        android:text="@string/hoteles"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:layout_below="@id/spDestino"
-                        android:textColor="@android:color/black"/>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+                android:id="@+id/cvHotel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cvDestino"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+            <RelativeLayout
+                    android:id="@+id/rlcvHotel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
                 <AutoCompleteTextView
                         android:id="@+id/actvHoteles"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:hint="@string/hoteles_title"
+                        android:textColorHint="@color/hint_text"
                         android:textColor="@android:color/black"
                         android:layout_centerHorizontal="true"
-                        android:layout_below="@id/labelHoteles"
                         android:ems="10"/>
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
-        <!-- in & out -->
-        <android.support.v7.widget.CardView
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/cvInOut"
-                android:layout_below="@id/cvAboutUs"
+        <LinearLayout
+                android:id="@+id/llFechas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
-            <LinearLayout
-                    android:id="@+id/rlInOut"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
+                android:layout_below="@id/cvHotel"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:weightSum="2">
+            <!-- in -->
+            <android.support.v7.widget.CardView
+                    android:id="@+id/cvIn"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:weightSum="2">
-                <LinearLayout
-                        android:id="@+id/llIn"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="3dp"
+                    android:clickable="true">
+                <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:layout_height="wrap_content">
                     <TextView
-                            android:id="@+id/tvEntrada"
-                            android:layout_width="match_parent"
+                            android:id="@+id/tvEntradaTitulo"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
                             android:textSize="18sp"
-                            android:gravity="center"
                             android:text="@string/in"
-                            android:textColor="@android:color/black"/>
-                    <android.support.v7.widget.AppCompatButton
-                            android:id="@+id/btnSetEntrada"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_margin="5dp"
-                            android:text="@string/lorem_date"
-                            android:textColor="@android:color/white"
-                            android:background="@drawable/background_button"
+                            android:layout_marginLeft="10dp"
+                            android:layout_gravity="center"
                             android:layout_marginTop="10dp"
-                            android:padding="10dp"
-                            android:gravity="center"/>
-                </LinearLayout>
-                <LinearLayout
-                        android:id="@+id/llOut"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                    <TextView
-                            android:id="@+id/tvSalida"
-                            android:layout_width="match_parent"
+                            android:textColor="@android:color/black"/>
+                    <!-- in -->
+                    <RelativeLayout
+                            android:id="@+id/llIn"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
+                            android:layout_below="@id/tvEntradaTitulo">
+                        <TextView
+                                android:id="@+id/tvInDia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:textSize="18sp"
+                                android:textColor="@color/cubanacan_light_red"
+                                android:text="@string/lorem_dia"
+                                android:layout_margin="10dp"/>
+                        <TextView
+                                android:id="@+id/tvInDiaMes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="48sp"
+                                android:textColor="@color/cubanacan_light_red"
+                                android:text="@string/lorem_dia_mes"
+                                android:textStyle="bold"
+                                android:layout_toRightOf="@id/tvInDia"
+                                android:layout_toEndOf="@id/tvInDia"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"/>
+                        <TextView
+                                android:id="@+id/tvInAnno"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="18sp"
+                                android:textColor="@color/cubanacan_light_red"
+                                android:text="@string/lorem_anno"
+                                android:layout_toRightOf="@id/tvInDiaMes"
+                                android:layout_toEndOf="@id/tvInDiaMes"
+                                android:layout_alignBaseline="@id/tvInDiaMes"
+                                android:layout_margin="3dp"/>
+                        <TextView
+                                android:id="@+id/tvInMes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="18sp"
+                                android:textColor="@color/cubanacan_light_red"
+                                android:text="@string/lorem_mes"
+                                android:layout_toRightOf="@id/tvInDiaMes"
+                                android:layout_toEndOf="@id/tvInDiaMes"
+                                android:layout_above="@id/tvInAnno"
+                                android:layout_margin="3dp"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <!-- out-->
+            <android.support.v7.widget.CardView
+                    android:id="@+id/cvOut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="3dp"
+                    android:clickable="true">
+                <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    <TextView
+                            android:id="@+id/tvSalidaTitulo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:textSize="18sp"
                             android:text="@string/out"
-                            android:textColor="@android:color/black"/>
-                    <android.support.v7.widget.AppCompatButton
-                            android:id="@+id/btnSetSalida"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_margin="5dp"
-                            android:text="@string/lorem_date"
-                            android:textColor="@android:color/white"
-                            android:background="@drawable/background_button"
+                            android:layout_marginLeft="10dp"
                             android:layout_marginTop="10dp"
-                            android:padding="10dp"
-                            android:gravity="center"/>
-                </LinearLayout>
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
+                            android:textColor="@android:color/black"/>
+                    <!-- in -->
+                    <RelativeLayout
+                            android:id="@+id/llOut"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tvSalidaTitulo">
+                        <TextView
+                                android:id="@+id/tvOutDia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:textSize="18sp"
+                                android:textColor="@color/cubanacan_light_red"
+                                android:text="@string/lorem_dia"
+                                android:layout_margin="10dp"/>
+                        <TextView
+                                android:id="@+id/tvOutDiaMes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="48sp"
+                                android:textColor="@color/cubanacan_light_red"
+                                android:text="@string/lorem_dia_mes"
+                                android:textStyle="bold"
+                                android:layout_toRightOf="@id/tvOutDia"
+                                android:layout_toEndOf="@id/tvOutDia"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"/>
+                        <TextView
+                                android:id="@+id/tvOutAnno"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="18sp"
+                                android:textColor="@color/cubanacan_light_red"
+                                android:text="@string/lorem_anno"
+                                android:layout_toRightOf="@id/tvOutDiaMes"
+                                android:layout_toEndOf="@id/tvOutDiaMes"
+                                android:layout_alignBaseline="@id/tvOutDiaMes"
+                                android:layout_margin="3dp"/>
+                        <TextView
+                                android:id="@+id/tvOutMes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="18sp"
+                                android:textColor="@color/cubanacan_light_red"
+                                android:text="@string/lorem_mes"
+                                android:layout_toRightOf="@id/tvOutDiaMes"
+                                android:layout_toEndOf="@id/tvOutDiaMes"
+                                android:layout_above="@id/tvOutAnno"
+                                android:layout_margin="3dp"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
 
         <!-- rooms -->
         <android.support.v7.widget.CardView
-                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/cvRooms"
-                android:layout_below="@id/cvInOut"
+                android:layout_below="@id/llFechas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
             <RelativeLayout
                     android:id="@+id/rlCardViewDBInfo"
                     android:orientation="horizontal"

@@ -41,15 +41,19 @@ import java.util.*;
 public class ReservarFragment extends BaseFragment implements View.OnClickListener {
     private View mViewInfoFragment;
 
-    private Spinner spDestinos;
+    private EditText etDestino;
 
     private AutoCompleteTextView actvHoteles;
 
-    private Button setEntrada;
+    private CardView setEntrada;
 
-    private Button setSalida;
+    private CardView setSalida;
 
     private DatePickerDialog dpdCheckIn, dpdCheckOut;
+
+    // Elementos visuales de la fecha a seleccionar
+    private TextView tvInDia, tvInDiaMes, tvInMes, tvInAnno;
+    private TextView tvOutDia, tvOutDiaMes, tvOutMes, tvOutAnno;
 
     // card views
     private CardView defaultRoom;
@@ -164,28 +168,44 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
         initCalendarFilter();
 
-        loadSpinners();
+        // todo: OJO con esto
+        // loadSpinners();
 
         return mViewInfoFragment;
     }
 
     private void loadViews() {
-        spDestinos = (Spinner) mViewInfoFragment.findViewById(R.id.spDestino);
-        spDestinos.setOnItemSelectedListener(new OnLocationsSelectedListener());
+        etDestino = (EditText) mViewInfoFragment.findViewById(R.id.etDestino);
+        etDestino.setOnClickListener(new OnLocationsSelectedListener());
 
         actvHoteles = (AutoCompleteTextView) mViewInfoFragment.findViewById(R.id.actvHoteles);
 
-        setEntrada = (Button) mViewInfoFragment.findViewById(R.id.btnSetEntrada);
+        setEntrada = (CardView) mViewInfoFragment.findViewById(R.id.cvIn);
         Date date = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.add(Calendar.DAY_OF_YEAR, 2);
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        setEntrada.setText(dateFormat.format(calendar.getTime()));
+        // todo: set text to every element
+//        setEntrada.setText(dateFormat.format(calendar.getTime()));
 
-        setSalida = (Button) mViewInfoFragment.findViewById(R.id.btnSetSalida);
+        setSalida = (CardView) mViewInfoFragment.findViewById(R.id.cvOut);
         calendar.add(Calendar.DAY_OF_YEAR, 3);
-        setSalida.setText(dateFormat.format(calendar.getTime()));
+//        setSalida.setText(dateFormat.format(calendar.getTime()));
+
+        // Elementos visuales de las fechas
+        // Entrada
+        tvInDia = (TextView) mViewInfoFragment.findViewById(R.id.tvInDia);
+        tvInDiaMes = (TextView) mViewInfoFragment.findViewById(R.id.tvInDiaMes);
+        tvInMes = (TextView) mViewInfoFragment.findViewById(R.id.tvInMes);
+        tvInAnno = (TextView) mViewInfoFragment.findViewById(R.id.tvInAnno);
+
+        // Entrada
+        tvOutDia = (TextView) mViewInfoFragment.findViewById(R.id.tvOutDia);
+        tvOutDiaMes = (TextView) mViewInfoFragment.findViewById(R.id.tvOutDiaMes);
+        tvOutMes = (TextView) mViewInfoFragment.findViewById(R.id.tvOutMes);
+        tvOutAnno = (TextView) mViewInfoFragment.findViewById(R.id.tvOutAnno);
+
 
         setEntrada.setOnClickListener(this);
 
@@ -227,6 +247,8 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
         }
     }
 
+    // todo: OJO con esto
+    @Deprecated
     private void loadSpinners() {
 
         Map<Long, FullLocation> locations = AppController.getLocations();
@@ -243,9 +265,9 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
             ArrayAdapter locationsAdapter = new ArrayAdapter<String>(this.getContext(),
                     android.R.layout.simple_spinner_dropdown_item, locationsList);
             locationsAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
-            spDestinos.setAdapter(locationsAdapter);
+//            etDestino.setAdapter(locationsAdapter);
         } else {
-            spDestinos.setEnabled(false);
+//            etDestino.setEnabled(false);
         }
 
         Map<Long, HotelFullDetails> hotels = AppController.getHotels();
@@ -263,7 +285,7 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
             actvHoteles.setAdapter(hotelsAdapter);
             actvHoteles.setThreshold(1);
         } else {
-            spDestinos.setEnabled(false);
+            etDestino.setEnabled(false);
         }
     }
 
@@ -388,10 +410,10 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btnSetEntrada:
+            case R.id.cvIn:
                 showDatePicker(dpdCheckIn);
                 break;
-            case R.id.btnSetSalida:
+            case R.id.cvOut:
                 // todo: when show date picker out set min date as the start date
                 showDatePicker(dpdCheckOut);
                 break;
@@ -1146,15 +1168,16 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
          */
         @Override
         public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-            setEntrada.setText(String.format("%d/%d/%d", dayOfMonth, (monthOfYear + 1), year));
+            // todo: Establecer fecha para cada elemento
+//            setEntrada.setText(String.format("%d/%d/%d", dayOfMonth, (monthOfYear + 1), year));
             Calendar checkOutCalendar = Calendar.getInstance();
             checkOutCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
             checkOutCalendar.set(Calendar.MONTH, monthOfYear);
             checkOutCalendar.set(Calendar.YEAR, year);
             checkOutCalendar.add(Calendar.DAY_OF_YEAR, 1);
-            setSalida.setText(String.format("%d/%d/%d", checkOutCalendar.get(Calendar.DAY_OF_MONTH),
-                    checkOutCalendar.get(Calendar.MONTH) + 1,
-                    checkOutCalendar.get(Calendar.YEAR)));
+//            setSalida.setText(String.format("%d/%d/%d", checkOutCalendar.get(Calendar.DAY_OF_MONTH),
+//                    checkOutCalendar.get(Calendar.MONTH) + 1,
+//                    checkOutCalendar.get(Calendar.YEAR)));
             dpdCheckOut.getSelectedDay().setDay(checkOutCalendar.get(Calendar.YEAR), checkOutCalendar.get(Calendar.MONTH),
                     checkOutCalendar.get(Calendar.DAY_OF_MONTH));
             dpdCheckOut.setMinDate(checkOutCalendar);
@@ -1171,7 +1194,7 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
          */
         @Override
         public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-            setSalida.setText(String.format("%d/%d/%d", dayOfMonth, (monthOfYear + 1), year));
+//            setSalida.setText(String.format("%d/%d/%d", dayOfMonth, (monthOfYear + 1), year));
         }
     }
 
@@ -1192,16 +1215,17 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
             //1- Cantidad de noches
 
             DateFormat dateFormat = DateFormat.getDateInstance();
-            Date checkIn = dateFormat.parse(setEntrada.getText().toString());
-            Date checkOut = dateFormat.parse(setSalida.getText().toString());
+            // todo: Establecer fecha
+//            Date checkIn = dateFormat.parse(setEntrada.getText().toString());
+//            Date checkOut = dateFormat.parse(setSalida.getText().toString());
 
-            Long msCheckOut = checkOut.getTime();
-            Long msCheckIn = checkIn.getTime();
-            Long msDifference = msCheckOut - msCheckIn;
-            long nights = msDifference / (1000 * 60 * 60 * 24);
-            hotelCriteria.setNights((int) nights);
-            GregorianCalendar checkOutCalendar = new GregorianCalendar();
-            checkOutCalendar.setTime(checkOut);
+//            Long msCheckOut = checkOut.getTime();
+//            Long msCheckIn = checkIn.getTime();
+//            Long msDifference = msCheckOut - msCheckIn;
+//            long nights = msDifference / (1000 * 60 * 60 * 24);
+//            hotelCriteria.setNights((int) nights);
+//            GregorianCalendar checkOutCalendar = new GregorianCalendar();
+//            checkOutCalendar.setTime(checkOut);
 
             //2- Nombre del Hotel
             String hotelName = actvHoteles.getText().toString();
@@ -1214,7 +1238,7 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
             //4- CheckIn
             dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            hotelCriteria.setCheckInDate(dateFormat.format(checkIn));
+//            hotelCriteria.setCheckInDate(dateFormat.format(checkIn));
 
             //5- Habitaciones
             //Por cada habitacion se crea un RoomAllocation
@@ -1248,8 +1272,9 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
             //Guardando los datos de la reservacion
             RoomReservationRequest roomReservationRequest = new RoomReservationRequest();
-            roomReservationRequest.setCheckIn(dateFormat.format(checkIn));
-            roomReservationRequest.setCheckOut(dateFormat.format(checkOut));
+            // todo: Comentado
+//            roomReservationRequest.setCheckIn(dateFormat.format(checkIn));
+//            roomReservationRequest.setCheckOut(dateFormat.format(checkOut));
             roomReservationRequest.setPaymentMethod(PaymentMethodEnum.CREDIT_CAR);
             roomReservationRequest.setRooms(arrayBookedRoom);
 
@@ -1290,18 +1315,13 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
         }
     }
 
-    private class OnLocationsSelectedListener implements AdapterView.OnItemSelectedListener {
-
+    private class OnLocationsSelectedListener implements View.OnClickListener {
         @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        public void onClick(View v) {
+            // Mostrar listado de Destinos
+            // todo: Hacer esto cuando se seleccione el destino
+            int position = 0;
             idLocation = locationsIdList.get(position);
-            /*Toast.makeText(parentView.getContext(), "Has seleccionado " +
-                    parentView.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show();*/
-        }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
-
         }
     }
 }
