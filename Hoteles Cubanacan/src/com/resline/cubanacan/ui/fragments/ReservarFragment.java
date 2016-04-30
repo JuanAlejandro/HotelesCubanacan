@@ -226,7 +226,7 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
         initializeFifthPeopleForm();
 
-        initializeLinearLayoutKidsAge();
+//        initializeLinearLayoutKidsAge();
 
         // final buttons
 
@@ -289,28 +289,29 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
         }
     }
 
-    private void initializeLinearLayoutKidsAge() {
-        // default
-        llKidAgeFirstDefault = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeOne);
-        llKidAgeSecondDefault = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeTwo);
-        llKidAgeThirdDefault = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeThree);
-        // two
-        llKidAgeFirstTwo = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeOneTwo);
-        llKidAgeSecondTwo = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeTwoTwo);
-        llKidAgeThirdTwo = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeThreeTwo);
-        // three
-        llKidAgeFirstThree = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeOneThree);
-        llKidAgeSecondThree = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeTwoThree);
-        llKidAgeThirdThree = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeThreeThree);
-        // four
-        llKidAgeFirstFour = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeOneFour);
-        llKidAgeSecondFour = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeTwoFour);
-        llKidAgeThirdFour = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeThreeFour);
-        // five
-        llKidAgeFirstFive = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeOneFive);
-        llKidAgeSecondFive = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeTwoFive);
-        llKidAgeThirdFive = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeThreeFive);
-    }
+    // todo: Ver como implementar la cantidad de ninnos cambiante segun la seleccion
+//    private void initializeLinearLayoutKidsAge() {
+//        // default
+//        llKidAgeFirstDefault = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeOne);
+//        llKidAgeSecondDefault = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeTwo);
+//        llKidAgeThirdDefault = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeThree);
+//        // two
+//        llKidAgeFirstTwo = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeOneTwo);
+//        llKidAgeSecondTwo = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeTwoTwo);
+//        llKidAgeThirdTwo = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeThreeTwo);
+//        // three
+//        llKidAgeFirstThree = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeOneThree);
+//        llKidAgeSecondThree = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeTwoThree);
+//        llKidAgeThirdThree = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeThreeThree);
+//        // four
+//        llKidAgeFirstFour = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeOneFour);
+//        llKidAgeSecondFour = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeTwoFour);
+//        llKidAgeThirdFour = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeThreeFour);
+//        // five
+//        llKidAgeFirstFive = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeOneFive);
+//        llKidAgeSecondFive = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeTwoFive);
+//        llKidAgeThirdFive = (RelativeLayout) mViewInfoFragment.findViewById(R.id.llNinnosAgeThreeFive);
+//    }
 
     private void initializeCardViews() {
         defaultRoom = (CardView) mViewInfoFragment.findViewById(R.id.cvPeople);
@@ -361,17 +362,17 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
 
     private void initializeThirdPeopleForm() {
         // to select quantity for each person
-        btnLessAdultsThree = (Button) mViewInfoFragment.findViewById(R.id.btnLessAdThree);
-        btnLessChildThree = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinThree);
-        btnPlusAdultsThree = (Button) mViewInfoFragment.findViewById(R.id.btnPlusAdThree);
-        btnPlusChildThree = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinThree);
+//        btnLessAdultsThree = (Button) mViewInfoFragment.findViewById(R.id.btnLessAdThree);
+//        btnLessChildThree = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinThree);
+//        btnPlusAdultsThree = (Button) mViewInfoFragment.findViewById(R.id.btnPlusAdThree);
+//        btnPlusChildThree = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinThree);
         // onClickListener
         btnLessAdultsThree.setOnClickListener(this);
         btnLessChildThree.setOnClickListener(this);
         btnPlusAdultsThree.setOnClickListener(this);
         btnPlusChildThree.setOnClickListener(this);
         // text views of quantity of adults, rooms, and children
-        tvAdultsThree = (TextView) mViewInfoFragment.findViewById(R.id.tvAdultosThree);
+//        tvAdultsThree = (TextView) mViewInfoFragment.findViewById(R.id.tvAdultosThree);
         tvChildThree = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinThree);
     }
 
@@ -435,18 +436,18 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
                 }
                 break;
             // default room
-            case R.id.btnLessAd:
-                if (countAdults[0] > 1) {
-                    countAdults[0]--;
-                    updateAdDefault();
-                }
-                break;
-            case R.id.btnPlusAd:
-                if (countAdults[0] < 3) {
-                    countAdults[0]++;
-                    updateAdDefault();
-                }
-                break;
+//            case R.id.btnLessAd:
+//                if (countAdults[0] > 1) {
+//                    countAdults[0]--;
+//                    updateAdDefault();
+//                }
+//                break;
+//            case R.id.btnPlusAd:
+//                if (countAdults[0] < 3) {
+//                    countAdults[0]++;
+//                    updateAdDefault();
+//                }
+//                break;
             // kids
             case R.id.btnPlusNin:
                 if (countChildren[0] < 3) {
@@ -456,378 +457,378 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
                     // do something
                 }
                 break;
-            case R.id.btnLessNin:
-                if (countChildren[0] > 0) {
-                    countChildren[0]--;
-                    hideKidDefault(countChildren[0]);
-                } else {
-                    // do something
-                }
-                break;
-            //kids age
-            case R.id.btnLessNinAgeOne:
-                if (childrenAges[0][0] > 0) {
-                    childrenAges[0][0]--;
-                    showChildAgeOne();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnPlusNinAgeOne:
-                if (childrenAges[0][0] < 12) {
-                    childrenAges[0][0]++;
-                    showChildAgeOne();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnLessNinAgeTwo:
-                if (childrenAges[0][1] > 0) {
-                    childrenAges[0][1]--;
-                    showChildAgeTwo();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnPlusNinAgeTwo:
-                if (childrenAges[0][1] < 12) {
-                    childrenAges[0][1]++;
-                    showChildAgeTwo();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnLessNinAgeThree:
-                if (childrenAges[0][2] > 0) {
-                    childrenAges[0][2]--;
-                    showChildAgeThree();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnPlusNinAgeThree:
-                if (childrenAges[0][2] < 12) {
-                    childrenAges[0][2]++;
-                    showChildAgeThree();
-                } else {
-                    // do something
-                }
-                break;
-            // second room
-            case R.id.btnLessAdTwo:
-                if (countAdults[1] > 1) {
-                    countAdults[1]--;
-                    updateAdTwo();
-                }
-                break;
-            case R.id.btnPlusAdTwo:
-                if (countAdults[1] < 3) {
-                    countAdults[1]++;
-                    updateAdTwo();
-                }
-                break;
-            // kids
-            case R.id.btnPlusNinTwo:
-                if (countChildren[1] < 3) {
-                    countChildren[1]++;
-                    showKidTwo(countChildren[1]);
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnLessNinTwo:
-                if (countChildren[1] > 0) {
-                    countChildren[1]--;
-                    hideKidTwo(countChildren[1]);
-                } else {
-                    // do something
-                }
-                break;
-            //kids age
-            case R.id.btnLessNinAgeOneTwo:
-                if (childrenAges[1][0] > 0) {
-                    childrenAges[1][0]--;
-                    showChildAgeOneTwo();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnPlusNinAgeOneTwo:
-                if (childrenAges[1][0] < 12) {
-                    childrenAges[1][0]++;
-                    showChildAgeOneTwo();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnLessNinAgeTwoTwo:
-                if (childrenAges[1][1] > 0) {
-                    childrenAges[1][1]--;
-                    showChildAgeTwoTwo();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnPlusNinAgeTwoTwo:
-                if (childrenAges[1][1] < 12) {
-                    childrenAges[1][1]++;
-                    showChildAgeTwoTwo();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnLessNinAgeThreeTwo:
-                if (childrenAges[1][2] > 0) {
-                    childrenAges[1][2]--;
-                    showChildAgeThreeTwo();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnPlusNinAgeThreeTwo:
-                if (childrenAges[1][2] < 12) {
-                    childrenAges[1][2]++;
-                    showChildAgeThreeTwo();
-                } else {
-                    // do something
-                }
-                break;
-            // third room
-            case R.id.btnLessAdThree:
-                if (countAdults[2] > 1) {
-                    countAdults[2]--;
-                    updateAdThree();
-                }
-                break;
-            case R.id.btnPlusAdThree:
-                if (countAdults[2] < 3) {
-                    countAdults[2]++;
-                    updateAdThree();
-                }
-                break;
-            // kids
-            case R.id.btnPlusNinThree:
-                if (countChildren[2] < 3) {
-                    countChildren[2]++;
-                    showKidThree(countChildren[2]);
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnLessNinThree:
-                if (countChildren[2] > 0) {
-                    countChildren[2]--;
-                    hideKidThree(countChildren[2]);
-                } else {
-                    // do something
-                }
-                break;
-            //kids age
-            case R.id.btnLessNinAgeOneThree:
-                if (childrenAges[2][0] > 0) {
-                    childrenAges[2][0]--;
-                    showChildAgeOneThree();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnPlusNinAgeOneThree:
-                if (childrenAges[2][0] < 12) {
-                    childrenAges[2][0]++;
-                    showChildAgeOneThree();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnLessNinAgeTwoThree:
-                if (childrenAges[2][1] > 0) {
-                    childrenAges[2][1]--;
-                    showChildAgeTwoThree();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnPlusNinAgeTwoThree:
-                if (childrenAges[2][1] < 3) {
-                    childrenAges[2][1]++;
-                    showChildAgeTwoThree();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnLessNinAgeThreeThree:
-                if (childrenAges[2][2] > 0) {
-                    childrenAges[2][2]--;
-                    showChildAgeThreeThree();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnPlusNinAgeThreeThree:
-                if (childrenAges[2][2] < 12) {
-                    childrenAges[2][2]++;
-                    showChildAgeThreeThree();
-                } else {
-                    // do something
-                }
-                break;
-            // fourth room
-            case R.id.btnLessAdFour:
-                if (countAdults[3] > 1) {
-                    countAdults[3]--;
-                    updateAdFour();
-                }
-                break;
-            case R.id.btnPlusAdFour:
-                if (countAdults[3] < 3) {
-                    countAdults[3]++;
-                    updateAdFour();
-                }
-                break;
-            // kids
-            case R.id.btnPlusNinFour:
-                if (countChildren[3] < 3) {
-                    countChildren[3]++;
-                    showKidFour(countChildren[3]);
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnLessNinFour:
-                if (countChildren[3] > 0) {
-                    countChildren[3]--;
-                    hideKidFour(countChildren[3]);
-                } else {
-                    // do something
-                }
-                break;
-            //kids age
-            case R.id.btnLessNinAgeOneFour:
-                if (childrenAges[3][0] > 0) {
-                    childrenAges[3][0]--;
-                    showChildAgeOneFour();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnPlusNinAgeOneFour:
-                if (childrenAges[3][0] < 12) {
-                    childrenAges[3][0]++;
-                    showChildAgeOneFour();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnLessNinAgeTwoFour:
-                if (childrenAges[3][1] > 0) {
-                    childrenAges[3][1]--;
-                    showChildAgeTwoFour();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnPlusNinAgeTwoFour:
-                if (childrenAges[3][1] < 12) {
-                    childrenAges[3][1]++;
-                    showChildAgeTwoFour();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnLessNinAgeThreeFour:
-                if (childrenAges[3][2] > 0) {
-                    childrenAges[3][2]--;
-                    showChildAgeThreeFour();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnPlusNinAgeThreeFour:
-                if (childrenAges[3][2] < 12) {
-                    childrenAges[3][2]++;
-                    showChildAgeThreeFour();
-                } else {
-                    // do something
-                }
-                break;
-            // fifth room
-            case R.id.btnLessAdFive:
-                if (countAdults[4] > 1) {
-                    countAdults[4]--;
-                    updateAdFive();
-                }
-                break;
-            case R.id.btnPlusAdFive:
-                if (countAdults[4] < 3) {
-                    countAdults[4]++;
-                    updateAdFive();
-                }
-                break;
-            case R.id.btnPlusNinFive:
-                if (countChildren[4] < 3) {
-                    countChildren[4]++;
-                    showKidFive(countChildren[4]);
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnLessNinFive:
-                if (countChildren[4] > 0) {
-                    countChildren[4]--;
-                    hideKidFive(countChildren[4]);
-                } else {
-                    // do something
-                }
-                break;
-            //kids age
-            case R.id.btnLessNinAgeOneFive:
-                if (childrenAges[4][0] > 0) {
-                    childrenAges[4][0]--;
-                    showChildAgeOneFive();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnPlusNinAgeOneFive:
-                if (childrenAges[4][0] < 12) {
-                    childrenAges[4][0]++;
-                    showChildAgeOneFive();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnLessNinAgeTwoFive:
-                if (childrenAges[4][1] > 0) {
-                    childrenAges[4][1]--;
-                    showChildAgeTwoFive();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnPlusNinAgeTwoFive:
-                if (childrenAges[4][1] < 12) {
-                    childrenAges[4][1]++;
-                    showChildAgeTwoFive();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnLessNinAgeThreeFive:
-                if (childrenAges[4][2] > 0) {
-                    childrenAges[4][2]--;
-                    showChildAgeThreeFive();
-                } else {
-                    // do something
-                }
-                break;
-            case R.id.btnPlusNinAgeThreeFive:
-                if (childrenAges[4][2] < 12) {
-                    childrenAges[4][2]++;
-                    showChildAgeThreeFive();
-                } else {
-                    // do something
-                }
-                break;
+//            case R.id.btnLessNin:
+//                if (countChildren[0] > 0) {
+//                    countChildren[0]--;
+//                    hideKidDefault(countChildren[0]);
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            //kids age
+//            case R.id.btnLessNinAgeOne:
+//                if (childrenAges[0][0] > 0) {
+//                    childrenAges[0][0]--;
+//                    showChildAgeOne();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnPlusNinAgeOne:
+//                if (childrenAges[0][0] < 12) {
+//                    childrenAges[0][0]++;
+//                    showChildAgeOne();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnLessNinAgeTwo:
+//                if (childrenAges[0][1] > 0) {
+//                    childrenAges[0][1]--;
+//                    showChildAgeTwo();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnPlusNinAgeTwo:
+//                if (childrenAges[0][1] < 12) {
+//                    childrenAges[0][1]++;
+//                    showChildAgeTwo();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnLessNinAgeThree:
+//                if (childrenAges[0][2] > 0) {
+//                    childrenAges[0][2]--;
+//                    showChildAgeThree();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnPlusNinAgeThree:
+//                if (childrenAges[0][2] < 12) {
+//                    childrenAges[0][2]++;
+//                    showChildAgeThree();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            // second room
+//            case R.id.btnLessAdTwo:
+//                if (countAdults[1] > 1) {
+//                    countAdults[1]--;
+//                    updateAdTwo();
+//                }
+//                break;
+//            case R.id.btnPlusAdTwo:
+//                if (countAdults[1] < 3) {
+//                    countAdults[1]++;
+//                    updateAdTwo();
+//                }
+//                break;
+//            // kids
+//            case R.id.btnPlusNinTwo:
+//                if (countChildren[1] < 3) {
+//                    countChildren[1]++;
+//                    showKidTwo(countChildren[1]);
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnLessNinTwo:
+//                if (countChildren[1] > 0) {
+//                    countChildren[1]--;
+//                    hideKidTwo(countChildren[1]);
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            //kids age
+//            case R.id.btnLessNinAgeOneTwo:
+//                if (childrenAges[1][0] > 0) {
+//                    childrenAges[1][0]--;
+//                    showChildAgeOneTwo();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnPlusNinAgeOneTwo:
+//                if (childrenAges[1][0] < 12) {
+//                    childrenAges[1][0]++;
+//                    showChildAgeOneTwo();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnLessNinAgeTwoTwo:
+//                if (childrenAges[1][1] > 0) {
+//                    childrenAges[1][1]--;
+//                    showChildAgeTwoTwo();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnPlusNinAgeTwoTwo:
+//                if (childrenAges[1][1] < 12) {
+//                    childrenAges[1][1]++;
+//                    showChildAgeTwoTwo();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnLessNinAgeThreeTwo:
+//                if (childrenAges[1][2] > 0) {
+//                    childrenAges[1][2]--;
+//                    showChildAgeThreeTwo();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnPlusNinAgeThreeTwo:
+//                if (childrenAges[1][2] < 12) {
+//                    childrenAges[1][2]++;
+//                    showChildAgeThreeTwo();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            // third room
+//            case R.id.btnLessAdThree:
+//                if (countAdults[2] > 1) {
+//                    countAdults[2]--;
+//                    updateAdThree();
+//                }
+//                break;
+//            case R.id.btnPlusAdThree:
+//                if (countAdults[2] < 3) {
+//                    countAdults[2]++;
+//                    updateAdThree();
+//                }
+//                break;
+//            // kids
+//            case R.id.btnPlusNinThree:
+//                if (countChildren[2] < 3) {
+//                    countChildren[2]++;
+//                    showKidThree(countChildren[2]);
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnLessNinThree:
+//                if (countChildren[2] > 0) {
+//                    countChildren[2]--;
+//                    hideKidThree(countChildren[2]);
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            //kids age
+//            case R.id.btnLessNinAgeOneThree:
+//                if (childrenAges[2][0] > 0) {
+//                    childrenAges[2][0]--;
+//                    showChildAgeOneThree();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnPlusNinAgeOneThree:
+//                if (childrenAges[2][0] < 12) {
+//                    childrenAges[2][0]++;
+//                    showChildAgeOneThree();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnLessNinAgeTwoThree:
+//                if (childrenAges[2][1] > 0) {
+//                    childrenAges[2][1]--;
+//                    showChildAgeTwoThree();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnPlusNinAgeTwoThree:
+//                if (childrenAges[2][1] < 3) {
+//                    childrenAges[2][1]++;
+//                    showChildAgeTwoThree();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnLessNinAgeThreeThree:
+//                if (childrenAges[2][2] > 0) {
+//                    childrenAges[2][2]--;
+//                    showChildAgeThreeThree();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnPlusNinAgeThreeThree:
+//                if (childrenAges[2][2] < 12) {
+//                    childrenAges[2][2]++;
+//                    showChildAgeThreeThree();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            // fourth room
+//            case R.id.btnLessAdFour:
+//                if (countAdults[3] > 1) {
+//                    countAdults[3]--;
+//                    updateAdFour();
+//                }
+//                break;
+//            case R.id.btnPlusAdFour:
+//                if (countAdults[3] < 3) {
+//                    countAdults[3]++;
+//                    updateAdFour();
+//                }
+//                break;
+//            // kids
+//            case R.id.btnPlusNinFour:
+//                if (countChildren[3] < 3) {
+//                    countChildren[3]++;
+//                    showKidFour(countChildren[3]);
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnLessNinFour:
+//                if (countChildren[3] > 0) {
+//                    countChildren[3]--;
+//                    hideKidFour(countChildren[3]);
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            //kids age
+//            case R.id.btnLessNinAgeOneFour:
+//                if (childrenAges[3][0] > 0) {
+//                    childrenAges[3][0]--;
+//                    showChildAgeOneFour();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnPlusNinAgeOneFour:
+//                if (childrenAges[3][0] < 12) {
+//                    childrenAges[3][0]++;
+//                    showChildAgeOneFour();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnLessNinAgeTwoFour:
+//                if (childrenAges[3][1] > 0) {
+//                    childrenAges[3][1]--;
+//                    showChildAgeTwoFour();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnPlusNinAgeTwoFour:
+//                if (childrenAges[3][1] < 12) {
+//                    childrenAges[3][1]++;
+//                    showChildAgeTwoFour();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnLessNinAgeThreeFour:
+//                if (childrenAges[3][2] > 0) {
+//                    childrenAges[3][2]--;
+//                    showChildAgeThreeFour();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnPlusNinAgeThreeFour:
+//                if (childrenAges[3][2] < 12) {
+//                    childrenAges[3][2]++;
+//                    showChildAgeThreeFour();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            // fifth room
+//            case R.id.btnLessAdFive:
+//                if (countAdults[4] > 1) {
+//                    countAdults[4]--;
+//                    updateAdFive();
+//                }
+//                break;
+//            case R.id.btnPlusAdFive:
+//                if (countAdults[4] < 3) {
+//                    countAdults[4]++;
+//                    updateAdFive();
+//                }
+//                break;
+//            case R.id.btnPlusNinFive:
+//                if (countChildren[4] < 3) {
+//                    countChildren[4]++;
+//                    showKidFive(countChildren[4]);
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnLessNinFive:
+//                if (countChildren[4] > 0) {
+//                    countChildren[4]--;
+//                    hideKidFive(countChildren[4]);
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            //kids age
+//            case R.id.btnLessNinAgeOneFive:
+//                if (childrenAges[4][0] > 0) {
+//                    childrenAges[4][0]--;
+//                    showChildAgeOneFive();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnPlusNinAgeOneFive:
+//                if (childrenAges[4][0] < 12) {
+//                    childrenAges[4][0]++;
+//                    showChildAgeOneFive();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnLessNinAgeTwoFive:
+//                if (childrenAges[4][1] > 0) {
+//                    childrenAges[4][1]--;
+//                    showChildAgeTwoFive();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnPlusNinAgeTwoFive:
+//                if (childrenAges[4][1] < 12) {
+//                    childrenAges[4][1]++;
+//                    showChildAgeTwoFive();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnLessNinAgeThreeFive:
+//                if (childrenAges[4][2] > 0) {
+//                    childrenAges[4][2]--;
+//                    showChildAgeThreeFive();
+//                } else {
+//                    // do something
+//                }
+//                break;
+//            case R.id.btnPlusNinAgeThreeFive:
+//                if (childrenAges[4][2] < 12) {
+//                    childrenAges[4][2]++;
+//                    showChildAgeThreeFive();
+//                } else {
+//                    // do something
+//                }
+//                break;
 
             case R.id.btnBuscar:
                 progressDialog = GenericDialogs.showProgressDialog(mActivity, R.string.wait_title, R.string.wait_content).build();
