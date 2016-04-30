@@ -22,13 +22,14 @@
     <!-- details -->
     <dimen name="image_detail_height">230dp</dimen>
     <dimen name="img_gallery_shortcut">45dp</dimen>
+
+    <!-- Cubanacan app dimens -->
     <dimen name="regular_text_size">14sp</dimen>
     <dimen name="big_text_size">18sp</dimen>
     <dimen name="regular_margin">6dp</dimen>
     <dimen name="big_margin">10dp</dimen>
     <dimen name="small_margin">3dp</dimen>
     <dimen name="btn_width_size">45dp</dimen>
-
     <dimen name="big_padding">10dp</dimen>
     <dimen name="regular_padding">8dp</dimen>
 </resources>
