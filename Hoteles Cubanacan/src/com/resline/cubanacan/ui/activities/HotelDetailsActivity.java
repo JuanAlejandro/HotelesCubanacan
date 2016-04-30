@@ -45,7 +45,7 @@ public class HotelDetailsActivity extends BaseActivity implements View.OnClickLi
     private void loadViewComponents() {
         panoramicImage = (ImageView) findViewById(R.id.ivHotel);
 
-        tvHotelName = (TextView) findViewById(R.id.tvNombreHotel);
+        tvHotelName = (TextView) findViewById(R.id.tvNombreDestino);
 
 //        goToGallery = (ImageView) findViewById(R.id.ivGallery);
 
