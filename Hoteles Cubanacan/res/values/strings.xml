@@ -91,5 +91,5 @@
     <string name="content_error">Ha ocurrido un error</string>
     <string name="report">Reportar</string>
     <string name="wait_title">Espere</string>
-    <string name="wait_content">Debe esperar unos minutos</string>
+    <string name="wait_content">Debe esperar un momento</string>
 </resources>

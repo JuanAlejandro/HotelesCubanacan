@@ -52,7 +52,7 @@ public abstract class RecyclerViewCardsAdapter extends RecyclerView.Adapter<Recy
 
         holder.tvShortData.setText(itemCardView.getShortData());
 
-        for(int i=0; i<itemCardView.getStars(); i++){
+        for (int i = 0; i < itemCardView.getStars(); i++) {
             holder.stars[i].setVisibility(View.VISIBLE);
         }
 
@@ -135,16 +135,16 @@ public abstract class RecyclerViewCardsAdapter extends RecyclerView.Adapter<Recy
             ivThumbNail = (ImageView) itemView.findViewById(R.id.material_com_card_view_image);
             stvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
             tvShortData = (TextView) itemView.findViewById(R.id.tvShortData);
-            tvSubTitle1 = (TextView)itemView.findViewById(R.id.tvSubtitle1);
-            tvSubTitle2 = (TextView)itemView.findViewById(R.id.tvSubtitle2);
+            tvSubTitle1 = (TextView) itemView.findViewById(R.id.tvSubtitle1);
+            tvSubTitle2 = (TextView) itemView.findViewById(R.id.tvSubtitle2);
             rlCard = (RelativeLayout) itemView.findViewById(R.id.rlCardView);
 
             stars = new ImageView[5];
-            stars[0] = (ImageView)itemView.findViewById(R.id.start1);
-            stars[1] = (ImageView)itemView.findViewById(R.id.start2);
-            stars[2] = (ImageView)itemView.findViewById(R.id.start3);
-            stars[3] = (ImageView)itemView.findViewById(R.id.start4);
-            stars[4] = (ImageView)itemView.findViewById(R.id.start5);
+            stars[0] = (ImageView) itemView.findViewById(R.id.start1);
+            stars[1] = (ImageView) itemView.findViewById(R.id.start2);
+            stars[2] = (ImageView) itemView.findViewById(R.id.start3);
+            stars[3] = (ImageView) itemView.findViewById(R.id.start4);
+            stars[4] = (ImageView) itemView.findViewById(R.id.start5);
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
