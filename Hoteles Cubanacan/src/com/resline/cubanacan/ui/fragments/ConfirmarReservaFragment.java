@@ -301,7 +301,7 @@ public class ConfirmarReservaFragment extends RecyclerViewFragment implements Vi
 
             AppController.getRoomReservationRequest().getRooms().getBookedRoom().get(i).getRoomings().getRooming().add(rooming);
         }
-        startActivity(new Intent(mViewInfoFragment.getContext(), TitularActivity.class).putExtras(getBundle()));
+        startActivity(new Intent(getActivity(), TitularActivity.class).putExtras(getBundle()));
     }
 
     private Bundle getBundle() {

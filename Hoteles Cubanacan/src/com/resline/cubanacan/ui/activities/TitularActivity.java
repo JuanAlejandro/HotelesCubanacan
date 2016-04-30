@@ -19,7 +19,11 @@ public class TitularActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setToolbar();
-        fragmentTransaction(new TitularFragment());
+        Bundle bundle = new Bundle();
+        bundle = getIntent().getExtras();
+        Fragment titularFragment = new TitularFragment();
+        titularFragment.setArguments(bundle);
+        fragmentTransaction(titularFragment);
     }
 
 
