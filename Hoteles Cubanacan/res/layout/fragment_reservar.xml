@@ -102,7 +102,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
-                                android:textSize="18sp"
+                                android:textSize="15sp"
                                 android:textColor="@color/cubanacan_light_red"
                                 android:text="@string/lorem_dia"
                                 android:layout_margin="10dp"/>
@@ -110,7 +110,7 @@
                                 android:id="@+id/tvInDiaMes"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="48sp"
+                                android:textSize="42sp"
                                 android:textColor="@color/cubanacan_light_red"
                                 android:text="@string/lorem_dia_mes"
                                 android:textStyle="bold"
@@ -122,24 +122,23 @@
                                 android:id="@+id/tvInAnno"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="18sp"
+                                android:textSize="15sp"
                                 android:textColor="@color/cubanacan_light_red"
                                 android:text="@string/lorem_anno"
                                 android:layout_toRightOf="@id/tvInDiaMes"
                                 android:layout_toEndOf="@id/tvInDiaMes"
-                                android:layout_alignBaseline="@id/tvInDiaMes"
-                                android:layout_margin="3dp"/>
+                                android:layout_alignBaseline="@id/tvInDiaMes"/>
                         <TextView
                                 android:id="@+id/tvInMes"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="18sp"
+                                android:textSize="15sp"
                                 android:textColor="@color/cubanacan_light_red"
                                 android:text="@string/lorem_mes"
                                 android:layout_toRightOf="@id/tvInDiaMes"
                                 android:layout_toEndOf="@id/tvInDiaMes"
                                 android:layout_above="@id/tvInAnno"
-                                android:layout_margin="3dp"/>
+                                android:layout_margin="1dp"/>
                     </RelativeLayout>
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
@@ -176,7 +175,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
-                                android:textSize="18sp"
+                                android:textSize="15sp"
                                 android:textColor="@color/cubanacan_light_red"
                                 android:text="@string/lorem_dia"
                                 android:layout_margin="10dp"/>
@@ -184,7 +183,7 @@
                                 android:id="@+id/tvOutDiaMes"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="48sp"
+                                android:textSize="42sp"
                                 android:textColor="@color/cubanacan_light_red"
                                 android:text="@string/lorem_dia_mes"
                                 android:textStyle="bold"
@@ -196,24 +195,23 @@
                                 android:id="@+id/tvOutAnno"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="18sp"
+                                android:textSize="15sp"
                                 android:textColor="@color/cubanacan_light_red"
                                 android:text="@string/lorem_anno"
                                 android:layout_toRightOf="@id/tvOutDiaMes"
                                 android:layout_toEndOf="@id/tvOutDiaMes"
-                                android:layout_alignBaseline="@id/tvOutDiaMes"
-                                android:layout_margin="3dp"/>
+                                android:layout_alignBaseline="@id/tvOutDiaMes"/>
                         <TextView
                                 android:id="@+id/tvOutMes"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="18sp"
+                                android:textSize="15sp"
                                 android:textColor="@color/cubanacan_light_red"
                                 android:text="@string/lorem_mes"
                                 android:layout_toRightOf="@id/tvOutDiaMes"
                                 android:layout_toEndOf="@id/tvOutDiaMes"
                                 android:layout_above="@id/tvOutAnno"
-                                android:layout_margin="3dp"/>
+                                android:layout_margin="1dp"/>
                     </RelativeLayout>
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
@@ -313,12 +311,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:gravity="center"
+                        android:gravity="center|center_vertical"
                         android:layout_weight="1">
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
+                            android:layout_margin="8dp"
                             android:textSize="15sp"
                             android:text="@string/room_lorem"
                             android:textColor="@android:color/black"/>
@@ -339,12 +337,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:gravity="center"
+                        android:gravity="center|center_vertical"
                         android:layout_weight="1">
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
+                            android:layout_margin="8dp"
                             android:textSize="15sp"
                             android:text="@string/adults"
                             android:textColor="@android:color/black"/>
@@ -366,12 +364,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:gravity="center"
+                        android:gravity="center|center_vertical"
                         android:layout_weight="1">
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
+                            android:layout_margin="8dp"
                             android:textSize="15sp"
                             android:text="@string/ninnos"
                             android:textColor="@android:color/black"/>

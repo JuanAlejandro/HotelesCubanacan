@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.afollestad.materialdialogs.GravityEnum;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.gson.Gson;
 import com.resline.cubanacan.R;
@@ -217,14 +219,14 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
         // buttons to select quantity
         // default people card or form
         initializeDefaultPeopleForm();
-
-        initializeSecondPeopleForm();
-
-        initializeThirdPeopleForm();
-
-        initializeFourthPeopleForm();
-
-        initializeFifthPeopleForm();
+//
+//        initializeSecondPeopleForm();
+//
+//        initializeThirdPeopleForm();
+//
+//        initializeFourthPeopleForm();
+//
+//        initializeFifthPeopleForm();
 
 //        initializeLinearLayoutKidsAge();
 
@@ -319,6 +321,13 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
         thirdRoom = (CardView) mViewInfoFragment.findViewById(R.id.cvPeopleThree);
         fourthRoom = (CardView) mViewInfoFragment.findViewById(R.id.cvPeopleFour);
         fifthRoom = (CardView) mViewInfoFragment.findViewById(R.id.cvPeopleFive);
+
+        // set onClickListener()
+        defaultRoom.setOnClickListener(this);
+        secondRoom.setOnClickListener(this);
+        thirdRoom.setOnClickListener(this);
+        fourthRoom.setOnClickListener(this);
+        fifthRoom.setOnClickListener(this);
     }
 
     private void initializeDefaultPeopleForm() {
@@ -330,83 +339,70 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
         btnPlusHab.setOnClickListener(this);
         // to show how many habs are selected
         tvHabs = (TextView) mViewInfoFragment.findViewById(R.id.tvCantHab);
-        // to select quantity for each person
-        btnLessAdults = (Button) mViewInfoFragment.findViewById(R.id.btnLessAd);
-        btnLessChild = (Button) mViewInfoFragment.findViewById(R.id.btnLessNin);
-        btnPlusAdults = (Button) mViewInfoFragment.findViewById(R.id.btnPlusAd);
-        btnPlusChild = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNin);
-        // onClickListener
-        btnLessAdults.setOnClickListener(this);
-        btnLessChild.setOnClickListener(this);
-        btnPlusAdults.setOnClickListener(this);
-        btnPlusChild.setOnClickListener(this);
-        // text views of quantity of adults, rooms, and children
-        tvAdults = (TextView) mViewInfoFragment.findViewById(R.id.tvAdultos);
-        tvChild = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNin);
     }
 
-    private void initializeSecondPeopleForm() {
-        btnLessAdultsTwo = (Button) mViewInfoFragment.findViewById(R.id.btnLessAdTwo);
-        btnLessChildTwo = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinTwo);
-        btnPlusAdultsTwo = (Button) mViewInfoFragment.findViewById(R.id.btnPlusAdTwo);
-        btnPlusChildTwo = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinTwo);
-        // onClickListener
-        btnLessAdultsTwo.setOnClickListener(this);
-        btnLessChildTwo.setOnClickListener(this);
-        btnPlusAdultsTwo.setOnClickListener(this);
-        btnPlusChildTwo.setOnClickListener(this);
-        // text views of quantity of adults, rooms, and children
-        tvAdultsTwo = (TextView) mViewInfoFragment.findViewById(R.id.tvAdultos);
-        tvChildTwo = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNin);
-    }
+//    private void initializeSecondPeopleForm() {
+//        btnLessAdultsTwo = (Button) mViewInfoFragment.findViewById(R.id.btnLessAdTwo);
+//        btnLessChildTwo = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinTwo);
+//        btnPlusAdultsTwo = (Button) mViewInfoFragment.findViewById(R.id.btnPlusAdTwo);
+//        btnPlusChildTwo = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinTwo);
+//        // onClickListener
+//        btnLessAdultsTwo.setOnClickListener(this);
+//        btnLessChildTwo.setOnClickListener(this);
+//        btnPlusAdultsTwo.setOnClickListener(this);
+//        btnPlusChildTwo.setOnClickListener(this);
+//        // text views of quantity of adults, rooms, and children
+//        tvAdultsTwo = (TextView) mViewInfoFragment.findViewById(R.id.tvAdultos);
+//        tvChildTwo = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNin);
+//    }
 
-    private void initializeThirdPeopleForm() {
-        // to select quantity for each person
+//    private void initializeThirdPeopleForm() {
+//        // to select quantity for each person
 //        btnLessAdultsThree = (Button) mViewInfoFragment.findViewById(R.id.btnLessAdThree);
 //        btnLessChildThree = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinThree);
 //        btnPlusAdultsThree = (Button) mViewInfoFragment.findViewById(R.id.btnPlusAdThree);
 //        btnPlusChildThree = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinThree);
-        // onClickListener
-        btnLessAdultsThree.setOnClickListener(this);
-        btnLessChildThree.setOnClickListener(this);
-        btnPlusAdultsThree.setOnClickListener(this);
-        btnPlusChildThree.setOnClickListener(this);
-        // text views of quantity of adults, rooms, and children
+//        // onClickListener
+//        btnLessAdultsThree.setOnClickListener(this);
+//        btnLessChildThree.setOnClickListener(this);
+//        btnPlusAdultsThree.setOnClickListener(this);
+//        btnPlusChildThree.setOnClickListener(this);
+//        // text views of quantity of adults, rooms, and children
 //        tvAdultsThree = (TextView) mViewInfoFragment.findViewById(R.id.tvAdultosThree);
-        tvChildThree = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinThree);
-    }
-
-    private void initializeFourthPeopleForm() {
-        // to select quantity for each person
-        btnLessAdultsFour = (Button) mViewInfoFragment.findViewById(R.id.btnLessAdFour);
-        btnLessChildFour = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinFour);
-        btnPlusAdultsFour = (Button) mViewInfoFragment.findViewById(R.id.btnPlusAdFour);
-        btnPlusChildFour = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinFour);
-        // onClickListener
-        btnLessAdultsFour.setOnClickListener(this);
-        btnLessChildFour.setOnClickListener(this);
-        btnPlusAdultsFour.setOnClickListener(this);
-        btnPlusChildFour.setOnClickListener(this);
-        // text views of quantity of adults, rooms, and children
-        tvAdultsFour = (TextView) mViewInfoFragment.findViewById(R.id.tvAdultosFour);
-        tvChildFour = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinFour);
-    }
-
-    private void initializeFifthPeopleForm() {
-        // to select quantity for each person
-        btnLessAdultsFive = (Button) mViewInfoFragment.findViewById(R.id.btnLessAdFive);
-        btnLessChildFive = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinFive);
-        btnPlusAdultsFive = (Button) mViewInfoFragment.findViewById(R.id.btnPlusAdFive);
-        btnPlusChildFive = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinFive);
-        // onClickListener
-        btnLessAdultsFive.setOnClickListener(this);
-        btnLessChildFive.setOnClickListener(this);
-        btnPlusAdultsFive.setOnClickListener(this);
-        btnPlusChildFive.setOnClickListener(this);
-        // text views of quantity of adults, rooms, and children
-        tvAdultsFive = (TextView) mViewInfoFragment.findViewById(R.id.tvAdultos);
-        tvChildFive = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNin);
-    }
+//        tvChildThree = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinThree);
+//    }
+//
+//    private void initializeFourthPeopleForm() {
+//        // to select quantity for each person
+//        btnLessAdultsFour = (Button) mViewInfoFragment.findViewById(R.id.btnLessAdFour);
+//        btnLessChildFour = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinFour);
+//        btnPlusAdultsFour = (Button) mViewInfoFragment.findViewById(R.id.btnPlusAdFour);
+//        btnPlusChildFour = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinFour);
+//        // onClickListener
+//        btnLessAdultsFour.setOnClickListener(this);
+//        btnLessChildFour.setOnClickListener(this);
+//        btnPlusAdultsFour.setOnClickListener(this);
+//        btnPlusChildFour.setOnClickListener(this);
+//        // text views of quantity of adults, rooms, and children
+//        tvAdultsFour = (TextView) mViewInfoFragment.findViewById(R.id.tvAdultosFour);
+//        tvChildFour = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNinFour);
+//    }
+//
+//    private void initializeFifthPeopleForm() {
+//        // to select quantity for each person
+//        btnLessAdultsFive = (Button) mViewInfoFragment.findViewById(R.id.btnLessAdFive);
+//        btnLessChildFive = (Button) mViewInfoFragment.findViewById(R.id.btnLessNinFive);
+//        btnPlusAdultsFive = (Button) mViewInfoFragment.findViewById(R.id.btnPlusAdFive);
+//        btnPlusChildFive = (Button) mViewInfoFragment.findViewById(R.id.btnPlusNinFive);
+//        // onClickListener
+//        btnLessAdultsFive.setOnClickListener(this);
+//        btnLessChildFive.setOnClickListener(this);
+//        btnPlusAdultsFive.setOnClickListener(this);
+//        btnPlusChildFive.setOnClickListener(this);
+//        // text views of quantity of adults, rooms, and children
+//        tvAdultsFive = (TextView) mViewInfoFragment.findViewById(R.id.tvAdultos);
+//        tvChildFive = (TextView) mViewInfoFragment.findViewById(R.id.tvCantNin);
+//    }
 
     @Override
     public void onClick(View v) {
@@ -435,21 +431,42 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
                     Toast.makeText(mActivity, R.string.only_reservar_msg, Toast.LENGTH_SHORT).show();
                 }
                 break;
+            case R.id.cvPeople:
+                showHabitacionDatosDialog(1);
+                break;
+            case R.id.cvPeopleTwo:
+                showHabitacionDatosDialog(2);
+                break;
+            case R.id.cvPeopleThree:
+                showHabitacionDatosDialog(3);
+                break;
+            case R.id.cvPeopleFour:
+                showHabitacionDatosDialog(4);
+                break;
+            case R.id.cvPeopleFive:
+                showHabitacionDatosDialog(5);
+                break;
             // default room
-//            case R.id.btnLessAd:
-//                if (countAdults[0] > 1) {
-//                    countAdults[0]--;
-//                    updateAdDefault();
-//                }
-//                break;
-//            case R.id.btnPlusAd:
-//                if (countAdults[0] < 3) {
-//                    countAdults[0]++;
-//                    updateAdDefault();
-//                }
-//                break;
+            case R.id.btnLessAd:
+                // todo: Aquí preguntarías por la habitación actual
+                // codigo viejo
+                if (countAdults[0] > 1) {
+                    countAdults[0]--;
+                    updateAdDefault();
+                }
+                break;
+            case R.id.btnPlusAd:
+                // todo: Aquí preguntarías por la habitación actual
+                // codigo viejo
+                if (countAdults[0] < 3) {
+                    countAdults[0]++;
+                    updateAdDefault();
+                }
+                break;
             // kids
             case R.id.btnPlusNin:
+                // todo: Aquí preguntarías por la habitación actual
+                // codigo viejo
                 if (countChildren[0] < 3) {
                     countChildren[0]++;
                     showKidDefault(countChildren[0]);
@@ -457,63 +474,65 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
                     // do something
                 }
                 break;
-//            case R.id.btnLessNin:
-//                if (countChildren[0] > 0) {
-//                    countChildren[0]--;
-//                    hideKidDefault(countChildren[0]);
-//                } else {
-//                    // do something
-//                }
-//                break;
+            case R.id.btnLessNin:
+                // todo: Aquí preguntarías por la habitación actual
+                // codigo viejo
+                if (countChildren[0] > 0) {
+                    countChildren[0]--;
+                    hideKidDefault(countChildren[0]);
+                } else {
+                    // do something
+                }
+                break;
 //            //kids age
-//            case R.id.btnLessNinAgeOne:
-//                if (childrenAges[0][0] > 0) {
-//                    childrenAges[0][0]--;
-//                    showChildAgeOne();
-//                } else {
-//                    // do something
-//                }
-//                break;
-//            case R.id.btnPlusNinAgeOne:
-//                if (childrenAges[0][0] < 12) {
-//                    childrenAges[0][0]++;
-//                    showChildAgeOne();
-//                } else {
-//                    // do something
-//                }
-//                break;
-//            case R.id.btnLessNinAgeTwo:
-//                if (childrenAges[0][1] > 0) {
-//                    childrenAges[0][1]--;
-//                    showChildAgeTwo();
-//                } else {
-//                    // do something
-//                }
-//                break;
-//            case R.id.btnPlusNinAgeTwo:
-//                if (childrenAges[0][1] < 12) {
-//                    childrenAges[0][1]++;
-//                    showChildAgeTwo();
-//                } else {
-//                    // do something
-//                }
-//                break;
-//            case R.id.btnLessNinAgeThree:
-//                if (childrenAges[0][2] > 0) {
-//                    childrenAges[0][2]--;
-//                    showChildAgeThree();
-//                } else {
-//                    // do something
-//                }
-//                break;
-//            case R.id.btnPlusNinAgeThree:
-//                if (childrenAges[0][2] < 12) {
-//                    childrenAges[0][2]++;
-//                    showChildAgeThree();
-//                } else {
-//                    // do something
-//                }
-//                break;
+            case R.id.btnLessNinAgeOne:
+                if (childrenAges[0][0] > 0) {
+                    childrenAges[0][0]--;
+                    showChildAgeOne();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnPlusNinAgeOne:
+                if (childrenAges[0][0] < 12) {
+                    childrenAges[0][0]++;
+                    showChildAgeOne();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnLessNinAgeTwo:
+                if (childrenAges[0][1] > 0) {
+                    childrenAges[0][1]--;
+                    showChildAgeTwo();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnPlusNinAgeTwo:
+                if (childrenAges[0][1] < 12) {
+                    childrenAges[0][1]++;
+                    showChildAgeTwo();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnLessNinAgeThree:
+                if (childrenAges[0][2] > 0) {
+                    childrenAges[0][2]--;
+                    showChildAgeThree();
+                } else {
+                    // do something
+                }
+                break;
+            case R.id.btnPlusNinAgeThree:
+                if (childrenAges[0][2] < 12) {
+                    childrenAges[0][2]++;
+                    showChildAgeThree();
+                } else {
+                    // do something
+                }
+                break;
 //            // second room
 //            case R.id.btnLessAdTwo:
 //                if (countAdults[1] > 1) {
@@ -837,6 +856,84 @@ public class ReservarFragment extends BaseFragment implements View.OnClickListen
                 break;
             case R.id.btnOtrasOpciones:
                 break;
+        }
+    }
+
+    private void showHabitacionDatosDialog(int numHab) {
+        final MaterialDialog dialogHabitacion = GenericDialogs.getMaterialDialogBuilder(mActivity)
+                .title(R.string.mas_opciones)
+                .positiveText(R.string.accept)
+                .neutralText(R.string.cancelar)
+                .buttonsGravity(GravityEnum.CENTER)
+                .autoDismiss(false)
+                .customView(R.layout.dialog_habitacion, true)
+                .callback(new DialogCallback())
+                .show();
+
+        // To customize and initialize dialog's elements
+        View dialogCustomView = dialogHabitacion.getCustomView();
+        if (dialogCustomView != null) {
+            btnLessAdults = (Button) dialogCustomView.findViewById(R.id.btnLessAd);
+            btnPlusAdults = (Button) dialogCustomView.findViewById(R.id.btnPlusAd);
+            btnLessChild = (Button) dialogCustomView.findViewById(R.id.btnLessNin);
+            btnPlusChild = (Button) dialogCustomView.findViewById(R.id.btnPlusNin);
+
+            btnLessAdults.setOnClickListener(this);
+            btnPlusAdults.setOnClickListener(this);
+            btnLessChild.setOnClickListener(this);
+            btnPlusChild.setOnClickListener(this);
+
+            // text views of quantity of adults, rooms, and children
+            tvAdults = (TextView) dialogCustomView.findViewById(R.id.tvAdultos);
+            tvChild = (TextView) dialogCustomView.findViewById(R.id.tvCantNin);
+
+            btnLessNinAgeOne = (Button) dialogCustomView.findViewById(R.id.btnLessNinAgeOne);
+            btnLessNinAgeTwo = (Button) dialogCustomView.findViewById(R.id.btnLessNinAgeTwo);
+            btnLessNinAgeThree = (Button) dialogCustomView.findViewById(R.id.btnLessNinAgeThree);
+
+            btnPlusNinAgeOne = (Button) dialogCustomView.findViewById(R.id.btnPlusNinAgeOne);
+            btnPlusNinAgeTwo = (Button) dialogCustomView.findViewById(R.id.btnPlusNinAgeTwo);
+            btnPlusNinAgeThree = (Button) dialogCustomView.findViewById(R.id.btnPlusNinAgeThree);
+
+            btnLessNinAgeOne.setOnClickListener(this);
+            btnLessNinAgeTwo.setOnClickListener(this);
+            btnLessNinAgeThree.setOnClickListener(this);
+
+            btnPlusNinAgeOne.setOnClickListener(this);
+            btnPlusNinAgeTwo.setOnClickListener(this);
+            btnPlusNinAgeThree.setOnClickListener(this);
+
+            //        // default
+        llKidAgeFirstDefault = (RelativeLayout) dialogCustomView.findViewById(R.id.llNinnosAgeOne);
+        llKidAgeSecondDefault = (RelativeLayout) dialogCustomView.findViewById(R.id.llNinnosAgeTwo);
+        llKidAgeThirdDefault = (RelativeLayout) dialogCustomView.findViewById(R.id.llNinnosAgeThree);
+
+        }
+    }
+
+    // Clase para atender las acciones de respuesta del dialogo
+    private class DialogCallback extends MaterialDialog.ButtonCallback {
+
+        public DialogCallback() {
+        }
+
+        @Override
+        public void onPositive(MaterialDialog dialog) {
+            // Get custom view
+            View dialogCustomView = dialog.getCustomView();
+
+            if (dialogCustomView != null) {
+            }
+
+            dialog.dismiss();
+        }
+
+        @Override
+        public void onNeutral(MaterialDialog dialog) {
+            View dialogCustomView = dialog.getCustomView();
+
+            if (dialogCustomView != null) {
+            }
         }
     }
 
