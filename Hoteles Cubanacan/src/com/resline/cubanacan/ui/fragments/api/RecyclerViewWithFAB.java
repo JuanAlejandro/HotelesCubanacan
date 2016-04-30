@@ -1,10 +1,12 @@
 package com.resline.cubanacan.ui.fragments.api;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.resline.cubanacan.R;
+import com.resline.cubanacan.ui.activities.MainActivity;
 
 /**
  * Created by Juan Alejandro on 23/04/2016.
@@ -20,7 +22,7 @@ public abstract class RecyclerViewWithFAB extends RecyclerViewFragment {
         fabReservar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // your code here when the fab button is touched
+                startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });
     }
