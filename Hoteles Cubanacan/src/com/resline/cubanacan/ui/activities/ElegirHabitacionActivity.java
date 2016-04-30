@@ -67,22 +67,22 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
         loadViews();
     }
 
-    private void loadViews(){
+    private void loadViews() {
 
         Bundle bundle = getIntent().getExtras();
 
         //Creando las habitaciones
-        llRooms = (LinearLayout)findViewById(R.id.llRooms);
-        totalPrice = (TextView)findViewById(R.id.tvAPagar);
-        btnElegirHab = (Button)findViewById(R.id.btnElegirHab);
+        llRooms = (LinearLayout) findViewById(R.id.llRooms);
+        totalPrice = (TextView) findViewById(R.id.tvAPagar);
+        btnElegirHab = (Button) findViewById(R.id.btnElegirHab);
 
         btnElegirHab.setOnClickListener(this);
 
-        if(bundle != null)
+        if (bundle != null)
             hotelId = bundle.getLong("idHotel");
 
         boolean hotelFind = false;
-        if(hotelId != null) {
+        if (hotelId != null) {
             for (HotelAvailabilitySearchResultVO hotel : AppController.getCurrentSearchResult().getHotelsAvaibility()) {
                 if (hotel.getId().equals(hotelId)) {
                     hotelSelected = hotel;
@@ -92,7 +92,7 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
             }
 
             if (hotelFind) {
-                this. countRooms = AppController.getRoomReservationRequest().getRooms().getBookedRoom().size();
+                this.countRooms = AppController.getRoomReservationRequest().getRooms().getBookedRoom().size();
 
                 listCard = new CardView[countRooms];
                 textView = new TextView[countRooms];
@@ -140,7 +140,7 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
         setTotalPrice(AppController.getCurrentSearchResult().getCurrencyName());
     }
 
-    private void inflateRoomTypes(LinearLayout content, int position){
+    private void inflateRoomTypes(LinearLayout content, int position) {
         List<AvailableRoomTypeVO> rooms = hotelSelected.getRoomAvailabilitySearchResults().get(position).getAvailableRoomTypes();
 
         int cont = 0;
@@ -148,7 +148,7 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
         cardRoomTypeList[position] = new CardView[countRoom];
         checkBox[position] = new CheckBox[countRoom];
         btnMealPlan[position] = new Button[countRoom];
-        for(AvailableRoomTypeVO room : rooms) {
+        for (AvailableRoomTypeVO room : rooms) {
 
             LayoutInflater inflater = LayoutInflater.from(this);
             int id = R.layout.card_room_type;
@@ -173,19 +173,19 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
             double mealPlanPrice = 0;
 
             btnMealPlan[position][cont] = (Button) cardView.findViewById(R.id.btnMealPlan);
-            if(hotelSelected.isAllInclusive()) {
+            if (hotelSelected.isAllInclusive()) {
                 btnMealPlan[position][cont].setVisibility(View.INVISIBLE);
-            }else{
+            } else {
                 btnMealPlan[position][cont].setVisibility(View.VISIBLE);
                 btnMealPlan[position][cont].setText(room.getMealPlans().get(0).getCode());
                 btnMealPlan[position][cont].setTag(new MealPlanButtonTag(position, cont));
                 btnMealPlan[position][cont].setOnClickListener(this);
                 idMealPlan = room.getMealPlans().get(0).getId();
-                mealPlanPrice = (double)room.getMealPlansPrices().get(String.valueOf(idMealPlan));
+                mealPlanPrice = (double) room.getMealPlansPrices().get(String.valueOf(idMealPlan));
             }
 
             checkBox[position][cont] = (CheckBox) (cardView.findViewById(R.id.cbRoom));
-            if(cont == 0){
+            if (cont == 0) {
                 totalPriceValue += room.getPrice();
                 checkBox[position][cont].setChecked(true);
             }
@@ -196,12 +196,12 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
         }
     }
 
-    private void setTotalPrice(String currency){
+    private void setTotalPrice(String currency) {
 
         double price = 0;
-        for(int i=0; i<this.countRooms; i++){
-            for(int j=0; j<checkBox[i].length; j++){
-                if(checkBox[i][j].isChecked()) {
+        for (int i = 0; i < this.countRooms; i++) {
+            for (int j = 0; j < checkBox[i].length; j++) {
+                if (checkBox[i][j].isChecked()) {
                     CheckBoxTag tag = (CheckBoxTag) checkBox[i][j].getTag();
                     price += tag.getPrice() + tag.getMealPlanPrice();
                 }
@@ -251,9 +251,9 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
     public void onClick(View v) {
 
         Object tag = v.getTag();
-        if(tag instanceof MealPlanButtonTag ){
+        if (tag instanceof MealPlanButtonTag) {
             //lanzar el Alert para seleccionar los meal plan
-            MealPlanButtonTag mealPlanButtonTag = (MealPlanButtonTag)tag;
+            MealPlanButtonTag mealPlanButtonTag = (MealPlanButtonTag) tag;
             int positionRoom = mealPlanButtonTag.getPositionRoom();
             int positionRoomType = mealPlanButtonTag.getPositionRoomType();
 
@@ -265,19 +265,18 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
             String[] options = new String[mealPlanDetailsVOList.size()];
             double[] prices = new double[mealPlanDetailsVOList.size()];
             int cont = 0;
-            for(MealPlanDetailsVO mealPlanDetailsVO : mealPlanDetailsVOList){
+            for (MealPlanDetailsVO mealPlanDetailsVO : mealPlanDetailsVOList) {
 
                 ids[cont] = mealPlanDetailsVO.getId();
                 options[cont] = mealPlanDetailsVO.getCode();
-                prices[cont++] = (double)mealPlanPrices.get(String.valueOf(mealPlanDetailsVO.getId()));
+                prices[cont++] = (double) mealPlanPrices.get(String.valueOf(mealPlanDetailsVO.getId()));
             }
 
             FragmentManager fm = this.getFragmentManager();
             MealPlanDialogFragment mealPlanDialogFragment = MealPlanDialogFragment.newInstance(ids, options, prices, "Planes Alimenticios", positionRoom, positionRoomType);
             mealPlanDialogFragment.show(fm, "fragment_alert");
-        }
-        else{
-            switch (v.getId()){
+        } else {
+            switch (v.getId()) {
                 case R.id.btnElegirHab:
                     goToHoldersData();
                     break;
@@ -295,7 +294,7 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
 
         //Algoritmo para que solo este marcado un check dentro de cada habitacion solicitada
         //Si lo que voy a hacer es deseleccionar no lo dejo hacer
-        if(!isChecked) {
+        if (!isChecked) {
             if (checkBox[roomPosition].length == 1)
                 checkBox[roomPosition][roomTypePosition].setChecked(true);
             for (int i = 0; i < checkBox[roomPosition].length; i++)
@@ -303,10 +302,10 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
                     isUnique = false;
             if (isUnique)
                 checkBox[roomPosition][roomTypePosition].setChecked(true);
-        }else{
+        } else {
             //Si selecciono alguna otra opcion entonces deselecciono la que etsaba marcada
-            for(int i=0; i<checkBox[roomPosition].length; i++)
-                if(checkBox[roomPosition][i].isChecked() && roomTypePosition != i)
+            for (int i = 0; i < checkBox[roomPosition].length; i++)
+                if (checkBox[roomPosition][i].isChecked() && roomTypePosition != i)
                     checkBox[roomPosition][i].setChecked(false);
 
 
@@ -315,22 +314,22 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
         }
     }
 
-    public void selectedMealPlan(int positionRoom, int positionRoomType, Long mealPriceId, String mealPlanCode, double mealPlanPrice){
+    public void selectedMealPlan(int positionRoom, int positionRoomType, Long mealPriceId, String mealPlanCode, double mealPlanPrice) {
         btnMealPlan[positionRoom][positionRoomType].setText(mealPlanCode);
-        ((CheckBoxTag)checkBox[positionRoom][positionRoomType].getTag()).setIdMealPlan(mealPriceId);
-        ((CheckBoxTag)checkBox[positionRoom][positionRoomType].getTag()).setMealPlanPrice(mealPlanPrice);
+        ((CheckBoxTag) checkBox[positionRoom][positionRoomType].getTag()).setIdMealPlan(mealPriceId);
+        ((CheckBoxTag) checkBox[positionRoom][positionRoomType].getTag()).setMealPlanPrice(mealPlanPrice);
         setTotalPrice(AppController.getCurrentSearchResult().getCurrencyName());
     }
 
-    private void goToHoldersData(){
+    private void goToHoldersData() {
         //Llenando los datos del roomreservation
-        for(int i=0; i<this.countRooms; i++){
-            for(int j=0; j<checkBox[i].length; j++){
+        for (int i = 0; i < this.countRooms; i++) {
+            for (int j = 0; j < checkBox[i].length; j++) {
 
-                if(checkBox[i][j].isChecked()){
-                    long idMealPlan = ((CheckBoxTag)checkBox[i][j].getTag()).getIdMealPlan();
+                if (checkBox[i][j].isChecked()) {
+                    long idMealPlan = ((CheckBoxTag) checkBox[i][j].getTag()).getIdMealPlan();
                     long idRoomType = hotelSelected.getRoomAvailabilitySearchResults().get(i).getAvailableRoomTypes()
-                                                   .get(j).getId();
+                            .get(j).getId();
 
                     AppController.getRoomReservationRequest().getRooms().getBookedRoom().get(i).setMealPlanId(idMealPlan);
                     AppController.getRoomReservationRequest().getRooms().getBookedRoom().get(i).setRoomTypeId(idRoomType);
@@ -341,15 +340,14 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
         loadCountries();
     }
 
-    private void loadCountries(){
+    private void loadCountries() {
 
         WebServicesClient.get().getCountries("getCountry", null, new Callback<CountryResponse>() {
             @Override
             public void success(CountryResponse countryResponse, Response response) {
                 if (countryResponse == null) {
                     showErrorMessage();
-                }
-                else{
+                } else {
                     if (countryResponse.getOperationMessage().equals("OK")) {
                         AppController.setCountries(countryResponse);
                     }
@@ -371,8 +369,7 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
             public void success(TitlesResponse titlesResponse, Response response) {
                 if (titlesResponse == null) {
                     showErrorMessage();
-                }
-                else{
+                } else {
                     if (titlesResponse.getOperationMessage().equals("OK")) {
                         AppController.setTitles(titlesResponse);
                     }
@@ -390,13 +387,13 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
         });
     }
 
-    private void isAllReady(){
-        if(countriesReady && titlesReady){
+    private void isAllReady() {
+        if (countriesReady && titlesReady) {
             startActivity(new Intent(ElegirHabitacionActivity.this, ConfirmarReservaActivity.class).putExtras(getBundle()));
         }
     }
 
-    private void showErrorMessage(){
+    private void showErrorMessage() {
 
         Toast.makeText(ElegirHabitacionActivity.this, "Por favor, comprueba tu conexión", Toast.LENGTH_SHORT).show();
     }

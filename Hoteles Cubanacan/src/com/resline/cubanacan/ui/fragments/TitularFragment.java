@@ -106,10 +106,6 @@ public class TitularFragment extends BaseFragment implements View.OnClickListene
         btnPagar.setOnClickListener(this);
 
         loadSpinners();
-
-        Bundle bundle = getActivity().getIntent().getExtras();
-        hotelId = bundle.getLong("idHotel");
-        price = bundle.getDouble("price");
     }
 
     @Override
@@ -178,5 +174,14 @@ public class TitularFragment extends BaseFragment implements View.OnClickListene
     private void showErrorMessage(){
 
         Toast.makeText(getActivity(), "Por favor, comprueba tu conexión", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void loadPreferencesAndBundle() {
+        super.loadPreferencesAndBundle();
+
+        hotelId = mBundle.getLong("idHotel");
+
+        price = mBundle.getDouble("price");
     }
 }

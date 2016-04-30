@@ -10,7 +10,7 @@
             android:id="@+id/screen_default_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/cubanacan_light_blue"
+            android:background="@color/toolbar_color"
             android:minHeight="?attr/actionBarSize"
             tools:context=".ToolBar">
         <TextView

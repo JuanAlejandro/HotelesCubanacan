@@ -8,7 +8,7 @@
     <string name="lorem_date">01/01/1900</string>
     <string name="out">Salida</string>
     <string name="empty"/>
-    <string name="rooms">Habitaciones</string>
+    <string name="rooms">No. Habitaciones</string>
     <string name="plus">+</string>
     <string name="less">-</string>
     <string name="lorem_number">1</string>
@@ -23,7 +23,7 @@
     <string name="details_title">Detalles</string>
     <string name="pick_room">Elegir habitación</string>
     <string name="to_pay">Total a pagar:</string>
-    <string name="room_lorem">Habitación 1</string>
+    <string name="room_lorem">Habitación</string>
     <string name="lorem_opcion">Opcion</string>
     <string name="pick_room_title">Elegir habitación</string>
     <string name="title_in">Entrada:</string>
@@ -52,9 +52,9 @@
     <string name="direccion_lorem">19 e/ 42 y 44 #4210</string>
     <string name="must_reservar_msg">Debe reservar al menos una habitación</string>
     <string name="only_reservar_msg">Solo puede reservar hasta 5 habitaciones</string>
-    <string name="age_one">Edad (1)</string>
-    <string name="age_two">Edad (2)</string>
-    <string name="age_three">Edad (3)</string>
+    <string name="age_one">Edad niño 1</string>
+    <string name="age_two">Edad niño 2</string>
+    <string name="age_three">Edad niño 3</string>
     <string name="dist_airport_label">Distancia al aeropuerto:</string>
     <string name="dist_airport">18 Km</string>
     <string name="user_name">Nombre de usuario:</string>
@@ -91,5 +91,10 @@
     <string name="content_error">Ha ocurrido un error</string>
     <string name="report">Reportar</string>
     <string name="wait_title">Espere</string>
-    <string name="wait_content">Debe esperar unos minutos</string>
+    <string name="wait_content">Debe esperar un momento</string>
+    <string name="lorem_dia">jueves</string>
+    <string name="lorem_dia_mes">28</string>
+    <string name="lorem_anno">2016</string>
+    <string name="lorem_mes">abril</string>
+    <string name="mas_opciones">Más opciones</string>
 </resources>
