@@ -207,8 +207,8 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
                 }
             }
         }
-        DecimalFormat formatter = new DecimalFormat("#.00");
-        String priceStr = formatter.format(price).toString();
+        DecimalFormat formatter = new DecimalFormat("#.##");
+        String priceStr = formatter.format(price);
         String priceFormat = String.format("%s %s", priceStr, currency);
         totalPrice.setText(priceFormat);
     }

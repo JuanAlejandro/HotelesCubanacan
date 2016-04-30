@@ -12,7 +12,7 @@ public class CardViewGeneral extends CardViewBean{
     private String subtitle;
 
     public CardViewGeneral(Long id, Uri imgUri, String title, String subtitle) {
-        super(id, imgUri,title, subtitle, "", "", 0);
+        super(id, imgUri,title, subtitle, "");
         this.id = id;
         this.imgUri = imgUri;
         this.title = title;

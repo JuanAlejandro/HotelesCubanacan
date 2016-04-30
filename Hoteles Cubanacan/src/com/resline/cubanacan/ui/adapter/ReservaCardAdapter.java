@@ -50,7 +50,7 @@ public class ReservaCardAdapter extends RecyclerView.Adapter<ReservaCardAdapter.
 
         // recuerda que subtitle es la cantidad de habitaciones
         // CardViewReserva hereda de CardViewBean
-        holder.tvCantHab.setText(itemCardView.getSubtitle1());
+        holder.tvCantHab.setText(itemCardView.getSubtitle());
         // lo mismo con shortData
         holder.tvPrecio.setText(itemCardView.getShortData());
 

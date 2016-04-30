@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import com.resline.cubanacan.ui.adapter.HotelesCardsAdapter;
 import com.resline.cubanacan.ui.fragments.api.RecyclerViewFragment;
 import com.resline.cubanacan.ui.model.CardViewBean;
+import com.resline.cubanacan.ui.model.CardViewHotel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,7 @@ public class DestinoListFragment extends RecyclerViewFragment {
         for (int i = 0; i < 100; i++) {
             id = i;
             Long iLong= new Long(id);
-            listCard.add(new CardViewBean(iLong, null, Integer.toString(i), Integer.toString(i), Integer.toString(i), "", 0));
+            listCard.add(new CardViewBean(iLong, null, Integer.toString(i), Integer.toString(i), Integer.toString(i)));
         }
 
         return listCard;

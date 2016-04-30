@@ -111,7 +111,7 @@ public class HotelesListFragment extends RecyclerViewFragment {
             String nightsStrComplete = String.format("%d %s desde ", countNights, nightsStr);
             String price = String.format("%s %s", minimumPriceStr, currency);
             Uri uri =  Uri.parse(image.getImageUrl());
-            listCard.add(new CardViewBean(hotel.getId(), uri, hotel.getName(), nightsStrComplete, price, hotel.getLocationName(), hotel.getCategory().ordinal()));
+            //listCard.add(new CardViewBean(hotel.getId(), uri, hotel.getName(), nightsStrComplete, price, hotel.getLocationName(), hotel.getCategory().ordinal()));
         }
         return listCard;
     }

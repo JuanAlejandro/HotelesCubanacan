@@ -19,7 +19,7 @@ public class CardViewReserva extends CardViewBean {
 
     public CardViewReserva(Long id, String title, String subtitle, String shortData, int cantNoches,
                            String dateIn, String dateOut) {
-        super(id, null, title, subtitle, shortData, "", 0);
+        super(id, null, title, subtitle, shortData);
         this.cantNoches = cantNoches;
         this.dateIn = dateIn;
         this.dateOut = dateOut;

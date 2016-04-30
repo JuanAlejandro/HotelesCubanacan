@@ -45,16 +45,9 @@ public abstract class RecyclerViewCardsAdapter extends RecyclerView.Adapter<Recy
 
         holder.position = position;
 
-        holder.stvTitle.setText(itemCardView.getTitle());
+        holder.tvTitle.setText(itemCardView.getTitle());
 
-        holder.tvSubTitle1.setText(itemCardView.getSubtitle1());
-        holder.tvSubTitle2.setText(itemCardView.getSubtitle2());
-
-        holder.tvShortData.setText(itemCardView.getShortData());
-
-        for(int i=0; i<itemCardView.getStars(); i++){
-            holder.stars[i].setVisibility(View.VISIBLE);
-        }
+        holder.tvSubTitle.setText(itemCardView.getSubtitle());
 
         setThumbNailImage(itemCardView.getImgUri(), holder.ivThumbNail);
 
@@ -62,13 +55,14 @@ public abstract class RecyclerViewCardsAdapter extends RecyclerView.Adapter<Recy
     }
 
     private void setThumbNailImage(Uri imgUri, ImageView img) {
-        Picasso.with(mActivity)
-                .load(imgUri.toString())
-                .placeholder(R.drawable.loading)
-                .error(R.drawable.ic_launcher)
-                .into(img);
+        if(imgUri != null && img != null){
+            Picasso.with(mActivity)
+                    .load(imgUri.toString())
+                    .placeholder(R.drawable.loading)
+                    .error(R.drawable.ic_launcher)
+                    .into(img);
+        }
     }
-
 
     // to get the default image (show this image if the event/artist/place doesn't have one)
     protected abstract int getDefaultImage();
@@ -118,12 +112,8 @@ public abstract class RecyclerViewCardsAdapter extends RecyclerView.Adapter<Recy
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView ivThumbNail;
-        public TextView stvTitle;
-        public TextView tvSubTitle1;
-        public TextView tvSubTitle2;
-        public TextView tvShortData;
-        public ImageView[] stars;
-        public RelativeLayout rlCard;
+        public TextView tvTitle;
+        public TextView tvSubTitle;
         public int position;
         public Long id;
         private Activity mActivity;
@@ -133,18 +123,8 @@ public abstract class RecyclerViewCardsAdapter extends RecyclerView.Adapter<Recy
             super(itemView);
             mActivity = activity;
             ivThumbNail = (ImageView) itemView.findViewById(R.id.material_com_card_view_image);
-            stvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
-            tvShortData = (TextView) itemView.findViewById(R.id.tvShortData);
-            tvSubTitle1 = (TextView)itemView.findViewById(R.id.tvSubtitle1);
-            tvSubTitle2 = (TextView)itemView.findViewById(R.id.tvSubtitle2);
-            rlCard = (RelativeLayout) itemView.findViewById(R.id.rlCardView);
-
-            stars = new ImageView[5];
-            stars[0] = (ImageView)itemView.findViewById(R.id.start1);
-            stars[1] = (ImageView)itemView.findViewById(R.id.start2);
-            stars[2] = (ImageView)itemView.findViewById(R.id.start3);
-            stars[3] = (ImageView)itemView.findViewById(R.id.start4);
-            stars[4] = (ImageView)itemView.findViewById(R.id.start5);
+            tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+            tvSubTitle = (TextView) itemView.findViewById(R.id.tvSubtitle);
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override

@@ -33,7 +33,7 @@ public class TemasFragment extends RecyclerViewWithFAB {
         for (int i = 0; i < 100; i++) {
             id = i;
             Long iLong= new Long(id);
-            listCard.add(new CardViewBean(iLong, null, Integer.toString(i), Integer.toString(i), Integer.toString(i), "", 0));
+            listCard.add(new CardViewBean(iLong, null, Integer.toString(i), Integer.toString(i), Integer.toString(i)));
         }
 
         return listCard;
