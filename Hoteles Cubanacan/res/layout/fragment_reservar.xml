@@ -263,7 +263,8 @@
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/less"
-                                android:textColor="@android:color/white"
+                                android:textColor="@color/cubanacan_light_red"
+                                android:background="@android:color/transparent"
                                 android:padding="10dp"
                                 android:gravity="center"
                                 android:layout_weight="1"/>
@@ -273,7 +274,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/lorem_number"
                                 android:textSize="18sp"
-                                android:textColor="@android:color/black"
+                                android:textColor="@color/cubanacan_light_red"
                                 android:padding="10dp"
                                 android:gravity="center"
                                 android:layout_weight="1"/>
@@ -282,7 +283,8 @@
                                 android:layout_width="45dp"
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus"
-                                android:textColor="@android:color/white"
+                                android:textColor="@color/cubanacan_light_red"
+                                android:background="@android:color/transparent"
                                 android:padding="10dp"
                                 android:gravity="center"
                                 android:layout_weight="1"/>
@@ -296,7 +298,10 @@
                 android:id="@+id/cvPeople"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_below="@id/cvRooms">
             <RelativeLayout
                     android:layout_width="wrap_content"
