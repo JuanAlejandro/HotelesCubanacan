@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <!-- This LinearLayout if for the dots -->
+    <LinearLayout android:id="@+id/image_count"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:gravity="center"
+                  android:layout_alignParentBottom="true"
+                  android:background="#00000000">
+    </LinearLayout>
+    <!-- This is the Gallery -->
+    <android.support.v4.view.ViewPager
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/gallery"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/image_count"/>
+</RelativeLayout>
