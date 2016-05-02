@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.src.controllers.AppController;
@@ -28,6 +30,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
         //executeThread();
         getData();
@@ -145,6 +148,7 @@ public class SplashActivity extends AppCompatActivity {
     private void isAllReady(){
         if(locationsReady && hotelsReady){
             startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            finish();
         }
     }
 }

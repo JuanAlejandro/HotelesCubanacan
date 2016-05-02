@@ -8,10 +8,9 @@ public class CardViewHotel extends CardViewBean {
     private String subtitle2;
 
     public CardViewHotel(Long id, Uri imgUri, String title, String subtitle, String shortData, String subtitle2, int stars) {
-        super(id, null, title, subtitle, shortData);
+        super(id, imgUri, title, subtitle, shortData);
         this.stars = stars;
         this.subtitle2 = subtitle2;
-        //this.shortData = shortData;
     }
 
     public int getStars() {

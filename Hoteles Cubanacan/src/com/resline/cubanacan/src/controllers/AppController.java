@@ -40,6 +40,8 @@ public class AppController {
     private static Map<Long, HotelFullDetails> currentHotels = null;
     private static TitlesResponse titles = null;
     private static CountryResponse countries = null;
+    private static String[] checkinStr = null;
+    private static String[] checkoutStr = null;
 
     private static User currentUser;
     private static boolean loggedIn = false;
@@ -158,5 +160,25 @@ public class AppController {
         File dir = new File(Environment.getExternalStorageDirectory(), "MyFilin");
         dir.mkdirs();
         return dir;
+    }
+
+    public static String[] getCheckinStr() {
+        if(checkinStr == null)
+            checkinStr = new String[4];
+        return checkinStr;
+    }
+
+    public static void setCheckinStr(String[] checkinStr) {
+        AppController.checkinStr = checkinStr;
+    }
+
+    public static String[] getCheckoutStr() {
+        if(checkoutStr == null)
+            checkoutStr = new String[4];
+        return checkoutStr;
+    }
+
+    public static void setCheckoutStr(String[] checkoutStr) {
+        AppController.checkoutStr = checkoutStr;
     }
 }

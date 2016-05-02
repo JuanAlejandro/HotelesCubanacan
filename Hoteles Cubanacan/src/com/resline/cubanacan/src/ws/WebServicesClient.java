@@ -11,7 +11,7 @@ import com.squareup.okhttp.OkHttpClient;
  */
 public class WebServicesClient {
     private static WebServicesInterface wsInterface;
-//    private static final String WS_ROOT = "http://192.168.180.1/pam/hotelescubanacan.com/web";
+    //private static final String WS_ROOT = "http://192.168.180.1/pam/hotelescubanacan.com/web";
     private static final String WS_ROOT = "http://192.168.5.107/pam/hotelescubanacan.com/web";
     //private static final String WS_ROOT = "http://www.hotelescubanacan.com/web";
 

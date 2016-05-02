@@ -10,19 +10,19 @@ public class DrawerMenu {
      */
     public static final String ARG_SECTION_NUMBER = "section_number";
 
-    public static final int CANT_SECCIONES = 11;
+    public static final int CANT_SECCIONES = 6;
 
     // static elements
-    public static final int ENTRAR_O_REGISTRARSE = 0;
-    public static final int RESERVAR = 1;
-    public static final int DESTINOS = 2;
-    public static final int HOTELES = 3;
-    public static final int TEMAS = 4;
-    public static final int OFERTAS_ESPECIALES = 5;
-    public static final int RECIENTES = 6;
-    public static final int VALORAR_Y_COMPARTIR = 7;
-    public static final int TERMINOS_DE_USO = 8;
-    public static final int CONTACTENOS = 9;
-    public static final int CONFIGURACION = 10;
+    //public static final int ENTRAR_O_REGISTRARSE = 0;
+    public static final int RESERVAR = 0;
+    public static final int DESTINOS = 1;
+    public static final int HOTELES = 2;
+    public static final int TEMAS = 3;
+    //public static final int OFERTAS_ESPECIALES = 5;
+    //public static final int RECIENTES = 6;
+    //public static final int VALORAR_Y_COMPARTIR = 7;
+    public static final int TERMINOS_DE_USO = 4;
+    public static final int CONTACTENOS = 5;
+    //public static final int CONFIGURACION = 10;
 
 }

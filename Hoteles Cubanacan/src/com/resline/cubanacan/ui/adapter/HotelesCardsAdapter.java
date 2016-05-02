@@ -47,16 +47,15 @@ public class HotelesCardsAdapter extends RecyclerView.Adapter<HotelesCardsAdapte
     @Override
     public void onBindViewHolder(HotelesCardsAdapter.HotelesViewHolder holder, int position) {
         CardViewHotel itemCardView = (CardViewHotel) mListItemsCard.get(position);
-        holder.itemView.setTag(itemCardView);
-        holder.id = itemCardView.getId();
-
-        holder.position = position;
-
-        holder.tvTitle.setText(itemCardView.getTitle());
-
         setThumbNailImage(itemCardView.getImgUri(), holder.ivThumbNail);
-
-
+        setCategory(itemCardView.getStars(), holder.stars);
+        holder.itemView.setTag(itemCardView);
+        holder.tvTitle.setText(itemCardView.getTitle());
+        holder.tvShortData.setText(itemCardView.getShortData());
+        holder.tvSubTitle1.setText(itemCardView.getSubtitle());
+        holder.tvSubTitle2.setText(itemCardView.getSubtitle2());
+        holder.id = itemCardView.getId();
+        holder.position = position;
     }
 
     @Override
@@ -88,8 +87,13 @@ public class HotelesCardsAdapter extends RecyclerView.Adapter<HotelesCardsAdapte
         }
     }
 
+    private void setCategory(int countStars, ImageView[] stars){
+
+        for (int i=0; i<countStars; i++)
+            stars[i].setVisibility(View.VISIBLE);
+    }
+
     protected Class<?> getActivityClass() {
-        // todo: activity here
         return HotelDetailsActivity.class;
     }
 
@@ -101,7 +105,6 @@ public class HotelesCardsAdapter extends RecyclerView.Adapter<HotelesCardsAdapte
         public TextView tvSubTitle1;
         public TextView tvSubTitle2;
         public ImageView[] stars;
-        public RelativeLayout rlCard;
         public Long id;
         private Activity mActivity;
         int position;
@@ -114,7 +117,6 @@ public class HotelesCardsAdapter extends RecyclerView.Adapter<HotelesCardsAdapte
             tvShortData = (TextView) itemView.findViewById(R.id.tvShortData);
             tvSubTitle1 = (TextView) itemView.findViewById(R.id.tvSubtitle1);
             tvSubTitle2 = (TextView) itemView.findViewById(R.id.tvSubtitle2);
-            rlCard = (RelativeLayout) itemView.findViewById(R.id.rlCardView);
 
             stars = new ImageView[5];
             stars[0] = (ImageView) itemView.findViewById(R.id.start1);
@@ -128,6 +130,9 @@ public class HotelesCardsAdapter extends RecyclerView.Adapter<HotelesCardsAdapte
                 public boolean onLongClick(View v) {
                     return false;
                 }
+            });
+
+            itemView.setOnClickListener(new View.OnClickListener(){
 
                 public void onClick(View v) {
                     mActivity.startActivity(new Intent(mActivity, getActivityClass()).putExtras(getBundle(id)));

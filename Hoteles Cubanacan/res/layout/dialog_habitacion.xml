@@ -17,7 +17,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_centerVertical="true"
-                android:textSize="18sp"
+                android:textSize="@dimen/regular_text_size"
                 android:text="@string/adults"
                 android:textColor="@android:color/black"/>
         <LinearLayout
@@ -29,7 +29,7 @@
                 android:layout_alignParentRight="true"
                 android:weightSum="3">
             <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/btnPlusAd"
+                    android:id="@+id/btnLessAd"
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:text="@string/less"
@@ -43,12 +43,12 @@
                     android:layout_height="wrap_content"
                     android:text="@string/lorem_number"
                     android:textColor="@color/cubanacan_light_red"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/regular_text_size"
                     android:padding="10dp"
                     android:gravity="center"
                     android:layout_weight="1"/>
             <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/btnLessAd"
+                    android:id="@+id/btnPlusAd"
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:text="@string/plus"
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:textSize="18sp"
+                android:textSize="@dimen/regular_text_size"
                 android:text="@string/ninnos"
                 android:textColor="@android:color/black"/>
         <LinearLayout
@@ -94,8 +94,8 @@
                     android:id="@+id/tvCantNin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/lorem_number"
-                    android:textSize="18sp"
+                    android:text="@string/cero"
+                    android:textSize="@dimen/regular_text_size"
                     android:textColor="@color/cubanacan_light_red"
                     android:padding="10dp"
                     android:gravity="center"
@@ -124,7 +124,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:textSize="18sp"
+                android:textSize="@dimen/regular_text_size"
                 android:text="@string/age_one"
                 android:textColor="@android:color/black"/>
         <LinearLayout
@@ -149,8 +149,8 @@
                     android:id="@+id/tvCantNinAgeOne"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/lorem_number"
-                    android:textSize="18sp"
+                    android:text="@string/cero"
+                    android:textSize="@dimen/regular_text_size"
                     android:textColor="@color/cubanacan_light_red"
                     android:padding="10dp"
                     android:gravity="center"
@@ -180,7 +180,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:textSize="18sp"
+                android:textSize="@dimen/regular_text_size"
                 android:text="@string/age_two"
                 android:textColor="@android:color/black"/>
         <LinearLayout
@@ -205,8 +205,8 @@
                     android:id="@+id/tvCantNinAgeTwo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/lorem_number"
-                    android:textSize="18sp"
+                    android:text="@string/cero"
+                    android:textSize="@dimen/regular_text_size"
                     android:textColor="@color/cubanacan_light_red"
                     android:padding="10dp"
                     android:gravity="center"
@@ -236,7 +236,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:textSize="18sp"
+                android:textSize="@dimen/regular_text_size"
                 android:text="@string/age_three"
                 android:textColor="@android:color/black"/>
         <LinearLayout
@@ -261,8 +261,8 @@
                     android:id="@+id/tvCantNinAgeThree"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/lorem_number"
-                    android:textSize="18sp"
+                    android:text="@string/cero"
+                    android:textSize="@dimen/regular_text_size"
                     android:textColor="@color/cubanacan_light_red"
                     android:padding="10dp"
                     android:gravity="center"

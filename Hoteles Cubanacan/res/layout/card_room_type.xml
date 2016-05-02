@@ -50,6 +50,18 @@
                     android:textSize="@dimen/title_size"
                     android:textColor="@color/black_button"/>
             <TextView
+                    android:id="@+id/tvSubTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black_button"
+                    android:textSize="@dimen/description_size"
+                    android:text="@string/lorem_ipsum_short"
+                    android:paddingLeft="@dimen/card_title_text_padding"
+                    android:paddingBottom="@dimen/big_padding"
+                    android:paddingRight="@dimen/big_padding"
+                    android:layout_below="@id/tvTitleOne"
+                    android:singleLine="true"/>
+            <TextView
                     android:id="@+id/tvSubTitleOne"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -59,32 +71,9 @@
                     android:paddingLeft="@dimen/card_title_text_padding"
                     android:paddingBottom="@dimen/big_padding"
                     android:paddingRight="@dimen/big_padding"
-                    android:layout_below="@id/tvTitleOne"
+                    android:layout_below="@id/tvSubTitle"
                     android:singleLine="true"
                     android:gravity="right"/>
-            <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/btnMealPlan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lorem_one"
-                    android:textColor="@android:color/black"
-                    android:layout_marginTop="10dp"
-                    android:padding="10dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_below="@id/tvSubTitleOne"
-                    android:gravity="center"/>
-            <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/btnOptionalServices"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/opcionales"
-                    android:textColor="@android:color/black"
-                    android:layout_marginTop="10dp"
-                    android:padding="10dp"
-                    android:layout_toRightOf="@id/btnMealPlan"
-                    android:layout_toEndOf="@id/btnMealPlan"
-                    android:layout_below="@id/tvSubTitleOne"
-                    android:gravity="center" android:visibility="invisible"/>
         </RelativeLayout>
     </RelativeLayout>
 </android.support.v7.widget.CardView>

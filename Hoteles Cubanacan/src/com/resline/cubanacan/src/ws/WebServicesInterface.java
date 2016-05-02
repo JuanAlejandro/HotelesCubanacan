@@ -7,9 +7,7 @@ import com.resline.cubanacan.src.ws.WSClass.Hotel.HotelsFullDetailsResponse;
 import com.resline.cubanacan.src.ws.WSClass.Location.FullLocationResponse;
 import com.resline.cubanacan.src.ws.WSClass.Reservation.RoomReservationResponse;
 import com.resline.cubanacan.src.ws.WSClass.Tpv.TPVResponse;
-import retrofit.http.Field;
-import retrofit.http.FormUrlEncoded;
-import retrofit.http.POST;
+import retrofit.http.*;
 import retrofit.Callback;
 
 /**
@@ -20,12 +18,14 @@ import retrofit.Callback;
 public interface WebServicesInterface {
 
     @FormUrlEncoded
+    @Headers("Accept-Language: es-ES")
     @POST("/webservice")
     void searchHotels(
             @Field("functionName") String functionName,
             @Field("paramsJson") String params, Callback<HotelAvaibilityResponse> callBack
     );
 
+    @Headers("Accept-Language: es-ES")
     @FormUrlEncoded
     @POST("/webservice")
     void getLocations(
@@ -33,6 +33,7 @@ public interface WebServicesInterface {
             @Field("paramsJson") String params, Callback<FullLocationResponse> callBack
     );
 
+    @Headers("Accept-Language: es-ES")
     @FormUrlEncoded
     @POST("/webservice")
     void getHotels(
@@ -40,6 +41,7 @@ public interface WebServicesInterface {
             @Field("paramsJson") String params, Callback<HotelsFullDetailsResponse> callBack
     );
 
+    @Headers("Accept-Language: es-ES")
     @FormUrlEncoded
     @POST("/webservice")
     void prepareTpvData(
@@ -47,6 +49,7 @@ public interface WebServicesInterface {
             @Field("paramsJson") String params, Callback<TPVResponse> callBack
     );
 
+    @Headers("Accept-Language: es-ES")
     @FormUrlEncoded
     @POST("/webservice")
     void saveRoomReservation(
@@ -54,6 +57,7 @@ public interface WebServicesInterface {
             @Field("paramsJson") String params, Callback<RoomReservationResponse> callBack
     );
 
+    @Headers("Accept-Language: es-ES")
     @FormUrlEncoded
     @POST("/webservice")
     void getCountries(
@@ -61,6 +65,7 @@ public interface WebServicesInterface {
             @Field("paramsJson") String params, Callback<CountryResponse> callBack
     );
 
+    @Headers("Accept-Language: es-ES")
     @FormUrlEncoded
     @POST("/webservice")
     void getTitles(
@@ -68,6 +73,7 @@ public interface WebServicesInterface {
             @Field("paramsJson") String params, Callback<TitlesResponse> callBack
     );
 
+    @Headers("Accept-Language: es-ES")
     @FormUrlEncoded
     @POST("/webservice")
     void payAndGoToTpv(

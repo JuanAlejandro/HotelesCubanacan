@@ -4,15 +4,18 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 import com.resline.cubanacan.R;
+import com.resline.cubanacan.src.controllers.AppController;
 import com.resline.cubanacan.ui.activities.api.BaseActivity;
 
 /**
  * Created by Juan Alejandro on 13/04/2016.
  */
-public class TpvKOActivity extends BaseActivity implements View.OnClickListener{
+public class ServiciosActivity extends BaseActivity implements View.OnClickListener{
 
-    private static final String TAG = "TPVOKActivity";
+    private static final String TAG = "ServiciosActivity";
+    private TextView tvContent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,6 +27,11 @@ public class TpvKOActivity extends BaseActivity implements View.OnClickListener{
 
     private void loadViewComponents() {
 
+        tvContent = (TextView)findViewById(R.id.tvContent);
+
+        Bundle bundle = getIntent().getExtras();
+        Long hotelId = bundle.getLong("hotelId");
+        tvContent.setText(AppController.getHotels().get(hotelId).getServices());
     }
 
     private void setToolbar() {
@@ -44,12 +52,12 @@ public class TpvKOActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     protected int getLayoutResourceIdentifier() {
-        return R.layout.activity_tpv_ko;
+        return R.layout.activity_servicios;
     }
 
     @Override
     protected String getTitleToolBar() {
-        return getString(R.string.detalles_title);
+        return getString(R.string.services_title);
     }
 
     @Override

@@ -54,7 +54,7 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
     private CheckBox[][] checkBox;
     private int countRooms;
 
-    private Button[][] btnMealPlan;
+    private TextView[][] tvMealPlan;
     private Button btnElegirHab;
 
     boolean countriesReady, titlesReady;
@@ -100,7 +100,7 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
                 linearLayoutsRooms = new LinearLayout[countRooms];
                 cardRoomTypeList = new CardView[countRooms][];
                 checkBox = new CheckBox[countRooms][];
-                btnMealPlan = new Button[countRooms][];
+                tvMealPlan = new TextView[countRooms][];
 
                 for (int i = 0; i < countRooms; i++) {
                     listCard[i] = new CardView(this);
@@ -147,7 +147,7 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
         int countRoom = rooms.size();
         cardRoomTypeList[position] = new CardView[countRoom];
         checkBox[position] = new CheckBox[countRoom];
-        btnMealPlan[position] = new Button[countRoom];
+        tvMealPlan[position] = new TextView[countRoom];
         for (AvailableRoomTypeVO room : rooms) {
 
             LayoutInflater inflater = LayoutInflater.from(this);
@@ -157,22 +157,39 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
             TextView roomCode = (TextView) cardView.findViewById(R.id.tvTitleOne);
             roomCode.setText(room.getCode());
 
-            TextView roomPrice = (TextView) cardView.findViewById(R.id.tvSubTitleOne);
-            String price = String.format("%s %s", String.valueOf(room.getPrice()), room.getCurrencyName());
-            roomPrice.setText(price);
+            for(MealPlanDetailsVO mealPlanVo : room.getMealPlans()){
 
-            ImageView roomImage = (ImageView) cardView.findViewById(R.id.ivRoomImage);
-            Picasso.with(this)
-                    .load(AppController.getHotels().get(hotelId).getImages().getImage().get(0).getImageUrl())
-                    .placeholder(R.drawable.loading)
-                    .error(R.drawable.ic_launcher)
-                    .into(roomImage);
+                TextView mealPlan = (TextView)cardView.findViewById(R.id.tvSubTitle);
+                mealPlan.setText(mealPlanVo.getCode());
+
+                TextView roomPrice = (TextView) cardView.findViewById(R.id.tvSubTitleOne);
+                double mealPlanPrice = (double)room.getMealPlansPrices().get(mealPlanVo.getId());
+                String price = String.format("%s %s", String.valueOf(room.getPrice() + mealPlanPrice), room.getCurrencyName());
+                roomPrice.setText(price);
+
+                ImageView roomImage = (ImageView) cardView.findViewById(R.id.ivRoomImage);
+                Picasso.with(this)
+                        .load(AppController.getHotels().get(hotelId).getImages().getImage().get(0).getImageUrl())
+                        .placeholder(R.drawable.loading)
+                        .error(R.drawable.ic_launcher)
+                        .into(roomImage);
+
+                checkBox[position][cont] = (CheckBox) (cardView.findViewById(R.id.cbRoom));
+                if (cont == 0) {
+                    totalPriceValue += room.getPrice() + mealPlanPrice;
+                    checkBox[position][cont].setChecked(true);
+                }
+                checkBox[position][cont].setTag(new CheckBoxTag(position, cont, room.getPrice(), mealPlanVo.getId(), mealPlanPrice));
+                checkBox[position][cont++].setOnCheckedChangeListener(this);
+
+                content.addView(cardView);
+            }
 
 
             long idMealPlan = -1;
             double mealPlanPrice = 0;
 
-            btnMealPlan[position][cont] = (Button) cardView.findViewById(R.id.btnMealPlan);
+            /*btnMealPlan[position][cont] = (Button) cardView.findViewById(R.id.btnMealPlan);
             if (hotelSelected.isAllInclusive()) {
                 btnMealPlan[position][cont].setVisibility(View.INVISIBLE);
             } else {
@@ -184,15 +201,9 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
                 mealPlanPrice = (double) room.getMealPlansPrices().get(String.valueOf(idMealPlan));
             }
 
-            checkBox[position][cont] = (CheckBox) (cardView.findViewById(R.id.cbRoom));
-            if (cont == 0) {
-                totalPriceValue += room.getPrice();
-                checkBox[position][cont].setChecked(true);
-            }
-            checkBox[position][cont].setTag(new CheckBoxTag(position, cont, room.getPrice(), idMealPlan, mealPlanPrice));
-            checkBox[position][cont++].setOnCheckedChangeListener(this);
+            c
 
-            content.addView(cardView);
+            content.addView(cardView);*/
         }
     }
 
@@ -315,7 +326,7 @@ public class ElegirHabitacionActivity extends BaseActivity implements View.OnCli
     }
 
     public void selectedMealPlan(int positionRoom, int positionRoomType, Long mealPriceId, String mealPlanCode, double mealPlanPrice) {
-        btnMealPlan[positionRoom][positionRoomType].setText(mealPlanCode);
+        tvMealPlan[positionRoom][positionRoomType].setText(mealPlanCode);
         ((CheckBoxTag) checkBox[positionRoom][positionRoomType].getTag()).setIdMealPlan(mealPriceId);
         ((CheckBoxTag) checkBox[positionRoom][positionRoomType].getTag()).setMealPlanPrice(mealPlanPrice);
         setTotalPrice(AppController.getCurrentSearchResult().getCurrencyName());

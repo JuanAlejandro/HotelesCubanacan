@@ -73,7 +73,7 @@ public class MainActivity extends DrawerActivity implements DrawerActivity.OnDra
 
     @Override
     protected IDrawerItem[] getStaticDrawerItem() {
-        int selColor = R.color.cubanacan_light_blue;
+        int selColor = R.color.cubanacan_light_red;
 
         IDrawerItem[] drawerItems = new IDrawerItem[navSDITitles.length];
 
@@ -100,13 +100,13 @@ public class MainActivity extends DrawerActivity implements DrawerActivity.OnDra
          * todo: remove checking what's for
          **/
         switch (tag) {
-            case TAG_ENTRAR_O_REGISTRARSE:
+            /*case TAG_ENTRAR_O_REGISTRARSE:
                 if (!isAuthenticated) {
                     fragmentTransaction(new LoginFragment(), navSDITitles[DrawerMenu.ENTRAR_O_REGISTRARSE]);
                 } else {
                     // do something when user is authenticated
                 }
-                break;
+                break;*/
             case TAG_RESERVAR:
                 fragmentTransaction(new ReservarFragment(), navSDITitles[DrawerMenu.RESERVAR]);
                 break;
@@ -119,20 +119,25 @@ public class MainActivity extends DrawerActivity implements DrawerActivity.OnDra
             case TAG_TEMAS:
                 fragmentTransaction(new TemasFragment(), navSDITitles[DrawerMenu.TEMAS]);
                 break;
-            case TAG_OFERTAS_ESPECIALES:
+            /*case TAG_OFERTAS_ESPECIALES:
                 break;
             case TAG_RECIENTES:
                 break;
             case TAG_VALORAR_Y_COMPARTIR:
-                break;
+                break;*/
             case TAG_TERMINOS_DE_USO:
                 break;
             case TAG_CONTACTENOS:
                 break;
-            case TAG_CONFIGURACION:
-                break;
+            /*case TAG_CONFIGURACION:
+                break;*/
         }
 
         area = tag;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

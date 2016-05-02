@@ -35,30 +35,30 @@ import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.utils.DrawerMenu;
 
 public abstract class DrawerActivity extends AppCompatActivity implements View.OnClickListener {
-    public static final int TAG_ENTRAR_O_REGISTRARSE = 0;
-    public static final int TAG_RESERVAR = 1;
-    public static final int TAG_DESTINOS = 2;
-    public static final int TAG_HOTELES = 3;
-    public static final int TAG_TEMAS = 4;
-    public static final int TAG_OFERTAS_ESPECIALES = 5;
-    public static final int TAG_RECIENTES = 6;
-    public static final int TAG_VALORAR_Y_COMPARTIR = 7;
-    public static final int TAG_TERMINOS_DE_USO = 8;
-    public static final int TAG_CONTACTENOS = 9;
-    public static final int TAG_CONFIGURACION = 10;
+    //public static final int TAG_ENTRAR_O_REGISTRARSE = 0;
+    public static final int TAG_RESERVAR = 0;
+    public static final int TAG_DESTINOS = 1;
+    public static final int TAG_HOTELES = 2;
+    public static final int TAG_TEMAS = 3;
+    //public static final int TAG_OFERTAS_ESPECIALES = 5;
+    //public static final int TAG_RECIENTES = 6;
+    //public static final int TAG_VALORAR_Y_COMPARTIR = 7;
+    public static final int TAG_TERMINOS_DE_USO = 4;
+    public static final int TAG_CONTACTENOS = 5;
+    //public static final int TAG_CONFIGURACION = 10;
 
     public static final int[] TAGS_ARRAY = {
-            TAG_ENTRAR_O_REGISTRARSE,
+            //TAG_ENTRAR_O_REGISTRARSE,
             TAG_RESERVAR,
             TAG_DESTINOS,
             TAG_HOTELES,
             TAG_TEMAS,
-            TAG_OFERTAS_ESPECIALES,
-            TAG_RECIENTES,
-            TAG_VALORAR_Y_COMPARTIR,
+            //TAG_OFERTAS_ESPECIALES,
+            //TAG_RECIENTES,
+            //TAG_VALORAR_Y_COMPARTIR,
             TAG_TERMINOS_DE_USO,
             TAG_CONTACTENOS,
-            TAG_CONFIGURACION
+            //TAG_CONFIGURACION
     };
 
     private static final String TAG = "DrawerActivity";
@@ -73,7 +73,8 @@ public abstract class DrawerActivity extends AppCompatActivity implements View.O
     protected int selColorRes;
 
     // current area
-    protected int area = DrawerMenu.ENTRAR_O_REGISTRARSE;
+    //protected int area = DrawerMenu.ENTRAR_O_REGISTRARSE;
+    protected int area = DrawerMenu.RESERVAR;
 
     // new drawer
     public Drawer drawer = null;

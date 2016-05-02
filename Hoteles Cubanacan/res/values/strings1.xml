@@ -42,12 +42,8 @@
     <string name="acepto_terms">Acepto los términos y condiciones</string>
     <string name="titular_title">Titular de la reserva</string>
     <string name="correo_hint">Correo</string>
-    <string name="cero">0</string>
     <string name="lorem_one">1</string>
     <string name="lorem_two">2</string>
-    <string name="lorem_three">3</string>
-    <string name="lorem_four">4</string>
-    <string name="lorem_five">5</string>
     <string name="precio">Precio</string>
     <string name="nombre">Nombre</string>
     <string name="categoria">Categoría</string>
@@ -71,7 +67,6 @@
     <string name="motives">Motivos</string>
     <string name="destinos_title">Destinos</string>
     <string name="detalles_title">Detalles</string>
-    <string name="services_title">Servicios y Actividades</string>
     <string name="accept">Aceptar</string>
     <string name="registrarse_title">Registrarse</string>
     <string name="user_profile_title">Perfil de usuario</string>
@@ -97,15 +92,9 @@
     <string name="report">Reportar</string>
     <string name="wait_title">Espere</string>
     <string name="wait_content">Debe esperar un momento</string>
-    <string name="wait_find_hotels">Buscando hoteles disponibles</string>
-    <string name="lorem_dia">jue</string>
+    <string name="lorem_dia">jueves</string>
     <string name="lorem_dia_mes">28</string>
     <string name="lorem_anno">2016</string>
-    <string name="lorem_mes">abr</string>
+    <string name="lorem_mes">abril</string>
     <string name="mas_opciones">Más opciones</string>
-    <string name="locations_title">Destinos</string>
-    <string name="buscar_title">Buscar</string>
-    <string name="destinos_hoteles_title">Destinos / Hoteles</string>
-    <string name="bottom_text_buscar">Reserve su hotel de forma rápida y sencilla</string>
-    <string name="bottom_text_buscar2">Mejor precio garantizado y cancelación gratuita en la mayoría de los hoteles</string>
 </resources>
