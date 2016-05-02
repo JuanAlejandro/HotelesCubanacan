@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.resline.cubanacan.R;
 import com.resline.cubanacan.ui.activities.api.BaseActivity;
+import com.resline.cubanacan.ui.utils.TextUtils;
 
 /**
  * Created by Juan Alejandro on 13/04/2016.
@@ -26,6 +27,10 @@ public class HotelDetailsActivity extends BaseActivity implements View.OnClickLi
     private ImageView goToGallery;
 
     private TextView tvAddress;
+
+    private TextView tvDesc;
+
+    private TextView tvVerMas;
 
 
     @Override
@@ -52,6 +57,15 @@ public class HotelDetailsActivity extends BaseActivity implements View.OnClickLi
         tvAddress = (TextView) findViewById(R.id.tvDireccion);
 
 //        goToGallery.setOnClickListener(this);
+
+        // Usando ver mas
+        tvDesc = (TextView) findViewById(R.id.tvDesc);
+
+        tvVerMas = (TextView) findViewById(R.id.tvVerMas);
+
+        // Le pasas por parámetro tvDesc (el textView), tvVerMas (el textView de ver mas), el string
+        // de la descripcion, y la cantidad de caracteres
+        TextUtils.setTextProperties(tvDesc, tvVerMas, "Descripción", 250);
     }
 
     private void setToolbar() {

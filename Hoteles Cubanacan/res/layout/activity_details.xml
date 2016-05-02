@@ -128,9 +128,21 @@
                     android:textColor="@android:color/black"
                     android:layout_margin="@dimen/regular_margin"
                     android:padding="@dimen/regular_padding"/>
+            <TextView
+                    android:id="@+id/tvVerMas"
+                    android:layout_below="@id/tvDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/see_more"
+                    android:textSize="@dimen/abc_text_size_medium_material"
+                    android:textColor="@android:color/black"
+                    android:paddingTop="2dp"
+                    android:clickable="true"
+                    android:paddingBottom="@dimen/regular_margin"
+                    android:visibility="gone"/>
             <RelativeLayout
                     android:id="@+id/rlDistAeropuerto"
-                    android:layout_below="@id/tvDesc"
+                    android:layout_below="@id/tvVerMas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 <ImageView
