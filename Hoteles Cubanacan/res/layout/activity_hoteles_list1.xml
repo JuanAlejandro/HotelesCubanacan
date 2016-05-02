@@ -23,8 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/screen_default_toolbar"
-            android:orientation="horizontal"
-            android:background="@drawable/borde" >
+            android:orientation="horizontal">
         <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btnPrice"
                 android:layout_width="45dp"
@@ -61,6 +60,11 @@
                 android:layout_marginBottom="3dp"
                 android:layout_weight="1"/>
     </LinearLayout>
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/cubanacan_dark_red"
+            android:layout_below="@id/llFiltros"/>
     <FrameLayout
             android:id="@+id/frameList"
             android:layout_width="match_parent"

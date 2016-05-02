@@ -37,7 +37,7 @@
                         android:paddingLeft="@dimen/card_title_text_padding"
                         android:paddingRight="@dimen/card_title_text_padding"
                         android:paddingBottom="@dimen/card_title_text_padding_bottom"
-                        android:textSize="@dimen/title_size"
+                        android:textSize="@dimen/regular_text_size"
                         android:textColor="@color/black_button"/>
                 <android.support.v7.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
@@ -107,18 +107,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title_in"
-                android:textSize="18sp"
+                android:textSize="@dimen/regular_text_size"
                 android:textColor="@android:color/black"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/regular_margin"
                 android:layout_below="@id/vDividerHotel"/>
         <TextView
                 android:id="@+id/tvIn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lorem_date"
-                android:textSize="18sp"
+                android:textSize="@dimen/regular_text_size"
                 android:textColor="@android:color/black"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/regular_margin"
                 android:layout_below="@id/vDividerHotel"
                 android:layout_toRightOf="@id/tvLabelIn"
                 android:layout_toEndOf="@id/tvLabelIn"/>
@@ -129,18 +129,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title_out"
-                android:textSize="18sp"
+                android:textSize="@dimen/regular_text_size"
                 android:textColor="@android:color/black"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/regular_margin"
                 android:layout_below="@id/tvLabelIn"/>
         <TextView
                 android:id="@+id/tvOut"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lorem_date"
-                android:textSize="18sp"
+                android:textSize="@dimen/regular_text_size"
                 android:textColor="@android:color/black"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/regular_margin"
                 android:layout_below="@id/tvLabelIn"
                 android:layout_toRightOf="@id/tvLabelIn"
                 android:layout_toEndOf="@id/tvLabelIn"/>
@@ -159,18 +159,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title_importe"
-                android:textSize="18sp"
+                android:textSize="@dimen/regular_text_size"
                 android:textColor="@android:color/black"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/regular_margin"
                 android:layout_below="@id/vDividerInOut"/>
         <TextView
                 android:id="@+id/tvImporte"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lorem_money"
-                android:textSize="18sp"
+                android:textSize="@dimen/regular_text_size"
                 android:textColor="@android:color/black"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/regular_margin"
                 android:layout_below="@id/vDividerInOut"
                 android:layout_toRightOf="@id/tvLabelIn"
                 android:layout_toEndOf="@id/tvLabelIn"/>
@@ -203,10 +203,10 @@
                 android:text="@string/next"
                 android:textColor="@android:color/white"
                 android:background="@drawable/background_button"
-                android:padding="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
+                android:padding="@dimen/regular_padding"
+                android:layout_marginLeft="@dimen/regular_margin"
+                android:layout_marginRight="@dimen/regular_margin"
+                android:layout_marginBottom="@dimen/regular_margin"
                 android:layout_below="@id/llHabitaciones"
                 android:gravity="center"/>
     </RelativeLayout>
