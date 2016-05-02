@@ -153,7 +153,9 @@ Cubanacan app dimens.
                                 android:text="@string/lorem_anno"
                                 android:layout_toRightOf="@id/tvInDiaMes"
                                 android:layout_toEndOf="@id/tvInDiaMes"
-                                android:layout_alignBaseline="@id/tvInDiaMes"/>
+                                android:layout_alignBaseline="@id/tvInDiaMes"
+                                android:layout_marginLeft="1dp"
+                                android:layout_marginStart="1dp"/>
                         <TextView
                                 android:id="@+id/tvInMes"
                                 android:layout_width="wrap_content"
@@ -163,7 +165,9 @@ Cubanacan app dimens.
                                 android:text="@string/lorem_mes"
                                 android:layout_toRightOf="@id/tvInDiaMes"
                                 android:layout_toEndOf="@id/tvInDiaMes"
-                                android:layout_above="@id/tvInAnno"/>
+                                android:layout_above="@id/tvInAnno"
+                                android:layout_marginLeft="1dp"
+                                android:layout_marginStart="1dp"/>
                     </RelativeLayout>
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
@@ -225,7 +229,9 @@ Cubanacan app dimens.
                                 android:text="@string/lorem_anno"
                                 android:layout_toRightOf="@id/tvOutDiaMes"
                                 android:layout_toEndOf="@id/tvOutDiaMes"
-                                android:layout_alignBaseline="@id/tvOutDiaMes"/>
+                                android:layout_alignBaseline="@id/tvOutDiaMes"
+                                android:layout_marginLeft="1dp"
+                                android:layout_marginStart="1dp"/>
                         <TextView
                                 android:id="@+id/tvOutMes"
                                 android:layout_width="wrap_content"
@@ -235,7 +241,9 @@ Cubanacan app dimens.
                                 android:text="@string/lorem_mes"
                                 android:layout_toRightOf="@id/tvOutDiaMes"
                                 android:layout_toEndOf="@id/tvOutDiaMes"
-                                android:layout_above="@id/tvOutAnno"/>
+                                android:layout_above="@id/tvOutAnno"
+                                android:layout_marginLeft="1dp"
+                                android:layout_marginStart="1dp"/>
                     </RelativeLayout>
                 </RelativeLayout>
             </android.support.v7.widget.CardView>

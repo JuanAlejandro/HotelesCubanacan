@@ -122,9 +122,7 @@
                         android:text="@string/title_in"
                         android:textSize="@dimen/description_size"
                         android:textColor="@android:color/black"
-                        android:padding="10dp"
-                        android:layout_toRightOf="@+id/ivDate"
-                        android:layout_toEndOf="@+id/ivDate"/>
+                        android:padding="10dp"/>
                 <TextView
                         android:id="@+id/tvEntrada"
                         android:layout_width="wrap_content"
@@ -143,9 +141,7 @@
                         android:textSize="@dimen/description_size"
                         android:textColor="@android:color/black"
                         android:padding="10dp"
-                        android:layout_below="@+id/tvEntrada"
-                        android:layout_toRightOf="@+id/ivDate"
-                        android:layout_toEndOf="@+id/ivDate"/>
+                        android:layout_below="@+id/tvEntrada"/>
                 <TextView
                         android:id="@+id/tvSalida"
                         android:layout_width="wrap_content"
