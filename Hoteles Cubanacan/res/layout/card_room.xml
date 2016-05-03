@@ -28,7 +28,7 @@
                 android:id="@+id/cbRoom1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/secondary_color_blue"
+                android:background="@drawable/checkbox_selector"
                 android:layout_margin="5dp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
