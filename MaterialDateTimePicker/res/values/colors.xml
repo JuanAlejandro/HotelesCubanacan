@@ -28,10 +28,10 @@
     <color name="mdtp_numbers_text_color">#ff212121</color>
 
     <color name="mdtp_transparent_black">#7f000000</color>
-    <color name="mdtp_accent_color">#023a6e</color>
+    <color name="mdtp_accent_color">#ff534a</color>
     <color name="mdtp_accent_color_focused">#76ffffff</color>
     <color name="mdtp_neutral_pressed">#33999999</color>
-    <color name="mdtp_accent_color_dark">#0153a0</color>
+    <color name="mdtp_accent_color_dark">#a9352f</color>
     <color name="mdtp_date_picker_text_normal">#ff212121</color>
     <color name="mdtp_date_picker_text_disabled">#ccc</color>
     <color name="mdtp_date_picker_month_day">#767676</color>
